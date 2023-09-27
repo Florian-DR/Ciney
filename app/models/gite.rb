@@ -1,0 +1,2 @@
+class Gite < ApplicationRecord
+end

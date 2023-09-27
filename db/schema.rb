@@ -10,8 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_27_174002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "charges", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.string "type"
+    t.bigint "gite_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gite_id"], name: "index_charges_on_gite_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.date "date"
+    t.bigint "days_of_week_id", null: false
+    t.bigint "holiday_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["days_of_week_id"], name: "index_days_on_days_of_week_id"
+    t.index ["holiday_id"], name: "index_days_on_holiday_id"
+  end
+
+  create_table "days_of_weeks", force: :cascade do |t|
+    t.string "status"
+    t.float "price"
+    t.bigint "gite_id", null: false
+    t.bigint "saison_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gite_id"], name: "index_days_of_weeks_on_gite_id"
+    t.index ["saison_id"], name: "index_days_of_weeks_on_saison_id"
+  end
+
+  create_table "gites", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "capacity"
+    t.integer "rooms"
+    t.integer "sanitary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "holidays", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "saisons", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "charges", "gites"
+  add_foreign_key "days", "days_of_weeks"
+  add_foreign_key "days", "holidays"
+  add_foreign_key "days_of_weeks", "gites"
+  add_foreign_key "days_of_weeks", "saisons"
 end
