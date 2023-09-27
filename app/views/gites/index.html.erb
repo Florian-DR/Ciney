@@ -1,4 +1,14 @@
-<% @gites.each do |gite| %>
-    <p><%= - gite.name %></p>
-    div
-<% end %>
+<div class="contain">
+    <% @gites.each do |gite| %>
+        <div class="gite">
+            <p>- <%= gite.name %></p>
+            <p>Description</p>
+            <p><%= gite.description %></p>
+            <p>Capacité: <%= gite.capacity %> personnes</p>
+            <p><%= gite.rooms %> chambres</p>
+            <p><%= gite.sanitary %> sanitaires</p>
+            <%= link_to "Update", edit_gite_path(gite) %>
+            <p> ✏️ </p>
+        </div>
+    <% end %>
+</div>
