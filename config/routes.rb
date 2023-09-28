@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :gites, only: [:index, :edit, :update]
+  post "gites/:id/add/pictures", to: "gites#add_pictures", as: "add_pictures"
 end

@@ -4,7 +4,9 @@
     <%= f.input :capacity %>
     <%= f.input :rooms %>
     <%= f.input :sanitary %>
-    <%= f.input :main_photo, as: :file %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :photo_principale, as: :file %>
+    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
     <%= f.submit %>
 <% end %>
+
+<p>Gérer mes photos</p>

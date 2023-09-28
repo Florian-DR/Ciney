@@ -1,14 +1,25 @@
-<div class="contain">
+<div>
     <% @gites.each do |gite| %>
         <div class="gite">
             <p>- <%= gite.name %></p>
+            <div class="gite-cadre-photos">
+                <% if gite.photo_principale.key %>
+                    <div class="gite-photo-principale"> <%= cl_image_tag gite.photo_principale.key%></div>
+                    <div class="gite-photos"> 
+                        <% gite.photos.first(4).each do |photo| %>
+                            <div class="gite-photo"><%= cl_image_tag photo.key %></div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+
             <p>Description</p>
             <p><%= gite.description %></p>
             <p>Capacité: <%= gite.capacity %> personnes</p>
             <p><%= gite.rooms %> chambres</p>
             <p><%= gite.sanitary %> sanitaires</p>
-            <%= link_to "Update", edit_gite_path(gite) %>
-            <p> ✏️ </p>
+            <%= link_to "✏️", edit_gite_path(gite) %>
+
         </div>
     <% end %>
 </div>
