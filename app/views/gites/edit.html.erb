@@ -4,9 +4,21 @@
     <%= f.input :capacity %>
     <%= f.input :rooms %>
     <%= f.input :sanitary %>
-    <%= f.input :photo_principale, as: :file %>
-    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-    <%= f.submit %>
+    <%= f.input :photo_principale, as: :file, label: "Changer la photo principale"%>
+    <%= f.input :photos, as: :file, label: "Ajouter des photos", input_html: {multiple: true} %>
+    <%= f.submit "Valider les modifications"%>
 <% end %>
 
 <p>Gérer mes photos</p>
+<% if !@gite.photos.empty? %>
+    <div class="my-photos">
+        <% @gite.photos.each_with_index do |photo, index| %>
+            <div>
+                <%= cl_image_tag(photo.key, width: "200", height: "200", crop: "fill")  %>
+                <%= link_to "Supprimer cette photo", delete_pictures_path(@gite, photo_index: index), data: {turbo_method: :delete} %>
+            </div>
+        <% end %>
+    </div>
+<% else %>
+    <p> Il n'y a pas encore de photos </p>
+<% end %>

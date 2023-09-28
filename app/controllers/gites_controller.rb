@@ -1,5 +1,5 @@
 class GitesController < ApplicationController
-    before_action :current_gite, only: %i[edit add_pictures]
+    before_action :current_gite, only: %i[edit delete_pictures]
 
     def index
         @gites = Gite.all.order(:id)
@@ -17,11 +17,12 @@ class GitesController < ApplicationController
         end
     end
 
-    def add_pictures
-        raise
-        @image = Cloudinary::Uploader.upload(params[:photos])
-        @gite.photos.attach(io: @image, filename: params[:title], content_type: "image/png")
-        raise
+    def delete_pictures
+        photo = @gite.photos[params[:photo_index].to_i]
+        photo.purge
+        flash.notice = "Une photo a bien été supprimée"
+        redirect_to request.referer
+
     end
 
     private
