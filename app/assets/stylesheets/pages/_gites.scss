@@ -2,21 +2,44 @@
     margin: 40px auto;
 }
 
+// Photos section
 .gite-cadre-photos{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
 
     .gite-photo-principale img{
-        height: 605px;
-        width: auto;
+        height: auto;
+        width: 42vw;
     }
 
     .gite-photos {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5px; 
+        justify-self: end;
            
-            img{height: 300px;}
+            img{
+                height: auto;
+                width: 20.6vw;
+            }
     }
+}
+
+// Description et Calendrier section
+.gite-details{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    .gite-description{
+        flex-grow: 1;
+        p{max-width: 141em;}
+    }
+
+    .calendar-container{
+        position: sticky;
+        top: 0;
+    }
+
 }

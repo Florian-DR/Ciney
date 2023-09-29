@@ -1,5 +1,5 @@
 class GitesController < ApplicationController
-    before_action :current_gite, only: %i[edit delete_pictures]
+    before_action :current_gite, only: %i[edit delete_pictures change_index]
 
     def index
         @gites = Gite.all.order(:id)
@@ -34,5 +34,4 @@ class GitesController < ApplicationController
     def current_gite
         @gite = Gite.find(params[:id])
     end
-
 end
