@@ -1,0 +1,23 @@
+<h1>Ta page d'aministration </h1>
+
+    <div class="prices-table">
+        <div class="saison-header headers">Saisons</div>
+        <div class="headers"><%= @gite_1.name %></div>
+        <div class="headers"><%= @gite_2.name %></div>
+        <% unless @saisons.empty? %>
+            <% @saisons.each do |saison| %>
+                <div><%= saison.name %></div>
+                <div><%= saison.start_date %></div>
+                <div><%= saison.end_date %></div>
+            <% end %>
+        <% end %>
+    </div>
+
+
+ <%#####  Adding a new saison #####%>
+    <%= simple_form_for @saison do |f| %>
+        <%= f.input :name, label: "Titre" %>
+        <%= f.input :start_date, label: "Date de début", as: :date, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date, label: "Date de fin", as: :date, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.submit "Nouvelle saison", class: "btn btn-primary" %>
+    <% end %>

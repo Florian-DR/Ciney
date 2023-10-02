@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
-  get ENV["admin_url"], to: "gites#admin", as: "admin"
+  resources :saisons, only: %i[create delete update]
+
+  get ENV["admin_url"], to: "admins#admin", as: "admin"
 end
