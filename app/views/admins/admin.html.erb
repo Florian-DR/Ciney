@@ -50,8 +50,8 @@
 
  <%#####  Adding a new saison #####%>
     <%= simple_form_for @saison do |f| %>
-        <%= f.input :name, label: "Titre" %>
-        <%= f.input :start_date, label: "Date de début", as: :string, input_html: { data: { controller: "datepicker" } } %>
-        <%= f.input :end_date, label: "Date de fin", as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :name, label: false, placeholder: "Titre *" %>
+        <%= f.input :start_date, label: false, placeholder: "Date de début * ", as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date, label: false, placeholder: "Date de fin *", as: :string, input_html: { data: { controller: "datepicker" } } %>
         <%= f.submit "Nouvelle saison", class: "btn btn-primary" %>
     <% end %>

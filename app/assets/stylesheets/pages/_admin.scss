@@ -50,14 +50,21 @@
         }
     }
     
-
     .saison-name{
         position: relative;
-
         a{
             position: absolute;
-            left: 3px;
-        }
+            left: 3px;}
     }
 
+}
+
+
+#new_saison{
+    max-width: 17vw;
+    input{
+        border: none;
+        border-bottom: 1px solid #c0c3c6;
+        padding: 8px;
+    }
 }
