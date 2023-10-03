@@ -1,0 +1,6 @@
+    <%= simple_form_for saison, html: {class:"d-none", data: {saison_form_toggle_target: "form"}} do |f| %>
+        <%= f.input :name, label: false, placeholder: "Titre *" %>
+        <%= f.input :start_date, label: false, placeholder: "Date de début * ", as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date, label: false, placeholder: "Date de fin *", as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.submit "Valider", class: "btn btn-primary" %>
+    <% end %>
