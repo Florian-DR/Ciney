@@ -1,0 +1,14 @@
+<%= link_to gites_path do %>
+    <p class="btn btn-primary"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
+<% end %>
+
+<%= simple_form_for @gite do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo_principale, as: :file, label: "Changer la photo PRINCIPALE"%>
+    <%= f.input :description %>
+    <%= f.input :capacity %>
+    <%= f.input :rooms %>
+    <%= f.input :sanitary %>
+    <%= f.input :photos, as: :file, label: "Ajouter des photos", input_html: {multiple: true} %>
+    <%= f.submit "Valider les modifications"%>
+<% end %>

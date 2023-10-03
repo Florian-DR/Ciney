@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :gites, only: [:index, :edit, :update]
+  resources :gites, only: [:index, :edit, :update, :new, :create]
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create delete update]
 
-  get ENV["admin_url"], to: "admins#admin", as: "admin"
+  get "/domi", to: "admins#admin", as: "admin"
 end

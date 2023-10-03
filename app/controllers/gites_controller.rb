@@ -5,6 +5,10 @@ class GitesController < ApplicationController
         @gites = Gite.all.order(:id)
     end
 
+    def new
+        @gite = Gite.new
+    end
+
     def edit; end
 
     def update

@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: Ciney_production
   username: Ciney
   password: <%= ENV["CINEY_DATABASE_PASSWORD"] %>
