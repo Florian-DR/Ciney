@@ -1,6 +1,6 @@
 <h1>Ta page d'aministration </h1>
 
-    <div class="prices-table">
+    <div class="admin-table">
 
     <%### Headers of the table ###%>
         <div class="saison-header headers">Saisons</div>
@@ -26,8 +26,14 @@
                 <div><%= saison.name %></div>
                 <div><%= saison.start_date %></div>
                 <div><%= saison.end_date %></div>
-                <div></div>
-                <div></div>
+
+                <div class="prices-table"> 
+                   <%= render "admins/prices", {saison: saison, gite: @gite_1, days_of_week: @days_of_week} %>
+                </div>
+
+                <div class="prices-table"> 
+                   <%= render "admins/prices", {saison: saison, gite: @gite_2, days_of_week: @days_of_week} %>
+                </div>
             <% end %>
         <% end %>
     </div>

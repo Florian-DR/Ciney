@@ -5,10 +5,13 @@ class SaisonsController < ApplicationController
         if saison.save
             redirect_to admin_path
         else
+            @gite_1 = Gite.first
+            @gite_2 = Gite.last
+            @days_of_week = DaysOfWeek.new
             @saisons = Saison.all
             @saison = saison
+
             render '/admins/admin', status: :unprocessable_entity
-            # render '/admins/admin', inline: "<div class='text-danger'>Tous les champs obligatoires ne sont pas rempli ou bien les dates sont les mêmes</div>"
             
         end
     end

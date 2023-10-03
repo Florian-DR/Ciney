@@ -1,0 +1,19 @@
+    <% if saison.semaine_price?(gite.id)%>
+        <span><%= saison.semaine_price(gite.id) %>€</span>
+    <% else %>
+        <%= simple_form_for [saison, days_of_week] do |f|%>
+        <%= f.hidden_field :status, value: "semaine" %>
+        <%= f.hidden_field :gite_id, value: gite.id %>
+        <%= f.input :price, label: false%>
+        <% end %>
+    <% end %>
+
+    <% if saison.week_end_price?(gite.id) %>
+        <span><%= saison.week_end_price(gite.id) %>€</span>
+    <% else %>
+        <%= simple_form_for [saison, days_of_week] do |f|%>
+        <%= f.hidden_field :status, value: "week-end" %>
+        <%= f.hidden_field :gite_id, value: gite.id %>
+        <%= f.input :price, label: false %>
+        <% end %>
+    <% end %>
