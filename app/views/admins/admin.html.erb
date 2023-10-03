@@ -1,14 +1,33 @@
 <h1>Ta page d'aministration </h1>
 
     <div class="prices-table">
+
+    <%### Headers of the table ###%>
         <div class="saison-header headers">Saisons</div>
         <div class="headers"><%= @gite_1.name %></div>
         <div class="headers"><%= @gite_2.name %></div>
+
+    <%### Sub-headers of the table ###%>
+        <div class="sub-headers">Nom</div>
+        <div class="sub-headers dates">Dates</div>
+        <div class="sub-headers prix">
+            <div>Semaine</div>
+            <div>Week-end</div>
+        </div>
+        <div class="sub-headers prix">            
+            <div>Semaine</div>
+            <div>Week-end</div>
+        </div>
+
+
+    <%### Rows (.each) and columns(div) of the table ###%>
         <% unless @saisons.empty? %>
             <% @saisons.each do |saison| %>
                 <div><%= saison.name %></div>
                 <div><%= saison.start_date %></div>
                 <div><%= saison.end_date %></div>
+                <div></div>
+                <div></div>
             <% end %>
         <% end %>
     </div>

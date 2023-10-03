@@ -5,18 +5,18 @@ class GitesController < ApplicationController
         @gites = Gite.all.order(:id)
     end
 
-    def new
-        @gite = Gite.new
-    end
+    # def new
+    #     @gite = Gite.new
+    # end
 
-    def create
-        @gite = Gite.new(gite_params)
-        if @gite.save
-            redirect_to gites_path
-        else
-            render :new, status: :unprocessable_entity
-        end
-    end
+    # def create
+    #     @gite = Gite.new(gite_params)
+    #     if @gite.save
+    #         redirect_to gites_path
+    #     else
+    #         render :new, status: :unprocessable_entity
+    #     end
+    # end
 
     def edit; end
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :gites, only: [:index, :edit, :update, :new, :create]
+  resources :gites, only: [:index, :edit, :update]
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
