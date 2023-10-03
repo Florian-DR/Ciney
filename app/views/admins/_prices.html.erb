@@ -1,17 +1,30 @@
     <% if saison.semaine_price?(gite.id)%>
-        <span><%= saison.semaine_price(gite.id) %>€</span>
+
+        <span data-edit-prices-target="priceSemaine" data-action="click->edit-prices#displayFormSemaine"><%= saison.semaine_price(gite.id) %>€</span> 
+
+
+        <% @days_of_week = DaysOfWeek.where(gite_id: gite.id, status: "semaine", saison_id: saison.id).first %>
+        <%= simple_form_for [saison, @days_of_week], html: {class: "d-none", data: {edit_prices_target: "formSemaine", action:"submit->edit-prices#update"}} do |f|%>
+            <%= f.input :price, label:false %>
+        <% end %>
+
     <% else %>
-        <%= simple_form_for [saison, days_of_week] do |f|%>
+        <%= simple_form_for [saison, DaysOfWeek.new] do |f|%>
         <%= f.hidden_field :status, value: "semaine" %>
         <%= f.hidden_field :gite_id, value: gite.id %>
-        <%= f.input :price, label: false%>
+        <%= f.input :price, label: false %>
         <% end %>
     <% end %>
 
     <% if saison.week_end_price?(gite.id) %>
-        <span><%= saison.week_end_price(gite.id) %>€</span>
+        <span data-edit-prices-target="priceWeekEnd" data-action="click->edit-prices#displayFormWeekEnd"><%= saison.week_end_price(gite.id) %>€</span>
+        <% @days_of_week = DaysOfWeek.where(gite_id: gite.id, status: "week-end", saison_id: saison.id).first %>
+        <%= simple_form_for [saison, @days_of_week], html: {class: "d-none", data: {edit_prices_target: "form", action:"submit->edit-prices#update"}} do |f|%>
+            <%= f.input :price, label:false %>
+        <% end %>
+
     <% else %>
-        <%= simple_form_for [saison, days_of_week] do |f|%>
+        <%= simple_form_for [saison, DaysOfWeek.new] do |f|%>
         <%= f.hidden_field :status, value: "week-end" %>
         <%= f.hidden_field :gite_id, value: gite.id %>
         <%= f.input :price, label: false %>

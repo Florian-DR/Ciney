@@ -28,6 +28,11 @@ class SaisonsController < ApplicationController
 
     end
 
+    def destroy
+        saison = Saison.find(params[:id])
+        redirect_to admin_path if saison.destroy
+    end
+
     private
 
     def saison_params

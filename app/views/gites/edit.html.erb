@@ -21,7 +21,7 @@
             <div>
                 <%= cl_image_tag(photo.key, crop: "fill")  %>
 
-                <%= link_to delete_pictures_path(@gite, photo_index: index), data: {turbo_method: :delete}, class: "text-danger" do %>
+                <%= link_to delete_pictures_path(@gite, photo_index: index), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette photo ?"}, class: "text-danger" do %>
                     <i class="fa-solid fa-trash"></i>
                 <% end %>
                 

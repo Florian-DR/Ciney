@@ -1,5 +1,5 @@
 class Saison < ApplicationRecord
-    has_many :days_of_weeks
+    has_many :days_of_weeks, dependent: :destroy
 
     validates :name, :start_date, :end_date, presence: true
     validates :end_date, comparison: {other_than: :start_date}

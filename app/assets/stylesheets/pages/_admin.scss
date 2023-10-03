@@ -42,8 +42,22 @@
         justify-content: space-around;
         span{
             min-width: 50%;
+            cursor: pointer;
+            &:hover {
+                color: rgb(141, 47, 47);
+                font-size: 17px;
+            }
         }
     }
     
+
+    .saison-name{
+        position: relative;
+
+        a{
+            position: absolute;
+            left: 3px;
+        }
+    }
 
 }

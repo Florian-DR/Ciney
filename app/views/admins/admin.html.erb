@@ -23,16 +23,21 @@
     <%### Rows (.each) and columns(div) of the table ###%>
         <% unless @saisons.empty? %>
             <% @saisons.each do |saison| %>
-                <div><%= saison.name %></div>
+                <div class="saison-name">
+                    <%= saison.name %>            
+                    <%= link_to saison_path(saison), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette saison ?"}, class: "text-danger" do %>
+                        <i class="fa-solid fa-trash"></i>
+                    <% end %>
+                    </div>
                 <div><%= saison.start_date %></div>
                 <div><%= saison.end_date %></div>
 
-                <div class="prices-table"> 
-                   <%= render "admins/prices", {saison: saison, gite: @gite_1, days_of_week: @days_of_week} %>
+                <div class="prices-table" data-controller="edit-prices"> 
+                   <%= render "admins/prices", {saison: saison, gite: @gite_1} %>
                 </div>
 
-                <div class="prices-table"> 
-                   <%= render "admins/prices", {saison: saison, gite: @gite_2, days_of_week: @days_of_week} %>
+                <div class="prices-table" data-controller="edit-prices"> 
+                   <%= render "admins/prices", {saison: saison, gite: @gite_2} %>
                 </div>
             <% end %>
         <% end %>
