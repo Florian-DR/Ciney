@@ -23,15 +23,18 @@
     <%### Rows (.each) and columns(div) of the table ###%>
         <% unless @saisons.empty? %>
             <% @saisons.each do |saison| %>
+
                 <div class="saison-name">
                     <%= saison.name %>            
                     <%= link_to saison_path(saison), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette saison ?"}, class: "text-danger" do %>
                         <i class="fa-solid fa-trash"></i>
                     <% end %>
-                    </div>
+                </div>
+
                 <div><%= saison.start_date %></div>
                 <div><%= saison.end_date %></div>
 
+            <%# rendering prices from partial %>
                 <div class="prices-table" data-controller="edit-prices"> 
                    <%= render "admins/prices", {saison: saison, gite: @gite_1} %>
                 </div>
@@ -39,6 +42,7 @@
                 <div class="prices-table" data-controller="edit-prices"> 
                    <%= render "admins/prices", {saison: saison, gite: @gite_2} %>
                 </div>
+                
             <% end %>
         <% end %>
     </div>
@@ -47,7 +51,7 @@
  <%#####  Adding a new saison #####%>
     <%= simple_form_for @saison do |f| %>
         <%= f.input :name, label: "Titre" %>
-        <%= f.input :start_date, label: "Date de début", as: :date, input_html: { data: { controller: "datepicker" } } %>
-        <%= f.input :end_date, label: "Date de fin", as: :date, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :start_date, label: "Date de début", as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date, label: "Date de fin", as: :string, input_html: { data: { controller: "datepicker" } } %>
         <%= f.submit "Nouvelle saison", class: "btn btn-primary" %>
     <% end %>
