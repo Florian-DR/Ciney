@@ -9,6 +9,15 @@ class GitesController < ApplicationController
         @gite = Gite.new
     end
 
+    def create
+        @gite = Gite.new(gite_params)
+        if @gite.save
+            redirect_to gites_path
+        else
+            render :new, status: :unprocessable_entity
+        end
+    end
+
     def edit; end
 
     def update
