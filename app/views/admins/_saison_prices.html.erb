@@ -7,7 +7,7 @@
 
 <%# Semaine prices %>
     <% if saison.semaine_price?(gite.id)%>
-        <span data-edit-prices-target="priceSemaine" data-action="click->edit-prices#displayFormSemaine"><%= saison.semaine_price(gite.id) %>€</span> 
+        <span class="prices-span" data-edit-prices-target="priceSemaine" data-action="click->edit-prices#displayFormSemaine"><%= saison.semaine_price(gite.id) %>€</span> 
 
       <%# @days_of_week has to be define here as a new instance otherwise all the forms have 'random' value in it %>
         <% @days_of_week = DaysOfWeek.where(gite_id: gite.id, status: "semaine", saison_id: saison.id).first %>
@@ -26,7 +26,7 @@
 
 <%# Week-end prices %>
     <% if saison.week_end_price?(gite.id) %>
-        <span data-edit-prices-target="priceWeekEnd" data-action="click->edit-prices#displayFormWeekEnd"><%= saison.week_end_price(gite.id) %>€</span>
+        <span class="prices-span" data-edit-prices-target="priceWeekEnd" data-action="click->edit-prices#displayFormWeekEnd"><%= saison.week_end_price(gite.id) %>€</span>
         
         <% @days_of_week = DaysOfWeek.where(gite_id: gite.id, status: "week-end", saison_id: saison.id).first %>
         <%= simple_form_for [saison, @days_of_week], html: {class: "d-none", data: {edit_prices_target: "form", action:"submit->edit-prices#update"}} do |f|%>

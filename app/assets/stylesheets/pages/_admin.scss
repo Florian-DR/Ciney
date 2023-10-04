@@ -39,16 +39,17 @@
     .prices-table{
         display: flex;
         justify-content: space-around;
-        span{
-            min-width: 50%;
-            cursor: pointer;
-            &:hover {
-                color: rgb(141, 47, 47);
-                font-size: 17px;
-            }
-        }
     }
     
+    .prices-span{
+        min-width: 50%;
+        cursor: pointer;
+        &:hover {
+            color: rgb(141, 47, 47);
+            font-size: 17px;
+        }
+    }
+
     .saison-name{
         position: relative;
         a{

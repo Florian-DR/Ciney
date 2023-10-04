@@ -7,7 +7,10 @@ class SaisonsController < ApplicationController
         else
             @gite_1 = Gite.first
             @gite_2 = Gite.last
+            
             @days_of_week = DaysOfWeek.new
+            @gite_holidays = GiteHoliday.new
+
             @holidays = Holiday.all
             @holiday = Holiday.new
 
@@ -18,17 +21,17 @@ class SaisonsController < ApplicationController
         end
     end
 
-    def update
-        saison = Saison.new(saison_params)
-        if saison.save
-            redirect_to admin_path
-        else
-            @saisons = Saison.all
-            @saison = Saison.new
-            render '/admins/admin', status: :unprocessable_entity
-        end
+    # def update
+    #     saison = Saison.new(saison_params)
+    #     if saison.save
+    #         redirect_to admin_path
+    #     else
+    #         @saisons = Saison.all
+    #         @saison = Saison.new
+    #         render '/admins/admin', status: :unprocessable_entity
+    #     end
 
-    end
+    # end
 
     def destroy
         saison = Saison.find(params[:id])

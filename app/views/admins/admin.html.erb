@@ -67,26 +67,15 @@
     <%### Holidays' table ###%>
         <% unless @holidays.empty? %>
             <% @holidays.each do |holiday| %>
-                <div> <%= holiday.name %> </div>
-                <div><%= holiday.start_date %></div>
-                <div><%= holiday.end_date %></div>
-                <div>
-                    <% if holiday.price%>
-                        <span data-edit-prices-target="priceSemaine" data-action="click->edit-prices#displayFormSemaine"><%= holiday.price %>€</span> 
-
-                        <%= simple_form_for [holiday], html: {class: "d-none", data: {edit_prices_target: "formSemaine", action:"submit->edit-prices#update"}} do |f|%>
-                            <%= f.input :price, label:false %>
-                        <% end %>
-
-                    <% else %>
-                        <%= simple_form_for @holiday do |f|%>
-                        <%= f.hidden_field :status, value: "semaine" %>
-                        <%= f.hidden_field :gite_id, value: gite.id %>
-                        <%= f.input :price, label: false %>
-                        <% end %>
+                <div class="saison-name"> <%= holiday.name %> 
+                    <%= link_to holiday_path(holiday), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer ces vacances ?"}, class: "text-danger" do %>
+                        <i class="fa-solid fa-trash"></i>
                     <% end %>
                 </div>
-                <div>0</div>
+                <div><%= holiday.start_date %></div>
+                <div><%= holiday.end_date %></div>
+                <div data-controller="edit-prices"> <%= render "admins/holiday_prices", {holiday: holiday, gite: @gite_1} %></div>
+                <div data-controller="edit-prices"> <%= render "admins/holiday_prices", {holiday: holiday, gite: @gite_2} %></div>
             <% end %>
         <% end %>
 

@@ -9,7 +9,10 @@ class HolidaysController < ApplicationController
             @saison = Saison.new
             @gite_1 = Gite.first
             @gite_2 = Gite.last
+            
             @days_of_week = DaysOfWeek.new
+            @gite_holidays = GiteHoliday.new
+
 
             @holidays = Holiday.all
 
@@ -18,9 +21,15 @@ class HolidaysController < ApplicationController
 
     end
 
+    def destroy
+        holiday = Holiday.find(params[:id])
+        raise
+        redirect_to admin_path if holiday.destroy
+    end
+
     private
 
     def holidays_params
-        params.require(:holiday).permit(:name, :start_date, :end_date, :price)
+        params.require(:holiday).permit(:name, :start_date, :end_date)
     end
 end

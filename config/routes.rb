@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   resources :gites, only: [:index, :edit, :update]
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
-  resources :saisons, only: %i[create destroy update] do
+  resources :saisons, only: %i[create destroy ] do
     resources :days_of_weeks, only: %i[create update]
   end
 
-  resources :holidays, only: %i[create update destroy]
+  resources :holidays, only: %i[create destroy] do 
+    resources :gite_holidays, only: %i[create update]
+  end
   
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
   get "/domi", to: "admins#admin", as: "admin"

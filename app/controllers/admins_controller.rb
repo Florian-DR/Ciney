@@ -8,6 +8,7 @@ class AdminsController < ApplicationController
         @gite_2 = Gite.last
         
         @days_of_week = DaysOfWeek.new
+        @gite_holidays = GiteHoliday.new
         
         @holidays = Holiday.all
         @holiday = Holiday.new
