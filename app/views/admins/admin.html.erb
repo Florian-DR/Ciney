@@ -2,25 +2,28 @@
 
     <div class="admin-table">
 
-    <%### Headers of the table ###%>
+    <%############## SAISON ##############%>
+
+    <%### Headers of the table for the saisons ###%>
         <div class="saison-header headers">Saisons</div>
         <div class="headers"><%= @gite_1.name %></div>
         <div class="headers"><%= @gite_2.name %></div>
 
-    <%### Sub-headers of the table ###%>
+    <%### Sub-headers of the table for the saisons ###%>
         <div class="sub-headers">Nom</div>
-        <div class="sub-headers dates">Dates</div>
-        <div class="sub-headers prix">
+        <div class="sub-headers dates">Dates de début</div>
+        <div class="sub-headers dates">Dates de fin</div>
+        <div class="sub-headers saisons-prix">
             <div>Semaine</div>
             <div>Week-end</div>
         </div>
-        <div class="sub-headers prix">            
+        <div class="sub-headers saisons-prix">            
             <div>Semaine</div>
             <div>Week-end</div>
         </div>
 
 
-    <%### Rows (.each) and columns(div) of the table ###%>
+    <%### Saisons' table ###%>
         <% unless @saisons.empty? %>
             <% @saisons.each do |saison| %>
 
@@ -36,20 +39,70 @@
 
             <%# rendering prices from partial %>
                 <div class="prices-table" data-controller="edit-prices"> 
-                   <%= render "admins/prices", {saison: saison, gite: @gite_1} %>
+                   <%= render "admins/saison_prices", {saison: saison, gite: @gite_1} %>
                 </div>
 
                 <div class="prices-table" data-controller="edit-prices"> 
-                   <%= render "admins/prices", {saison: saison, gite: @gite_2} %>
+                   <%= render "admins/saison_prices", {saison: saison, gite: @gite_2} %>
                 </div>
                 
             <% end %>
         <% end %>
+        <hr><hr><hr><hr><hr>
+
+    <%############## HOLIDAYS ##############%>
+        
+    <%### Headers of the table for the holidays ###%>
+        <div class="saison-header headers">Vacances</div>
+        <div class="headers"><%= @gite_1.name %></div>
+        <div class="headers"><%= @gite_2.name %></div>
+
+    <%### Sub-headers of the table for the holidays ###%>
+        <div class="sub-headers">Nom</div>
+        <div class="sub-headers dates">Dates de début</div>
+        <div class="sub-headers dates">Dates de fin</div>
+        <div class="sub-headers prix">Prix</div>
+        <div class="sub-headers prix">Prix</div>
+
+    <%### Holidays' table ###%>
+        <% unless @holidays.empty? %>
+            <% @holidays.each do |holiday| %>
+                <div> <%= holiday.name %> </div>
+                <div><%= holiday.start_date %></div>
+                <div><%= holiday.end_date %></div>
+                <div>
+                    <% if holiday.price%>
+                        <span data-edit-prices-target="priceSemaine" data-action="click->edit-prices#displayFormSemaine"><%= holiday.price %>€</span> 
+
+                        <%= simple_form_for [holiday], html: {class: "d-none", data: {edit_prices_target: "formSemaine", action:"submit->edit-prices#update"}} do |f|%>
+                            <%= f.input :price, label:false %>
+                        <% end %>
+
+                    <% else %>
+                        <%= simple_form_for @holiday do |f|%>
+                        <%= f.hidden_field :status, value: "semaine" %>
+                        <%= f.hidden_field :gite_id, value: gite.id %>
+                        <%= f.input :price, label: false %>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div>0</div>
+            <% end %>
+        <% end %>
+
     </div>
 
 
  <%#####  Adding a new saison #####%>
+<div id="forms">
     <div data-controller="saison-form-toggle">
-        <div class="btn btn-primary" data-action="click->saison-form-toggle#displayForm"> Ajouter une saison</div>
+        <div class="btn btn-primary toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter une saison</div>
         <%= render "admins/saison_form", {saison: @saison} %>
     </div>
+
+ <%#####  Adding a new holiday #####%>
+    <div data-controller="saison-form-toggle">
+        <div class="btn btn-primary toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter de vacances</div>
+        <%= render "admins/holiday_form", {holiday: @holiday} %>
+    </div>
+</div>

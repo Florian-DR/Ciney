@@ -5,7 +5,6 @@
     margin-bottom: 25px;
 
     div {
-        border: 1px solid rgb(70, 70, 70);
         padding: 3px;
     }
 
@@ -18,6 +17,7 @@
         font-weight: 500;
         text-align: center;
         padding: 5px 0px;
+        border-bottom: 1px solid rgb(70, 70, 70);
     }
 
     .sub-headers{
@@ -26,11 +26,10 @@
     }
 
     .sub-headers.dates{
-        grid-column: span 2;
         text-align: center;
     }
 
-    .sub-headers.prix{
+    .sub-headers.saisons-prix{
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-content: space-around;
@@ -57,14 +56,23 @@
             left: 3px;}
     }
 
+    hr{
+        margin-bottom: 50px;
+    }
+
 }
 
 
-#new_saison{
-    max-width: 17vw;
-    input{
-        border: none;
-        border-bottom: 1px solid #c0c3c6;
-        padding: 8px;
-    }
+#forms{
+    display: flex;
+    .toggle-button{margin-right: 30px;}
+
+    form{
+        max-width: 12vw;
+        input{
+            border: none;
+            border-bottom: 1px solid #c0c3c6;
+            padding: 8px;
+        }
+}
 }

@@ -1,6 +1,7 @@
-    <%= simple_form_for saison, html: {class: saison.errors.any? ? "" : "d-none", data: {saison_form_toggle_target: "form"}} do |f| %>
+    <%= simple_form_for holiday, html: {class: holiday.errors.any? ? "" : "d-none", data: {saison_form_toggle_target: "form"}} do |f| %>
         <%= f.input :name, label: false, placeholder: "Nom *" %>
         <%= f.input :start_date, label: false, placeholder: "Date de début * ", as: :string, input_html: { data: { controller: "datepicker" } } %>
         <%= f.input :end_date, label: false, placeholder: "Date de fin *", as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :price, label: false, placeholder: "Prix *" %>
         <%= f.submit "Valider", class: "btn btn-primary" %>
     <% end %>

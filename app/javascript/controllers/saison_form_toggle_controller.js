@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["form"]
 
   displayForm(){
+    event.preventDefault()
     this.formTarget.classList.toggle("d-none")
   }
 }

@@ -2,8 +2,7 @@ class Saison < ApplicationRecord
     has_many :days_of_weeks, dependent: :destroy
 
     validates :name, :start_date, :end_date, presence: true
-    validates :end_date, comparison: {other_than: :start_date}
-    validates :end_date, comparison: {greater_than: :start_date}
+    validates :end_date, comparison: {other_than: :start_date, greater_than: :start_date}
 
     def semaine_price(gite_id)
         days_of_weeks.find{|day| day.status == "semaine" && day.gite_id == gite_id}.price

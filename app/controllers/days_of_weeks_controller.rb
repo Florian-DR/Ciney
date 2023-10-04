@@ -12,8 +12,11 @@ class DaysOfWeeksController < ApplicationController
             @gite_1 = Gite.first
             @gite_2 = Gite.last
             @saisons = Saison.all
-            @days_of_week = days_of_week
             @saison = Saison.new
+            @holidays = Holiday.all
+            @holiday = Holiday.new
+
+            @days_of_week = days_of_week
 
             render '/admins/admin', status: :unprocessable_entity
         end
