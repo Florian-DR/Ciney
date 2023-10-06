@@ -1,5 +1,10 @@
 class GitesController < ApplicationController
-    before_action :current_gite, only: %i[edit delete_pictures change_index]
+    before_action :current_gite, only: %i[edit delete_pictures]
+    before_action :events, only: :index
+
+    require "googleauth"
+
+
 
     def index
         @gites = Gite.all.order(:id)
@@ -47,4 +52,21 @@ class GitesController < ApplicationController
     def current_gite
         @gite = Gite.find(params[:id])
     end
+
+    def events
+
+        calendar = Google::Apis::CalendarV3::CalendarService.new
+        calendar.authorization = Google::Apis::RequestOptions.default.authorization
+    
+        # Replace with your actual calendar ID
+        calendar_id = 'florian.radigues@gmail.com'
+    
+        events = calendar.list_events(calendar_id,
+                                      max_results: 15,
+                                      single_events: true,
+                                      order_by: 'startTime',
+                                      time_min: Time.now.iso8601)
+    
+        @events = events.items
+      end
 end

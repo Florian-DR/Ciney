@@ -40,3 +40,10 @@
 
     <%# <%= link_to "Nouveau gite", new_gite_path, class: "btn btn-primary" %> 
 </div>
+
+<h1>Google Calendar Events</h1>
+<ul>
+  <% @events.each do |event| %>
+    <li><%= event.summary %> - début : <%= event.start.date_time %>  - fin: <%= event.end.date_time %> </li>
+  <% end %>
+</ul>

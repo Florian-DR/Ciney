@@ -16,8 +16,9 @@
     .gite-photos {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 5px; 
+        gap: 8px; 
         justify-self: end;
+        align-items: center;
            
             img{
                 height: auto;

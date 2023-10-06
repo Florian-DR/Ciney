@@ -21,18 +21,6 @@ class SaisonsController < ApplicationController
         end
     end
 
-    # def update
-    #     saison = Saison.new(saison_params)
-    #     if saison.save
-    #         redirect_to admin_path
-    #     else
-    #         @saisons = Saison.all
-    #         @saison = Saison.new
-    #         render '/admins/admin', status: :unprocessable_entity
-    #     end
-
-    # end
-
     def destroy
         saison = Saison.find(params[:id])
         redirect_to admin_path if saison.destroy
