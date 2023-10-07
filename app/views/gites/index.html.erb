@@ -29,7 +29,7 @@
                     </div>
 
                 <%##### Calendrier ######%>
-                    <div class="calendar-container">
+                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                             <%= month_calendar do |date| %>
                         <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
                     <% end %>
