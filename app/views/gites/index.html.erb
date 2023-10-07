@@ -29,8 +29,10 @@
                     </div>
 
                 <%##### Calendrier ######%>
-                    <div class="calendar-container" style="width: 1300px; background: red; max-height: 400px;">
-                        <div>Hello</div>
+                    <div class="calendar-container">
+                            <%= month_calendar do |date| %>
+                        <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
+                    <% end %>
                     </div>
 
                 </div>

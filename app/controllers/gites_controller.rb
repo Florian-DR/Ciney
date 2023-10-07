@@ -1,6 +1,7 @@
 class GitesController < ApplicationController
     before_action :current_gite, only: %i[edit delete_pictures]
-    before_action :events, only: :index
+    before_action :events, only: [:index, :events_dates]
+    before_action :events_dates, only: :index
 
     require "googleauth"
 
@@ -69,4 +70,17 @@ class GitesController < ApplicationController
     
         @events = events.items
       end
+
+      def events_dates
+        @non_available = []
+        @events.each do |event|
+          if event.start.date_time
+            (event.start.date_time.to_date..event.end.date_time.to_date).to_a.each { |event_date| @non_available << event_date }
+          else 
+            (event.start.date..event.end.date).to_a.each { |event_date| @non_available << event_date }
+          end
+        end
+        @non_available
+      end
+
 end

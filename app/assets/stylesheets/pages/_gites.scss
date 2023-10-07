@@ -41,6 +41,57 @@
     .calendar-container{
         position: sticky;
         top: 0;
+        width: fit-content;
     }
 
 }
+
+// Calendar
+
+.calendar-heading{
+    text-align: center;
+}
+
+.simple-calendar {
+    .day{
+        text-align: center;
+        height: 50px !important;
+        min-width: 50px;
+        padding-top: 12px;
+        background-color: green;
+
+        &:has(>.events){
+            background-color: red !important;
+        }
+        &:hover{opacity: 0.7;}
+    }
+  
+    .wday-0 {}
+    .wday-1 {}
+    .wday-2 {}
+    .wday-3 {}
+    .wday-4 {}
+    .wday-5 {}
+    .wday-6 {}
+  
+    .today {
+        border: 1 solid black;
+        font-weight: 700;
+        text-decoration: underline;
+
+        }
+    .future {}
+    
+    .start-date{}
+    
+    .prev-month {opacity: 0.3;}
+    .next-month { 
+        opacity: 0.3; 
+        background-color: green !important;}
+    .past {
+        opacity: 0.3;
+        background-color: #DDD !important;}
+    .current-month {}
+        
+    .has-events {}
+  }
