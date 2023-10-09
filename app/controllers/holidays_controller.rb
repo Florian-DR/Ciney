@@ -23,7 +23,6 @@ class HolidaysController < ApplicationController
 
     def destroy
         holiday = Holiday.find(params[:id])
-        raise
         redirect_to admin_path if holiday.destroy
     end
 

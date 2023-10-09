@@ -42,6 +42,7 @@
         position: sticky;
         top: 0;
         width: fit-content;
+        height: fit-content;
     }
 
 }
@@ -53,19 +54,27 @@
 }
 
 .simple-calendar {
+    border: none;
+    th{border: none !important;}
+    tr{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
     .day{
         text-align: center;
         height: 50px !important;
         min-width: 50px;
         padding-top: 12px;
-        background-color: green;
+        background-color: green !important;
 
         &:has(>.events){
             background-color: red !important;
         }
         &:hover{opacity: 0.7;}
     }
-  
+
+    
     .wday-0 {}
     .wday-1 {}
     .wday-2 {}
@@ -94,4 +103,22 @@
     .current-month {}
         
     .has-events {}
-  }
+
+    .selected{
+        border: 2px solid rgb(0, 0, 0);
+    }
+
+    // I didn't find a syntax that allow me to select element with a class AND the elements between them, so I have 2 block 
+    .selected ~ td:has( ~ .selected) {
+        background-color: rebeccapurple !important;
+    }
+    
+    td:not(.selected) ~ td:not(:not(.selected)) {
+        background-color: rebeccapurple !important;
+    }
+}
+
+// Removing some default css
+.table > :not(caption) > * > *{
+    border: none;
+}

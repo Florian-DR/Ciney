@@ -2,6 +2,8 @@ class Gite < ApplicationRecord
     has_many :charges
     has_many :days_of_weeks
     has_many :gite_holidays
+    has_many :holidays, through: :gite_holidays
+    has_many :saisons, through: :days_of_weeks
 
     has_one_attached :photo_principale
     has_many_attached :photos
@@ -29,5 +31,21 @@ class Gite < ApplicationRecord
     #     arr = []
     #     ## Retrieve the selected photos with the indexes
     #     indexes.each { |index| arr << @gite.photos.where(id: index)}
-    # end
+    # end 
+
+    # Retrieve the price of each day through holidays and saisons for the /gites pages on the calendar
+    def price(day)
+        holidays.each do |holiday|
+            return gite_holidays.where(holiday: holiday).first.price if ((holiday.start_date..holiday.end_date).to_a.include? day)
+        end
+        
+        saisons.each do |saison|
+            if ((saison.start_date..saison.end_date).to_a.include? day) 
+                status = (day.saturday? || day.friday? || day.sunday?) ? "week-end" : "semaine"
+                return days_of_weeks.where(saison: saison, status: status).first.price 
+            end
+        end
+
+        "undefined"
+    end
 end
