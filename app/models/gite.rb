@@ -42,9 +42,9 @@ class Gite < ApplicationRecord
         saisons.each do |saison|
             if ((saison.start_date..saison.end_date).to_a.include? day) 
                 status = (day.saturday? || day.friday? || day.sunday?) ? "week-end" : "semaine"
-                day_price = days_of_weeks.where(saison: saison, status: status).first
+                day_price = days_of_weeks.where(saison: saison, status: status)
                 
-                return (day_price.price) unless day_price.empty? 
+                return (day_price.first.price) unless day_price.empty? 
             end
 
         end
