@@ -1,8 +1,8 @@
 class GitesController < ApplicationController
+    skip_before_action :authenticate_user!, only: :index
     before_action :current_gite, only: %i[edit delete_pictures]
     before_action :events, only: [:index, :events_dates]
     before_action :events_dates, only: :index
-    skip_before_action :verify_authenticity_token, only: :calcul_prices
 
     require "googleauth"
 

@@ -62,6 +62,9 @@ gem "simple_form", github: "heartcombo/simple_form"
 # Cloudinary storage for images [https://cloudinary.com] 
 gem "cloudinary"
 
+# To handle users and connection [https://github.com/heartcombo/devise]
+gem "devise"
+
 
 gem "bootstrap", "~> 5.2"
 gem "autoprefixer-rails"
