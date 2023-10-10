@@ -66,7 +66,7 @@
         height: 50px !important;
         min-width: 50px;
         padding-top: 12px;
-        background-color: green !important;
+        background-color: green ;
 
         &:has(>.events){
             background-color: red !important;
@@ -84,10 +84,9 @@
     .wday-6 {}
   
     .today {
-        border: 1 solid black;
         font-weight: 700;
         text-decoration: underline;
-
+        opacity: 0.8;
         }
     .future {}
     

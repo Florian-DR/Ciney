@@ -42,8 +42,12 @@ class Gite < ApplicationRecord
         saisons.each do |saison|
             if ((saison.start_date..saison.end_date).to_a.include? day) 
                 status = (day.saturday? || day.friday? || day.sunday?) ? "week-end" : "semaine"
-                return days_of_weeks.where(saison: saison, status: status).first.price 
+                return (days_of_weeks.where(saison: saison, status: status).first.price)
             end
+
+            # if ((saison.start_date..saison.end_date).to_a.include? day)
+            #     saison.week_end_price?
+            # end
         end
 
         "undefined"

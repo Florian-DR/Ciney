@@ -1,6 +1,6 @@
 <div>
     <% @gites.each do |gite| %>
-        <div class="gite">
+        <div id="<%= @gites.find_index(gite) %>" class="gite">
             <p>- <%= gite.name %></p>
 
         <%###### Photos des gites ######%>
@@ -34,8 +34,8 @@
                             <span class="d-none"><%= gite.price(date) %></span> 
                             <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
                         <% end %>
-                        
-                        <p data-calendar-target="displayPrice"></p>
+
+                        <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
                     </div>
 
                 </div>

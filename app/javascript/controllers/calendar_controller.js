@@ -2,32 +2,34 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static targets = ["previousUrl", "nextUrl", "calendar", "day", "dateForm", "startDate", "endDate", "submit", "displayPrice"]
+  static targets = ["previousUrl", "nextUrl", "calendar", "day", "displayPrice"]
 
 
+  // Calculing, displaying the price and the message
   calculPrices(){
-    const days = this.dayTargets.filter((day) => day.classList.contains("selected"))
-    
+    const selectedDays = this.dayTargets.filter((day) => day.classList.contains("selected"))
+
     let price = 0
     let numberOfNights = 0
+    let message = ""
     
-    if (days.length === 0){
-      price = 0
-      numberOfNights = 0
-    }
-    else {
-      const startDate = Number(days[0].firstElementChild.innerText)
-      const allDays = document.querySelectorAll(".selected ~ td:has( ~ .selected) ")
+    if (selectedDays.length !== 0){
 
-      price = startDate
-      numberOfNights = 1 + allDays.length
+      const startDatePrice = Number(selectedDays[0].firstElementChild.innerText)
+      const bookingsDays = this.calendarTarget.querySelectorAll(".selected ~ td:has( ~ .selected) ")
+
+      price = startDatePrice
+      numberOfNights = 1 + bookingsDays.length 
       
-      allDays.forEach((day) => price += Number(day.firstElementChild.innerText))
-      if (allDays.length === 0){
-        const message = "Nous n'acceptont pas les réservations de moins de 2 nuits"
-      }
+      bookingsDays.forEach((day) => price += Number(day.firstElementChild.innerText))
+      
+      if(bookingsDays.length === 0){ message = "Nous n'acceptont pas les réservations de moins de 2 nuits. \n" }
     }
-    this.displayPriceTarget.innerText = `Prix estimé: ${price}€ pour ${numberOfNights} nuits`
+
+    if(isNaN(price)){this.displayPriceTarget.innerText = "Les prix ne sont pas encore défini pour ces dates."}
+    else{this.displayPriceTarget.innerText = `Prix estimé: ${price}€ pour ${numberOfNights} nuits \n ` + message}
+
+    
   }
 
 
