@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "/domi", to: "pages#admin", as: "admin"
+  get "/contact", to: "pages#contact"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -18,5 +20,4 @@ Rails.application.routes.draw do
   end
   
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
-  get "/domi", to: "admins#admin", as: "admin"
 end

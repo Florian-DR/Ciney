@@ -41,11 +41,11 @@
 
             <%# rendering prices from partial %>
                 <div class="prices-table" data-controller="edit-prices"> 
-                   <%= render "admins/saison_prices", {saison: saison, gite: @gite_1} %>
+                   <%= render "pages/saison_prices", {saison: saison, gite: @gite_1} %>
                 </div>
 
                 <div class="prices-table" data-controller="edit-prices"> 
-                   <%= render "admins/saison_prices", {saison: saison, gite: @gite_2} %>
+                   <%= render "pages/saison_prices", {saison: saison, gite: @gite_2} %>
                 </div>
                 
             <% end %>
@@ -76,8 +76,8 @@
                 </div>
                 <div><%= holiday.start_date %></div>
                 <div><%= holiday.end_date %></div>
-                <div data-controller="edit-prices"> <%= render "admins/holiday_prices", {holiday: holiday, gite: @gite_1} %></div>
-                <div data-controller="edit-prices"> <%= render "admins/holiday_prices", {holiday: holiday, gite: @gite_2} %></div>
+                <div data-controller="edit-prices"> <%= render "pages/holiday_prices", {holiday: holiday, gite: @gite_1} %></div>
+                <div data-controller="edit-prices"> <%= render "pages/holiday_prices", {holiday: holiday, gite: @gite_2} %></div>
             <% end %>
         <% end %>
         <hr><hr><hr><hr><hr>
@@ -88,12 +88,12 @@
 <div id="forms">
     <div data-controller="saison-form-toggle">
         <div class="btn btn-primary toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter une saison</div>
-        <%= render "admins/saison_form", {saison: @saison} %>
+        <%= render "pages/saison_form", {saison: @saison} %>
     </div>
 
  <%#####  Adding a new holiday #####%>
     <div data-controller="saison-form-toggle">
         <div class="btn btn-primary toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter de vacances</div>
-        <%= render "admins/holiday_form", {holiday: @holiday} %>
+        <%= render "pages/holiday_form", {holiday: @holiday} %>
     </div>
 </div>

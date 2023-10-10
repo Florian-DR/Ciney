@@ -17,7 +17,7 @@ class SaisonsController < ApplicationController
             @saisons = Saison.all
             @saison = saison
 
-            render '/admins/admin', status: :unprocessable_entity
+            render '/pages/admin', status: :unprocessable_entity
         end
     end
 

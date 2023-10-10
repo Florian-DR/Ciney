@@ -16,7 +16,7 @@ class HolidaysController < ApplicationController
 
             @holidays = Holiday.all
 
-            render "/admins/admin", status: :unprocessable_entity
+            render "/pages/admin", status: :unprocessable_entity
         end
 
     end

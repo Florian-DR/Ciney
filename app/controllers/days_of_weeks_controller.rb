@@ -20,7 +20,7 @@ class DaysOfWeeksController < ApplicationController
 
             @days_of_week = days_of_week
 
-            render '/admins/admin', status: :unprocessable_entity
+            render '/pages/admin', status: :unprocessable_entity
         end
     end
 
@@ -31,7 +31,7 @@ class DaysOfWeeksController < ApplicationController
 
         respond_to do |format|
             format.html {redirect_to admin_path}
-            format.text {render partial: "admins/admin", locals: {saison: @saison, gite: @gite_1, days_of_week: @days_of_week}}
+            format.text {render partial: "pages/admin", locals: {saison: @saison, gite: @gite_1, days_of_week: @days_of_week}}
         end
     end
 

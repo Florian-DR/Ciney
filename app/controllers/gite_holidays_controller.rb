@@ -17,7 +17,7 @@ class GiteHolidaysController < ApplicationController
             @holidays = Holiday.all
             @holiday = Holiday.new
 
-            render "admins/admin", status: :unprocessable_entity
+            render "pages/admin", status: :unprocessable_entity
         end
     end
 
@@ -28,7 +28,7 @@ class GiteHolidaysController < ApplicationController
 
         respond_to do |format|
             format.html {redirect_to admin_path}
-            format.text {render partial: "admins/admin", locals: {holiday: @holiday, gite: @gite_1, gite_holiday: @gite_holiday}}
+            format.text {render partial: "pages/admin", locals: {holiday: @holiday, gite: @gite_1, gite_holiday: @gite_holiday}}
         end
     end
 
