@@ -15,11 +15,6 @@ class PagesController < ApplicationController
     
     @holidays = Holiday.all
     @holiday = Holiday.new
-end
-
-
-def contact
-  
-end
+  end
 
 end
