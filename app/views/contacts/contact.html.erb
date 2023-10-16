@@ -1,3 +1,8 @@
-<%= form_with url: "/contact"  do |form| %>
-    <%= form.text_field :email %>
-<% end %>
+    <%= form_with url: "/contact", class: "gite-form" do |form| %>
+        <%= form.text_field :email, placeholder: "Email*", required: true %>
+        <%= form.select :gite, ["Gite aux Hirondelles", "L'abre de vie"] %>
+        <%= form.number_field :nombre_de_personnes, placeholder: "Nombre de personnes*", required: true %>
+        <%= form.telephone_field :telephone, placeholder: "Téléphone*", required: true %>
+        <%= form.text_area :message, placeholder: true %>
+        <%= form.submit :Envoyer, class: "btn btn-primary" %>
+    <% end %>
