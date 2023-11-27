@@ -10,6 +10,8 @@ class ContactsController < ApplicationController
         telephone = params[:telephone]
         message = params[:message]
         start_date = params[:start_date]
+        puts ENV['GMAIL_ADDRESS']
+        puts ENV['GMAIL_PASSWORD']
         end_date = params[:end_date]
         CineyMailer.with(email: email, gite: gite, capacity: capacity, telephone: telephone, message: message, start_date: start_date, end_date: end_date).reservation_mailer.deliver_now
         redirect_to contact_path 
