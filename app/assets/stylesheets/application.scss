@@ -21,3 +21,25 @@ a{
     text-decoration: none;
     color: black;
 }
+
+body{
+    background-color: $yellow;
+}
+
+h4{
+    margin-top: 10px;
+}
+
+.button{
+    background-color: $green;
+    color: $yellow;
+    padding: 10px;
+    border-radius: 3px;
+    &:hover{
+        background-color: $hoverGreen;
+    }
+}
+
+img{
+    border-radius: 3px;
+}

@@ -1,7 +1,7 @@
 <div>
     <% @gites.each do |gite| %>
         <div id="<%= @gites.find_index(gite) %>" class="gite">
-            <p>- <%= gite.name %></p>
+            <h3> <%= gite.name %></h3>
             
         <%###### Photos des gites ######%>
             <div class="gite-cadre-photos">
@@ -20,14 +20,18 @@
 
                 <%##### Description #####%>
                     <div class="gite-description">
-                        <p>Description</p>
+                        <h4>Description</h4>
                         <p><%= gite.description %></p>
-                        <p>Capacité: <%= gite.capacity %> personnes</p>
-                        <p><%= gite.rooms %> chambres</p>
-                        <p><%= gite.sanitary %> sanitaires</p>
-                        <%= link_to "✏️ Modifier", edit_gite_path(gite), class: "btn btn-primary" if current_user == User.first %>
+                        <br>
+                        <p class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %> personnes</p>
+                        <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %> chambres</p>
+                        <p class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %> salles de bain</p>
+                        <br>
+                        <h4>Partagé</h4>
+                        <p>Jacuzzi, piscine, bbq, etc ...</p>
+                        <%= link_to "✏️ Modifier", edit_gite_path(gite), class: "button" if current_user == User.first %>
                     </div>
-<%=  %>
+
                 <%##### Calendrier ######%>
                     <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                         <%= month_calendar do |date| %>
@@ -39,9 +43,10 @@
                     </div>
 
                 </div>
+                <%= link_to "Voir toutes les photos", contact_path, class: "button photos" %> 
 
         </div>
     <% end %>
 
-    <%# <%= link_to "Nouveau gite", new_gite_path, class: "btn btn-primary" %> 
+    <%# <%= link_to "Nouveau gite", new_gite_path, class: "button" %> 
 </div>

@@ -35,20 +35,35 @@
 
     .gite-description{
         flex-grow: 1;
-        p{max-width: 141em;}
+        .pictograme{
+            font-size: 20px;
+        }
+        
     }
-
+    
     .calendar-container{
+        padding-top: 10px;
         position: sticky;
-        top: 0;
+        top: 100px;
         width: fit-content;
         height: fit-content;
+        thead th{
+            background-color: rgba(221, 167, 167, 0);
+        }
     }
 
 }
 
-// Calendar
+.photos{
+    margin: auto;
+    max-width: fit-content;
+    display: block;
+    justify-self: center;
+    padding: 18px !important;
+    font-size: 18px;
+}
 
+// Calendar
 .calendar-heading{
     text-align: center;
 }
@@ -66,10 +81,11 @@
         height: 50px !important;
         min-width: 50px;
         padding-top: 12px;
-        background-color: green ;
+        background-color: $green ;
+        color: $yellow;
 
         &:has(>.events){
-            background-color: red !important;
+            background-color: $red !important;
         }
         &:hover{opacity: 0.7;}
     }
@@ -95,7 +111,7 @@
     .prev-month {opacity: 0.3;}
     .next-month { 
         opacity: 0.3; 
-        background-color: green !important;}
+        background-color: $green !important;}
     .past {
         opacity: 0.3;
         background-color: #DDD !important;}
