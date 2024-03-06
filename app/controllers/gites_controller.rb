@@ -18,6 +18,7 @@ class GitesController < ApplicationController
 
     # def create
     #     @gite = Gite.new(gite_params)
+    #     @gite.commun = Gite.first.commun
     #     if @gite.save
     #         redirect_to gites_path
     #     else
@@ -29,6 +30,10 @@ class GitesController < ApplicationController
 
     def update
         @gite = Gite.find(params[:id])
+        Gite.all.each do |gite| 
+          gite.commun = params[:gite][:commun]
+          gite.save
+        end
         if @gite.update(gite_params)
             redirect_to gites_path
             flash.notice = "Gite modifié !"
@@ -48,7 +53,7 @@ class GitesController < ApplicationController
     private
 
     def gite_params
-        params.require(:gite).permit(:name, :description, :capacity, :rooms, :sanitary, :photo_principale, photos: [])
+        params.require(:gite).permit(:name, :description, :capacity, :rooms, :sanitary, :commun, :photo_principale, photos: [])
     end
 
     def current_gite
