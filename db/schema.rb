@@ -110,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_190542) do
     t.string "mariages_title"
     t.text "mariages_text"
     t.string "entreprises_title"
-    t.string "découvrir_title"
+    t.string "decouvrir_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

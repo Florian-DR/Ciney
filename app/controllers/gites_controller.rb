@@ -13,17 +13,17 @@ class GitesController < ApplicationController
     end
 
     # def new
-    #     @gite = Gite.new
+        #     @gite = Gite.new
     # end
 
     # def create
-    #     @gite = Gite.new(gite_params)
-    #     @gite.commun = Gite.first.commun
-    #     if @gite.save
-    #         redirect_to gites_path
-    #     else
-    #         render :new, status: :unprocessable_entity
-    #     end
+        #     @gite = Gite.new(gite_params)
+        #     @gite.commun = Gite.first.commun
+        #     if @gite.save
+            #         redirect_to gites_path
+        #     else
+            #         render :new, status: :unprocessable_entity
+        #     end
     # end
 
     def edit; end

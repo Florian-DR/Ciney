@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :home_pages, only: [:edit, :update]
 
   resources :gites, only: [:index, :edit, :update]
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
-  resources :saisons, only: %i[create destroy ] do
+  resources :saisons, only: %i[create destroy] do
     resources :days_of_weeks, only: %i[create update]
   end
 

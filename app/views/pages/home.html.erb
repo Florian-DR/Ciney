@@ -1,3 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= @gites %>
+<h1><%= @home.introduction_title %></h1>
+<p><%= @home.introduction_text %></p>
+
+<h3><%= @home.gites_title %></h3>
+<div class="gites">
+    <% @gites.each do |gite| %>
+        <div class="gites-cards">
+            <%= gite.name %>
+            <%= cl_image_tag gite.photo_principale.key %>
+        </div>
+    <% end %>
+</div>
+
+<h3><%= @home.mariages_title %></h3>
+<p><%= @home.mariages_text %></p>
+<h3><%= @home.entreprises_title %></h3>
+<h3><%= @home.decouvrir_title %></h3>
+<div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" %></div>
+

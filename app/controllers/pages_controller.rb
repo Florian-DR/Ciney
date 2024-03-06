@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   def home
+    @home = HomePage.first
+    @gites = Gite.all
   end
 
   def admin
