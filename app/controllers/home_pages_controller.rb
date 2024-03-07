@@ -24,6 +24,7 @@ class HomePagesController < ApplicationController
                 :mariages_title, 
                 :mariages_text, 
                 :entreprises_title, 
-                :decouvrir_title)
+                :decouvrir_title,
+                main_photos: [])
     end
 end

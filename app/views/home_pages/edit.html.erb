@@ -6,5 +6,6 @@
     <%= f.input :mariages_text, label: "Description des mariages *" %>
     <%= f.input :entreprises_title, label: "Titre pour les entreprises *" %>
     <%= f.input :decouvrir_title, label: "Titre pour la section découverte *" %>
+    <%= f.input :main_photos, as: :file, label: "Ajouter des photos", input_html: {multiple: true}  %>
     <%= f.submit "Valider", class: "button" %>
 <% end %>

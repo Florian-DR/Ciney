@@ -1,4 +1,5 @@
 <div class="home" >
+    <div class="carousel-container"><%= cl_image_tag @home.main_photos.first.key%></div>
     <h1><%= @home.introduction_title %></h1>
     <p><%= @home.introduction_text %></p>
 

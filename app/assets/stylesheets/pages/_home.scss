@@ -2,3 +2,14 @@
 .home{
     text-align: center;
 }
+
+.carousel-container{
+    margin-bottom: 20px;
+    img{
+        width: 100vw;
+        height: 50vh;
+        object-fit: cover;
+        position: relative;
+        left: -7vw;
+    }
+}
