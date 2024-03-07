@@ -1,19 +1,36 @@
-<h1><%= @home.introduction_title %></h1>
-<p><%= @home.introduction_text %></p>
+<div class="home" >
+    <h1><%= @home.introduction_title %></h1>
+    <p><%= @home.introduction_text %></p>
 
-<h3><%= @home.gites_title %></h3>
-<div class="gites">
-    <% @gites.each do |gite| %>
-        <div class="gites-cards">
-            <%= gite.name %>
-            <%= cl_image_tag gite.photo_principale.key %>
-        </div>
-    <% end %>
+<%###### Gites section ######%>
+    <h3><%= @home.gites_title %></h3>
+    <div class="gites">
+        <% @gites.each do |gite| %>
+            <% index = index = @gites.find_index(gite) > 0 ? @gites.find_index(gite) : ""%>
+            <%= link_to "/gites/##{index}" do%>
+            <div class="gites-cards">
+                <h6><%= gite.name %></h6>
+                <%= cl_image_tag gite.photo_principale.key %>
+                <div>
+                    <p class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
+                    <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></p>
+                    <p class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></p>
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+    </div>
+
+<%###### Mariage section ######%>
+    <h3><%= @home.mariages_title %></h3>
+    <p><%= @home.mariages_text %></p>
+
+<%###### Entreprise section ######%>
+    <h3><%= @home.entreprises_title %></h3>
+
+<%###### Découverte section ######%>
+    <h3><%= @home.decouvrir_title %></h3>
+
+    <div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" %></div>
 </div>
-
-<h3><%= @home.mariages_title %></h3>
-<p><%= @home.mariages_text %></p>
-<h3><%= @home.entreprises_title %></h3>
-<h3><%= @home.decouvrir_title %></h3>
-<div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" %></div>
 

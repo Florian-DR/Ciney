@@ -1,0 +1,38 @@
+.gites{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px; 
+}
+
+.gites-cards{
+    width: 25vw;
+    margin: 5px;
+
+    h6{
+        margin: 0px;
+        padding: 6px 0px;
+        border-top: solid 2px;
+    }
+    img{
+        max-width: 25vw;
+        height: auto;
+    }
+    div{
+        padding: 6px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 2px;
+
+        .pictograme{
+            font-size: 17px;
+            margin: 0px;
+        }
+    }
+    &:hover{
+        h6, .pictogrameπ{
+            font-size: 20px;
+            transition: 0.5s;
+        }
+        color: $hoverGreen;
+    }
+}

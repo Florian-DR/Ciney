@@ -1,12 +1,14 @@
 <div>
     <% @gites.each do |gite| %>
-        <div id="<%= @gites.find_index(gite) %>" class="gite">
-            <h3> <%= gite.name %></h3>
+        <div class="gite">
+            <h3><%= gite.name %></h3>
             
         <%###### Photos des gites ######%>
             <div class="gite-cadre-photos">
                 <% if gite.photo_principale.key %>
-                    <div class="gite-photo-principale"> <%= cl_image_tag gite.photo_principale.key%></div>
+                    <div id="<%= @gites.find_index(gite) %>" class="gite-photo-principale"> 
+                        <%= cl_image_tag gite.photo_principale.key%>
+                    </div>
                     <div class="gite-photos"> 
                         <% gite.photos.last(4).each do |photo| %>
                             <div class="gite-photo"><%= cl_image_tag photo.key %></div>
@@ -48,5 +50,5 @@
         </div>
     <% end %>
 
-    <%# <%= link_to "Nouveau gite", new_gite_path, class: "button" %> 
+    <%# <%= link_to "Nouveau gite", new_gite_path, class: "button" %>
 </div>

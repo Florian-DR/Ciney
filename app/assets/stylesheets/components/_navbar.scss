@@ -1,9 +1,9 @@
 .navbar{
-  padding: 10px 57px;
+  padding: 10px 0px;
   position: sticky;
   top: 0;
   z-index: 1;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: $yellow;
 
     a{
@@ -26,7 +26,6 @@ nav{
   justify-content: center;
   text-align: center;
   color: $green;
-  padding-left: 3vw;
 }
 
 .nav-link{
