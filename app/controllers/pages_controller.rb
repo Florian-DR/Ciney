@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   def home
     @home = HomePage.first
     @gites = Gite.all.order(:id)
+    photos = @home.entreprises_photos.each_with_index.select { |photo, index| index > 0 && index < 5 }
+    @entreprises_photos = photos.map(&:first)
   end
 
   def admin

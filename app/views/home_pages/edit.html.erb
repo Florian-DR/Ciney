@@ -1,11 +1,12 @@
 <%= simple_form_for @home do |f|%>
-    <%= f.input :introduction_title, label: "Titre d'acceuil *"%>
-    <%= f.input :introduction_text, label: "Description d'acceuil *" %>
-    <%= f.input :gites_title, label: "Titre des gites *" %>
-    <%= f.input :mariages_title, label: "Titre des mariages *" %>
-    <%= f.input :mariages_text, label: "Description des mariages *" %>
-    <%= f.input :entreprises_title, label: "Titre pour les entreprises *" %>
-    <%= f.input :decouvrir_title, label: "Titre pour la section découverte *" %>
-    <%= f.input :main_photos, as: :file, label: "Ajouter des photos", input_html: {multiple: true}  %>
+    <%= f.input :main_photos, as: :file,            label: "Photos d'acceuils", input_html: {multiple: true}  %>
+    <%= f.input :introduction_title,                label: "Titre d'acceuil *"%>
+    <%= f.input :introduction_text,                 label: "Description d'acceuil *" %>
+    <%= f.input :gites_title,                       label: "Titre des gites *" %>
+    <%= f.input :mariages_title,                    label: "Titre des mariages *" %>
+    <%= f.input :mariages_text,                     label: "Description des mariages *" %>
+    <%= f.input :entreprises_title,                 label: "Titre pour les entreprises *" %>
+    <%= f.input :entreprises_photos, as: :file,     label: "Photos pour les entreprises", input_html: {multiple: true} %>
+    <%= f.input :decouvrir_title,                   label: "Titre pour la section découverte *" %>
     <%= f.submit "Valider", class: "button" %>
 <% end %>

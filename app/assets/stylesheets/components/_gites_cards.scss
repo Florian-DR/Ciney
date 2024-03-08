@@ -1,7 +1,6 @@
 .gites{
     display: flex;
     justify-content: space-between;
-    margin: 15px 0px; 
 }
 
 .gites-cards{
@@ -24,12 +23,11 @@
         border-bottom: solid 2px;
 
         .pictograme{
-            font-size: 17px;
             margin: 0px;
         }
     }
     &:hover{
-        h6, .pictogrameπ{
+        h6, .pictograme{
             font-size: 20px;
             transition: 0.5s;
         }

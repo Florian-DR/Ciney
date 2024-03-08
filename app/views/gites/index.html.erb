@@ -1,17 +1,22 @@
 <div>
     <% @gites.each do |gite| %>
         <div class="gite">
-            <h3><%= gite.name %></h3>
+            <h3>
+                <%= gite.name%> &emsp;
+                <span class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></span>
+                <span class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></span>
+                <span class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></span>
+            </h3>
             
         <%###### Photos des gites ######%>
-            <div class="gite-cadre-photos">
+            <div class="cadre-photos">
                 <% if gite.photo_principale.key %>
-                    <div id="<%= @gites.find_index(gite) %>" class="gite-photo-principale"> 
+                    <div id="<%= @gites.find_index(gite) %>" class="photo-principale"> 
                         <%= cl_image_tag gite.photo_principale.key%>
                     </div>
-                    <div class="gite-photos"> 
+                    <div class="my-photos"> 
                         <% gite.photos.last(4).each do |photo| %>
-                            <div class="gite-photo"><%= cl_image_tag photo.key %></div>
+                            <%= cl_image_tag photo.key %>
                         <% end %>
                     </div>
                 <% end %>
@@ -24,11 +29,6 @@
                     <div class="gite-description">
                         <h4>Description</h4>
                         <p><%= gite.description %></p>
-                        <br>
-                        <p class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %> personnes</p>
-                        <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %> chambres</p>
-                        <p class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %> salles de bain</p>
-                        <br>
                         <h4>Partagé</h4>
                         <p><%= gite.commun %></p>
                         <%= link_to "✏️ Modifier", edit_gite_path(gite), class: "button" if current_user == User.first %>
@@ -45,7 +45,7 @@
                     </div>
 
                 </div>
-                <%= link_to "Voir toutes les photos", contact_path, class: "button photos" %> 
+                <%= link_to "Voir toutes les photos", contact_path, class: "button all-photos" %> 
 
         </div>
     <% end %>

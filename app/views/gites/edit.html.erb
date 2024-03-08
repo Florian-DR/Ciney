@@ -1,6 +1,6 @@
 <% controller.redirect_to gites_path unless current_user == User.first%>
 <%= link_to gites_path do %>
-    <p class="btn btn-primary"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
+    <p class="button"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
 <% end %>
 
 <%= simple_form_for @gite do |f| %>

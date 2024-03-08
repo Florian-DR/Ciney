@@ -87,13 +87,13 @@
  <%#####  Adding a new saison #####%>
 <div id="forms">
     <div data-controller="saison-form-toggle">
-        <div class="btn btn-primary toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter une saison</div>
+        <div class="button toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter une saison</div>
         <%= render "pages/saison_form", {saison: @saison} %>
     </div>
 
  <%#####  Adding a new holiday #####%>
     <div data-controller="saison-form-toggle">
-        <div class="btn btn-primary toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter de vacances</div>
+        <div class="button toggle-button" data-action="click->saison-form-toggle#displayForm"> Ajouter de vacances</div>
         <%= render "pages/holiday_form", {holiday: @holiday} %>
     </div>
 </div>

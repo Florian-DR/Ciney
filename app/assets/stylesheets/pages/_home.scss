@@ -3,13 +3,53 @@
     text-align: center;
 }
 
+.section-title{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-top: 30px;
+    border-top: solid 3px;
+}
+
+// Carousel/banner section
 .carousel-container{
     margin-bottom: 20px;
     img{
         width: 100vw;
         height: 50vh;
         object-fit: cover;
-        position: relative;
-        left: -7vw;
+        margin-left: -8.1%;
     }
+}
+
+// Entreprise 
+.entreprise-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+
+    .first-entreprise{
+        width: 42vw;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .other-entreprise{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px; 
+        justify-self: end;
+        align-items: center;
+        
+        img{
+            height: auto;
+            width: 20.6vw;
+        }
+    }
+}
+
+.voir-plus{
+    margin-top: 10px;
+    display: block;
+    padding: 18px !important;
+    font-size: 18px;
 }

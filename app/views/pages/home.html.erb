@@ -1,10 +1,13 @@
+<div class="carousel-container">
+    <%= cl_image_tag @home.main_photos.first.key%>
+</div>
+
 <div class="home" >
-    <div class="carousel-container"><%= cl_image_tag @home.main_photos.first.key%></div>
-    <h1><%= @home.introduction_title %></h1>
+    <h1 class="section-title"><%= @home.introduction_title %></h1>
     <p><%= @home.introduction_text %></p>
 
 <%###### Gites section ######%>
-    <h3><%= @home.gites_title %></h3>
+    <h3 class="section-title"><%= @home.gites_title %></h3>
     <div class="gites">
         <% @gites.each do |gite| %>
             <% index = index = @gites.find_index(gite) > 0 ? @gites.find_index(gite) : ""%>
@@ -13,7 +16,7 @@
                 <h6><%= gite.name %></h6>
                 <%= cl_image_tag gite.photo_principale.key %>
                 <div>
-                    <p class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
+                    <p class="pictograme">  <i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
                     <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></p>
                     <p class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></p>
                 </div>
@@ -23,14 +26,30 @@
     </div>
 
 <%###### Mariage section ######%>
-    <h3><%= @home.mariages_title %></h3>
+    <h3 class="section-title"><%= @home.mariages_title %></h3>
     <p><%= @home.mariages_text %></p>
 
 <%###### Entreprise section ######%>
-    <h3><%= @home.entreprises_title %></h3>
+    <h3 class="section-title"><%= @home.entreprises_title %></h3>
+
+        <div class="cadre-photos">
+            <% if @home.entreprises_photos.first.key%>   
+                <div class="photo-principale"> 
+                    <%= cl_image_tag @home.entreprises_photos.first.key%>
+                </div>
+                <div class="my-photos"> 
+                    <% @entreprises_photos.each do |photo| %>
+                        <%= cl_image_tag photo.key %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <%= link_to contact_path, class: "button voir-plus" do %> 
+            En savoir plus <i class="fa-solid fa-circle-arrow-right"></i>
+        <% end %>
 
 <%###### Découverte section ######%>
-    <h3><%= @home.decouvrir_title %></h3>
+    <h3 class="section-title"><%= @home.decouvrir_title %></h3>
 
     <div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" %></div>
 </div>
