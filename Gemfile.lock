@@ -353,7 +353,7 @@ DEPENDENCIES
   googleauth
   importmap-rails
   jbuilder
-  pg (~> 1.5)
+  pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
   redis (~> 4.0)

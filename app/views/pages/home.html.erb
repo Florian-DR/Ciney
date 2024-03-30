@@ -1,5 +1,5 @@
 <div class="carousel-container">
-    <%= cl_image_tag @home.main_photos.first.key%>
+    <%= cl_image_tag @home.main_photos.first.key if @home.main_photos.first%>
 </div>
 
 <div class="home" >
@@ -14,7 +14,7 @@
             <%= link_to "/gites/##{index}" do%>
             <div class="gites-cards">
                 <h6><%= gite.name %></h6>
-                <%= cl_image_tag gite.photo_principale.key %>
+                <%= cl_image_tag gite.photo_principale.key if gite.photo_principale.key%> 
                 <div>
                     <p class="pictograme">  <i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
                     <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></p>
@@ -33,7 +33,7 @@
     <h3 class="section-title"><%= @home.entreprises_title %></h3>
 
         <div class="cadre-photos">
-            <% if @home.entreprises_photos.first.key%>   
+            <% if @home.entreprises_photos.first%>   
                 <div class="photo-principale"> 
                     <%= cl_image_tag @home.entreprises_photos.first.key%>
                 </div>
@@ -51,6 +51,6 @@
 <%###### Découverte section ######%>
     <h3 class="section-title"><%= @home.decouvrir_title %></h3>
 
-    <div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" %></div>
+    <div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" if current_user == User.first%> </div>
 </div>
 
