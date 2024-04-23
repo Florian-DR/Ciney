@@ -9,8 +9,7 @@ class DaysOfWeeksController < ApplicationController
             redirect_to admin_path
             flash.notice = "Le prix a bien été créé"
         else
-            @gite_1 = Gite.first
-            @gite_2 = Gite.last
+            @gites = Gite.all
             @saisons = Saison.all
             @saison = Saison.new
             @holidays = Holiday.all

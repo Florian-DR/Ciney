@@ -8,21 +8,20 @@
 
     <%### Headers of the table for the saisons ###%>
         <div class="saison-header headers">Saisons</div>
-        <div class="headers"><%= @gite_1.name %></div>
-        <div class="headers"><%= @gite_2.name %></div>
+        <% @gites.each do |gite| %>
+            <div class="headers"><%= gite.name %></div>
+        <% end %>
 
     <%### Sub-headers of the table for the saisons ###%>
         <div class="sub-headers">Nom</div>
         <div class="sub-headers dates">Dates de début</div>
         <div class="sub-headers dates">Dates de fin</div>
-        <div class="sub-headers saisons-prix">
-            <div>Semaine</div>
-            <div>Week-end</div>
-        </div>
-        <div class="sub-headers saisons-prix">            
-            <div>Semaine</div>
-            <div>Week-end</div>
-        </div>
+        <% @gites.size.times do %>
+            <div class="sub-headers saisons-prix">
+                <div>Semaine</div>
+                <div>Week-end</div>
+            </div>
+        <% end %>
 
 
     <%### Saisons' table ###%>
@@ -40,14 +39,11 @@
                 <div><%= saison.end_date %></div>
 
             <%# rendering prices from partial %>
-                <div class="prices-table" data-controller="edit-prices"> 
-                   <%= render "pages/saison_prices", {saison: saison, gite: @gite_1} %>
-                </div>
-
-                <div class="prices-table" data-controller="edit-prices"> 
-                   <%= render "pages/saison_prices", {saison: saison, gite: @gite_2} %>
-                </div>
-                
+                <% @gites.each do |gite| %>
+                    <div class="prices-table" data-controller="edit-prices"> 
+                    <%= render "pages/saison_prices", {saison: saison, gite: gite} %>
+                    </div>
+                <% end %>
             <% end %>
         <% end %>
         <hr><hr><hr><hr><hr>
@@ -56,15 +52,17 @@
         
     <%### Headers of the table for the holidays ###%>
         <div class="saison-header headers">Vacances</div>
-        <div class="headers"><%= @gite_1.name %></div>
-        <div class="headers"><%= @gite_2.name %></div>
+        <% @gites.each do |gite| %>
+            <div class="headers"><%= gite.name %></div>
+        <% end %>
 
     <%### Sub-headers of the table for the holidays ###%>
         <div class="sub-headers">Nom</div>
         <div class="sub-headers dates">Dates de début</div>
         <div class="sub-headers dates">Dates de fin</div>
-        <div class="sub-headers prix">Prix</div>
-        <div class="sub-headers prix">Prix</div>
+        <% @gites.size.times do %>
+            <div class="sub-headers prix">Prix</div>
+        <% end %>
 
     <%### Holidays' table ###%>
         <% unless @holidays.empty? %>
@@ -76,8 +74,9 @@
                 </div>
                 <div><%= holiday.start_date %></div>
                 <div><%= holiday.end_date %></div>
-                <div data-controller="edit-prices"> <%= render "pages/holiday_prices", {holiday: holiday, gite: @gite_1} %></div>
-                <div data-controller="edit-prices"> <%= render "pages/holiday_prices", {holiday: holiday, gite: @gite_2} %></div>
+                <% @gites.each do |gite| %>
+                    <div data-controller="edit-prices"> <%= render "pages/holiday_prices", {holiday: holiday, gite: gite} %></div>
+                <% end %>
             <% end %>
         <% end %>
         <hr><hr><hr><hr><hr>

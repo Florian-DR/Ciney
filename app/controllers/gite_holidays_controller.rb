@@ -9,8 +9,7 @@ class GiteHolidaysController < ApplicationController
             @saisons = Saison.all
             @saison = Saison.new
             
-            @gite_1 = Gite.first
-            @gite_2 = Gite.last
+            @gites = Gite.all.reverse
             
             @days_of_week = DaysOfWeek.new
 
@@ -25,10 +24,9 @@ class GiteHolidaysController < ApplicationController
         @gite_holiday = GiteHoliday.find(params[:id])
         @gite_holiday.holiday = Holiday.find(params[:holiday_id])  
         @gite_holiday.update(holidays_params)
-
         respond_to do |format|
             format.html {redirect_to admin_path}
-            format.text {render partial: "pages/admin", locals: {holiday: @holiday, gite: @gite_1, gite_holiday: @gite_holiday}}
+            format.text {render partial: "pages/admin", locals: {holiday: @holiday, gite: @gite, gite_holiday: @gite_holiday}}
         end
     end
 

@@ -3,9 +3,6 @@
         <div class="gite">
             <h3>
                 <%= gite.name%> &emsp;
-                <span class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></span>
-                <span class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></span>
-                <span class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></span>
             </h3>
             
         <%###### Photos des gites ######%>
@@ -27,7 +24,11 @@
 
                 <%##### Description #####%>
                     <div class="gite-description">
-                        <h4>Description</h4>
+                        <h4>Description
+                            <span class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></span>
+                            <span class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></span>
+                            <span class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></span>
+                        </h4>
                         <p><%= gite.description %></p>
                         <h4>Partagé</h4>
                         <p><%= gite.commun %></p>
