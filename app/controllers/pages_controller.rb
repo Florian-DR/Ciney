@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     
     @gite_1 = Gite.first
     @gite_2 = Gite.last
-    @gites = Gite.all.reverse
+    @gites = Gite.all
     
     
     @days_of_week = DaysOfWeek.new
