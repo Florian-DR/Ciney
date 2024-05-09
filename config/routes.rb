@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   resources :holidays, only: %i[create destroy] do 
     resources :gite_holidays, only: %i[create update]
   end
-  
+
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
 end
