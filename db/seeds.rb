@@ -44,18 +44,20 @@ pmr.commun = "BBQ, sauna, piscine etc ..."
 pmr.save!
 puts " #{pmr.name} created"
 
+puts "---------- Generating HomePage ----------"
+
 home = HomePage.new
-home.introduction_title
-home.introduction_text
-home.gites_title
-home.mariages_title
-home.mariages_text
-home.entreprises_title
-home.decouvrir_title
+home.introduction_title = "La ferme d'Auwez"
+home.introduction_text = lorem_ipsum
+home.gites_title = "Nos Gites"
+home.mariages_title = "Les Mariages"
+home.mariages_text = lorem_ipsum
+home.entreprises_title = "Services aux entreprises"
+home.decouvrir_title = "Découvrez plus"
 home.save!
 puts " Homepage created"
 
-puts "---------- Adding photos to gites ----------"
+puts "---------- Adding photos ----------"
 seeds_photos = [
   "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1696006219/Ciney/yz20jc18uddrixli7g8jve96hlrz.jpg",
   "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1695987849/Ciney/kp4izd0bzoe23rnocvscsp179ytc.jpg",
@@ -65,25 +67,26 @@ seeds_photos = [
   "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1695987849/Ciney/kp4izd0bzoe23rnocvscsp179ytc.jpg"
 ]
 
-puts " Attach main photos"
+puts " Attach main photos ..."
 hirondelles.photo_principale.attach(io: URI.open(seeds_photos[0]), filename: "Main image 1", content_type: "image/jpg")
 chouette.photo_principale.attach(io: URI.open(seeds_photos[1]), filename: "Main image 2", content_type: "image/jpg")
 pmr.photo_principale.attach(io: URI.open(seeds_photos[2]), filename: "Main image 3", content_type: "image/jpg")
+home.main_photos.attach(io: URI.open(seeds_photos[0]), filename: "Main image 1", content_type: "image/jpg")
+
 
 hirondelles.save!
 chouette.save!
 pmr.save!
 
-puts " Attach all photos"
+puts " Attach all photos ..."
 seeds_photos.each_with_index do |photo_url, index|
-    # photo_content = URI.open(photo_url).read
     hirondelles.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpg")
     chouette.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpg")
     pmr.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg")
+    
+    home.entreprises_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
+    home.découvrir_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
     puts " Photo #{index + 1} added"
 end
 
-
-
-puts " Photos added to gites"
-
+puts " Photos added"
