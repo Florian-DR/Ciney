@@ -1,6 +1,6 @@
     <%= form_with url: "/contact", class: "gite-form" do |form| %>
         <%= form.text_field :email, placeholder: "Email*", required: true %>
-        <%= form.select :gite, ["Gite aux Hirondelles", "L'abre de vie"] %>
+        <%= form.select :gite, [@gites[0].name, @gites[1].name,@gites[2].name] %>
         <%= form.number_field :capacity, placeholder: "Nombre de personnes*", required: true %>
         <%= form.telephone_field :telephone, placeholder: "Téléphone*", required: true %>
         <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour*", required: true  %>

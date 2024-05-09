@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
 
     def contact
+        @gites = Gite.all
     end
 
     def reservation_sender

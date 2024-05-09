@@ -1,3 +1,8 @@
+<% controller.redirect_to gites_path unless current_user == User.first%>
+<%= link_to gites_path do %>
+    <p class="button"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
+<% end %>
+
 <%= simple_form_for @home do |f|%>
     <%= f.input :main_photos, as: :file,            label: "Photos d'acceuils", input_html: {multiple: true}  %>
     <%= f.input :introduction_title,                label: "Titre d'acceuil *"%>

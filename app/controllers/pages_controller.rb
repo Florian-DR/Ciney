@@ -21,6 +21,9 @@ class PagesController < ApplicationController
     
     @holidays = Holiday.all
     @holiday = Holiday.new
+
+    @charges = Charge.all
+    @charge = Charge.new
   end
 
 end
