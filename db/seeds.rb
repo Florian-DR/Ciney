@@ -4,6 +4,7 @@ puts "---------- Deleting previous data----------"
 puts " Deleting ..."
 DaysOfWeek.delete_all
 Day.delete_all
+GiteHoliday.delete_all
 Holiday.delete_all
 Gite.delete_all
 HomePage.delete_all
@@ -72,6 +73,9 @@ hirondelles.photo_principale.attach(io: URI.open(seeds_photos[0]), filename: "Ma
 chouette.photo_principale.attach(io: URI.open(seeds_photos[1]), filename: "Main image 2", content_type: "image/jpg")
 pmr.photo_principale.attach(io: URI.open(seeds_photos[2]), filename: "Main image 3", content_type: "image/jpg")
 home.main_photos.attach(io: URI.open(seeds_photos[0]), filename: "Main image 1", content_type: "image/jpg")
+home.main_photos.attach(io: URI.open(seeds_photos[1]), filename: "Main image 2", content_type: "image/jpg")
+home.main_photos.attach(io: URI.open(seeds_photos[2]), filename: "Main image 3", content_type: "image/jpg")
+
 
 
 hirondelles.save!
