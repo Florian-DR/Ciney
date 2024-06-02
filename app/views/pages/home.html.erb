@@ -68,7 +68,24 @@
         <% end %>
 
 <%###### Découverte section ######%>
+
+
     <h3 class="section-title"><%= @home.decouvrir_title %></h3>
+        <div class="cadre-photos">
+            <% if @home.decouvrir_photos.first%>   
+                <div class="photo-principale"> 
+                    <%= cl_image_tag @home.decouvrir_photos.first.key%>
+                </div>
+                <div class="my-photos"> 
+                    <% @decouvrir_photos.each do |photo| %>
+                        <%= cl_image_tag photo.key %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <%= link_to contact_path, class: "button voir-plus" do %> 
+            En savoir plus <i class="fa-solid fa-circle-arrow-right"></i>
+        <% end %>
 
     <div><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" if current_user == User.first%> </div>
 </div>

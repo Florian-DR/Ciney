@@ -89,7 +89,7 @@ seeds_photos.each_with_index do |photo_url, index|
     pmr.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg")
     
     home.entreprises_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
-    home.découvrir_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
+    home.decouvrir_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
     puts " Photo #{index + 1} added"
 end
 
