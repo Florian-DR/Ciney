@@ -1,14 +1,10 @@
 class GitesController < ApplicationController
     skip_before_action :authenticate_user!, only: :index
     before_action :current_gite, only: %i[edit delete_pictures]
-    before_action :events, only: [:index, :events_dates]
-    before_action :events_dates, only: :index
-
-    require "googleauth"
-
-
 
     def index
+        @events = Gite.events
+        @non_available = Gite.events_dates
         @gites = Gite.all.order(:id)
     end
 
@@ -59,34 +55,5 @@ class GitesController < ApplicationController
     def current_gite
         @gite = Gite.find(params[:id])
     end
-
-    def events
-
-        calendar = Google::Apis::CalendarV3::CalendarService.new
-        calendar.authorization = Google::Apis::RequestOptions.default.authorization
-    
-        # Replace with your actual calendar ID
-        calendar_id = 'florian.radigues@gmail.com'
-    
-        events = calendar.list_events(calendar_id,
-                                      max_results: 15,
-                                      single_events: true,
-                                      order_by: 'startTime',
-                                      time_min: Time.now.iso8601)
-    
-        @events = events.items
-      end
-
-      def events_dates
-        @non_available = []
-        @events.each do |event|
-          if event.start.date_time
-            (event.start.date_time.to_date..event.end.date_time.to_date).to_a.each { |event_date| @non_available << event_date }
-          else 
-            (event.start.date..event.end.date).to_a.each { |event_date| @non_available << event_date }
-          end
-        end
-        @non_available
-      end
 
 end

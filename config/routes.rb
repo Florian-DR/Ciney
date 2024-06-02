@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   get "/domi", to: "pages#admin", as: "admin"
 
   get "/contact", to: "contacts#contact"
-  post "/contact", to: "contacts#reservation_sender"
+  post "/contact/gites", to: "contacts#gites_reservation_sender"
+  post "/contact/mariages", to: "contacts#mariages_reservation_sender"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   resources :home_pages, only: [:edit, :update]
 
-  resources :gites, only: [:index, :edit, :update]
+  resources :gites, only: [:index, :edit, :update] do
+    resources :charges, only: %i[create]
+  end
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create destroy] do
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
     resources :gite_holidays, only: %i[create update]
   end
 
+  resources :charges, only: %i[destroy]
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
 end

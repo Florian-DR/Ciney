@@ -2,19 +2,29 @@ class ContactsController < ApplicationController
 
     def contact
         @gites = Gite.all
+        @events = Gite.events
+        @non_available = Gite.events_dates
     end
 
-    def reservation_sender
-        email = params[:email]
-        gite = params[:gite]
-        capacity = params[:capacity]
-        telephone = params[:telephone]
-        message = params[:message]
-        start_date = params[:start_date]
-        puts ENV['GMAIL_ADDRESS']
-        puts ENV['GMAIL_PASSWORD']
-        end_date = params[:end_date]
-        CineyMailer.with(email: email, gite: gite, capacity: capacity, telephone: telephone, message: message, start_date: start_date, end_date: end_date).reservation_mailer.deliver_now
+    def gites_reservation_sender
+        CineyMailer.with(email: params[:email], 
+                        gite: params[:gite], 
+                        capacity: params[:capacity], 
+                        telephone: params[:telephone], 
+                        message: params[:message], 
+                        start_date: params[:start_date], 
+                        end_date: params[:end_date]).gites_reservation_mailer.deliver_now
+
+        redirect_to contact_path 
+        flash.notice = "Votre demande à été envoyée, un mail de confirmation devrait suivre"
+    end
+
+    def mariages_reservation_sender
+        CineyMailer.with(email: params[:email], 
+                        date: params[:date], 
+                        telephone: params[:telephone], 
+                        message: params[:message]).mariages_reservation_mailer.deliver_now
+
         redirect_to contact_path 
         flash.notice = "Votre demande à été envoyée, un mail de confirmation devrait suivre"
     end

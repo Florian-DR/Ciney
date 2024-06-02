@@ -1,4 +1,8 @@
-    <%= form_with url: "/contact", class: "gite-form" do |form| %>
+<hr>
+<%###### Gites ######%>
+<h2>Réservations de gites</h2>
+<div class="Gites reservation">
+    <%= form_with url: "/contact/gites", class: "reservation-form" do |form| %>
         <%= form.text_field :email, placeholder: "Email*", required: true %>
         <%= form.select :gite, [@gites[0].name, @gites[1].name,@gites[2].name] %>
         <%= form.number_field :capacity, placeholder: "Nombre de personnes*", required: true %>
@@ -8,3 +12,27 @@
         <%= form.text_area :message, placeholder: true %>
         <%= form.submit :Envoyer, class: "button" %>
     <% end %>
+</div>
+<% @gites.each do |gite| %>
+    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+        <%= month_calendar do |date| %>
+            <span class="d-none"><%= gite.price(date) %></span> 
+            <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
+        <% end %>
+        <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
+        <p class="info-charge"><i>Charges non-comprises</i> <i class="fa-solid fa-circle-info"></i></p>
+    </div>
+<% end %>
+
+<hr>
+<%###### Mariages ######%>
+<h2>Réservations pour les mariages</h2>
+<div>
+    <%= form_with url: "/contact/mariages", class: "reservation-form" do |form|%>
+        <%= form.text_field :email, placeholder: "Email*", required: true %>
+        <%= form.text_field :date, data:{controller: 'datepicker'}, placeholder: "Jour du mariage*", required: true %>
+        <%= form.telephone_field :telephone, placeholder: "Téléphone*", required: true %>
+        <%= form.text_area :message, placeholder: true %>
+        <%= form.submit :Envoyer, class: "button" %>
+    <% end %>
+</div>

@@ -18,17 +18,7 @@
     }
     
     .calendar-container{
-        padding-top: 10px;
         position: sticky;
-        top: 100px;
-        width: fit-content;
-        height: fit-content;
-        thead th{
-            background-color: rgba(221, 167, 167, 0);
-        }
-        .info-charge:hover .pop-up{
-            display: inline;
-        }
         .fa-circle-info{
             position: relative;
         }
@@ -48,92 +38,4 @@
     justify-self: center;
     padding: 18px !important;
     font-size: 18px;
-}
-
-// Calendar
-.calendar-heading{
-    text-align: center;
-}
-
-.simple-calendar {
-    border: none;
-    th{
-        background-color: $green !important;
-        color: $yellow;
-        border-bottom: 1px solid $yellow !important;}
-    tr{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    .day{
-        text-align: center;
-        height: 50px !important;
-        min-width: 50px;
-        padding-top: 12px;
-        background-color: $green ;
-        color: $yellow;
-
-        &:has(>.events){
-            text-decoration: line-through;
-            opacity: 0.5;
-        }
-        &:hover{opacity: 0.7;}
-    }
-
-    
-    .wday-0 {}
-    .wday-1 {}
-    .wday-2 {}
-    .wday-3 {}
-    .wday-4 {}
-    .wday-5 {}
-    .wday-6 {}
-  
-    .today {
-        font-weight: 700;
-        text-decoration: underline;
-        opacity: 0.8;
-        }
-    .future {}
-    
-    .start-date{}
-    
-    .prev-month {
-        // opacity: 0.3;
-    }
-    .next-month { 
-        opacity: 0.3; 
-        background-color: $green !important;
-    }
-    .past {
-        opacity: 0.3;
-}
-    .current-month {}
-        
-    .has-events {}
-
-    .selected{
-        border: 2px solid rgb(0, 0, 0);
-    }
-
-    // I didn't find a syntax that allow me to select element with a class AND the elements between them, so I have 2 block 
-    .selected ~ td:has( ~ .selected) {
-        background-color: $yellow !important;
-        border-top: 2px solid rgb(0, 0, 0);
-        border-bottom: 2px solid rgb(0, 0, 0);
-        color: $green;
-    }
-    
-    td:not(.selected) ~ td:not(:not(.selected)) {
-        background-color: $yellow !important;
-        border-top: 2px solid rgb(0, 0, 0);
-        border-bottom: 2px solid rgb(0, 0, 0);
-        color: $green;
-    }
-}
-
-// Removing some default css
-.table > :not(caption) > * > *{
-    border: none;
 }

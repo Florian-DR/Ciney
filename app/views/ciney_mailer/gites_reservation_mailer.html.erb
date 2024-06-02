@@ -1,0 +1,12 @@
+<h1>Confirmation de votre demande de réservation</h1>
+<p>Bonjour, nous avons bien reçu votre demande de réservation de gites, nous reviendrons vers vous au plus vite pour vous donner une réponse. </p>
+<p>La demande a été envoyée avec les informations suivantes : </p>
+
+<ul>
+    <li>Adresse email: <%= @email %></li>
+    <li>Batiment: <%= @gite %></li>
+    <li>Pour: <%= @capacity %> personne(s)</li>
+    <li>Numéro de téléphone: <%= @telephone  %></li>
+    <li>Du <%= @start_date %> au <%= @end_date %></li>
+    <li>Message: <%= @message if @message %></li>
+</ul>
