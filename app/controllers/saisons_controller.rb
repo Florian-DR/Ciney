@@ -12,6 +12,7 @@ class SaisonsController < ApplicationController
 
             @holidays = Holiday.all
             @holiday = Holiday.new
+            @charge = Charge.new
 
             @saisons = Saison.all
             @saison = saison

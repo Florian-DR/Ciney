@@ -1,6 +1,7 @@
     <%= simple_form_for charge, html: {class: charge.errors.any? ? "" : "d-none", data: {forms_toggle_target: "form"}} do |f| %>
+        <%= f.select :gite, @gites.map(&:name)%>
         <%= f.input :name, label: false, placeholder: "Nom *" %>
-        <%= f.input :type, label: false, placeholder: "Type * " %>
+        <%= f.select :kind, $kinds %>
         <%= f.input :price, label: false, placeholder: "Prix *" %>
         <%= f.submit "Valider", class: "button" %>
     <% end %>

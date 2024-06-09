@@ -10,9 +10,7 @@ Rails.application.routes.draw do
 
   resources :home_pages, only: [:edit, :update]
 
-  resources :gites, only: [:index, :edit, :update] do
-    resources :charges, only: %i[create]
-  end
+  resources :gites, only: [:index, :edit, :update]
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create destroy] do
@@ -23,6 +21,6 @@ Rails.application.routes.draw do
     resources :gite_holidays, only: %i[create update]
   end
 
-  resources :charges, only: %i[destroy]
+  resources :charges, only: %i[create destroy]
   delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
 end

@@ -12,6 +12,7 @@ class GiteHolidaysController < ApplicationController
             @gites = Gite.all.reverse
             
             @days_of_week = DaysOfWeek.new
+            @charge = Charge.new
 
             @holidays = Holiday.all
             @holiday = Holiday.new

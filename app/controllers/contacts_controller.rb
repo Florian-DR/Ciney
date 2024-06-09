@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-
+    
     def contact
         @gites = Gite.all
         @events = Gite.events

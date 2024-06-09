@@ -11,7 +11,7 @@ class HolidaysController < ApplicationController
             
             @days_of_week = DaysOfWeek.new
             @gite_holidays = GiteHoliday.new
-
+            @charge = Charge.new
 
             @holidays = Holiday.all
 

@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_06_190542) do
   create_table "charges", force: :cascade do |t|
     t.string "name"
     t.float "price"
-    t.string "type"
+    t.string "kind"
     t.bigint "gite_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
