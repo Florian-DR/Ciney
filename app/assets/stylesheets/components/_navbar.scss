@@ -22,13 +22,11 @@
 nav{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  text-align: center;
+  gap: 25px;
   color: $green;
 }
 
 .nav-link{
-  padding: 0px 22px;
   font-size: 16px;
   font-weight: 500;
 }

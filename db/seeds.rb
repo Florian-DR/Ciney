@@ -16,7 +16,7 @@ lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhonc
 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer in arcu lectus. Mauris turpis tellus, pharetra et sollicitudin eget, condimentum id ex. Suspendisse potenti. Pellentesque sollicitudin ultrices lacus eu placerat. Aliquam euismod bibendum lorem. Pellentesque maximus luctus ex in sodales. Curabitur tincidunt eget elit sed blandit. Aenean ac risus ipsum. Praesent id magna maximus, malesuada libero porta, ultricies nibh."
 
 hirondelles = Gite.new
-hirondelles.name = "Le nid aux Hirondelles"
+hirondelles.name = "Le Nid aux Hirondelles"
 hirondelles.description = lorem_ipsum
 hirondelles.capacity = 13
 hirondelles.sanitary = 4
@@ -26,7 +26,7 @@ hirondelles.save!
 puts " #{hirondelles.name} created"
 
 chouette = Gite.new
-chouette.name = "Le perchoir des Chouettes"
+chouette.name = "Le Perchoir de la Chouette"
 chouette.description = lorem_ipsum
 chouette.capacity = 8
 chouette.sanitary = 4
@@ -36,7 +36,7 @@ chouette.save!
 puts " #{chouette.name} created"
 
 pmr = Gite.new
-pmr.name = "L'Arbre de vie"
+pmr.name = "L'Arbre de Vie"
 pmr.description = lorem_ipsum
 pmr.capacity = 8
 pmr.sanitary = 4

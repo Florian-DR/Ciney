@@ -1,7 +1,7 @@
 .reservation-form{
     display: flex;
     flex-direction: column;
-    max-width: 20vw;
+    min-width: 20vw;
 
 
     input:not(:last-child), select, textarea{
@@ -16,5 +16,35 @@
 
     select{
         padding: 8px 4px;
+    }
+}
+.gites-reservation{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.all-info{
+    display: flex;
+    gap: 30px;
+}
+
+.gite-informations{
+    h4{
+        text-align: center;
+    }
+
+    .simple-calendar{
+        font-size: 14px;
+    }
+    table{
+        table-layout: fixed;
+    }
+    .day, th{
+        min-width: 0;
+        div{
+            width: fit-content;
+            margin: auto;
+        }
     }
 }
