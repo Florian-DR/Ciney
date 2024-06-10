@@ -13,10 +13,7 @@ class PagesController < ApplicationController
     @saisons = Saison.all
     @saison = Saison.new
     
-    @gite_1 = Gite.first
-    @gite_2 = Gite.last
-    @gites = Gite.all
-    
+    @gites = Gite.all.order(:id)
     
     @days_of_week = DaysOfWeek.new
     @gite_holidays = GiteHoliday.new

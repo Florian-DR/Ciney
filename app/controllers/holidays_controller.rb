@@ -7,13 +7,14 @@ class HolidaysController < ApplicationController
         else
             @saisons = Saison.all
             @saison = Saison.new
-            @gites = Gite.all.reverse
+            @gites = Gite.all.order(:id)
             
             @days_of_week = DaysOfWeek.new
             @gite_holidays = GiteHoliday.new
             @charge = Charge.new
 
             @holidays = Holiday.all
+            @charges = Charge.all
 
             render "/pages/admin", status: :unprocessable_entity
         end

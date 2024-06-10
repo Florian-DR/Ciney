@@ -1,6 +1,6 @@
 <% controller.redirect_to gites_path unless current_user == User.first%>
 <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %> <i class="fa-solid fa-right-from-bracket"></i>Déconnexion<% end %>
-<h1>Ta page d'aministration </h1>
+<h1>Ta page d'administration </h1>
 
     <div class="admin-table">
 
@@ -80,8 +80,46 @@
             <% end %>
         <% end %>
         <hr><hr><hr><hr><hr><hr>
+
+    <%############## CHARGES ##############%>
+
+        <%### Headers of the table for the charges ###%>
+        <div class="saison-header headers">Charges</div>
+        <% @gites.each do |gite| %>
+            <div class="headers"></div>
+        <% end %>
+
+
+        <%### Sub-headers of the table for the charges ###%>
+        <div class="sub-headers">Nom</div>
+        <div class="sub-headers dates">Gite</div>
+        <div class="sub-headers dates">Type</div>
+        <div class="sub-headers prix">Prix</div>
+        <div class="sub-headers prix"></div>
+        <div class="sub-headers prix"></div>
+
+        <%### Charges' table ###%>
+        <% unless @charges.empty? %>
+            <% @charges.order(:name).order(:id).each do |charge| %>
+                <div class="saison-name"> <%= charge.name %> 
+                    <%= link_to charge_path(charge), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette charge ?"}, class: "text-danger" do %>
+                        <i class="fa-solid fa-trash"></i>
+                    <% end %>
+                </div>
+                <div><%= charge.gite.name%></div>
+                <div><%= charge.kind %></div>
+                <div data-controller="edit-prices"><%= render "pages/charge_prices", {charge: charge, gite: charge.gite} %></div>
+                <div></div>
+                <div></div>
+            <% end %>
+        <% end %>
+
+        <hr><hr><hr><hr><hr><hr>
+
     </div>
 
+
+<%############## FORMS ##############%>
 
  <%#####  Adding a new saison #####%>
 <div id="forms">
@@ -92,13 +130,13 @@
 
  <%#####  Adding a new holiday #####%>
     <div data-controller="forms-toggle">
-        <div class="button toggle-button" data-action="click->forms-toggle#displayForm"> Ajouter de vacances</div>
+        <div class="button toggle-button" data-action="click->forms-toggle#displayForm"> Ajouter des vacances</div>
         <%= render "pages/holiday_form", {holiday: @holiday} %>
     </div>
 
  <%#####  Adding a new charge #####%>
     <div data-controller="forms-toggle">
-        <div class="button toggle-buttin" data-action="click->forms-toggle#displayForm"> Ajouter une charge</div>
+        <div class="button toggle-button" data-action="click->forms-toggle#displayForm"> Ajouter une charge</div>
         <%= render "pages/charge_form", {charge: @charge} %>
     </div>
 </div>

@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
     skip_before_action :authenticate_user!, only: :contact
     def contact
-        @gites = Gite.all
+        @gites = Gite.all.order(:id)
         @events = Gite.events
         @non_available = Gite.events_dates
     end

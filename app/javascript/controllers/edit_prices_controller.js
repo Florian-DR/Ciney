@@ -8,7 +8,7 @@ import { Controller } from "@hotwired/stimulus"
 // 4. Action submit on the form
 
 export default class extends Controller {
-  static targets = ["priceSemaine", "priceWeekEnd", "priceHoliday", "form", "formSemaine", "formHoliday"]
+  static targets = ["priceSemaine", "priceWeekEnd", "priceHoliday", "priceCharge","form", "formSemaine", "formHoliday", "formCharge"]
 
   displayFormSemaine() {
     this.priceSemaineTarget.classList.add("d-none")
@@ -22,6 +22,11 @@ export default class extends Controller {
 
   displayFormHoliday() {
     this.priceHolidayTarget.classList.add("d-none")
+    this.formTarget.classList.remove("d-none")
+  }
+
+  displayFormCharge() {
+    this.priceChargeTarget.classList.add("d-none")
     this.formTarget.classList.remove("d-none")
   }
 

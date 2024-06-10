@@ -9,14 +9,14 @@ class DaysOfWeeksController < ApplicationController
             redirect_to admin_path
             flash.notice = "Le prix a bien été créé"
         else
-            @gites = Gite.all
+            @gites = Gite.all.order(:id)
             @saisons = Saison.all
             @saison = Saison.new
             @holidays = Holiday.all
             @holiday = Holiday.new
             @gite_holidays = GiteHoliday.new
             @charge = Charge.new
-
+            @charges = Charge.all.order(:name)
 
             @days_of_week = days_of_week
 
@@ -31,7 +31,7 @@ class DaysOfWeeksController < ApplicationController
 
         respond_to do |format|
             format.html {redirect_to admin_path}
-            format.text {render partial: "pages/admin", locals: {saison: @saison, gite: @gite_1, days_of_week: @days_of_week}}
+            format.text {render partial: "pages/admin", locals: {saison: @saison, days_of_week: @days_of_week}}
         end
     end
 

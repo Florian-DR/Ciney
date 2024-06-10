@@ -5,7 +5,7 @@ class SaisonsController < ApplicationController
         if saison.save
             redirect_to admin_path
         else
-            @gites = Gite.all.reverse
+            @gites = Gite.all.order(:id)
             
             @days_of_week = DaysOfWeek.new
             @gite_holidays = GiteHoliday.new
@@ -13,6 +13,7 @@ class SaisonsController < ApplicationController
             @holidays = Holiday.all
             @holiday = Holiday.new
             @charge = Charge.new
+            @charges = Charge.all
 
             @saisons = Saison.all
             @saison = saison
