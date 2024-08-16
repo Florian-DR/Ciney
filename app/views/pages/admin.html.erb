@@ -1,4 +1,3 @@
-<% controller.redirect_to gites_path unless current_user == User.first%>
 <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %> <i class="fa-solid fa-right-from-bracket"></i>Déconnexion<% end %>
 <h1>Ta page d'administration </h1>
 
