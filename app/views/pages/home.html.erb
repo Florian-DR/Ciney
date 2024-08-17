@@ -1,3 +1,6 @@
+<% content_for :title, "La Ferme d'Auwez" %>
+<% content_for :description, "Page d'acceuil des gites et mariages de la Ferme d'Auwez - Ciney" %>
+
 <%###### Introduction Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <% if @home.main_photos.first%>
@@ -35,7 +38,7 @@
                 <h6><%= gite.name %></h6>
                 <%= cl_image_tag gite.photo_principale.key if gite.photo_principale.key%> 
                 <div>
-                    <p class="pictograme">  <i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
+                    <p class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
                     <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></p>
                     <p class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></p>
                 </div>
