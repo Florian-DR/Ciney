@@ -36,6 +36,3 @@
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
-
-
-ciney-gite-calendar.json
