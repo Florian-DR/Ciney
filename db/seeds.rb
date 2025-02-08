@@ -49,7 +49,7 @@ puts "---------- Generating HomePage ----------"
 
 home = HomePage.new
 home.introduction_title = "La ferme d'Auwez"
-home.introduction_text = lorem_ipsum
+home.introduction_text = "Bienvenue dans le cadre merveilleux de la Ferme d’Auwez !  La Ferme est située sur le flanc d’une petite vallée au fond duquel un ruisseau coule paisiblement. Nous vous accueillons dans ce cadre calme et reposant. Le magnifique panorama à partir de la Ferme est entourée de champs, de prairies et des bois aux alentours jusqu’au petit village de Pessoux à quelques kilomètres.  Le cadre merveilleux et paisible de la Ferme d’Auwez est l’occasion idéale d’organiser des séjours en famille ou entre amis. De nombreuses et chouettes activités (sportives, culturelles, de détente, bien-être, familiales, touristiques, de découverte) sont facilement faisables dans le Gîte, dans la ferme ou dans la région.  Piscine intérieure, Sauna, Ravel, promenade,..."
 home.gites_title = "Nos Gites"
 home.mariages_title = "Les Mariages"
 home.mariages_text = lorem_ipsum
