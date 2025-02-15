@@ -1,11 +1,16 @@
 class GitesController < ApplicationController
     skip_before_action :authenticate_user!, only: :index
-    before_action :current_gite, only: %i[edit delete_pictures]
+    before_action :current_gite, only: %i[show edit delete_pictures]
 
     def index
         @events = Gite.events
         @non_available = Gite.events_dates
         @gites = Gite.all.order(:id)
+    end
+
+    def show
+      @events = Gite.events
+      @non_available = Gite.events_dates
     end
 
     # def new

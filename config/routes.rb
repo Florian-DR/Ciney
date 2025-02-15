@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :home_pages, only: [:edit, :update]
   
   # Params is to give the name in the url instead of the id
-  resources :gites, only: [:index, :edit, :update], param: :name 
+  resources :gites, only: [:show, :edit, :update], param: :name 
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create destroy] do
