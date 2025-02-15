@@ -62,8 +62,4 @@ class GitesController < ApplicationController
         @gite = Gite.all.select{ |gite| gite.name.downcase.delete(" \'") == params[:name] }.first
     end
 
-    def all_gites
-      @gites = Gite.all.order(:id)
-    end
-
 end

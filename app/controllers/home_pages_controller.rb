@@ -21,6 +21,7 @@ class HomePagesController < ApplicationController
                 :introduction_title, 
                 :introduction_text, 
                 :gites_title, 
+                :gites_description,
                 :mariages_title, 
                 :mariages_text, 
                 :entreprises_title, 

@@ -8,7 +8,6 @@ class CreateHomePages < ActiveRecord::Migration[7.0]
       t.text :mariages_text
       t.string :entreprises_title
       t.string :decouvrir_title
-
       t.timestamps
     end
   end

@@ -30,6 +30,7 @@
 
 <%###### Gites section ######%>
     <h3 class="section-title"><%= @home.gites_title %></h3>
+    <p class="gites-description"><%= @home.gites_description%></p>
     <div class="gites">
         <% @gites.each do |gite| %>
             <% index = index = @gites.find_index(gite) > 0 ? @gites.find_index(gite) : ""%>
