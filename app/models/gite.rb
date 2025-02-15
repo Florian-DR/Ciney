@@ -75,19 +75,19 @@ class Gite < ApplicationRecord
                                       time_min: Time.now.iso8601)
     
         events = events.items
-      end
+    end
 
-      def self.events_dates
-        non_available = []
-        events.each do |event|
-          if event.start.date_time
-            (event.start.date_time.to_date..event.end.date_time.to_date).to_a.each { |event_date| non_available << event_date }
-          else 
-            (event.start.date..event.end.date).to_a.each { |event_date| non_available << event_date }
-          end
+    def self.events_dates
+      non_available = []
+      events.each do |event|
+        if event.start.date_time
+          (event.start.date_time.to_date..event.end.date_time.to_date).to_a.each { |event_date| non_available << event_date }
+        else 
+          (event.start.date..event.end.date).to_a.each { |event_date| non_available << event_date }
         end
-        non_available
       end
+      non_available
+    end
 
       
 end
