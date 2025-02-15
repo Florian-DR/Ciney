@@ -53,7 +53,8 @@ class GitesController < ApplicationController
     end
 
     def current_gite
-        @gite = Gite.find(params[:id])
+        # To have the name without space in the url
+        @gite = Gite.all.select{ |gite| gite.name.split(" ").map(&:capitalize).join == params[:name] }.first
     end
 
 end

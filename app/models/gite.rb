@@ -10,8 +10,15 @@ class Gite < ApplicationRecord
 
     validates :name, :description, :capacity, :rooms, :sanitary, presence: true
     validates :capacity, :rooms, :sanitary, numericality: true
+    validates :name, uniqueness: true
 
     require "googleauth"
+
+
+    def to_param
+      # To have the name without space in the url
+      name.split(" ").map(&:capitalize).join
+    end
 
     ### Todo ###
     # 1. Add a column selected photos to gite
@@ -81,4 +88,6 @@ class Gite < ApplicationRecord
         end
         non_available
       end
+
+      
 end

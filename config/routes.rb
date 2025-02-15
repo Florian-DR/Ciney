@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :home_pages, only: [:edit, :update]
-
-  resources :gites, only: [:index, :edit, :update]
+  
+  # Params is to give the name in the url instead of the id
+  resources :gites, only: [:index, :edit, :update], param: :name 
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create destroy] do
