@@ -17,7 +17,7 @@ class Gite < ApplicationRecord
 
     def to_param
       # To have the name without space in the url
-      name.split(" ").map(&:capitalize).join
+      name.split(" ").map(&:downcase).join
     end
 
     ### Todo ###
