@@ -18,9 +18,17 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%= yield %>
-    <div class="contain">
-      <%= render "shared/flashes" %>
-    </div>
+    <%= render "shared/flashes" %>
+
+    <%# If the page has a field "uncontainerize" set as true it do not add a contain class around the page %>
+    <% if yield(:uncontainerize) == "true" %>
+        <%= yield %>
+
+    <% else %>
+      <div class="contain">
+        <%= yield %>
+      </div>
+    <% end %>
+
   </body>
 </html>
