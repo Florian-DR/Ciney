@@ -1,11 +1,11 @@
 class GitesController < ApplicationController
     skip_before_action :authenticate_user!, only: :index
     before_action :current_gite, only: %i[show edit delete_pictures]
+    before_action :all_gites, only: %i[show edit index]
 
     def index
         @events = Gite.events
         @non_available = Gite.events_dates
-        @gites = Gite.all.order(:id)
     end
 
     def show
@@ -59,7 +59,11 @@ class GitesController < ApplicationController
 
     def current_gite
         # To have the name without space in the url
-        @gite = Gite.all.select{ |gite| gite.name.split(" ").map(&:downcase).join == params[:name] }.first
+        @gite = Gite.all.select{ |gite| gite.name.downcase.delete(" \'") == params[:name] }.first
+    end
+
+    def all_gites
+      @gites = Gite.all.order(:id)
     end
 
 end
