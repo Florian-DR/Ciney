@@ -2,7 +2,7 @@
 <% content_for :description, "Page d'acceuil des gites et mariages de la Ferme d'Auwez - Ciney" %>
 
 <%###### Introduction Section ######%>
-<div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
     <% if @home.main_photos.first%>
         <div class="carousel-inner">
             <% @home.main_photos.each_with_index do |photo, index|%>
@@ -24,7 +24,7 @@
     <% end %>
 </div>
 
-<div class="home" >
+<div class="home contain" >
     <h1 class="section-title"><%= @home.introduction_title %></h1>
     <p><%= @home.introduction_text %></p>
 
@@ -48,6 +48,7 @@
     </div>
 
 <%###### Mariage section ######%>
+<!--
     <h3 class="section-title"><%= @home.mariages_title %></h3>
     <p><%= @home.mariages_text %></p>
 
@@ -90,7 +91,7 @@
             En savoir plus <i class="fa-solid fa-circle-arrow-right"></i>
         <% end %>
 
-
+-->
     <div style="margin: 30px;"><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" if current_user == User.first%> </div>
 </div>
 

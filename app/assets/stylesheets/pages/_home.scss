@@ -1,24 +1,24 @@
+// Carousel/banner section
+#carousel-container{
+    margin-bottom: 20px;
+    img{
+        width: 100vw;
+        height: 70vh;
+        object-fit: cover;
+        // margin-left: -8.1%;
+    }
+}
+
 // Specific CSS for your home-page
 .home{
     text-align: center;
 }
 
 .section-title{
-    margin-top: 30px;
+    margin-top: 25px;
     margin-bottom: 15px;
     padding-top: 30px;
     border-top: solid 3px;
-}
-
-// Carousel/banner section
-#carousel-container{
-    margin-bottom: 20px;
-    img{
-        width: 93vw;
-        height: 60vh;
-        object-fit: cover;
-        margin-left: -8.1%;
-    }
 }
 
 // Entreprise 
