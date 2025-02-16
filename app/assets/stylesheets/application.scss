@@ -42,7 +42,8 @@ h2{
     background-color: $green;
     color: $yellow;
     padding: 10px;
-    border-radius: 3px;
+    border-radius: 4px;
+    border: none;
     &:hover{
         background-color: $hoverGreen;
     }

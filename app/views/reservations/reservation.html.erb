@@ -1,22 +1,27 @@
 <hr>
 <%###### Gites ######%>
-<h2>Demande de réservations de gites</h2>
 <div class="gites-reservation">
-    <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
-        <%= form.select :gite, @gites.map(&:name) %>
-        <%= form.number_field :capacity, placeholder: "Nombre de personnes*", required: true %>
-        <%= form.text_field :email, placeholder: "Email*", required: true %>
-        <%= form.telephone_field :telephone, placeholder: "Téléphone*", required: true %>
-        <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour*", required: true  %>
-        <%= form.text_field :end_date, data: {controller:'datepicker'}, placeholder: "Fin du séjour*", required: true  %>
-        <%= form.text_area :message, placeholder: true %>
-        <%= form.submit :Envoyer, class: "button" %>
-    <% end %>
+    <div class="reservation">
+        <h2>Demande de réservation</h2>
+        <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
+            <span>Merci de selectionner au moins 1 gite</span>
+            <div class="checkbox-gites">
+                <%= form.collection_check_boxes :gite, @gites, :name, :name, required: true %>
+            </div>
+            <%= form.number_field :capacity, placeholder: "Nombre de personnes *", required: true %>
+            <%= form.text_field :email, placeholder: "Email *", required: true %>
+            <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
+            <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour *", required: true  %>
+            <%= form.text_field :end_date, data: {controller:'datepicker'}, placeholder: "Fin du séjour *", required: true  %>
+            <%= form.text_area :message, placeholder: true %>
+            <%= form.submit :Envoyer, class: "button" %>
+        <% end %>
+    </div>
 
     <%######  Calendar and charges ######%>
     <div class="all-info">
         <% @gites.each do |gite| %>
-            <div class="gite-informations">
+            <div class="gite-calendar">
                 <h4><%= gite.name %></h4>
                 <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                     <%= month_calendar do |date| %>
@@ -25,13 +30,13 @@
                     <% end %>
                     <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
                 </div>
-                <br>
-                <div class="charges-informations">
-                    <p><i>*Les charges sont comprises dans le prix</i></p>
-                </div>
+                <%# <div class="charges-informations">
+                </div> %>
 
             </div>
         <% end %>
+    <p><i>*Les charges sont comprises dans le prix</i></p>
+
     </div>
 </div>
 

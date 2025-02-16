@@ -1,13 +1,31 @@
 .gites-reservation{
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
+    flex-grow: 1;
 }
-
+.reservation{
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    span{
+        color: rgba(98, 98, 98, 0.9) !important;
+    }
+}
+.checkbox-gites{
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    padding: 8px;
+    color: rgba(98, 98, 98, 0.9) !important;
+    input, label{
+        width: fit-content;
+    }
+}
 .reservation-form{
     display: flex;
     flex-direction: column;
-    min-width: 20vw;
+    min-width: 30vw;
 
 
     input:not(:last-child), select, textarea{
@@ -19,21 +37,20 @@
     input, textarea{
         padding: 8px;
     }
-
-    select{
-        padding: 8px 4px;
-    }
 }
 
 .all-info{
+    max-width: 45vw;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
 }
 
-.gite-informations{
-    h4{
-        text-align: center;
-    }
+.gite-calendar{
+
+    text-align: center;
+
 
     .simple-calendar{
         font-size: 14px;
