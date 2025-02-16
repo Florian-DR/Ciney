@@ -1,3 +1,9 @@
+.gites-reservation{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .reservation-form{
     display: flex;
     flex-direction: column;
@@ -17,11 +23,6 @@
     select{
         padding: 8px 4px;
     }
-}
-.gites-reservation{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .all-info{

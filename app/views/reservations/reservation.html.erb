@@ -1,11 +1,11 @@
 <hr>
 <%###### Gites ######%>
-<h2>Réservations de gites</h2>
+<h2>Demande de réservations de gites</h2>
 <div class="gites-reservation">
     <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
-        <%= form.text_field :email, placeholder: "Email*", required: true %>
         <%= form.select :gite, @gites.map(&:name) %>
         <%= form.number_field :capacity, placeholder: "Nombre de personnes*", required: true %>
+        <%= form.text_field :email, placeholder: "Email*", required: true %>
         <%= form.telephone_field :telephone, placeholder: "Téléphone*", required: true %>
         <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour*", required: true  %>
         <%= form.text_field :end_date, data: {controller:'datepicker'}, placeholder: "Fin du séjour*", required: true  %>
@@ -27,12 +27,7 @@
                 </div>
                 <br>
                 <div class="charges-informations">
-                    <h5>Frais supplémentaires - Charges</h5>
-                    <ul>
-                        <% gite.charges.each do |charge| %>
-                            <li class="charge-column"><%= charge.name %> - <%= charge.price%>€/<%= charge.kind %></li>
-                        <% end %>
-                    <ul>
+                    <p><i>*Les charges sont comprises dans le prix</i></p>
                 </div>
 
             </div>
@@ -42,6 +37,7 @@
 
 <hr>
 <%###### Mariages ######%>
+<!--
 <h2>Réservations pour les mariages</h2>
 <div>
     <%= form_with url: "/reservation/mariages", class: "reservation-form" do |form|%>
@@ -52,3 +48,4 @@
         <%= form.submit :Envoyer, class: "button" %>
     <% end %>
 </div>
+-->

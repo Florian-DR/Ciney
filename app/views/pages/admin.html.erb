@@ -81,7 +81,7 @@
         <hr><hr><hr><hr><hr><hr>
 
     <%############## CHARGES ##############%>
-
+<!--
         <%### Headers of the table for the charges ###%>
         <div class="saison-header headers">Charges</div>
         <% @gites.each do |gite| %>
@@ -98,6 +98,7 @@
         <div class="sub-headers prix"></div>
 
         <%### Charges' table ###%>
+        
         <% unless @charges.empty? %>
             <% @charges.order(:name).order(:id).each do |charge| %>
                 <div class="saison-name"> <%= charge.name %> 
@@ -112,8 +113,8 @@
                 <div></div>
             <% end %>
         <% end %>
-
         <hr><hr><hr><hr><hr><hr>
+-->
 
     </div>
 
@@ -134,8 +135,10 @@
     </div>
 
  <%#####  Adding a new charge #####%>
+ <!-- 
     <div data-controller="forms-toggle">
         <div class="button toggle-button" data-action="click->forms-toggle#displayForm"> Ajouter une charge</div>
         <%= render "pages/charge_form", {charge: @charge} %>
     </div>
 </div>
+-->
