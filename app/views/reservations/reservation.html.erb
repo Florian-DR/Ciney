@@ -2,7 +2,7 @@
 <%###### Gites ######%>
 <h2>Réservations de gites</h2>
 <div class="gites-reservation">
-    <%= form_with url: "/contact/gites", class: "reservation-form" do |form| %>
+    <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
         <%= form.text_field :email, placeholder: "Email*", required: true %>
         <%= form.select :gite, @gites.map(&:name) %>
         <%= form.number_field :capacity, placeholder: "Nombre de personnes*", required: true %>
@@ -44,7 +44,7 @@
 <%###### Mariages ######%>
 <h2>Réservations pour les mariages</h2>
 <div>
-    <%= form_with url: "/contact/mariages", class: "reservation-form" do |form|%>
+    <%= form_with url: "/reservation/mariages", class: "reservation-form" do |form|%>
         <%= form.text_field :email, placeholder: "Email*", required: true %>
         <%= form.text_field :date, data:{controller: 'datepicker'}, placeholder: "Jour du mariage*", required: true %>
         <%= form.telephone_field :telephone, placeholder: "Téléphone*", required: true %>

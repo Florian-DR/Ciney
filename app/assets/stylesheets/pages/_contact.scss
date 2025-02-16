@@ -1,50 +1,48 @@
-.reservation-form{
-    display: flex;
-    flex-direction: column;
-    min-width: 20vw;
-
-
-    input:not(:last-child), select, textarea{
-    border: none;
-    border-bottom: 1px solid #c0c3c6;
-    background-color: rgba(240, 248, 255, 0);
-    }
-
-    input, textarea{
-        padding: 8px;
-    }
-
-    select{
-        padding: 8px 4px;
-    }
-}
-.gites-reservation{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#contact-banner{
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+    object-position: 0% 60%;
+    margin-bottom: 35px;
 }
 
-.all-info{
-    display: flex;
-    gap: 30px;
+#contact{
+    text-align: center;
 }
 
-.gite-informations{
-    h4{
-        text-align: center;
-    }
-
-    .simple-calendar{
-        font-size: 14px;
-    }
-    table{
-        table-layout: fixed;
-    }
-    .day, th{
-        min-width: 0;
-        div{
-            width: fit-content;
-            margin: auto;
+#notre-equipe{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    margin: 50px 0px;
+    // flex-basis: 0;
+    .person{
+        padding: 5px;
+        border-top: solid 2px;
+        border-bottom: solid 2px;
+        h5{
+            margin: 0.5rem 0;
         }
+        img{
+            margin: 10px 0px;
+            max-width: 35vw;
+            height: auto;
+        }
+        p{
+            margin: 1rem 0;
+        }
+    } 
+
+}
+
+.map{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    .contacts-info{
+        margin: 20px 0px 40px 0px;
     }
 }

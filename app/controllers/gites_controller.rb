@@ -1,5 +1,5 @@
 class GitesController < ApplicationController
-    skip_before_action :authenticate_user!, only: :index
+    skip_before_action :authenticate_user!, only: :show
     before_action :current_gite, only: %i[show edit delete_pictures]
     before_action :all_gites, only: %i[show edit index]
 

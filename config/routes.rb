@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/domi", to: "pages#admin", as: "admin"
 
-  get "/contact", to: "contacts#contact"
-  post "/contact/gites", to: "contacts#gites_reservation_sender"
-  post "/contact/mariages", to: "contacts#mariages_reservation_sender"
+  get "/contact", to: "pages#contact"
+
+  get "/reservation", to: "reservations#reservation"
+  post "/reservation/gites", to: "reservations#gites_reservation_sender"
+  post "/reservation/mariages", to: "reservations#mariages_reservation_sender"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :home_pages, only: [:edit, :update]

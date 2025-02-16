@@ -1,0 +1,50 @@
+.reservation-form{
+    display: flex;
+    flex-direction: column;
+    min-width: 20vw;
+
+
+    input:not(:last-child), select, textarea{
+    border: none;
+    border-bottom: 1px solid #c0c3c6;
+    background-color: rgba(240, 248, 255, 0);
+    }
+
+    input, textarea{
+        padding: 8px;
+    }
+
+    select{
+        padding: 8px 4px;
+    }
+}
+.gites-reservation{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.all-info{
+    display: flex;
+    gap: 30px;
+}
+
+.gite-informations{
+    h4{
+        text-align: center;
+    }
+
+    .simple-calendar{
+        font-size: 14px;
+    }
+    table{
+        table-layout: fixed;
+    }
+    .day, th{
+        min-width: 0;
+        div{
+            width: fit-content;
+            margin: auto;
+        }
+    }
+}

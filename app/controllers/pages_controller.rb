@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: %i[home contact]
   def home
     @home = HomePage.first
     @gites = Gite.all.order(:id)
@@ -24,5 +24,7 @@ class PagesController < ApplicationController
     @charges = Charge.all
     @charge = Charge.new
   end
+
+  def contact; end
 
 end
