@@ -1,0 +1,42 @@
+footer{
+    background-color: $green;
+    color: $yellow !important;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    a{
+        color: $yellow !important;
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+
+    .map-link{
+        white-space: pre-line;
+    }
+    .footer-section {
+        text-align: center;
+    }
+    ul{
+        max-width: fit-content;
+        margin: auto;
+        li{
+            text-align: left;
+        }
+    }
+
+}
+#logo-container{
+    max-width: min-content;
+    .footer-slogan{
+        font-family: $headers-font;
+        font-size: 1.5rem;
+    }
+    
+}
+.footer-logo{
+    max-height: 21vh;
+    width: auto;
+    filter: invert(1);
+}
