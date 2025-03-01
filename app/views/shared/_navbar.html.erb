@@ -1,13 +1,13 @@
  <div class="navbar contain">  
     <a href="/"><%= image_tag "logo_ciney.png", class: "logo"%></a>
     <nav> 
-        <a href="/" class="nav-link">LA FERME D'AUWEZ</a>
+        <a href="/" class="nav-link">La Ferme d'Auwez</a>
         <div id="gites-nav" class="nav-link" style="position: relative">
-            LES GITES
+            Nos gites
             <div class="sub-div">
-                <%=link_to @gites[0].name.upcase ,gite_path(@gites[0]), class: "sub-link" %>  
-                <%=link_to @gites[1].name.upcase ,gite_path(@gites[1]), class: "sub-link" %>  
-                <%=link_to @gites[2].name.upcase ,gite_path(@gites[2]), class: "sub-link" %>  
+                <%=link_to @gites[0].name ,gite_path(@gites[0]), class: "sub-link" %>  
+                <%=link_to @gites[1].name ,gite_path(@gites[1]), class: "sub-link" %>  
+                <%=link_to @gites[2].name ,gite_path(@gites[2]), class: "sub-link" %>  
             </div>
         </div>
         <%# <a href="/gites" class="nav-link">LES GITES</a>   %>
@@ -15,7 +15,7 @@
         <a href="" class="nav-link">ENTREPRISES</a>      
         <a href="" class="nav-link">PHOTOS</a>   -->
 
-        <a href="/reservation" class="nav-link">RESERVATION</a>
-        <a href="/contact" class="nav-link">CONTACT</a>
+        <a href="/reservation" class="nav-link">Tarifs & Réservations</a>
+        <a href="/contact" class="nav-link">Contact</a>
     </nav>
 </div>

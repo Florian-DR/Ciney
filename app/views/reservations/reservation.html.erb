@@ -1,41 +1,99 @@
-<hr>
+<% content_for :uncontainerize, true %>
+
+<%= image_tag "contact-banner.jpeg" , id: "contact-banner" %>
 <%###### Gites ######%>
-<div class="gites-reservation">
-    <div class="reservation">
-        <h2>Demande de réservation</h2>
-        <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
-            <span>Merci de selectionner au moins 1 gite</span>
-            <div class="checkbox-gites">
-                <%= form.collection_check_boxes :gite, @gites, :name, :name, required: true %>
-            </div>
-            <%= form.number_field :capacity, placeholder: "Nombre de personnes *", required: true %>
-            <%= form.text_field :email, placeholder: "Email *", required: true %>
-            <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
-            <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour *", required: true  %>
-            <%= form.text_field :end_date, data: {controller:'datepicker'}, placeholder: "Fin du séjour *", required: true  %>
-            <%= form.text_area :message, placeholder: true %>
-            <%= form.submit :Envoyer, class: "button" %>
-        <% end %>
+<div class="gites-reservation contain">
+
+    <div id="reservation-intro">
+        <h3>📍 Réservez votre séjour dans l’un de nos gîtes au cœur de la nature</h3>
+        <h4>🏡  Choisissez vos dates et envoyez votre demande en quelques clics</h4>
+        <p>Séjournez à la Ferme d’Auwez, un lieu authentique et chaleureux au cœur de la campagne condruzienne. Vérifiez la disponibilité de nos gîtes et réservez directement via le formulaire ci-dessous.
+             Nous vous répondrons sous 24h avec toutes les informations nécessaires.</p>
+    </div>
+
+    <div id="reservation-container">
+        <div class="form-container">
+            <h3>📩 Formulaire de réservation</h3>
+            <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
+                <span>Merci de selectionner au moins 1 gite *</span>
+                <div class="checkbox-gites">
+                    <%= form.collection_check_boxes :gite, @gites, :name, :name_with_capacity, required: true %>
+                </div>
+                <div class="double-fields">
+                    <%= form.text_field :name, placeholder: "Nom *", required: true%>
+                    <%= form.text_field :first_name, placeholder: "Prénom *", required: true%>
+                </div>
+                <%= form.text_field :email, placeholder: "Email *", required: true %>
+                <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
+                <%= form.number_field :capacity, placeholder: "Nombre de personnes *", required: true %>
+                <div class="double-fields">
+                    <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour *", required: true  %>
+                    <%= form.text_field :end_date, data: {controller:'datepicker'}, placeholder: "Fin du séjour *", required: true  %>
+                </div>
+                <%= form.text_area :message, placeholder: true %>
+                <%= form.submit :Envoyer, class: "button" %>
+            <% end %>
+        </div>
+
+        <div class="conditions-container">
+            <h3>Conditions de réservation</h3>
+            <h4>📍 Tout ce qu’il faut savoir avant de réserver</h4>
+            <ul class="conditions">
+                <li><b>Séjour minimum:</b> 2 nuits</li>
+                <li><b>Arrivée & Départ:</b>
+        ⏳ Arrivée : entre 15h et 22h
+        ⏳ Départ : avant 11h</li>
+                <li><b>Annulation & modification</b>
+        ✅ Annulation gratuite jusqu’à 7 jours avant l’arrivée
+        ✅ Modification possible sous réserve de disponibilité</li>
+                <li><b>Paiement</b>
+        💳 Acompte de 15% à la réservation
+        💳 Solde dû 7 jours avant l’arrivée</li>
+                <li><b>Dépôt de garantie :</b> 300€ (restitué après l’état des lieux)</li>
+            </ul>
+        </div>
     </div>
 
     <%######  Calendar and charges ######%>
-    <div class="all-info">
-        <% @gites.each do |gite| %>
-            <div class="gite-calendar">
-                <h4><%= gite.name %></h4>
-                <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
-                    <%= month_calendar do |date| %>
-                        <span class="d-none"><%= gite.price(date) %></span> 
-                        <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
-                    <% end %>
-                    <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
-                </div>
-                <%# <div class="charges-informations">
-                </div> %>
+    <div id="calendar-container">
+        <h3>📆 Disponibilités & tarifs</h3>
+        <h4>📍 Consultez nos agendas interactifs</h4>
+        <p>Sélectionnez vos dates et votre gîte pour voir en temps réel les disponibilités et obtenir le tarif exact de votre séjour.
+            <i>* Charges comprises dans le prix *</i>
+        </p>
+        <div class="all-info">
+            <% @gites.each do |gite| %>
+                <div class="gite-calendar">
+                    <h4><%= gite.name %></h4>
+                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                        <%= month_calendar do |date| %>
+                            <span class="d-none"><%= gite.price(date) %></span> 
+                            <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
+                        <% end %>
+                        <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
+                    </div>
+                    <%# <div class="charges-informations">
+                    </div> %>
 
-            </div>
-        <% end %>
-    <p><i>*Les charges sont comprises dans le prix</i></p>
+                </div>
+            <% end %>
+        </div>
+
+    </div>
+
+    <div id="reservation-steps">
+        <h3>📝 Comment Réserver ?</h3>
+        <h4>📍 Réserver votre séjour en toute simplicité</h4>
+        <ol>
+            <li>Vérifiez les disponibilités grâce à notre agenda interactif</li>
+            <li>Remplissez le formulaire de réservation ou contactez-nous pour une demande spécifique</li>
+            <li>Recevez une confirmation sous 24h avec les détails de paiement</li>
+            <li>Finalisez votre réservation en effectuant l’acompte</li>
+        </ol>
+        <p>📢 Une question ? Nous sommes à votre disposition pour vous accompagner.
+            <a href="mailto:fermedauwez@gmail.com">📩 Nous contacter</a>
+            <a href="#reservation-container">🚀 Réservez maintenant</a>
+        </p>
 
     </div>
 </div>

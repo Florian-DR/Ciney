@@ -1,22 +1,47 @@
 .gites-reservation{
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
     justify-content: space-between;
+    gap: 100px;
+    h4{
+        margin: 12px 0px;
+    }
+    p{
+        margin: 1rem;
+    }
+}
+
+#reservation-intro{
+    h4{
+        padding-left: 18px;
+    }
+    p{
+        padding-left: 2em;
+    }
+}
+
+#reservation-container{
+    border: 1px solid;
+    box-shadow: 0px 0px 6px 1px gray;
+    display: flex;
     gap: 20px;
+    justify-content: space-around;
     flex-grow: 1;
 }
-.reservation{
-    position: sticky;
-    top: 100px;
+
+// Form section
+.form-container{
     height: fit-content;
     span{
         color: rgba(98, 98, 98, 0.9) !important;
+        font-size: small;
+        font-style: italic;
     }
 }
 .checkbox-gites{
     display: grid;
-    grid-template-columns: 1fr 9fr;
-    padding: 8px;
+    grid-template-columns: 0.5fr 10fr;
+    padding: 12px;
     color: rgba(98, 98, 98, 0.9) !important;
     input, label{
         width: fit-content;
@@ -25,10 +50,11 @@
 .reservation-form{
     display: flex;
     flex-direction: column;
-    min-width: 30vw;
+    justify-content: space-between;
+    min-width: 36vw;
 
 
-    input:not(:last-child), select, textarea{
+    input:not(.button), select, textarea{
     border: none;
     border-bottom: 1px solid #c0c3c6;
     background-color: rgba(240, 248, 255, 0);
@@ -37,12 +63,25 @@
     input, textarea{
         padding: 8px;
     }
+
+    .double-fields{
+        display: flex;
+        justify-content: space-between;
+        input{
+            flex-grow: 1;
+        }
+    }
+}
+// Conditions section
+.conditions{
+    li{
+        white-space: pre-wrap;
+    }
 }
 
+// Calendar section
 .all-info{
-    max-width: 45vw;
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 30px;
 }
@@ -66,3 +105,8 @@
         }
     }
 }
+
+// // Steps section
+// #reservation-steps{
+//     white-space: pre-line;
+// }

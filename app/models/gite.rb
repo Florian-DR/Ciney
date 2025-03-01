@@ -20,6 +20,10 @@ class Gite < ApplicationRecord
       name.downcase.delete(" \'")
     end
 
+    def name_with_capacity
+      "#{name} (#{capacity} pers.)"
+    end
+
     ### Todo ###
     # 1. Add a column selected photos to gite
     # 2. Be able to add/remove some of them
