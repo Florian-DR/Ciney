@@ -27,11 +27,11 @@
 
 <div class="home contain" >
     <h1 class="section-title"><%= @home.introduction_title %></h1>
-    <p><%= @home.introduction_text %></p>
+    <p><%= simple_format(@home.introduction_text) %></p>
 
 <%###### Gites section ######%>
     <h3 class="section-title"><%= @home.gites_title %></h3>
-    <p class="gites-description"><%= @home.gites_description%></p>
+    <p class="gites-description"><%= simple_format(@home.gites_description)%></p>
     <div class="gites">
         <% @gites.each do |gite| %>
             <% index = index = @gites.find_index(gite) > 0 ? @gites.find_index(gite) : ""%>
@@ -94,6 +94,23 @@
         <% end %>
 
 -->
+    <h3 id="advantages-title" class="section-title"><%= @home.decouvrir_title %></h3>
+    <h4>Un cadre pensé pour votre confort</h4>
+    <p>En séjournant à la Ferme d’Auwez, vous profitez d’équipements et d’espaces communs conçus pour votre bien-être.</p>
+    <ul class="advantages">
+        <li> 🏊‍♂️ <b>Piscine intérieure & sauna</b> – Détendez-vous toute l’année</li>
+        <li> ☀️ <b>Piscine extérieure en été</b> – Un bassin clôturé pour se rafraîchir</li>
+        <li> 🚴‍♂️ <b>Abri à vélos sécurisé & kit de nettoyage</b> – Idéal pour les amateurs de cyclisme</li>
+        <li> 🌿 <b>Vaste jardin avec vue imprenable</b> – Un espace de détente et de jeux en pleine nature</li>
+        <li> 📍 <b>Un point de départ idéal pour vos escapades !</b>
+            <ul>
+                <li>Accès direct à des sentiers de randonnée</li>
+                <li>Proximité de l’EuroVélo5 et du RAVeL pour les cyclistes</li>
+                <li>Marchés, villages et spécialités locales à découvrir aux alentours</li>
+            </ul>
+        </li>
+    </ul>
+
     <div style="margin: 30px;"><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" if current_user == User.first%> </div>
 </div>
 

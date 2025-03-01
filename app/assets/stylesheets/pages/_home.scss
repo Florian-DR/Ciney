@@ -15,7 +15,7 @@
 }
 
 .section-title{
-    margin-top: 25px;
+    margin-top: 50px;
     margin-bottom: 15px;
     padding-top: 30px;
     border-top: solid 3px;
@@ -52,4 +52,20 @@
     display: block;
     padding: 18px !important;
     font-size: 18px;
+}
+
+// Advantages
+ul{    
+    max-width: fit-content;
+    margin: auto;
+}
+.advantages{
+    & > li{
+        list-style: none;
+        text-align: left;
+    }
+}
+
+#advantages-title{
+    margin-bottom: 30px;
 }

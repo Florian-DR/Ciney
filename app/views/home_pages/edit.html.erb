@@ -3,6 +3,7 @@
     <%= link_to root_path do %>
         <p class="button"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
     <% end %>
+    <%= render "shared/tuto"%>
 
     <%= simple_form_for @home do |f|%>
         <%= f.input :main_photos, as: :file,            label: "Photos d'acceuils", input_html: {multiple: true}  %>

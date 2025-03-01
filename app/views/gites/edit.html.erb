@@ -2,6 +2,7 @@
 <%= link_to gites_path do %>
     <p class="button"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
 <% end %>
+<%= render "shared/tuto"%>
 
 <%= simple_form_for @gite do |f| %>
     <%= f.input :name %>

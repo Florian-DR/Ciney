@@ -1,3 +1,9 @@
+
+.edit_home_page{
+    textarea{
+        min-height: 130px !important;
+    }
+}
 .my-photos{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

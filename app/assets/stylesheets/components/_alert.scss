@@ -1,7 +1,14 @@
-.alert {
+.alert-alert {
   position: fixed;
   top: 28vh;
   left: 30vw;
   z-index: 1000;
   padding: 50px;
+}
+
+.alert-notice{
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
 }
