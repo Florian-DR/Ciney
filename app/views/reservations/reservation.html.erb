@@ -15,16 +15,16 @@
         <div class="form-container">
             <h3>📩 Formulaire de réservation</h3>
             <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
-                <span>Merci de selectionner au moins 1 gite *</span>
-                <div class="checkbox-gites">
-                    <%= form.collection_check_boxes :gite, @gites, :name, :name_with_capacity, required: true %>
-                </div>
                 <div class="double-fields">
                     <%= form.text_field :name, placeholder: "Nom *", required: true%>
                     <%= form.text_field :first_name, placeholder: "Prénom *", required: true%>
                 </div>
                 <%= form.text_field :email, placeholder: "Email *", required: true %>
                 <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
+                <span>Merci de selectionner au moins 1 gite *</span>
+                <div class="checkbox-gites">
+                    <%= form.collection_check_boxes :gite, @gites, :name, :name_with_capacity, required: true %>
+                </div>
                 <%= form.number_field :capacity, placeholder: "Nombre de personnes *", required: true %>
                 <div class="double-fields">
                     <%= form.text_field :start_date, data: {controller:'datepicker'}, placeholder: "Début du séjour *", required: true  %>
