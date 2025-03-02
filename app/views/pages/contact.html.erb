@@ -1,12 +1,12 @@
 <% content_for :title, "La Ferme d'Auwez" %>
-<% content_for :description, "Page d'acceuil des gites et mariages de la Ferme d'Auwez - Ciney" %>
+<% content_for :description, "Page de contact des gites de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
 <%= image_tag "contact-banner.jpeg" , id: "contact-banner" %>
 
 <div id="contact" class="container">   
 
+    <%####  Équipe  #####%>
     <h1>Notre équipe</h1>
-
     <div id="notre-equipe">
         <div id="dominique" class="person">
             <h5>Dominique</h5>
@@ -20,17 +20,43 @@
         </div>
     </div>
 
-
-    <div class="map">
-        <h4>Contactez-nous</h4>
-        <div class="contacts-info">
-            <i class="fa-solid fa-location-dot"></i><p>Route d'Auwez 1
-                5590 Ciney
-                Belgique
-            </p>
-            <a href="mailto:lafermedauwez@gmail.com"><i class="fa-solid fa-envelope"></i> lafermedauwez@gmail.com</a>
+    <%####  Contact et Information  #####%>
+    <div id="contact-info">
+        <div class="form-container">
+            <h3>📩 Contactez-nous</h3>
+            <p>Que ce soit pour une réservation, un devis ou toute autre question, contactez-nous. Nous vous répondrons au plus vite.</p>
+            <%= form_with url: "/contact", class: "contact-form form" do |form| %>
+                <div class="double-fields">
+                    <%= form.text_field :name, placeholder: "Nom *", required: true%>
+                    <%= form.text_field :first_name, placeholder: "Prénom *", required: true%>
+                </div>
+                <div class="double-fields">
+                    <%= form.text_field :email, placeholder: "Email *", required: true %>
+                    <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
+                </div>
+                <%= form.text_area :message, placeholder: "Votre message *", required: true %>
+                <%= form.submit :Envoyer, class: "button" %>
+            <% end %>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1301.0968089950732!2d5.132627088930031!3d50.279772783008106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1b774f1edc2b9%3A0x5796df9c9e20a1a7!2sG%C3%AEtes%20%C3%A0%20la%20Ferme%20d&#39;Auwez!5e1!3m2!1sfr!2sbe!4v1739650372793!5m2!1sfr!2sbe" 
+
+        <div class="access-container">
+            <h3>📍Accès & informations pratiques</h3>
+            <div class="contacts-info">
+                <i class="fa-solid fa-location-dot"></i><p>Route d'Auwez 1
+                    5590 Ciney
+                    Belgique
+                </p>
+                <p><i class="fa-solid fa-car-side"></i> Parking sur place
+                <i class="fa-solid fa-train"></i> Gare la plus proche : Leignon ou Ciney
+                <i class="fa-solid fa-bicycle"></i> Accès direct aux pistes cyclables EuroVélo5 et RAVeL</p>
+            </div>
+        </div>
+    </div>
+
+    <%####  Map  #####%>
+    <div class="map">
+        <h3>Plan d'accès</h3>
+        <iframe class="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1301.0968089950732!2d5.132627088930031!3d50.279772783008106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1b774f1edc2b9%3A0x5796df9c9e20a1a7!2sG%C3%AEtes%20%C3%A0%20la%20Ferme%20d&#39;Auwez!5e1!3m2!1sfr!2sbe!4v1739650372793!5m2!1sfr!2sbe" 
             width="1000" 
             height="600" 
             style="border:0;" 

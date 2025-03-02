@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/domi", to: "pages#admin", as: "admin"
 
   get "/contact", to: "pages#contact"
+  post "/contact", to: "pages#contact_sender"
 
   get "/reservation", to: "reservations#reservation"
   post "/reservation/gites", to: "reservations#gites_reservation_sender"

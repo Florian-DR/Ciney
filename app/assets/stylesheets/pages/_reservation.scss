@@ -27,12 +27,10 @@
     display: flex;
     gap: 20px;
     justify-content: space-around;
-    flex-grow: 1;
 }
 
 // Form section
 .form-container{
-    height: fit-content;
     span{
         color: rgba(98, 98, 98, 0.9) !important;
         font-size: small;
@@ -49,29 +47,7 @@
     }
 }
 .reservation-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     min-width: 29vw;
-
-
-    input:not(.button), select, textarea{
-    border: none;
-    border-bottom: 1px solid #c0c3c6;
-    background-color: rgba(240, 248, 255, 0);
-    }
-
-    input, textarea{
-        padding: 8px;
-    }
-
-    .double-fields{
-        display: flex;
-        justify-content: space-between;
-        input{
-            flex-grow: 1;
-        }
-    }
 }
 // Conditions section
 .conditions-container{

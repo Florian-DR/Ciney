@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home contact]
+  skip_before_action :authenticate_user!, only: %i[home contact contact_sender]
   def home
     @home = HomePage.first
     # raise
@@ -27,5 +27,16 @@ class PagesController < ApplicationController
   end
 
   def contact; end
+
+  def contact_sender
+    CineyMailer.with(
+                    name: params[:name],
+                    first_name: params[:first_name],
+                    email: params[:email], 
+                    telephone: params[:telephone], 
+                    message: params[:message]).contact_mailer.deliver_now
+    redirect_to contact_path 
+    flash.notice = "Votre demande à été envoyée, un mail de confirmation devrait suivre"
+  end
 
 end

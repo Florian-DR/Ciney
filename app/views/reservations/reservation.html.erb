@@ -1,7 +1,9 @@
+<% content_for :title, "La Ferme d'Auwez" %>
+<% content_for :description, "Page de contact des gites de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
 
 <%= image_tag "contact-banner.jpeg" , id: "contact-banner" %>
-<%###### Gites ######%>
+<%###### Gites intro ######%>
 <div class="gites-reservation contain">
 
     <div id="reservation-intro">
@@ -11,10 +13,11 @@
              Nous vous répondrons sous 24h avec toutes les informations nécessaires.</p>
     </div>
 
+    <%###### Reservation form ######%>
     <div id="reservation-container">
         <div class="form-container">
             <h3>📩 Formulaire de réservation</h3>
-            <%= form_with url: "/reservation/gites", class: "reservation-form" do |form| %>
+            <%= form_with url: "/reservation/gites", class: "reservation-form form" do |form| %>
                 <div class="double-fields">
                     <%= form.text_field :name, placeholder: "Nom *", required: true%>
                     <%= form.text_field :first_name, placeholder: "Prénom *", required: true%>
@@ -35,6 +38,7 @@
             <% end %>
         </div>
 
+        <%###### Conditions ######%>
         <div class="conditions-container">
             <h3>Conditions de réservation</h3>
             <h4>📍 Tout ce qu’il faut savoir avant de réserver</h4>
@@ -81,6 +85,7 @@
 
     </div>
 
+    <%######  Steps ######%>
     <div id="reservation-steps">
         <h3>📝 Comment Réserver ?</h3>
         <h4>📍 Réserver votre séjour en toute simplicité</h4>
@@ -91,7 +96,7 @@
             <li>Finalisez votre réservation en effectuant l’acompte</li>
         </ol>
         <p>📢 Une question ? Nous sommes à votre disposition pour vous accompagner.
-            <a href="mailto:fermedauwez@gmail.com">📩 Nous contacter</a>
+            <a href="/contact#contact-info">📩 Nous contacter</a>
             <a href="#reservation-container">🚀 Réservez maintenant</a>
         </p>
 

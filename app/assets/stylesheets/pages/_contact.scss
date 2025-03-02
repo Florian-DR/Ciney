@@ -36,13 +36,36 @@
 
 }
 
-.map{
+
+#contact-info{
     text-align: center;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 20px;
     justify-content: space-around;
-    .contacts-info{
-        margin: 20px 0px 40px 0px;
+    border: 1px solid;
+    box-shadow: 0px 0px 6px 1px gray;
+    padding: 40px;
+    margin: 100px auto;
+    .form-container{
+
+        .contact-form{
+            min-width: 30vw;
+            width: fit-content;
+            margin: 30px auto;
+            textarea{
+                height: 20vh;
+            }
+        }
     }
+    .contacts-info{
+        margin: 0px 0px 40px 0px;
+    }
+
+    .access-container{
+        min-width: 38vw;
+    }
+}
+
+.frame{
+    margin: 20px;
 }
