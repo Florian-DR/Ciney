@@ -36,7 +36,7 @@
         <% @gites.each do |gite| %>
             <% index = index = @gites.find_index(gite) > 0 ? @gites.find_index(gite) : ""%>
             <%= link_to gite_path(gite) do%>
-            <div class="gites-cards">
+            <div class="gites-card">
                 <h6><%= gite.name %></h6>
                 <%= cl_image_tag gite.photo_principale.key if gite.photo_principale.key%> 
                 <div>

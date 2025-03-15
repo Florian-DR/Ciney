@@ -3,7 +3,7 @@
     justify-content: space-between;
 }
 
-.gites-cards{
+.gites-card{
     width: 25vw;
     margin: 5px;
 
@@ -28,9 +28,10 @@
     }
     &:hover{
         h6, .pictograme{
-            font-size: 20px;
+            // font-size: 20px;
             transition: 0.5s;
         }
+        opacity: 0.8;
         color: $hoverGreen;
     }
 }
