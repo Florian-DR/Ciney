@@ -10,32 +10,6 @@
     text-align: center;
 }
 
-#notre-equipe{
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-    flex-grow: 1;
-    margin: 50px 0px;
-    // flex-basis: 0;
-    .person{
-        padding: 5px;
-        border-top: solid 2px;
-        border-bottom: solid 2px;
-        h5{
-            margin: 0.5rem 0;
-        }
-        img{
-            margin: 10px 0px;
-            max-width: 35vw;
-            height: auto;
-        }
-        p{
-            margin: 1rem 0;
-        }
-    } 
-
-}
-
 
 #contact-info{
     text-align: center;
@@ -45,7 +19,8 @@
     border: 1px solid;
     box-shadow: 0px 0px 6px 1px gray;
     padding: 40px;
-    margin: 100px auto;
+    margin: 50px auto;
+    width: fit-content;
     .form-container{
 
         .contact-form{

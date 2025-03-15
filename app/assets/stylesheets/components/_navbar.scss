@@ -23,13 +23,13 @@
 nav{
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  gap: 20px;
   color: $green;
 }
 
 .nav-link{
   padding: 5px;
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 700;
 }
 
@@ -47,7 +47,7 @@ nav{
 .sub-link{
   display: block;
   padding: 5px 10px;
-  font-size: 23px;
+  font-size: 21px;
   font-weight: 700;
 }
 

@@ -1,0 +1,57 @@
+#about{
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    margin: 100px auto 140px auto;
+
+    #cadre{
+        max-width: 80%;
+    }
+    .about-section{
+        display: flex;
+        justify-content: space-around;
+        gap: 95px;
+        margin: 0px auto;
+        #img-abre{
+            width: auto ;
+            max-height: 55vh;
+            
+        }
+        #img-history{
+            width: auto ;
+            max-height: 60vh;
+            
+        }
+        .section-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+}
+
+// #notre-equipe{
+//     text-align: center;
+//     display: flex;
+//     justify-content: space-around;
+//     flex-grow: 1;
+//     margin: 50px 0px;
+//     // flex-basis: 0;
+//     .person{
+//         padding: 5px;
+//         border-top: solid 2px;
+//         border-bottom: solid 2px;
+//         h5{
+//             margin: 0.5rem 0;
+//         }
+//         img{
+//             margin: 10px 0px;
+//             max-width: 35vw;
+//             height: auto;
+//         }
+//         p{
+//             margin: 1rem 0;
+//         }
+//     } 
+
+// }

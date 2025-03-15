@@ -39,4 +39,6 @@ class PagesController < ApplicationController
     flash.notice = "Votre demande à été envoyée, un mail de confirmation devrait suivre"
   end
 
+  def about; end
+
 end

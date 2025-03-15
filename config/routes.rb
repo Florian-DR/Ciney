@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/domi", to: "pages#admin", as: "admin"
 
+  get "/about", to: "pages#about"
+
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#contact_sender"
 

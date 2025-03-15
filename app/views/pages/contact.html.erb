@@ -3,28 +3,14 @@
 <% content_for :uncontainerize, true %>
 <%= image_tag "contact-banner.jpeg" , id: "contact-banner" %>
 
-<div id="contact" class="container">   
-
-    <%####  Équipe  #####%>
-    <h1>Notre équipe</h1>
-    <div id="notre-equipe">
-        <div id="dominique" class="person">
-            <h5>Dominique</h5>
-            <%= image_tag("Moi-pp-photo.jpg") %>
-            <p>Le gérant des gites</p>
-        </div>
-        <div id="Amandine" class="person">
-            <h5>Amandine</h5>
-            <%= image_tag("Moi-pp-photo.jpg") %>
-            <p>La responsable teambuilding</p>
-        </div>
-    </div>
+<div id="contact" class="contain">   
 
     <%####  Contact et Information  #####%>
+    <h3>Une question ?</h3>
+    <p>Que ce soit pour une réservation, un devis ou toute autre question, contactez-nous. Nous vous répondrons sous 24h.</p>
     <div id="contact-info">
         <div class="form-container">
             <h3>📩 Contactez-nous</h3>
-            <p>Que ce soit pour une réservation, un devis ou toute autre question, contactez-nous. Nous vous répondrons au plus vite.</p>
             <%= form_with url: "/contact", class: "contact-form form" do |form| %>
                 <div class="double-fields">
                     <%= form.text_field :name, placeholder: "Nom *", required: true%>
@@ -56,7 +42,7 @@
     <%####  Map  #####%>
     <div class="map">
         <h3>Plan d'accès</h3>
-        <iframe class="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1301.0968089950732!2d5.132627088930031!3d50.279772783008106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1b774f1edc2b9%3A0x5796df9c9e20a1a7!2sG%C3%AEtes%20%C3%A0%20la%20Ferme%20d&#39;Auwez!5e1!3m2!1sfr!2sbe!4v1739650372793!5m2!1sfr!2sbe" 
+        <iframe class="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.9094445526566!2d5.129731238770262!3d50.28120116033405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1b774f1edc2b9%3A0x5796df9c9e20a1a7!2sG%C3%AEtes%20%C3%A0%20la%20Ferme%20d&#39;Auwez!5e0!3m2!1sfr!2sbe!4v1742051030968!5m2!1sfr!2sbe" 
             width="1000" 
             height="600" 
             style="border:0;" 
