@@ -1,11 +1,11 @@
 #about{
     display: flex;
     flex-direction: column;
-    gap: 120px;
-    margin: 100px auto 140px auto;
+    gap: 85px;
+    margin: 40px auto 70px auto;
 
     #cadre{
-        max-width: 80%;
+        max-width: 85%;
     }
     .about-section{
         display: flex;
@@ -14,12 +14,12 @@
         margin: 0px auto;
         #img-abre{
             width: auto ;
-            max-height: 55vh;
+            max-height: 60vh;
             
         }
         #img-history{
             width: auto ;
-            max-height: 60vh;
+            max-height: 55vh;
             
         }
         .section-container{
