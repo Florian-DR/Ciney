@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home contact contact_sender]
+  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about]
   def home
     @home = HomePage.first
     # raise
