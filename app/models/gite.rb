@@ -64,28 +64,11 @@ class Gite < ApplicationRecord
         "undefined"
     end
 
-    def self.events
-
-        calendar = Google::Apis::CalendarV3::CalendarService.new
-        calendar.authorization = Google::Apis::RequestOptions.default.authorization
-    
-        # Replace with your actual calendar ID
-        calendar_id = 'florian.radigues@gmail.com'
-    
-        events = calendar.list_events(calendar_id,
-                                      max_results: 15,
-                                      single_events: true,
-                                      order_by: 'startTime',
-                                      time_min: Time.now.iso8601)
-    
-        events = events.items
-    end
-
-    def self.events_dates
+    def events_dates
       non_available = []
       events.each do |event|
         if event.start.date_time
-          (event.start.date_time.to_date..event.end.date_time.to_date).to_a.each { |event_date| non_available << event_date }
+          (event.start.date_time.to_date...event.end.date_time.to_date).to_a.each { |event_date| non_available << event_date }
         else 
           (event.start.date..event.end.date).to_a.each { |event_date| non_available << event_date }
         end
@@ -93,5 +76,30 @@ class Gite < ApplicationRecord
       non_available
     end
 
+    private
+
+    def events
+      calendar = Google::Apis::CalendarV3::CalendarService.new
+      calendar.authorization = Google::Apis::RequestOptions.default.authorization
+      # Replace with your actual calendar ID
+      
+      if id == 1
+        calendar_id = ENV['CALENDAR_GITE_1']
+      elsif id == 2
+         calendar_id = ENV['CALENDAR_GITE_2']
+      elsif id == 3
+        calendar_id = ENV['CALENDAR_GITE_3']
+      else
+        raise
+      end
+     
+      events = calendar.list_events(calendar_id,
+                                    max_results: 30,
+                                    single_events: true,
+                                    order_by: 'startTime',
+                                    time_min: Time.now.iso8601)
+      # raise
+      events = events.items
+    end
       
 end

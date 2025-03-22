@@ -3,29 +3,13 @@ class GitesController < ApplicationController
     before_action :current_gite, only: %i[show edit delete_pictures]
     before_action :all_gites, only: %i[show edit index]
 
-    def index
-        @events = Gite.events
-        @non_available = Gite.events_dates
-    end
-
     def show
-      @events = Gite.events
-      @non_available = Gite.events_dates
+        if params["start_date"] && session[:dates]
+            @non_available = session[:dates]
+        else
+            @non_available = session[:dates] = @gite.events_dates
+        end
     end
-
-    # def new
-        #     @gite = Gite.new
-    # end
-
-    # def create
-        #     @gite = Gite.new(gite_params)
-        #     @gite.commun = Gite.first.commun
-        #     if @gite.save
-            #         redirect_to gites_path
-        #     else
-            #         render :new, status: :unprocessable_entity
-        #     end
-    # end
 
     def edit; end
 
@@ -48,7 +32,6 @@ class GitesController < ApplicationController
         photo.purge
         flash.notice = "Une photo a bien été supprimée"
         redirect_to request.referer
-
     end
 
     private

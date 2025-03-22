@@ -66,13 +66,27 @@
             <i>* Charges comprises dans le prix *</i>
         </p>
         <div class="all-info">
-            <% @gites.each do |gite| %>
+
                 <div class="gite-calendar">
-                    <h4><%= gite.name %></h4>
+                    <h4><%= @gite_1.name %></h4>
                     <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                         <%= month_calendar do |date| %>
-                            <span class="d-none"><%= gite.price(date) %></span> 
-                            <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>
+                            <span class="d-none"><%= @gite_1.price(date) %></span> 
+                            <div class=" <%= "events "if (@events_1.include? date)%>"><%= date.day %></div>
+                        <% end %>
+                        <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
+                    </div>
+                    <%# <div class="charges-informations">
+                    </div> %>
+                </div>
+
+
+                <div class="gite-calendar">
+                    <h4><%= @gite_2.name %></h4>
+                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                        <%= month_calendar do |date| %>
+                            <span class="d-none"><%= @gite_2.price(date) %></span> 
+                            <div class=" <%= "events "if (@events_2.include? date)%>"><%= date.day %></div>
                         <% end %>
                         <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
                     </div>
@@ -80,7 +94,20 @@
                     </div> %>
 
                 </div>
-            <% end %>
+
+
+                <div class="gite-calendar">
+                    <h4><%= @gite_3.name %></h4>
+                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                        <%= month_calendar do |date| %>
+                            <span class="d-none"><%= @gite_3.price(date) %></span> 
+                            <div class=" <%= "events "if (@events_3.include? date)%>"><%= date.day %></div>
+                        <% end %>
+                        <p data-calendar-target="displayPrice">Sélectionnez deux dates pour afficher le prix du séjour</p>
+                    </div>
+                    <%# <div class="charges-informations">
+                    </div> %>
+                </div>
         </div>
 
     </div>

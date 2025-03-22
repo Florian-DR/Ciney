@@ -36,11 +36,13 @@ export default class extends Controller {
   // Get the calendar of the next/previous month and insert it to not have to reload the page
   previousMonth(){
     event.preventDefault()
+    this.calendarTarget.animate({opacity : 0.1}, 3000)
     this.#fetching(this.previousUrlTarget.href)
   }
 
   nextMonth(){
     event.preventDefault()
+    this.calendarTarget.animate({opacity : 0.1}, 3000)
     this.#fetching(this.nextUrlTarget.href)
   }
 
