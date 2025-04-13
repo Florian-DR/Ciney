@@ -84,13 +84,11 @@ class Gite < ApplicationRecord
       # Replace with your actual calendar ID
       
       if id == 1
-        calendar_id = ENV['CALENDAR_GITE_1']
+        calendar_id = ENV['CALENDAR_HIRONDELLES']
       elsif id == 2
-         calendar_id = ENV['CALENDAR_GITE_2']
+        calendar_id = ENV['CALENDAR_HORIZON']
       elsif id == 3
-        calendar_id = ENV['CALENDAR_GITE_3']
-      else
-        raise
+        calendar_id = ENV['CALENDAR_ARBRE_DE_VIE']
       end
      
       events = calendar.list_events(calendar_id,
@@ -98,7 +96,7 @@ class Gite < ApplicationRecord
                                     single_events: true,
                                     order_by: 'startTime',
                                     time_min: Time.now.iso8601)
-      # raise
+
       events = events.items
     end
       

@@ -4,8 +4,6 @@ require 'googleauth'
 require 'google/apis/calendar_v3'
 
 calendar_scopes = ['https://www.googleapis.com/auth/calendar.readonly']
-client_id = ENV['GOOGLE_CLIENT_ID']
-client_secret = ENV['GOOGLE_CLIENT_SECRET']
 
 Google::Apis::RequestOptions.default.authorization = Google::Auth::ServiceAccountCredentials.make_creds(
   json_key_io: StringIO.new(ENV['ADDRESS_MAIL_JSON']),

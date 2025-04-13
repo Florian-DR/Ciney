@@ -1,0 +1,35 @@
+fr:
+  simple_calendar:
+    week: "Semaine"
+  date:
+    month_names:
+      1: "Janvier"
+      2: "Février"
+      3: "Mars"
+      4: "Avril"
+      5: "Mai"
+      6: "Juin"
+      7: "Juillet"
+      8: "Août"
+      9: "Septembre"
+      10: "Octobre"
+      11: "Novembre"
+      12: "Décembre"
+    abbr_day_names:
+      1: "Lun"
+      2: "Mar"
+      3: "Mer"
+      4: "Jeu"
+      5: "Ven"
+      6: "Sam"
+      0: "Dim"
+
+  devise:
+    failure:
+      user:
+        unauthenticated: "Vous devez être connecté pour accéder à cette page."
+
+  activerecord:
+    errors:
+      messages:
+        blank: "Ce champ ne peut pas être vide"
