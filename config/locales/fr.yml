@@ -23,12 +23,6 @@ fr:
       5: "Ven"
       6: "Sam"
       0: "Dim"
-
-  devise:
-    failure:
-      user:
-        unauthenticated: "Vous devez être connecté pour accéder à cette page."
-
   activerecord:
     errors:
       messages:
