@@ -53,8 +53,9 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         const parser = new DOMParser();
+        const id = this.calendarTarget.id
         const htmlDocument = parser.parseFromString(data, "text/html");
-        const calendar = htmlDocument.documentElement.querySelector(".calendar-container");
+        const calendar = htmlDocument.documentElement.querySelector("#"+id);
         this.calendarTarget.replaceWith(calendar);
       })
   }

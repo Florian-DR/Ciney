@@ -34,7 +34,7 @@
                 </div>
 
             <%##### Calendrier ######%>
-                <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                <div id="<%= @gite.to_param %>" class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                     <%= month_calendar do |date| %>
                         <span class="d-none"><%= @gite.price(date) %></span> 
                         <div class=" <%= "events "if (@non_available.include? date)%>"><%= date.day %></div>

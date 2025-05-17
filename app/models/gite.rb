@@ -83,11 +83,11 @@ class Gite < ApplicationRecord
       calendar.authorization = Google::Apis::RequestOptions.default.authorization
       # Replace with your actual calendar ID
       
-      if id == 1
+      if name.downcase.include?("hirondelle")
         calendar_id = ENV['CALENDAR_HIRONDELLES']
-      elsif id == 2
+      elsif name.downcase.include?("horizon")
         calendar_id = ENV['CALENDAR_HORIZON']
-      elsif id == 3
+      elsif name.downcase.include?("arbre")
         calendar_id = ENV['CALENDAR_ARBRE_DE_VIE']
       end
      

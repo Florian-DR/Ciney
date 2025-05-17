@@ -69,7 +69,7 @@
 
                 <div class="gite-calendar">
                     <h4><%= @gite_1.name %></h4>
-                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                    <div id="<%= @gite_1.to_param %>" class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                         <%= month_calendar do |date| %>
                             <span class="d-none"><%= @gite_1.price(date) %></span> 
                             <div class=" <%= "events "if (@events_1.include? date)%>"><%= date.day %></div>
@@ -83,7 +83,7 @@
 
                 <div class="gite-calendar">
                     <h4><%= @gite_2.name %></h4>
-                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                    <div id="<%= @gite_2.to_param %>" class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                         <%= month_calendar do |date| %>
                             <span class="d-none"><%= @gite_2.price(date) %></span> 
                             <div class=" <%= "events "if (@events_2.include? date)%>"><%= date.day %></div>
@@ -98,7 +98,7 @@
 
                 <div class="gite-calendar">
                     <h4><%= @gite_3.name %></h4>
-                    <div class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
+                    <div id="<%= @gite_3.to_param %>" class="calendar-container" data-controller="calendar" data-calendar-target="calendar">
                         <%= month_calendar do |date| %>
                             <span class="d-none"><%= @gite_3.price(date) %></span> 
                             <div class=" <%= "events "if (@events_3.include? date)%>"><%= date.day %></div>

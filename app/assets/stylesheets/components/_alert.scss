@@ -3,7 +3,8 @@
   top: 28vh;
   left: 30vw;
   z-index: 1000;
-  padding: 50px;
+  padding: 25px;
+  white-space: pre-line;
 }
 
 .alert-notice{
@@ -11,4 +12,5 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  white-space: pre-line;
 }
