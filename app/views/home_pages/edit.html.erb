@@ -1,4 +1,4 @@
-<% controller.redirect_to gites_path unless current_user == User.first%>
+<% controller.redirect_to root_path unless current_user == User.first%>
 <div class="contain">
     <%= link_to root_path do %>
         <p class="button"><i class="fa-solid fa-circle-arrow-left"></i> Retour</p>
