@@ -1,4 +1,9 @@
-    <div class="gite">
+<% content_for :title, @gite.name %>
+<% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
+<% content_for :uncontainerize, true %>
+<%= cl_image_tag @gite.photo_principale.key, id: "contact-banner"%>
+    
+    <div class="gite contain">
         <h3>
             <%= @gite.name%> &emsp;
         </h3>
