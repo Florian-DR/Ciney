@@ -1,16 +1,21 @@
 class GitesController < ApplicationController
-    skip_before_action :authenticate_user!, only: :show
-    before_action :current_gite, only: %i[show edit delete_pictures]
-    before_action :all_gites, only: %i[show edit index]
+    skip_before_action :authenticate_user!, only: %i[show first_gite second_gite third_gite]
+    before_action :current_gite, only: %i[show edit delete_pictures first_gite second_gite third_gite]
+    before_action :set_dates, only: %i[first_gite second_gite third_gite]
+    # before_action :all_gites, only: %i[show edit index]
 
-    def show
-        if params["start_date"] && session[:dates]
-            @non_available = session[:dates]
-        else
-            @non_available = session[:dates] = @gite.events_dates
-        end
-    end
-
+    # def show
+    #     if params["start_date"] && session[:dates]
+    #         @non_available = session[:dates]
+    #     else
+    #         @non_available = session[:dates] = @gite.events_dates
+    #     end
+    # end
+    # 
+    
+    def first_gite; end
+    def second_gite; end
+    def third_gite; end
     def edit; end
 
     def update
@@ -43,6 +48,14 @@ class GitesController < ApplicationController
     def current_gite
         # To have the name without space in the url
         @gite = Gite.all.select{ |gite| gite.name.downcase.delete(" \'") == params[:name] }.first
+    end
+
+    def set_dates
+        if params["start_date"] && session[:dates]
+            @non_available = session[:dates]
+        else
+            @non_available = session[:dates] = @gite.events_dates
+        end
     end
 
 end
