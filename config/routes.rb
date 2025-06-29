@@ -31,5 +31,5 @@ Rails.application.routes.draw do
   end
 
   resources :charges, only: %i[create destroy update]
-  delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
+  delete "gites/:name/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
 end

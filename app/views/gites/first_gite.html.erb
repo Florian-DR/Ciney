@@ -24,10 +24,10 @@
             <%= link_to "🛏️ Voir les disponibilités", reservation_path, class: "button" %>
         </div>
 
-        <div data-controller="show-picture">
-                <div class="gallery-grid"> 
+        <div class="gallery-container" data-controller="show-picture">
+                <div class="image-gallery"> 
                     <% @gite.photos.each do |photo| %>
-                        <%= cl_image_tag photo.key, class: "gallery-photo", "data-action": "click->show-picture#showPicture" ,"data-show-picture-target": "picture" %>
+                        <%= cl_image_tag photo.key, "data-action": "click->show-picture#showPicture" ,"data-show-picture-target": "picture" %>
                     <% end %>
                 </div>
 
