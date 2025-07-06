@@ -13,7 +13,7 @@
 
 // Commun classes
 .contain{
-    padding: 10px 7vw;
+    padding: 10px 9vw;
     margin: auto;
 }
 
@@ -26,6 +26,7 @@ a{
 }
 h1, h2, h3{
     font-family: "Dancing Script", serif;
+    margin-bottom: 25px;
 }
 
 body{
@@ -34,17 +35,17 @@ body{
     line-height: 2em;
 }
 
-h4{
-    margin-top: 10px;
+h1{
+    font-size: 4em;
 }
-
 h2{
-    margin-bottom: 25px;
+    font-size: 3.5em;
 }
-
 h3{
     font-size: 2.5em;
-    margin-bottom: 25px;
+}
+h4{
+    margin-top: 10px;
 }
 
 .button{
