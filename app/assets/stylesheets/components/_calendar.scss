@@ -19,8 +19,8 @@
     border: none;
     th{
         background-color: $green !important;
-        color: $yellow;
-        border-bottom: 1px solid $yellow !important;}
+        color: $background;
+        border-bottom: 1px solid $background !important;}
     tr{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -32,7 +32,7 @@
         min-width: 50px;
         padding-top: 12px;
         background-color: $green ;
-        color: $yellow;
+        color: $background;
 
         &:has(>.events){
             text-decoration: line-through;
@@ -79,14 +79,14 @@
 
     // I didn't find a syntax that allow me to select element with a class AND the elements between them, so I have 2 block 
     .selected ~ td:has( ~ .selected) {
-        background-color: $yellow !important;
+        background-color: $background !important;
         border-top: 2px solid rgb(0, 0, 0);
         border-bottom: 2px solid rgb(0, 0, 0);
         color: $green;
     }
     
     td:not(.selected) ~ td:not(:not(.selected)) {
-        background-color: $yellow !important;
+        background-color: $background !important;
         border-top: 2px solid rgb(0, 0, 0);
         border-bottom: 2px solid rgb(0, 0, 0);
         color: $green;

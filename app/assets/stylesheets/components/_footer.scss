@@ -1,13 +1,13 @@
 footer{
     margin-top: 40px;
     background-color: $green;
-    color: $yellow !important;
+    color: $background !important;
     padding: 20px;
     display: flex;
     justify-content: space-around;
     gap: 20px;
     a{
-        color: $yellow !important;
+        color: $background !important;
         &:hover{
             opacity: 0.5;
         }
