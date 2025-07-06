@@ -1,0 +1,102 @@
+<% content_for :title, @gite.name %>
+<% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
+<% content_for :uncontainerize, true %>
+<%= cl_image_tag @gite.photo_principale.key, id: "contact-banner", style: "margin-bottom: 0px !important"%>
+    
+    <div class="gite contain">
+        <h2>
+            <%= @gite.name%> &emsp;
+        </h2>
+        
+        <div>
+            <h3>Un gite spacieux et chaleureux pour des moments inoubliables</h3>
+            <p>Nichée au cœur du domaine de la Ferme d’Auwez, Les Hirondelles est une maison familiale entièrement rénovée qui allie authenticité et confort moderne. Avec sa capacité d’accueil de 15 personnes, ses grands espaces conviviaux et son ambiance chaleureuse, ce gîte est parfait pour les retrouvailles, les célébrations et les séjours en groupe.</p>
+        </div>
+
+        <div>
+            <h3>Un lieu pensé pour la convivialité et le partage</h3>
+            <p>Au sein de cette maison de caractère, tout a été conçu pour créer des souvenirs inoubliables. Que ce soit autour du feu en hiver, lors d’un apéritif sur la terrasse ou dans la grande salle à manger, profitez d’un cadre propice aux échanges et à la détente.</p>
+            <ul style="margin: 20px 20px;">
+                <li><b>Capacité:</b> jusqu'à <%= @gite.capacity%> personnes</li>
+                <li><b>Idéal pour:</b> grandes familles, groupes d'amis, retraites en groupe</li>
+                <li><b>Ambiance:</b> chaleureuse, conviviale et authentique</li>
+            </ul>
+            <%= link_to "🛏️ Voir les disponibilités", reservation_path, class: "button" %>
+        </div>
+
+        <div class="gallery-container" data-controller="show-picture">
+            <h3>📷 Découvrez <%= @gite.name %> en images</h3>
+                <div class="image-gallery"> 
+                    <% @gite.photos.each do |photo| %>
+                        <%= cl_image_tag photo.key, "data-action": "click->show-picture#showPicture" ,"data-show-picture-target": "picture" %>
+                    <% end %>
+                </div>
+
+                <div id="imageModal" class="modal" data-show-picture-target="modal">
+                    <span class="close">&times;</span>
+                </div>
+        </div>
+    </div>
+
+    
+    <div class="gite contain gite-details-section">
+        <h3>Espaces et équipements</h3>
+        <div class="gite-details">
+            <div>
+                <h4>🏡 Rez-de-chaussée : un espace de vie convivial</h4>
+                <li>Grand salon avec cassette à bois : ambiance chaleureuse garantie pour les soirées d’hiver</li>
+                <li>Cuisine entièrement équipée : idéale pour préparer des repas en groupe</li>
+                <li>Salle à manger spacieuse avec poêle à bois : pour partager de bons moments tous ensemble</li>
+            </div>
+
+            <div>
+                <h4>🎬 Deuxième étage : détente et divertissement</h4>
+                <li>2 dortoirs (3 et 4 lits)</li>
+                <li>Espace home cinéma avec canapé confortable</li>
+                <li>Espace de jeux pour petits et grands</li>
+                <li>Salle de bain supplémentaire avec douche et toilettes</li>
+            </div>
+
+            <div>
+                <h4>🛏️ Premier étage : confort et intimité</h4>
+                <li>4 chambres doubles avec literie de qualité</li>
+                <li>3 salles de bains modernes</li>
+            </div>
+
+            <div>
+                <h4>🛠️ Équipements inclus</h4>
+                <li>✅ Linge de maison fourni (draps, serviettes)</li>
+                <li>✅ Wifi gratuit</li>
+                <li>✅ Chauffage central</li>
+                <li>✅ Stationnement sur place</li>
+            </div>
+        </div>
+        <div style="margin: 5vh auto;">
+            <h3>Les + du domaine</h3>
+            <h4>Un cadre pensé pour votre confort</h4>
+            <li>🏊‍♂️ Piscine intérieure & sauna – Accès à certains horaires pour un moment de détente</li>
+            <li>☀️ Piscine extérieure en été – Un bassin clôturé, idéal pour se rafraîchir</li>
+            <li>🌿 Grand jardin et nature environnante – Parfait pour se relaxer ou jouer en plein air</li>
+            <li>🚴‍♂️ Abri à vélos sécurisé & kit de nettoyage vélo – Idéal pour les amateurs de cyclisme</li>
+        </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center" class="contain gite">
+        <div style="display: flex; flex-direction: column; grow: 1;">
+                <h3>Informations pratiques</h3>
+                <h4>📌 Tout ce qu’il faut savoir avant votre arrivée</h4>
+                <li><b>Capacité:</b> jusqu'à <%= @gite.capacity%> personnes</li>
+                <li><b>Séjour minimum:</b> 2 nuits</li>
+                <li style="white-space: pre-wrap;"><b>Arrivée & Départ:</b>
+                    ⏳ Arrivée : entre 15h et 22h
+                    ⏳ Départ : avant 11h</li>
+                <li><b>Linge de maison fourni:</b> draps et serviettes inclus</li>
+                <li style="margin-bottom: 10px"><b>Réduction</b> pour les longs séjours</li>
+            <a href="/reservation#calendar-container" class="button" style="width: fit-content; margin-top: 2em">📆 Voir les disponibilités</a>
+        </div>
+        <%= image_tag "cour-interieur-horizontale.jpg", style: "max-height: 500px"%>
+    </div>
+
+    <div class="contain">
+        <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
+    </div>

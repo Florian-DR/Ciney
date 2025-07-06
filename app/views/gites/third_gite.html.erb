@@ -1,0 +1,91 @@
+<% content_for :title, @gite.name %>
+<% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
+<% content_for :uncontainerize, true %>
+<%= cl_image_tag @gite.photo_principale.key, id: "contact-banner", style: "margin-bottom: 0px !important"%>
+    
+    <div class="gite contain">
+        <h2>
+            <%= @gite.name%> &emsp;
+        </h2>
+        
+        <div>
+            <h3>🏡 Le refuge idéal pour un séjour en couple ou en petite famille</h3>
+            <p>Le gîte L’Arbre de Vie est un espace cosy et confortable, parfait pour une escapade en couple, en famille ou entre amis. De plain-pied et entièrement accessible aux personnes à mobilité réduite, il offre tout le confort nécessaire pour un séjour en toute sérénité.</p>
+        </div>
+
+        <div>
+            <h3>Un cocon de bien-être et de simplicité</h3>
+            <p>Pensé pour offrir une expérience conviviale et ressourçante, L’Arbre de Vie séduit par son ambiance chaleureuse et son aménagement fonctionnel. Avec sa cuisine ouverte, son salon cosy et ses deux chambres confortables, il est idéal pour un séjour en toute tranquillité.</p>
+            <ul style="margin: 20px 20px;">
+                <li><b>Capacité:</b> jusqu'à <%= @gite.capacity%> personnes</li>
+                <li><b>Idéal pour:</b> couples, petites familles, personnes à mobilité réduite</li>
+                <li><b>Ambiance:</b> paisible, douillet, fonctionnel</li>
+            </ul>
+            <%= link_to "🛏️ Voir les disponibilités", reservation_path, class: "button" %>
+        </div>
+
+        <div class="gallery-container" data-controller="show-picture">
+            <h3>📷 Découvrez <%= @gite.name %> en images</h3>
+                <div class="image-gallery"> 
+                    <% @gite.photos.each do |photo| %>
+                        <%= cl_image_tag photo.key, "data-action": "click->show-picture#showPicture" ,"data-show-picture-target": "picture" %>
+                    <% end %>
+                </div>
+
+                <div id="imageModal" class="modal" data-show-picture-target="modal">
+                    <span class="close">&times;</span>
+                </div>
+        </div>
+    </div>
+
+    
+    <div class="gite contain gite-details-section">
+        <h3>Espaces et équipements</h3>
+        <div class="gite-details">
+            <div>
+                <h4>🏡 Un gîte fonctionnel et tout confort</h4>
+                <li>Salon cosy avec espace détente et lumière naturelle</li>
+                <li>Cuisine ouverte et équipée : parfaite pour partager des moments gourmands</li>
+                <li>2 chambres douillettes avec literie de qualité</li>
+                <li>2 salles de bains modernes, dont une entièrement adaptée PMR</li>
+            </div>
+            
+            <div>
+                <h4>🛠️ Équipements inclus</h4>
+                <li>✅ Linge de maison fourni (draps, serviettes)</li>
+                <li>✅ Wifi gratuit</li>
+                <li>✅ Chauffage central</li>
+                <li>✅ Stationnement sur place</li>
+                <li>✅ Accès facilité pour les personnes à mobilité réduite</li>
+            </div>
+        </div>
+        
+        <div style="margin: 5vh auto;">
+            <h3>Les + du domaine</h3>
+            <h4>Un cadre pensé pour votre confort</h4>
+            <li>🏊‍♂️ Piscine intérieure & sauna – Accès à certains horaires pour un moment de détente</li>
+            <li>☀️ Piscine extérieure en été – Un bassin clôturé, idéal pour se rafraîchir</li>
+            <li>🌿 Grand jardin et nature environnante – Parfait pour se relaxer ou jouer en plein air</li>
+            <li>🚴‍♂️ Abri à vélos sécurisé & kit de nettoyage vélo – Idéal pour les amateurs de cyclisme</li>
+        </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center" class="contain gite">
+        <div style="display: flex; flex-direction: column; grow: 1;">
+                <h3>Informations pratiques</h3>
+                <h4>📌 Tout ce qu’il faut savoir avant votre arrivée</h4>
+                <li><b>Capacité:</b> jusqu'à <%= @gite.capacity%> personnes</li>
+                <li><b>Séjour minimum:</b> 2 nuits</li>
+                <li style="white-space: pre-wrap;"><b>Arrivée & Départ:</b>
+                    ⏳ Arrivée : entre 15h et 22h
+                    ⏳ Départ : avant 11h</li>
+                <li><b>Linge de maison fourni:</b> draps et serviettes inclus</li>
+                <li style="margin-bottom: 10px"><b>Réduction</b> pour les longs séjours</li>
+            <a href="/reservation#calendar-container" class="button" style="width: fit-content; margin-top: 2em">📆 Voir les disponibilités</a>
+        </div>
+        <%= image_tag "arbre.jpg", style: "max-height: 500px"%>
+    </div>
+
+    <div class="contain">
+        <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
+    </div>

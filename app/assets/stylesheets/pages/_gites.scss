@@ -1,7 +1,6 @@
 .gite{
-    margin: 40px auto;
+    margin: 40px auto !important;
     padding-top: 25px;
-    border-top: solid 3px;
 }
 
 .pictograme{
@@ -10,26 +9,16 @@
 
 // Description et Calendar section
 .gite-details{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    gap: 10px;
+    // justify-content: space-between;
+    // flex-direction: column;
+    grid-template-columns: 1fr 1fr;
+}
 
-    .gite-description{
-        flex-grow: 1;
-    }
-    
-    .calendar-container{
-        margin-left: 12px;
-        position: sticky;
-        .fa-circle-info{
-            position: relative;
-        }
-        .pop-up{
-            display: none;
-            position: absolute;
-            bottom: -15px;
-            font-style: italic;
-        }
-    }  
+.gite-details-section{
+    background-color: $light-gray;
+    padding: 35px 7vw !important;
 }
 
 .all-photos{

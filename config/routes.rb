@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   
   # Params is to give the name in the url instead of the id
   resources :gites, only: [:show, :edit, :update], param: :name 
+  # get "gites/:name", to: "gites#first_gite", as: "first_gite"
+  # get "gites/:name", to: "gites#second_gite", as: "second_gite"
+  # get "gites/:name", to: "gites#third_gite", as: "third_gite"
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create destroy] do
@@ -28,5 +31,5 @@ Rails.application.routes.draw do
   end
 
   resources :charges, only: %i[create destroy update]
-  delete "gites/:id/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
+  delete "gites/:name/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
 end

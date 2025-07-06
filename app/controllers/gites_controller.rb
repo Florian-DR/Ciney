@@ -1,7 +1,6 @@
 class GitesController < ApplicationController
-    skip_before_action :authenticate_user!, only: :show
-    before_action :current_gite, only: %i[show edit delete_pictures]
-    before_action :all_gites, only: %i[show edit index]
+    skip_before_action :authenticate_user!, only: %i[show first_gite second_gite third_gite]
+    before_action :current_gite
 
     def show
         if params["start_date"] && session[:dates]
@@ -9,18 +8,25 @@ class GitesController < ApplicationController
         else
             @non_available = session[:dates] = @gite.events_dates
         end
+    
+        if @gite.name.downcase.include?("hirondelle")
+            render "first_gite"
+        elsif @gite.name.downcase.include?("horizon")
+            render "second_gite"
+        elsif @gite.name.downcase.include?("arbre")
+            render "third_gite"
+        end
     end
 
     def edit; end
 
     def update
-        @gite = Gite.find(params[:id])
         Gite.all.each do |gite| 
           gite.commun = params[:gite][:commun]
           gite.save
         end
         if @gite.update(gite_params)
-            redirect_to gites_path
+            redirect_to gite_path
             flash.notice = "Gite modifié !"
         else
             render :edit, status: :unprocessable_entity
@@ -41,7 +47,7 @@ class GitesController < ApplicationController
     end
 
     def current_gite
-        # To have the name without space in the url
+        # To have the gite from the params[:name] (url)
         @gite = Gite.all.select{ |gite| gite.name.downcase.delete(" \'") == params[:name] }.first
     end
 

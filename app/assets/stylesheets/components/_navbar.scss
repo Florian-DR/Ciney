@@ -5,7 +5,7 @@
   top: 0;
   z-index: 3;
   justify-content: space-between;
-  background-color: $yellow;
+  background-color: $background;
 
     a{
       border-bottom: solid 3px #82ab8100;
@@ -36,7 +36,7 @@ nav{
 .sub-div{
   display: none;
   position: absolute;
-  background-color: $yellow;
+  background-color: $background;
   width: max-content;
   left: 0;
   margin-top: 5px;
