@@ -3,11 +3,11 @@ class GitesController < ApplicationController
     before_action :current_gite
 
     def show
-        if params["start_date"] && session[:dates]
-            @non_available = session[:dates]
-        else
-            @non_available = session[:dates] = @gite.events_dates
-        end
+        # if params["start_date"] && session[:dates]
+        #     @non_available = session[:dates]
+        # else
+        #     @non_available = session[:dates] = @gite.events_dates
+        # end
     
         if @gite.name.downcase.include?("hirondelle")
             render "first_gite"
