@@ -8,18 +8,15 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#contact_sender"
 
-  get "/reservation", to: "reservations#reservation"
-  post "/reservation/gites", to: "reservations#gites_reservation_sender"
-  post "/reservation/mariages", to: "reservations#mariages_reservation_sender"
+  # get "/reservation", to: "reservations#reservation"
+  # post "/reservation/gites", to: "reservations#gites_reservation_sender"
+  # post "/reservation/mariages", to: "reservations#mariages_reservation_sender"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :home_pages, only: [:edit, :update]
   
   # Params is to give the name in the url instead of the id
   resources :gites, only: [:show, :edit, :update], param: :name 
-  # get "gites/:name", to: "gites#first_gite", as: "first_gite"
-  # get "gites/:name", to: "gites#second_gite", as: "second_gite"
-  # get "gites/:name", to: "gites#third_gite", as: "third_gite"
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
   resources :saisons, only: %i[create destroy] do

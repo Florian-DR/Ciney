@@ -9,7 +9,7 @@ class CineyMailer < ApplicationMailer
         @message = params[:message]
         @start_date = params[:start_date]
         @end_date = params[:end_date]
-        mail(bcc: [@email], subject: "Réservation pour les gites d'Auwez - #{@start_date} / #{@end_date}")
+        mail(to: [@email], bcc: ENV['GMAIL_ADDRESS'], subject: "Réservation pour les gites d'Auwez - #{@start_date} / #{@end_date}")
     end
 
     def contact_mailer
@@ -18,7 +18,7 @@ class CineyMailer < ApplicationMailer
         @email = params[:email]
         @telephone = params[:telephone]
         @message = params[:message]
-        mail(bcc: [@email], subject: "Prise de contact - #{@name} #{@first_name}")
+        mail(to: [@email], bcc: ENV['GMAIL_ADDRESS'], subject: "Prise de contact - #{@name} #{@first_name}")
     end
 
     # def mariages_reservation_mailer
