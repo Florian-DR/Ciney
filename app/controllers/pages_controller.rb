@@ -2,8 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home contact contact_sender about]
   def home
     @home = HomePage.first
-    # raise
-    @gites = Gite.all.order(:id)
+
+    @gite_1 = @gites.first
+    @gite_2 = @gites.second
+    @gite_3 = @gites.third
+
     photos = @home.entreprises_photos.each_with_index.select { |photo, index| index > 0 && index < 5 }
     @entreprises_photos = photos.map(&:first)
     photos = @home.decouvrir_photos.each_with_index.select { |photo, index| index > 0 && index < 5 }

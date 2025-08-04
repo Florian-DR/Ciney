@@ -69,3 +69,20 @@ ul{
 #advantages-title{
     margin-bottom: 30px;
 }
+
+.background-gite{
+    background-color: $green;
+    position: relative;
+    height: 100vh;
+    width: auto;
+}
+
+.background-gite::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/background-plant.png');
+    opacity: 0.1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

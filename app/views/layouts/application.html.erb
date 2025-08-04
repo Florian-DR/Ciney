@@ -20,15 +20,7 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
-    <%# If the page has a field "uncontainerize" set as true it do not add a contain class around the page %>
-    <% if yield(:uncontainerize) == "true" %>
-        <%= yield %>
-
-    <% else %>
-      <div class="contain">
-        <%= yield %>
-      </div>
-    <% end %>
+    <%= yield %>
     <%= render "shared/footer" %>
 
   </body>
