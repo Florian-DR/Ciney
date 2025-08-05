@@ -26,10 +26,25 @@
 
 <div class="background-gite" style="display: flex; justify-content: space-between;">
     <div style="width: 50%;">
-        <%= cl_image_tag @gite_1.photo_principale.key if @gite_1.photo_principale.key%>
+        <div>
+            <%= cl_image_tag @gite_1.photo_principale.key if @gite_1.photo_principale.key  %>
+        </div>
+        <div class="sub-photos">
+            <% @gite_1.photos[0..4].each do |photo| %>
+                <%= cl_image_tag photo.key %>
+            <% end %>
+        </div>
     </div>
 
-    <div>
+    <div class="gite-card-text" style="color: white">
+        <h4>Le gîte: <%= @gite_1.name%></h4>
+        <div class="gite-overview">
+            <p class="pictograme"><i class="fa-solid fa-user"></i> <%= @gite_1.capacity %> personnes</p>
+            <p class="pictograme"><i class="fa-solid fa-water-ladder"></i> Accès piscine intérieure</p>
+            <p class="pictograme"> <%= image_tag("image.png")%> Accès sauna</p>
+            <p class="pictograme"><i class="fa-solid fa-fire-burner"></i> Feu de bois</p>
+            <p>Les Hirondelles accueillent jusqu’à 15 personnes dans un espace spacieux, convivial et chaleureux. Ce gîte est idéal pour les familles nombreuses ou les groupes d’amis souhaitant se retrouver autour d’un feu de bois, d’un grand repas ou de moments partagés en toute simplicité. L’agencement de la maison permet à chacun de profiter pleinement de son séjour, dans un cadre à la fois fonctionnel et accueillant. </p>
+        </div>
     </div>
 </div>
 
