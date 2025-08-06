@@ -21,7 +21,7 @@ a{
     text-decoration: none;
     color: $green;
     &:hover{
-        color: $hoverGreen;
+        color: $hoverOrange;
     }
 }
 h1, h2, h3{
@@ -49,13 +49,14 @@ h4{
 }
 
 .button{
-    background-color: $green;
+    background-color: $orange;
     color: $background;
     padding: 10px;
     border-radius: 4px;
     border: none;
     &:hover{
-        background-color: $hoverGreen;
+        background-color: $hoverOrange;
+        color: $background
     }
 }
 

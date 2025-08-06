@@ -70,25 +70,32 @@ ul{
     margin-bottom: 30px;
 }
 
-.background-gite{
-    background-color: $green;
+.gite-card{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     height: fit-content;
     width: auto;
-    padding: 1em;
-    div {
+    padding: 2em 1em;
+
+    .photos-card {
+        max-width: 50%;
+
         img{
             width: 100%;
-            height: auto;
+            height: 60vh;
             object-fit: cover;
+            position: relative;
         } 
     }
 
     .sub-photos{
         display: flex;
         justify-content: space-between;
-        padding: 10px 0px;
+        padding-top: 10px;
         gap: 5px;
+
         img{
             max-width: 18%;
             height: auto;
@@ -96,33 +103,90 @@ ul{
     }
 }
 
-.background-gite::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('/assets/background-plant.png');
-    opacity: 0.1;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
+.background-card-gite{
+    background-color: $green;
+    color: $white;
+
+    &::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/background-plant.png');
+        opacity: 0.1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+    }
 }
 
 .gite-card-text{
-    color: $white;
     padding: 2em;
-    max-width: 50%;
+    max-width: 45%;
+    align-self: center;
+
     h4 {
-        margin-bottom: 1rem;
+        font-size: calc(0.8rem + 1.2vw);
+        margin-bottom: 1.5rem;
+    }
+    .text{
+        padding: 2rem 0;
+        margin: 0;
+    }
+    .button{
+        position: relative;
     }
 }
 
 .gite-overview{
-
     p {
         padding-top: 1rem;
         border-top: solid 1px $white;
-        img{
-            width: 1.7rem;
+        img, i{
+            width: 1.9rem;
         }
+        
     }
+}
+
+.gite-reverse{
+    p {
+        border-color: $green !important;
+    }
+}
+
+// Fake pictogram
+.fake-picto-parent{
+    display: flex;
+    align-items: center;
+}
+
+.fake-picto-item{
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    font-size: 22px;
+
+    &::before{
+        // Use Font Awesome icons
+        content: "\f007";
+    }
+}
+.picto-sauna{
+    mask-image: url("sauna.png");
+}
+
+
+.border-white{
+    border-color: $white;
+}
+
+.border-green{
+    border-color: $green;
+}
+
+.bg-green{
+    background-color: $green;
+}
+
+.bg-white{
+    background-color: $white;
 }

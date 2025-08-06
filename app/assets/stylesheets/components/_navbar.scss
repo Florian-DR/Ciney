@@ -10,7 +10,8 @@
     a{
       border-bottom: solid 3px #82ab8100;
       &:hover{
-        border-bottom: solid 3px $hoverGreen;
+        color: $orange;
+        border-bottom: solid 3px $orange;
       }
     }
 
@@ -51,6 +52,9 @@ nav{
   font-weight: 700;
 }
 
-#gites-nav:hover > .sub-div {
-  display: block;
+#gites-nav{
+  &:hover{color: $orange;}
+  &:hover > .sub-div {
+    display: block;
+  }
 }
