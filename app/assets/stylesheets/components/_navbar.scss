@@ -1,13 +1,13 @@
 .navbar{
   font-family: $headers-font;
-  padding: 10px 0px;
+  padding: 10px 2vw;
   position: sticky;
   top: 0;
   z-index: 3;
   justify-content: space-between;
   background-color: $background;
 
-    a{
+    .nav-link{
       border-bottom: solid 3px #82ab8100;
       &:hover{
         color: $orange;
@@ -18,6 +18,11 @@
     .logo{
       max-height: 80px;
       width: auto;
+    }
+    .button{
+      font-size: 25px;
+      font-weight: 700;
+      padding: 4px 17px;
     }
 }
 
