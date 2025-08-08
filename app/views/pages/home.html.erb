@@ -28,13 +28,13 @@
     <div class="border-btm"></div>
     <div class="soleil"></div>
     <div class="border-btm"></div>
-    <%# <%= render inline: Rails.root.join('./app/assets/images/test.svg').read %>
 </div>
 
 <div class="home-introduction">
     <h2>Un lieu où nature et authenticité se rencontrent</h2>
     <p>Bienvenue à la Ferme d’Auwez, une ancienne ferme au cœur du Condroz belge, entièrement rénovée avec charme et authenticité pour vous offrir un cadre chaleureux, paisible et dépaysant. Nichée dans un environnement verdoyant, la ferme est idéale pour se ressourcer, déconnecter du quotidien et profiter d’un séjour en toute sérénité.
 Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 personnes, parfaits pour des vacances en famille, des retrouvailles entre amis, des séminaires ou des événements privés. La capacité modulable de nos hébergements s’adapte à tous les besoins, dans un cadre unique alliant confort moderne et charme rural.</p>
+    <%= link_to "En savoir plus sur notre histoire", about_path(), class: "button" %>
 </div>
 
 <%###### Gites Section ######%>
@@ -116,9 +116,24 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 </div>
 
 
-
-
-
+<%###### Salle Section ######%>
+<div class="salle-container">
+    <div class="salle-images">
+        <%= image_tag "border-image.png"%>
+    </div>
+    <div class="salle-text">
+        <h4>Un cadre inspirant pour vos événements professionnels</h4>
+        <p>Vous recherchez un lieu où conjuguer travail et détente ? La Ferme d’Auwez accueille vos séminaires, retraites d’entreprise et événements privés dans un environnement calme et inspirant.</p>
+        <p class="text">Pourquoi choisir la Ferme d’Auwez pour vos séminaires ?</p>
+        <ul>
+            <li>Hébergement jusqu’à <%= @capacity%> personnes</li>
+            <li>Espaces communs adaptés aux réunions et activités de groupe</li>
+            <li>Environnement propice à la concentration et à la cohésion d’équipe</li>
+            <li>Options supplémentaires : location de la grange, cuisine traiteur, parking</li>
+        </ul>
+        <%=link_to "Nous contacter", contact_path(), class: "button"%>
+    </div>
+</div> 
 
 
 
