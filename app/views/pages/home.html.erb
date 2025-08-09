@@ -39,14 +39,22 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
 <%###### Gites Section ######%>
 <div class="gite-card background-card-gite">
-    <div class="photos-card">
+    <div class="photos-card" data-controller="show-picture">
         <div>
-            <%= cl_image_tag @gite_1.photo_principale.key if @gite_1.photo_principale.key  %>
+            <%= cl_image_tag @gite_1.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_1.photo_principale.key  %>
         </div>
         <div class="sub-photos">
             <% @gite_1.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.key %>
+                <%= cl_image_tag photo.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
+        </div>
+
+        <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
         </div>
     </div>
 
@@ -76,14 +84,22 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
         <%= link_to "Voir le gite", gite_path(@gite_2), class: "button" %>
     </div>
 
-    <div class="photos-card">
+    <div class="photos-card" data-controller="show-picture">
         <div>
-            <%= cl_image_tag @gite_2.photo_principale.key if @gite_2.photo_principale.key  %>
+            <%= cl_image_tag @gite_2.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_2.photo_principale.key  %>
         </div>
         <div class="sub-photos">
             <% @gite_2.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.key %>
+                <%= cl_image_tag photo.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
+        </div>
+
+        <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
         </div>
     </div>
 </div>
@@ -134,6 +150,13 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
         <%=link_to "Nous contacter", contact_path(), class: "button"%>
     </div>
 </div> 
+
+<%###### Visitors Section ######%>
+<div class="visitors-container">
+
+
+</div>
+
 
 
 

@@ -24,17 +24,21 @@
             <%# <%= link_to "🛏️ Voir les disponibilités", reservation_path, class: "button" %> 
         </div>
 
+        <h3>📷 Découvrez <%= @gite.name %> en images</h3>
         <div class="gallery-container" data-controller="show-picture">
-            <h3>📷 Découvrez <%= @gite.name %> en images</h3>
-                <div class="image-gallery"> 
-                    <% @gite.photos.each do |photo| %>
-                        <%= cl_image_tag photo.key, "data-action": "click->show-picture#showPicture" ,"data-show-picture-target": "picture" %>
-                    <% end %>
-                </div>
+            <div class="image-gallery"> 
+                <% @gite.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, "data-action": "click->show-picture#showPicture", "data-show-picture-target": "pictures"%>
+                <% end %>
+            </div>
 
-                <div id="imageModal" class="modal" data-show-picture-target="modal">
-                    <span class="close">&times;</span>
+            <div class="modal" data-show-picture-target="modal">
+                <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+                <div class="close">
+                    <span>&times;</span>
                 </div>
+                <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
+            </div>
         </div>
     </div>
 
