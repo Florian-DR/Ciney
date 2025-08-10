@@ -40,7 +40,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 <%###### Gites Section ######%>
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
-        <div>
+        <div class="main-photo">
             <%= cl_image_tag @gite_1.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_1.photo_principale.key  %>
         </div>
         <div class="sub-photos">
@@ -85,7 +85,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
     </div>
 
     <div class="photos-card" data-controller="show-picture">
-        <div>
+        <div class="main-photo">
             <%= cl_image_tag @gite_2.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_2.photo_principale.key  %>
         </div>
         <div class="sub-photos">
@@ -108,7 +108,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
-        <div>
+        <div class="main-photo">
             <%= cl_image_tag @gite_3.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_3.photo_principale.key  %>
         </div>
         <div class="sub-photos">
@@ -164,6 +164,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
     <h3>Ils ont séjourné chez nous...</h3>
     <div class="visitors-cards">
         <div class="visitor-card">
+            <%= image_tag "epingle.png", class: "epingle"%>
             <div class="stars">
                 <% 5.times do %>
                     <%= image_tag "star.png" %>
@@ -177,6 +178,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
         </div>
 
         <div class="visitor-card">
+            <%= image_tag "epingle.png", class: "epingle"%>
             <div class="stars">
                 <% 5.times do %>
                     <%= image_tag "star.png" %>
@@ -194,6 +196,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 </div>
 
 
+<%###### Cadre Section ######%>
 
 
 
@@ -207,6 +210,8 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
 
 
+
+<!--
 
 <div class="home" >
     <h1 class="section-title"><%= @home.introduction_title %></h1>
@@ -233,7 +238,6 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
 
 <%###### Mariage section ######%>
-<!--
     <h3 class="section-title"><%= @home.mariages_title %></h3>
     <p><%= @home.mariages_text %></p>
 
@@ -276,7 +280,6 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
             En savoir plus <i class="fa-solid fa-circle-arrow-right"></i>
         <% end %>
 
--->
     <h3 id="advantages-title" class="section-title"><%= @home.decouvrir_title %></h3>
     <h4>Un cadre pensé pour votre confort</h4>
     <p>En séjournant à la Ferme d’Auwez, vous profitez d’équipements et d’espaces communs conçus pour votre bien-être.</p>
@@ -296,4 +299,5 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
     <div style="margin: 30px;"><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" if current_user == User.first%> </div>
 </div>
+-->
 
