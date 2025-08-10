@@ -107,14 +107,22 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
 
 <div class="gite-card background-card-gite">
-    <div class="photos-card">
+    <div class="photos-card" data-controller="show-picture">
         <div>
-            <%= cl_image_tag @gite_3.photo_principale.key if @gite_3.photo_principale.key  %>
+            <%= cl_image_tag @gite_3.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_3.photo_principale.key  %>
         </div>
         <div class="sub-photos">
             <% @gite_3.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.key %>
+                <%= cl_image_tag photo.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
+        </div>
+
+                <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
         </div>
     </div>
 
@@ -152,9 +160,37 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 </div> 
 
 <%###### Visitors Section ######%>
-<div class="visitors-container">
+<div id="visitors-container">
+    <h3>Ils ont séjourné chez nous...</h3>
+    <div class="visitors-cards">
+        <div class="visitor-card">
+            <div class="stars">
+                <% 5.times do %>
+                    <%= image_tag "star.png" %>
+                <% end %>
+            </div>
+            <p class="visitor-text">Endroit exceptionnel, avec des hôtes d’exceptions! 
+                On s’y sent comme à la maison! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre! 
+                C’est tout simplement formidable !
+            </p>
+            <span>Charles dW.</span>
+        </div>
 
+        <div class="visitor-card">
+            <div class="stars">
+                <% 5.times do %>
+                    <%= image_tag "star.png" %>
+                <% end %>
+            </div>
+            <p class="visitor-text">Un endroit sublime et chaleureux !
+                 Des chambres parfaites pour se reposer et profiter du calme de la campagne.
+                  Une vue sublime sur le terroir du coin ! 
+                  À recommander, sans hésitation !
+            </p>
+            <span>Christophe G.</span>
+        </div>
 
+    </div>
 </div>
 
 

@@ -239,26 +239,6 @@ ul{
 }
 
 
-.border-white{
-    border-color: $white;
-}
-
-.border-green{
-    border-color: $green;
-}
-
-.bg-green{
-    background-color: $green;
-}
-
-.bg-white{
-    background-color: $white;
-}
-
-.bg-orange{
-    background-color: $orange;
-}
-
 // Salle Section
 .salle-container{
     width: 85vw;
@@ -297,5 +277,73 @@ ul{
         ul{
             margin-bottom: 2rem;
         }
+    }
+}
+
+// Visitors Section
+
+#visitors-container{
+    height: 80vh;
+    background-color: $green;
+    padding: 60px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    h3{
+        font-size: calc(2.2rem + 1.8vw);
+        color: $background;
+        padding: 20px;
+        &::after{
+            content: "";
+            position: absolute;
+            left: 50%;
+            display: block;
+            width: 143px;
+            transform: translate(-50%, -56%);
+            height: 114px;
+            mask-image: url('/assets/cedilles.png');
+            mask-size: cover;
+            mask-repeat: no-repeat;
+            background-color: $background;
+            opacity: 0.13;            
+        }
+    }
+}
+
+.visitors-cards{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 30px 0;
+    gap: 10vw;
+}
+
+.visitor-card{
+    max-width: 30vw;
+    background-color: $background;
+    border-radius: $radius;
+    text-align: center;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    .stars{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        padding: 5px;
+        margin-bottom: 6px;
+        img{
+            width: 20px;
+            height: 20px;
+        }
+    }
+    p{
+        // width: 40px
     }
 }
