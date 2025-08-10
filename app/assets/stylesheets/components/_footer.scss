@@ -1,5 +1,6 @@
 footer{
     margin-top: 40px;
+    position: relative;
     background-color: $green;
     color: $background !important;
     padding: 20px;
@@ -18,6 +19,7 @@ footer{
     }
     .footer-section {
         text-align: center;
+        z-index: 1;
     }
     ul{
         max-width: fit-content;
@@ -29,8 +31,14 @@ footer{
     .icon{
         font-size: 1.5em;
         margin-bottom: 0.5rem;
+        margin: 0 1vw
     }
 
+}
+
+.social-icons{
+    display: flex;
+    justify-content: center;
 }
 #logo-container{
     max-width: min-content;

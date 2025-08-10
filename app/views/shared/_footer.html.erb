@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer background-card-gite">
     <div id="logo-container" class="footer-section">
         <%= image_tag 'logo_ciney.png', alt: 'Logo', class: 'footer-logo' %>
         <p class="footer-slogan">Un séjour authentique en pleine nature, entre charme et confort.</p>
@@ -12,7 +12,6 @@
                     <li><%=link_to @gites[1].name ,gite_path(@gites[1]) %></li>
                     <li><%=link_to @gites[2].name ,gite_path(@gites[2]) %></li>
                 </ul>
-            <li><a href="/reservation">Tarifs & Réservations</a></li>
             <li><a href="/about">À Propos</a></li>
             <li><a href="/contact">Contact & Accès</a></li>
         </ul>
@@ -24,7 +23,9 @@
             5590</a></p>
         <p><a href="mailto:fermedauwez@gmail.com"><i class="fa-solid fa-envelope"></i> fermedauwez@gmail.com</a></p>
         <h4>Nos réseaux</h4>
+        <div class="social-icons">
             <p class="icon"><%= link_to 'https://facebook.com', target: '_blank' do %><i class="fa-brands fa-facebook"></i><%end%></p>
             <p class="icon"><%= link_to 'https://instagram.com', target: '_blank' do %><i class="fa-brands fa-square-instagram"></i><%end%></p>
+        </div>
     </div>
 </footer>

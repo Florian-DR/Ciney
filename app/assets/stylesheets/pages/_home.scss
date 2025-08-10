@@ -76,7 +76,7 @@ ul{
     align-items: end;
     justify-content: space-between;
     height: 12vh;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     gap: 12vw;
 
     .border-btm{
@@ -121,7 +121,7 @@ ul{
 // Home Introduction
 .home-introduction{
     height: 75vh;
-    max-width: 75vw;
+    max-width: 70vw;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
@@ -194,6 +194,7 @@ ul{
     padding: 2em;
     max-width: 45%;
     align-self: center;
+    z-index: 1;
 
     h4 {
         font-size: calc(0.8rem + 1.2vw);
@@ -360,8 +361,25 @@ ul{
         }
     }
     span{
-            font-size: smaller;
-            font-weight: 900;
+        font-size: smaller;
+        font-weight: 900;
+    }
+}
 
+// Cadre Section
+#cadre-container{
+    max-width: 60vw;
+    height: 80vh;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    h3{
+        font-size: calc(1.2rem + 1.8vw);
+    }
+    p{
+        margin: 1.5rem 0;
     }
 }
