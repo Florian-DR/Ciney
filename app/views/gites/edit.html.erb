@@ -8,7 +8,8 @@
 
     <%= simple_form_for @gite do |f| %>
         <%= f.input :name %>
-        <%= f.input :photo_principale, as: :file, label: "Changer la photo PRINCIPALE"%>
+        <%= f.input :image, as: :hidden, input_html: { value: @gite.image_data }%>
+        <%= f.input :image, as: :file, label: "Changer la photo PRINCIPALE" %>
         <%= f.input :description %>
         <%= f.input :capacity %>
         <%= f.input :rooms %>
@@ -20,11 +21,11 @@
 
     <hr/>
     <p>Gérer mes photos</p>
-    <% if !@gite.photos.empty? %>
+    <% if !@gite %>
         <div class="my-photos">
-            <% @gite.photos.each_with_index do |photo, index| %>
+            <%# <% @gite.photos.each_with_index do |photo, index| %> 
                 <div>
-                    <%= cl_image_tag(photo.key, crop: "fill")  %>
+                    <%# <%= cl_image_tag(photo.key, crop: "fill")  %> 
 
                     <%= link_to delete_pictures_path(@gite, photo_index: index), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette photo ?"}, class: "text-danger" do %>
                         <i class="fa-solid fa-trash"></i>
@@ -33,7 +34,7 @@
                         <%# <i class="fa-solid fa-chevron-left"></i> %>
                         <%# <i class="fa-solid fa-chevron-right"></i>  %>
                 </div>
-            <% end %>
+            <%# <% end %> 
         </div>
     <% else %>
         <p> Il n'y a aucune photos </p>

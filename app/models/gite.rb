@@ -7,6 +7,7 @@ class Gite < ApplicationRecord
 
     has_one_attached :photo_principale
     has_many_attached :photos
+    include Shrine::Attachment(:image) # for the main photo
 
     validates :name, :description, :capacity, :rooms, :sanitary, presence: true
     validates :capacity, :rooms, :sanitary, numericality: true

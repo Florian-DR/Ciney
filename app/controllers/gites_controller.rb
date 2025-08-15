@@ -43,7 +43,7 @@ class GitesController < ApplicationController
     private
 
     def gite_params
-        params.require(:gite).permit(:name, :description, :capacity, :rooms, :sanitary, :commun, :photo_principale, photos: [])
+        params.require(:gite).permit(:name, :description, :capacity, :rooms, :sanitary, :commun, :image ,:photo_principale, photos: [])
     end
 
     def current_gite
