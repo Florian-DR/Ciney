@@ -32,7 +32,8 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  # config.active_storage.service = :amazon
+  config.active_storage.service = :cloudinary
   # Can add photos instead of replacing them on multiple attachments
   config.active_storage.replace_on_assign_to_many = false
   
