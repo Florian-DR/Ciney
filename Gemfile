@@ -62,6 +62,10 @@ gem "simple_form", github: "heartcombo/simple_form"
 # Cloudinary storage for images [https://cloudinary.com] 
 gem "cloudinary"
 
+# To handle images by cloud [https://shrinerb.com/docs/getting-started]
+gem "shrine", "~> 3.0"
+gem "aws-sdk-s3", "~> 1.14"
+
 # To handle users and connection [https://github.com/heartcombo/devise]
 gem "devise"
 
