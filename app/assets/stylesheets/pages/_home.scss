@@ -98,7 +98,7 @@ ul{
             bottom: 0;
             left: -60px;
             position: absolute;
-            background-image: url('/solar.png');
+            background-image: url('solar.png');
             // width: 20vw;
             // height: 12vh;
             height: 98px;
@@ -182,7 +182,7 @@ ul{
         content: "";
         position: absolute;
         inset: 0;
-        background-image: url('/background-plant.png');
+        background-image: url('background-plant.png');
         opacity: 0.1;
         background-repeat: no-repeat;
         background-size: cover;
@@ -269,7 +269,7 @@ ul{
             inset: 0;
             top: -8px;
             left: -8px;
-            background-image: url('/enter.jpeg');
+            background-image: url('enter.jpeg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -309,7 +309,7 @@ ul{
             width: 143px;
             transform: translate(-50%, -61%);
             height: 114px;
-            mask-image: url('/cedilles.png');
+            mask-image: url('cedilles.png');
             mask-size: cover;
             mask-repeat: no-repeat;
             background-color: $background;
