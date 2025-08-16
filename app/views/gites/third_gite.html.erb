@@ -1,7 +1,7 @@
 <% content_for :title, @gite.name %>
 <% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
-<%= cl_image_tag @gite.photo_principale.key, id: "contact-banner", style: "margin-bottom: 0px !important"%>
+<%= image_tag @gite.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), id: "contact-banner", style: "margin-bottom: 0px !important" if @gite.main_photo_url%>
     
     <div class="gite contain">
         <h2>
@@ -27,7 +27,7 @@
         <div class="gallery-container" data-controller="show-picture">
             <div class="image-gallery"> 
                 <% @gite.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, "data-action": "click->show-picture#showPicture", "data-show-picture-target": "pictures"%>
+                    <%= image_tag photo.image_url, alt: photo.get_alt, "data-action": "click->show-picture#showPicture", "data-show-picture-target": "pictures" if photo.image_url%>
                 <% end %>
             </div>
 
@@ -83,9 +83,8 @@
                     ⏳ Départ : avant 11h</li>
                 <li><b>Linge de maison fourni:</b> draps et serviettes inclus</li>
                 <li style="margin-bottom: 10px"><b>Réduction</b> pour les longs séjours</li>
-            <a href="/reservation#calendar-container" class="button" style="width: fit-content; margin-top: 2em">📆 Voir les disponibilités</a>
         </div>
-        <%= image_tag "arbre.jpg", style: "max-height: 500px"%>
+        <%= image_tag "arbre.jpg", alt: "arbre", style: "max-height: 500px"%>
     </div>
 
     <div class="contain">

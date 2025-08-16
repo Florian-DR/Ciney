@@ -8,11 +8,7 @@ class PagesController < ApplicationController
     @gite_3 = @gites.third
     
     @capacity = @gites.sum(&:capacity)
-
-    photos = @home.entreprises_photos.each_with_index.select { |photo, index| index > 0 && index < 5 }
-    @entreprises_photos = photos.map(&:first)
-    photos = @home.decouvrir_photos.each_with_index.select { |photo, index| index > 0 && index < 5 }
-    @decouvrir_photos = photos.map(&:first)
+    @main_photos = @home.photos.where(photo_type: PhotoType::MAIN_PHOTOS)
   end
 
   def admin

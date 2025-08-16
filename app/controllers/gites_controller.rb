@@ -12,8 +12,7 @@ class GitesController < ApplicationController
         end
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
         Gite.all.each do |gite| 

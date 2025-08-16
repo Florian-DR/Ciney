@@ -1,5 +1,4 @@
 class HomePage < ApplicationRecord
-    has_many_attached :main_photos
-    has_many_attached :entreprises_photos
-    has_many_attached :decouvrir_photos
+    has_many :photos, inverse_of: :home_page, dependent: :destroy
+    accepts_nested_attributes_for :photos
 end

@@ -4,8 +4,15 @@ class HomePagesController < ApplicationController
     end
 
     def update
-        home = HomePage.find(params[:id])
-        if home.update(home_params)
+        @home = HomePage.find(params[:id])
+        if @home.update(home_params.except(:photos))
+            # add new uploaded images if present
+            if params[:home_page][:photos].present?
+                photos = params[:home_page][:photos].reject(&:blank?) #Remove default brower empty first element
+                photos.each do |uploaded|
+                    @home.photos.create(image: uploaded, photo_type: PhotoType::MAIN_PHOTOS )
+                end
+            end
             redirect_to root_path
             flash.notice = "Page d'acceuil modifié !"
         else
@@ -26,7 +33,7 @@ class HomePagesController < ApplicationController
                 :mariages_text, 
                 :entreprises_title, 
                 :decouvrir_title,
-                main_photos: [],
-                entreprises_photos: [])
+                photos: []
+                )
     end
 end

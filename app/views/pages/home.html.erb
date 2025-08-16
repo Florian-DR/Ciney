@@ -3,9 +3,9 @@
 
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
-    <% if @home.main_photos.first%> 
+    <% if @main_photos.first%> 
         <div class="carousel-indicators">
-            <% @home.main_photos.each_with_index do |photo, index|%>
+            <% @main_photos.each_with_index do |photo, index|%>
                 <% if index == 0 %>
                     <button type="button" data-bs-target="#carousel-container" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
                 <% else %>
@@ -14,9 +14,9 @@
             <% end %>
         </div>
         <div class="carousel-inner">
-            <% @home.main_photos.each_with_index do |photo, index|%>
+            <% @main_photos.each_with_index do |photo, index|%>
                 <div class="carousel-item  <%= "active" if index == 0%>" data-bs-interval="5000">
-                    <%= cl_image_tag photo.key %>
+                    <%= image_tag photo.image_url, alt: photo.get_alt %>
                 </div>
             <% end %>
         </div>
@@ -33,7 +33,7 @@
 <div class="home-introduction">
     <h2>Un lieu où nature et authenticité se rencontrent</h2>
     <p>Bienvenue à la Ferme d’Auwez, une ancienne ferme au cœur du Condroz belge, entièrement rénovée avec charme et authenticité pour vous offrir un cadre chaleureux, paisible et dépaysant. Nichée dans un environnement verdoyant, la ferme est idéale pour se ressourcer, déconnecter du quotidien et profiter d’un séjour en toute sérénité.
-Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 personnes, parfaits pour des vacances en famille, des retrouvailles entre amis, des séminaires ou des événements privés. La capacité modulable de nos hébergements s’adapte à tous les besoins, dans un cadre unique alliant confort moderne et charme rural.</p>
+Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à <%= @capacity %> personnes, parfaits pour des vacances en famille, des retrouvailles entre amis, des séminaires ou des événements privés. La capacité modulable de nos hébergements s’adapte à tous les besoins, dans un cadre unique alliant confort moderne et charme rural.</p>
     <%= link_to "En savoir plus sur notre histoire", about_path(), class: "button" %>
 </div>
 
@@ -41,11 +41,11 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= cl_image_tag @gite_1.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_1.photo_principale.key  %>
+            <%= image_tag @gite_1.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_1.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_1.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, alt: photo.get_alt, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -65,7 +65,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Accès piscine intérieure</p>
             <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-white"></i>Accès sauna</p>
             <p class="pictograme"><i class="fa-solid fa-fire-burner"></i>Feu de bois</p>
-            <p class="text">Les Hirondelles accueillent jusqu’à 15 personnes dans un espace spacieux, convivial et chaleureux. Ce gîte est idéal pour les familles nombreuses ou les groupes d’amis souhaitant se retrouver autour d’un feu de bois, d’un grand repas ou de moments partagés en toute simplicité. L’agencement de la maison permet à chacun de profiter pleinement de son séjour, dans un cadre à la fois fonctionnel et accueillant.</p>
+            <p class="text">Les Hirondelles accueillent jusqu’à <%= @gite_1.capacity %>  personnes dans un espace spacieux, convivial et chaleureux. Ce gîte est idéal pour les familles nombreuses ou les groupes d’amis souhaitant se retrouver autour d’un feu de bois, d’un grand repas ou de moments partagés en toute simplicité. L’agencement de la maison permet à chacun de profiter pleinement de son séjour, dans un cadre à la fois fonctionnel et accueillant.</p>
         </div>
         <%= link_to "Voir le gite", gite_path(@gite_1), class: "button" %>
     </div>
@@ -79,18 +79,18 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
             <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_2.capacity %> personnes</p>
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Accès piscine intérieure</p>
             <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-green"></i>Accès sauna</p>
-            <p class="text">L’Horizon peut accueillir jusqu’à 6 personnes. Ce gîte au style cosy et lumineux séduit par sa terrasse panoramique, qui offre une vue imprenable sur la campagne vallonnée du Condroz. Parfait pour une escapade en petit groupe ou en famille, il ravira les amateurs de nature et de tranquillité.</p>
+            <p class="text">L’Horizon peut accueillir jusqu’à <%= @gite_2.capacity %>  personnes. Ce gîte au style cosy et lumineux séduit par sa terrasse panoramique, qui offre une vue imprenable sur la campagne vallonnée du Condroz. Parfait pour une escapade en petit groupe ou en famille, il ravira les amateurs de nature et de tranquillité.</p>
         </div>
         <%= link_to "Voir le gite", gite_path(@gite_2), class: "button" %>
     </div>
 
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= cl_image_tag @gite_2.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_2.photo_principale.key  %>
+            <%= image_tag @gite_2.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_2.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_2.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -108,11 +108,11 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= cl_image_tag @gite_3.photo_principale.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_3.photo_principale.key  %>
+            <%= image_tag @gite_3.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_3.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_3.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.key, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= cl_image_tag photo.image_url, alt: photo.get_alt, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -132,7 +132,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Accès piscine intérieure</p>
             <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-white"></i>Accès sauna</p>
             <p class="pictograme"><i class="fa-solid fa-wheelchair"></i>Accès PMR</p>
-            <p class="text">L’Arbre de Vie, pensé pour 4 personnes, est un espace intimiste, chaleureux et entièrement de plain-pied. Il est totalement accessible aux personnes à mobilité réduite (PMR). Ce gîte allie confort moderne, simplicité et accessibilité, pour un séjour serein, en couple ou en petite famille.</p>
+            <p class="text">L’Arbre de Vie, pensé pour <%= @gite_3.capacity %>  personnes, est un espace intimiste, chaleureux et entièrement de plain-pied. Il est totalement accessible aux personnes à mobilité réduite (PMR). Ce gîte allie confort moderne, simplicité et accessibilité, pour un séjour serein, en couple ou en petite famille.</p>
         </div>
         <%= link_to "Voir le gite", gite_path(@gite_3), class: "button" %>
     </div>
@@ -142,7 +142,7 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 <%###### Salle Section ######%>
 <div class="salle-container">
     <div class="salle-images">
-        <%= image_tag "border-image.png"%>
+        <%= image_tag "border-image.png", alt: "border-image.png"%>
     </div>
     <div class="salle-text">
         <h4>Un cadre inspirant pour vos événements professionnels</h4>
@@ -163,10 +163,10 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
     <h3>Ils ont séjourné chez nous...</h3>
     <div class="visitors-cards">
         <div class="visitor-card">
-            <%= image_tag "epingle.png", class: "epingle"%>
+            <%= image_tag "epingle.png", alt: "epingle", class: "epingle"%>
             <div class="stars">
                 <% 5.times do %>
-                    <%= image_tag "star.png" %>
+                    <%= image_tag "star.png", alt: "star" %>
                 <% end %>
             </div>
             <p class="visitor-text">Endroit exceptionnel, avec des hôtes d’exceptions! 
@@ -177,10 +177,10 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
         </div>
 
         <div class="visitor-card">
-            <%= image_tag "epingle.png", class: "epingle"%>
+            <%= image_tag "epingle.png", alt: "epingle", class: "epingle"%>
             <div class="stars">
                 <% 5.times do %>
-                    <%= image_tag "star.png" %>
+                    <%= image_tag "star.png", alt: "star" %>
                 <% end %>
             </div>
             <p class="visitor-text">Un endroit sublime et chaleureux !
@@ -208,106 +208,3 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à 25 pers
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-<div class="home" >
-    <h1 class="section-title"><%= @home.introduction_title %></h1>
-    <p><%= simple_format(@home.introduction_text) %></p>
-
-<%###### Gites section ######%>
-    <h3 class="section-title"><%= @home.gites_title %></h3>
-    <p class="gites-description"><%= simple_format(@home.gites_description)%></p>
-    <div class="gites">
-        <% @gites.each do |gite| %>
-            <%= link_to gite_path(gite) do%>
-            <div class="gites-card">
-                <h6><%= gite.name %></h6>
-                <%= cl_image_tag gite.photo_principale.key if gite.photo_principale.key%> 
-                <div>
-                    <p class="pictograme"><i class="fa-solid fa-user"></i> <%= gite.capacity %></p>
-                    <p class="pictograme"><i class="fa-solid fa-bed"></i> <%= gite.rooms %></p>
-                    <p class="pictograme"><i class="fa-solid fa-shower"></i> <%= gite.sanitary %></p>
-                </div>
-            </div>
-            <% end %>
-        <% end %>
-    </div>
-
-
-<%###### Mariage section ######%>
-    <h3 class="section-title"><%= @home.mariages_title %></h3>
-    <p><%= @home.mariages_text %></p>
-
-<%###### Entreprise section ######%>
-    <h3 class="section-title"><%= @home.entreprises_title %></h3>
-
-        <div class="cadre-photos">
-            <% if @home.entreprises_photos.first%>   
-                <div class="photo-principale"> 
-                    <%= cl_image_tag @home.entreprises_photos.first.key%>
-                </div>
-                <div class="my-photos"> 
-                    <% @entreprises_photos.each do |photo| %>
-                        <%= cl_image_tag photo.key %>
-                    <% end %>
-                </div>
-            <% end %>
-        </div>
-        <%= link_to contact_path, class: "button voir-plus" do %> 
-            En savoir plus <i class="fa-solid fa-circle-arrow-right"></i>
-        <% end %>
-
-<%###### Découverte section ######%>
-
-
-    <h3 class="section-title"><%= @home.decouvrir_title %></h3>
-        <div class="cadre-photos">
-            <% if @home.decouvrir_photos.first%>   
-                <div class="photo-principale"> 
-                    <%= cl_image_tag @home.decouvrir_photos.first.key%>
-                </div>
-                <div class="my-photos"> 
-                    <% @decouvrir_photos.each do |photo| %>
-                        <%= cl_image_tag photo.key %>
-                    <% end %>
-                </div>
-            <% end %>
-        </div>
-        <%= link_to contact_path, class: "button voir-plus" do %> 
-            En savoir plus <i class="fa-solid fa-circle-arrow-right"></i>
-        <% end %>
-
-    <h3 id="advantages-title" class="section-title"><%= @home.decouvrir_title %></h3>
-    <h4>Un cadre pensé pour votre confort</h4>
-    <p>En séjournant à la Ferme d’Auwez, vous profitez d’équipements et d’espaces communs conçus pour votre bien-être.</p>
-    <ul class="advantages">
-        <li> 🏊‍♂️ <b>Piscine intérieure & sauna</b> – Détendez-vous toute l’année</li>
-        <li> ☀️ <b>Piscine extérieure en été</b> – Un bassin clôturé pour se rafraîchir</li>
-        <li> 🚴‍♂️ <b>Abri à vélos sécurisé & kit de nettoyage</b> – Idéal pour les amateurs de cyclisme</li>
-        <li> 🌿 <b>Vaste jardin avec vue imprenable</b> – Un espace de détente et de jeux en pleine nature</li>
-        <li> 📍 <b>Un point de départ idéal pour vos escapades !</b>
-            <ul>
-                <li>Accès direct à des sentiers de randonnée</li>
-                <li>Proximité de l’EuroVélo5 et du RAVeL pour les cyclistes</li>
-                <li>Marchés, villages et spécialités locales à découvrir aux alentours</li>
-            </ul>
-        </li>
-    </ul>
-
-    <div style="margin: 30px;"><%= link_to "Modifier la page d'acceuil", edit_home_page_path(@home), class: "button" if current_user == User.first%> </div>
-</div>
--->
-
