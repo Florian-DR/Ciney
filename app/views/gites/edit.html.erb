@@ -6,35 +6,35 @@
     <% end %>
     <%= render "shared/tuto"%>
 
-    <%= simple_form_for @gite do |f| %>
+    <%= simple_form_for @gite, html: { multipart: true } do |f| %>
         <%= f.input :name %>
-        <%= f.input :image, as: :hidden, input_html: { value: @gite.image_data }%>
-        <%= f.input :image, as: :file, label: "Changer la photo PRINCIPALE" %>
+        <%= f.input :main_photo, as: :hidden, input_html: { value: @gite.main_photo_data }%>
+        <%= f.input :main_photo, as: :file, label: "Changer la photo PRINCIPALE" %>
         <%= f.input :description %>
         <%= f.input :capacity %>
         <%= f.input :rooms %>
         <%= f.input :sanitary %>
         <%= f.input :commun %>
-        <%= f.input :photos, as: :file, label: "Ajouter des photos", input_html: {multiple: true} %>
+        <%= f.input :photos, as: :file, label: "Ajouter des photos", input_html: {multiple: true}  %>
         <%= f.submit "Valider les modifications", class: "button"%>
     <% end %>
 
     <hr/>
     <p>Gérer mes photos</p>
-    <% if !@gite %>
+    <% if !@gite.photos.empty? %>
         <div class="my-photos">
-            <%# <% @gite.photos.each_with_index do |photo, index| %> 
+            <% @gite.photos.each_with_index do |photo, index| %>
                 <div>
-                    <%# <%= cl_image_tag(photo.key, crop: "fill")  %> 
+                    <%= image_tag photo.image_url, crop: "fill" if photo.image_url %>
 
-                    <%= link_to delete_pictures_path(@gite, photo_index: index), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette photo ?"}, class: "text-danger" do %>
+                    <%= link_to delete_pictures_path(@gite, photo_id: photo.id), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette photo ?"}, class: "text-danger" do %>
                         <i class="fa-solid fa-trash"></i>
                     <% end %>
                     
                         <%# <i class="fa-solid fa-chevron-left"></i> %>
                         <%# <i class="fa-solid fa-chevron-right"></i>  %>
                 </div>
-            <%# <% end %> 
+            <% end %>
         </div>
     <% else %>
         <p> Il n'y a aucune photos </p>

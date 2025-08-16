@@ -3,12 +3,6 @@ class GitesController < ApplicationController
     before_action :current_gite
 
     def show
-        # if params["start_date"] && session[:dates]
-        #     @non_available = session[:dates]
-        # else
-        #     @non_available = session[:dates] = @gite.events_dates
-        # end
-    
         if @gite.name.downcase.include?("hirondelle")
             render "first_gite"
         elsif @gite.name.downcase.include?("horizon")
@@ -18,14 +12,23 @@ class GitesController < ApplicationController
         end
     end
 
-    def edit; end
+    def edit
+    end
 
     def update
         Gite.all.each do |gite| 
           gite.commun = params[:gite][:commun]
           gite.save
         end
-        if @gite.update(gite_params)
+        if @gite.update(gite_params.except(:photos))
+                # add new uploaded images if present
+            if params[:gite][:photos].present?
+                photos = params[:gite][:photos].reject(&:blank?) #Remove default brower empty first element
+                photos.each do |uploaded|
+                    @gite.photos.create(image: uploaded)
+                end
+            end
+            
             redirect_to gite_path
             flash.notice = "Gite modifié !"
         else
@@ -34,8 +37,10 @@ class GitesController < ApplicationController
     end
 
     def delete_pictures
-        photo = @gite.photos[params[:photo_index].to_i]
-        photo.purge
+        photo = @gite.photos.find(params[:photo_id])
+        photo.destroy!
+        @gite.photos.delete(photo)
+
         flash.notice = "Une photo a bien été supprimée"
         redirect_to request.referer
     end
@@ -43,7 +48,7 @@ class GitesController < ApplicationController
     private
 
     def gite_params
-        params.require(:gite).permit(:name, :description, :capacity, :rooms, :sanitary, :commun, :image ,:photo_principale, photos: [])
+        params.require(:gite).permit(:name, :description, :capacity, :rooms, :sanitary, :commun, :main_photo ,:photo_principale, photos: [])
     end
 
     def current_gite

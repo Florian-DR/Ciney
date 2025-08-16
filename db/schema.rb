@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_15_205733) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_16_130940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_15_205733) do
     t.text "commun"
     t.string "hero_title"
     t.text "hero_description"
-    t.text "image_data"
+    t.text "main_photo_data"
   end
 
   create_table "holidays", force: :cascade do |t|
@@ -117,6 +117,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_15_205733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "gites_description"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.bigint "gite_id"
+    t.string "type"
+    t.string "from_page"
+    t.text "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gite_id"], name: "index_photos_on_gite_id"
   end
 
   create_table "saisons", force: :cascade do |t|
@@ -148,4 +158,5 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_15_205733) do
   add_foreign_key "days_of_weeks", "saisons"
   add_foreign_key "gite_holidays", "gites"
   add_foreign_key "gite_holidays", "holidays"
+  add_foreign_key "photos", "gites"
 end

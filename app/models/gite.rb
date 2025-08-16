@@ -4,16 +4,16 @@ class Gite < ApplicationRecord
     has_many :gite_holidays
     has_many :holidays, through: :gite_holidays
     has_many :saisons, through: :days_of_weeks
+    has_many :photos, inverse_of: :gite, dependent: :destroy
+    accepts_nested_attributes_for :photos
 
-    has_one_attached :photo_principale
-    has_many_attached :photos
-    include Shrine::Attachment(:image) # for the main photo
+    include Shrine::Attachment(:main_photo)
 
     validates :name, :description, :capacity, :rooms, :sanitary, presence: true
     validates :capacity, :rooms, :sanitary, numericality: true
     validates :name, uniqueness: true
 
-    require "googleauth"
+    # require "googleauth"
 
 
     def to_param
@@ -47,58 +47,58 @@ class Gite < ApplicationRecord
     # end 
 
     # Retrieve the price of each day through holidays and saisons for the /gites pages on the calendar
-    def price(day)
-        holidays.each do |holiday|
-            return gite_holidays.where(holiday: holiday).first.price if ((holiday.start_date..holiday.end_date).to_a.include? day)
-        end
+    # def price(day)
+    #     holidays.each do |holiday|
+    #         return gite_holidays.where(holiday: holiday).first.price if ((holiday.start_date..holiday.end_date).to_a.include? day)
+    #     end
         
-        saisons.each do |saison|
-            if ((saison.start_date..saison.end_date).to_a.include? day) 
-                status = (day.saturday? || day.friday? || day.sunday?) ? "week-end" : "semaine"
-                day_price = days_of_weeks.where(saison: saison, status: status)
+    #     saisons.each do |saison|
+    #         if ((saison.start_date..saison.end_date).to_a.include? day) 
+    #             status = (day.saturday? || day.friday? || day.sunday?) ? "week-end" : "semaine"
+    #             day_price = days_of_weeks.where(saison: saison, status: status)
                 
-                return (day_price.first.price) unless day_price.empty? 
-            end
+    #             return (day_price.first.price) unless day_price.empty? 
+    #         end
 
-        end
+    #     end
 
-        "undefined"
-    end
+    #     "undefined"
+    # end
 
-    def events_dates
-      non_available = []
-      events.each do |event|
-        if event.start.date_time
-          (event.start.date_time.to_date...event.end.date_time.to_date).to_a.each { |event_date| non_available << event_date }
-        else 
-          (event.start.date..event.end.date).to_a.each { |event_date| non_available << event_date }
-        end
-      end
-      non_available
-    end
+    # def events_dates
+    #   non_available = []
+    #   events.each do |event|
+    #     if event.start.date_time
+    #       (event.start.date_time.to_date...event.end.date_time.to_date).to_a.each { |event_date| non_available << event_date }
+    #     else 
+    #       (event.start.date..event.end.date).to_a.each { |event_date| non_available << event_date }
+    #     end
+    #   end
+    #   non_available
+    # end
 
-    private
+    # private
 
-    def events
-      calendar = Google::Apis::CalendarV3::CalendarService.new
-      calendar.authorization = Google::Apis::RequestOptions.default.authorization
-      # Replace with your actual calendar ID
+    # def events
+    #   calendar = Google::Apis::CalendarV3::CalendarService.new
+    #   calendar.authorization = Google::Apis::RequestOptions.default.authorization
+    #   # Replace with your actual calendar ID
       
-      if name.downcase.include?("hirondelle")
-        calendar_id = ENV['CALENDAR_HIRONDELLES']
-      elsif name.downcase.include?("horizon")
-        calendar_id = ENV['CALENDAR_HORIZON']
-      elsif name.downcase.include?("arbre")
-        calendar_id = ENV['CALENDAR_ARBRE_DE_VIE']
-      end
+    #   if name.downcase.include?("hirondelle")
+    #     calendar_id = ENV['CALENDAR_HIRONDELLES']
+    #   elsif name.downcase.include?("horizon")
+    #     calendar_id = ENV['CALENDAR_HORIZON']
+    #   elsif name.downcase.include?("arbre")
+    #     calendar_id = ENV['CALENDAR_ARBRE_DE_VIE']
+    #   end
      
-      events = calendar.list_events(calendar_id,
-                                    max_results: 30,
-                                    single_events: true,
-                                    order_by: 'startTime',
-                                    time_min: Time.now.iso8601)
+    #   events = calendar.list_events(calendar_id,
+    #                                 max_results: 30,
+    #                                 single_events: true,
+    #                                 order_by: 'startTime',
+    #                                 time_min: Time.now.iso8601)
 
-      events = events.items
-    end
+    #   events = events.items
+    # end
       
 end
