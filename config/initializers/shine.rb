@@ -10,8 +10,8 @@ s3_options = {
   bucket:            ENV['AWS_BUCKET'],
 }
 Shrine.storages = {
-  cache: Shrine::Storage::S3.new( prefix: "cache", **s3_options), # temporary storage
-  store: Shrine::Storage::S3.new( prefix: "store", **s3_options), # permanent storage
+  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options), # temporary storage
+  store: Shrine::Storage::S3.new(prefix: "store", **s3_options), # permanent storage
 }
 
 Shrine.plugin :activerecord # or :activerecord
@@ -19,6 +19,7 @@ Shrine.plugin :cached_attachment_data # for retaining the cached file across for
 Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
 Shrine.plugin :validation_helpers 
 Shrine.plugin :pretty_location
+Shrine.plugin :determine_mime_type
 
 # Shrine.plugin :url_options, store: { host: "https://lafermedauwez.be" }
 
