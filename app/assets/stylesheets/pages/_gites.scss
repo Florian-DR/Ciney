@@ -11,8 +11,6 @@
 .gite-details{
     display: grid;
     gap: 10px;
-    // justify-content: space-between;
-    // flex-direction: column;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -20,6 +18,7 @@
     background-color: $green;
     padding: 35px 7vw !important;
     color: $background;
+    margin-top: 0px !important;
 }
 
 .all-photos{

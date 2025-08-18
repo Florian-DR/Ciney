@@ -13,11 +13,11 @@ HomePage.delete_all
 
 def generate_aws_image(key)
   Shrine::UploadedFile.new(
-  storage: "store", # must match Shrine.storages key (usually :store)
-  id: key,  
-  metadata: {
-    "filename"  => File.basename(key),
-    "mime_type" => "image/jpeg",  # adjust if not jpg
+    storage: "store", # must match Shrine.storages key (usually :store)
+    id: key,  
+    metadata: {
+        "filename"  => File.basename(key),
+        "mime_type" => "image/jpeg",  # adjust if not jpg
   }
 )
 end
@@ -73,30 +73,30 @@ home.save!
 puts " Homepage created"
 
 puts "---------- Adding photos ----------"
-
-puts " Attach main photos ..."
-key_tree = "store/gite/54/main_photo/312a7e5d6614ab96057dc2238a0e1b43.jpg"
-key_horizon = "store/gite/53/main_photo/99174155bab83422874880d04d686b2a.jpg"
-key_panorama= "store/gite/52/main_photo/d1b7240f8445963a20dfb83acd7077be.jpg"
-key_piscine= "store/photo/72/image/a463f7c83500f8854526b36fc66581f0.jpg"
-key_vaches= "store/photo/81/image/865be029758dc47d33a73e707f33f0e0.jpg"
+puts " Generate image from key"
+key_tree = "gite/54/main_photo/312a7e5d6614ab96057dc2238a0e1b43.jpg"
+key_horizon = "gite/53/main_photo/99174155bab83422874880d04d686b2a.jpg"
+key_panorama= "gite/52/main_photo/d1b7240f8445963a20dfb83acd7077be.jpg"
+key_piscine= "photo/72/image/a463f7c83500f8854526b36fc66581f0.jpg"
+key_vaches= "photo/81/image/865be029758dc47d33a73e707f33f0e0.jpg"
 
 image_tree = generate_aws_image(key_tree)
 image_horizon = generate_aws_image(key_horizon)
 image_panorama = generate_aws_image(key_panorama)
 
+puts " Attach main photos ..."
 home.photos.create(image: image_tree, photo_type: PhotoType::MAIN_HOMEPAGE)
 home.photos.create(image: image_horizon, photo_type: PhotoType::MAIN_HOMEPAGE) 
-hirondelles.main_photo_remote_url = image_panorama 
-horizon.main_photo_remote_url = image_horizon 
-arbre.main_photo_remote_url =  image_tree
+hirondelles.main_photo = image_panorama 
+horizon.main_photo = image_horizon 
+arbre.main_photo =  image_tree
 
 
 five_first_photos = [
     image_tree, 
     generate_aws_image(key_piscine),
     image_horizon, 
-    image_panorama, 
+    image_panorama,
     generate_aws_image(key_vaches)
 ]
 
