@@ -14,12 +14,14 @@ Shrine.storages = {
   store: Shrine::Storage::S3.new(prefix: "store", **s3_options), # permanent storage
 }
 
-Shrine.plugin :activerecord # or :activerecord
+Shrine.plugin :activerecord
 Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays
 Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
 Shrine.plugin :validation_helpers 
 Shrine.plugin :pretty_location
 Shrine.plugin :determine_mime_type
+Shrine.plugin :remote_url, max_size: 20*1024*1024 # 20 MB limit for remote URLs
+
 
 # Shrine.plugin :url_options, store: { host: "https://lafermedauwez.be" }
 

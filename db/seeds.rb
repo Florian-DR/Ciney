@@ -2,12 +2,25 @@ require "open-uri"
 
 puts "---------- Deleting previous data----------"
 puts " Deleting ..."
+Photo.delete_all
 DaysOfWeek.delete_all
 Day.delete_all
 GiteHoliday.delete_all
 Holiday.delete_all
+Charge.delete_all
 Gite.delete_all
 HomePage.delete_all
+
+def generate_aws_image(key)
+  Shrine::UploadedFile.new(
+  storage: "store", # must match Shrine.storages key (usually :store)
+  id: key,  
+  metadata: {
+    "filename"  => File.basename(key),
+    "mime_type" => "image/jpeg",  # adjust if not jpg
+  }
+)
+end
 
 puts "---------- Generating new gites ----------"
 
@@ -18,38 +31,38 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 hirondelles = Gite.new
 hirondelles.name = "Les Hirondelles"
 hirondelles.description = lorem_ipsum
-hirondelles.capacity = 16
+hirondelles.capacity = 15
 hirondelles.rooms = 6
 hirondelles.sanitary = 5
 hirondelles.commun = "BBQ, sauna, piscine etc ..."
 hirondelles.save!
 puts " #{hirondelles.name} created"
 
-chouette = Gite.new
-chouette.name = "L'Horizon"
-chouette.description = lorem_ipsum
-chouette.capacity = 8
-chouette.rooms = 4
-chouette.sanitary = 4
-chouette.commun = "BBQ, sauna, piscine etc ..."
-chouette.save!
-puts " #{chouette.name} created"
+horizon = Gite.new
+horizon.name = "L'Horizon"
+horizon.description = lorem_ipsum
+horizon.capacity = 6
+horizon.rooms = 2
+horizon.sanitary = 2
+horizon.commun = "BBQ, sauna, piscine etc ..."
+horizon.save!
+puts " #{horizon.name} created"
 
-pmr = Gite.new
-pmr.name = "L'Arbre de Vie"
-pmr.description = lorem_ipsum
-pmr.capacity = 8
-pmr.rooms = 4
-pmr.sanitary = 4
-pmr.commun = "BBQ, sauna, piscine etc ..."
-pmr.save!
-puts " #{pmr.name} created"
+arbre = Gite.new
+arbre.name = "L'Arbre de Vie"
+arbre.description = lorem_ipsum
+arbre.capacity = 4
+arbre.rooms = 2
+arbre.sanitary = 2
+arbre.commun = "BBQ, sauna, piscine etc ..."
+arbre.save!
+puts " #{arbre.name} created"
 
 puts "---------- Generating HomePage ----------"
 
 home = HomePage.new
 home.introduction_title = "La ferme d'Auwez"
-home.introduction_text = "Bienvenue dans le cadre merveilleux de la Ferme d’Auwez !  La Ferme est située sur le flanc d’une petite vallée au fond duquel un ruisseau coule paisiblement. Nous vous accueillons dans ce cadre calme et reposant. Le magnifique panorama à partir de la Ferme est entourée de champs, de prairies et des bois aux alentours jusqu’au petit village de Pessoux à quelques kilomètres.  Le cadre merveilleux et paisible de la Ferme d’Auwez est l’occasion idéale d’organiser des séjours en famille ou entre amis. De nombreuses et chouettes activités (sportives, culturelles, de détente, bien-être, familiales, touristiques, de découverte) sont facilement faisables dans le Gîte, dans la ferme ou dans la région.  Piscine intérieure, Sauna, Ravel, promenade,..."
+home.introduction_text = "Bienvenue dans le cadre merveilleux de la Ferme d’Auwez !  La Ferme est située sur le flanc d’une petite vallée au fond duquel un ruisseau coule paisiblement. Nous vous accueillons dans ce cadre calme et reposant. Le magnifique panorama à partir de la Ferme est entourée de champs, de prairies et des bois aux alentours jusqu’au petit village de Pessoux à quelques kilomètres.  Le cadre merveilleux et paisible de la Ferme d’Auwez est l’occasion idéale d’organiser des séjours en famille ou entre amis. De nombreuses et horizons activités (sportives, culturelles, de détente, bien-être, familiales, touristiques, de découverte) sont facilement faisables dans le Gîte, dans la ferme ou dans la région.  Piscine intérieure, Sauna, Ravel, promenade,..."
 home.gites_title = "Nos Gites"
 home.gites_description = lorem_ipsum
 home.mariages_title = "Les Mariages"
@@ -60,38 +73,41 @@ home.save!
 puts " Homepage created"
 
 puts "---------- Adding photos ----------"
-seeds_photos = [
-  "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1696006219/Ciney/yz20jc18uddrixli7g8jve96hlrz.jpg",
-  "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1695987849/Ciney/kp4izd0bzoe23rnocvscsp179ytc.jpg",
-  "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1695987855/Ciney/f1qunlp7cdsn8uuitomeuc5nzo0c.jpg",
-  "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1695987852/Ciney/n3pjn17awbwnlacpyohioetiybwg.jpg",
-  "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1711753045/Ciney/8xmjcrnr1dgzgx40ihgqv06j3n1g.jpg",
-  "https://res.cloudinary.com/dlyq7dzjx/image/upload/v1695987849/Ciney/kp4izd0bzoe23rnocvscsp179ytc.jpg"
-]
 
 puts " Attach main photos ..."
-hirondelles.photo_principale.attach(io: URI.open(seeds_photos[0]), filename: "Main image 1", content_type: "image/jpg")
-chouette.photo_principale.attach(io: URI.open(seeds_photos[1]), filename: "Main image 2", content_type: "image/jpg")
-pmr.photo_principale.attach(io: URI.open(seeds_photos[2]), filename: "Main image 3", content_type: "image/jpg")
-home.main_photos.attach(io: URI.open(seeds_photos[0]), filename: "Main image 1", content_type: "image/jpg")
-home.main_photos.attach(io: URI.open(seeds_photos[1]), filename: "Main image 2", content_type: "image/jpg")
-home.main_photos.attach(io: URI.open(seeds_photos[2]), filename: "Main image 3", content_type: "image/jpg")
+key_tree = "store/gite/54/main_photo/312a7e5d6614ab96057dc2238a0e1b43.jpg"
+key_horizon = "store/gite/53/main_photo/99174155bab83422874880d04d686b2a.jpg"
+key_panorama= "store/gite/52/main_photo/d1b7240f8445963a20dfb83acd7077be.jpg"
+key_piscine= "store/photo/72/image/a463f7c83500f8854526b36fc66581f0.jpg"
+key_vaches= "store/photo/81/image/865be029758dc47d33a73e707f33f0e0.jpg"
+
+image_tree = generate_aws_image(key_tree)
+image_horizon = generate_aws_image(key_horizon)
+image_panorama = generate_aws_image(key_panorama)
+
+home.photos.create(image: image_tree, photo_type: PhotoType::MAIN_HOMEPAGE)
+home.photos.create(image: image_horizon, photo_type: PhotoType::MAIN_HOMEPAGE) 
+hirondelles.main_photo_remote_url = image_panorama 
+horizon.main_photo_remote_url = image_horizon 
+arbre.main_photo_remote_url =  image_tree
 
 
+five_first_photos = [
+    image_tree, 
+    generate_aws_image(key_piscine),
+    image_horizon, 
+    image_panorama, 
+    generate_aws_image(key_vaches)
+]
+
+five_first_photos.each do |photo|
+  hirondelles.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
+  horizon.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
+  arbre.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
+end
 
 hirondelles.save!
-chouette.save!
-pmr.save!
-
-puts " Attach all photos ..."
-seeds_photos.each_with_index do |photo_url, index|
-    hirondelles.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpg")
-    chouette.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpg")
-    pmr.photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg")
-    
-    home.entreprises_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
-    home.decouvrir_photos.attach(io: URI.open(seeds_photos[index]), filename: "Photo_#{index + 1}", content_type: "image/jpeg") # Will have other photos later
-    puts " Photo #{index + 1} added"
-end
+horizon.save!
+arbre.save!
 
 puts " Photos added"

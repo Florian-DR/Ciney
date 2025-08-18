@@ -1,3 +1,4 @@
 module PhotoType
-  MAIN_PHOTOS = "main_photos"
+  MAIN_HOMEPAGE = "main_photos"
+  GALLERY_GITE = "gallery_photos"
 end
