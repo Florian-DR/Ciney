@@ -10,7 +10,7 @@ class HomePagesController < ApplicationController
             if params[:home_page][:photos].present?
                 photos = params[:home_page][:photos].reject(&:blank?) #Remove default brower empty first element
                 photos.each do |uploaded|
-                    @home.photos.create(image: uploaded, photo_type: PhotoType::MAIN_HOMEPAGE )
+                    @home.photos.create(image: uploaded, photo_type: PhotoType::MAIN_HOMEPAGE)
                 end
             end
             redirect_to root_path

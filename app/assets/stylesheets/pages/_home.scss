@@ -9,66 +9,6 @@
     }
 }
 
-// Specific CSS for your home-page
-.home{
-    text-align: center;
-}
-
-.section-title{
-    margin-top: 50px;
-    margin-bottom: 15px;
-    padding-top: 30px;
-    border-top: solid 3px;
-}
-
-// Entreprise 
-.entreprise-section{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-
-    .first-entreprise{
-        width: 42vw;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .other-entreprise{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px; 
-        justify-self: end;
-        align-items: center;
-        
-        img{
-            height: auto;
-            width: 20.6vw;
-        }
-    }
-}
-
-.voir-plus{
-    margin-top: 10px;
-    display: block;
-    padding: 18px !important;
-    font-size: 18px;
-}
-
-// Advantages
-ul{    
-    max-width: fit-content;
-    margin: auto;
-}
-.advantages{
-    & > li{
-        list-style: none;
-        text-align: left;
-    }
-}
-
-#advantages-title{
-    margin-bottom: 30px;
-}
 
 // Soleil Section
 .soleil-container{
@@ -289,7 +229,6 @@ ul{
 }
 
 // Visitors Section
-
 #visitors-container{
     height: 80vh;
     background-color: $green;

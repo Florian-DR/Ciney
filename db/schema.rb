@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_16_201454) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_16_130940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,66 +42,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_16_201454) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "charges", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
-    t.string "kind"
-    t.bigint "gite_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gite_id"], name: "index_charges_on_gite_id"
-  end
-
-  create_table "days", force: :cascade do |t|
-    t.date "date"
-    t.bigint "days_of_week_id", null: false
-    t.bigint "holiday_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["days_of_week_id"], name: "index_days_on_days_of_week_id"
-    t.index ["holiday_id"], name: "index_days_on_holiday_id"
-  end
-
-  create_table "days_of_weeks", force: :cascade do |t|
-    t.string "status"
-    t.float "price"
-    t.bigint "gite_id", null: false
-    t.bigint "saison_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gite_id"], name: "index_days_of_weeks_on_gite_id"
-    t.index ["saison_id"], name: "index_days_of_weeks_on_saison_id"
-  end
-
-  create_table "gite_holidays", force: :cascade do |t|
-    t.bigint "holiday_id", null: false
-    t.bigint "gite_id", null: false
-    t.float "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gite_id"], name: "index_gite_holidays_on_gite_id"
-    t.index ["holiday_id"], name: "index_gite_holidays_on_holiday_id"
-  end
-
   create_table "gites", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "capacity"
     t.integer "rooms"
     t.integer "sanitary"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "commun"
-    t.string "hero_title"
-    t.text "hero_description"
     t.text "main_photo_data"
-  end
-
-  create_table "holidays", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
-    t.date "start_date"
-    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,27 +64,18 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_16_201454) do
     t.string "decouvrir_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "gites_description"
   end
 
   create_table "photos", force: :cascade do |t|
     t.bigint "gite_id"
+    t.bigint "home_page_id"
     t.string "photo_type"
     t.string "from_page"
     t.text "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "home_page_id"
     t.index ["gite_id"], name: "index_photos_on_gite_id"
     t.index ["home_page_id"], name: "index_photos_on_home_page_id"
-  end
-
-  create_table "saisons", force: :cascade do |t|
-    t.string "name"
-    t.date "start_date"
-    t.date "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -153,13 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_16_201454) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "charges", "gites"
-  add_foreign_key "days", "days_of_weeks"
-  add_foreign_key "days", "holidays"
-  add_foreign_key "days_of_weeks", "gites"
-  add_foreign_key "days_of_weeks", "saisons"
-  add_foreign_key "gite_holidays", "gites"
-  add_foreign_key "gite_holidays", "holidays"
   add_foreign_key "photos", "gites"
   add_foreign_key "photos", "home_pages"
 end

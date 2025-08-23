@@ -6,6 +6,8 @@ class CreateGites < ActiveRecord::Migration[7.0]
       t.integer :capacity
       t.integer :rooms
       t.integer :sanitary
+      t.text :commun
+      t.text :main_photo_data
 
       t.timestamps
     end

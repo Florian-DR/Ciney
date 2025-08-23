@@ -1,6 +1,0 @@
-<span class="prices-span" data-edit-prices-target="priceCharge" data-action="click->edit-prices#displayFormCharge"> <%= charge.price%>€</span> 
-
-<%= simple_form_for charge, html: {class: "d-none", data: {edit_prices_target: "form", action:"submit->edit-prices#update"}} do |f|%>
-    <%= f.hidden_field :id, value: charge.id %>
-    <%= f.input :price, label:false %>
-<% end %>

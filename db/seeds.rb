@@ -3,11 +3,6 @@ require "open-uri"
 puts "---------- Deleting previous data----------"
 puts " Deleting ..."
 Photo.delete_all
-DaysOfWeek.delete_all
-Day.delete_all
-GiteHoliday.delete_all
-Holiday.delete_all
-Charge.delete_all
 Gite.delete_all
 HomePage.delete_all
 
@@ -61,14 +56,6 @@ puts " #{arbre.name} created"
 puts "---------- Generating HomePage ----------"
 
 home = HomePage.new
-home.introduction_title = "La ferme d'Auwez"
-home.introduction_text = "Bienvenue dans le cadre merveilleux de la Ferme d’Auwez !  La Ferme est située sur le flanc d’une petite vallée au fond duquel un ruisseau coule paisiblement. Nous vous accueillons dans ce cadre calme et reposant. Le magnifique panorama à partir de la Ferme est entourée de champs, de prairies et des bois aux alentours jusqu’au petit village de Pessoux à quelques kilomètres.  Le cadre merveilleux et paisible de la Ferme d’Auwez est l’occasion idéale d’organiser des séjours en famille ou entre amis. De nombreuses et horizons activités (sportives, culturelles, de détente, bien-être, familiales, touristiques, de découverte) sont facilement faisables dans le Gîte, dans la ferme ou dans la région.  Piscine intérieure, Sauna, Ravel, promenade,..."
-home.gites_title = "Nos Gites"
-home.gites_description = lorem_ipsum
-home.mariages_title = "Les Mariages"
-home.mariages_text = lorem_ipsum
-home.entreprises_title = "Services aux entreprises"
-home.decouvrir_title = "Découvrez plus"
 home.save!
 puts " Homepage created"
 
