@@ -16,15 +16,6 @@ class PagesController < ApplicationController
     @saison = Saison.new
     
     @gites = Gite.all.order(:id)
-    
-    @days_of_week = DaysOfWeek.new
-    @gite_holidays = GiteHoliday.new
-    
-    @holidays = Holiday.all
-    @holiday = Holiday.new
-
-    @charges = Charge.all
-    @charge = Charge.new
   end
 
   def contact; end
