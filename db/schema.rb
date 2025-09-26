@@ -55,13 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_16_130940) do
   end
 
   create_table "home_pages", force: :cascade do |t|
-    t.string "introduction_title"
-    t.text "introduction_text"
-    t.string "gites_title"
-    t.string "mariages_title"
-    t.text "mariages_text"
-    t.string "entreprises_title"
-    t.string "decouvrir_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

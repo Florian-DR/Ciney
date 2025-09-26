@@ -12,9 +12,6 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @saisons = Saison.all
-    @saison = Saison.new
-    
     @gites = Gite.all.order(:id)
   end
 
