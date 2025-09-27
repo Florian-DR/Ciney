@@ -145,15 +145,12 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à <%= @ca
         <%= image_tag "border-image.png", alt: "border-image.png"%>
     </div>
     <div class="salle-text">
-        <h4>Un cadre inspirant pour vos événements professionnels</h4>
-        <p>Vous recherchez un lieu où conjuguer travail et détente ? La Ferme d’Auwez accueille vos séminaires, retraites d’entreprise et événements privés dans un environnement calme et inspirant.</p>
-        <p class="text">Pourquoi choisir la Ferme d’Auwez pour vos séminaires ?</p>
-        <ul>
-            <li>Hébergement jusqu’à <%= @capacity%> personnes</li>
-            <li>Espaces communs adaptés aux réunions et activités de groupe</li>
-            <li>Environnement propice à la concentration et à la cohésion d’équipe</li>
-            <li>Options supplémentaires : location de la grange, cuisine traiteur, parking</li>
-        </ul>
+        <h4>Louez l’ensemble de nos gîtes pour vos séjours en famille</h4>
+        <p >La Ferme d’Auwez peut être louée dans son intégralité, offrant ainsi <%= @capacity %> lits répartis dans trois gîtes de caractère. C’est la formule idéale pour réunir toute la famille sous un même toit et profiter d’un séjour où convivialité et confort se rencontrent.
+
+            Imaginez-vous partager de grands repas autour d’une table chaleureuse, voir les enfants s’amuser dans les vastes espaces intérieurs ou extérieurs, pendant que les adultes se détendent dans la piscine intérieure ou le sauna. Chaque recoin de la ferme invite à la détente et au partage, dans un cadre verdoyant qui respire le calme et l’authenticité.
+
+            Louer l’ensemble de la Ferme, c’est offrir à vos proches un véritable cocon où petits et grands trouvent leur place, pour des moments de complicité et des souvenirs qui resteront gravés. Ici, tout est pensé pour que vous vous sentiez comme à la maison, avec ce petit supplément d’évasion qui rend le séjour unique</p>
         <%=link_to "Nous contacter", contact_path(), class: "button"%>
     </div>
 </div> 
@@ -163,31 +160,31 @@ Nous proposons trois gîtes spacieux, pensés pour accueillir jusqu’à <%= @ca
     <h3>Ils ont séjourné chez nous...</h3>
     <div class="visitors-cards">
         <div class="visitor-card">
-            <%= image_tag "epingle.png", alt: "epingle", class: "epingle"%>
-            <div class="stars">
-                <% 5.times do %>
-                    <%= image_tag "star.png", alt: "star" %>
-                <% end %>
-            </div>
+            <div class="quote-container"> <%= image_tag "quotation.png", alt: "quotation", class: "quote-mark"%></div>
             <p class="visitor-text">Endroit exceptionnel, avec des hôtes d’exceptions! 
                 On s’y sent comme à la maison! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre! 
                 C’est tout simplement formidable !
             </p>
-            <span>Charles dW.</span>
-        </div>
-
-        <div class="visitor-card">
-            <%= image_tag "epingle.png", alt: "epingle", class: "epingle"%>
             <div class="stars">
                 <% 5.times do %>
                     <%= image_tag "star.png", alt: "star" %>
                 <% end %>
             </div>
+            <span>Charles dW.</span>
+        </div>
+
+        <div class="visitor-card">
+            <div class="quote-container"> <%= image_tag "quotation.png", alt: "quotation", class: "quote-mark"%></div>
             <p class="visitor-text">Un endroit sublime et chaleureux !
                  Des chambres parfaites pour se reposer et profiter du calme de la campagne.
                   Une vue sublime sur le terroir du coin ! 
                   À recommander, sans hésitation !
             </p>
+            <div class="stars">
+                <% 5.times do %>
+                    <%= image_tag "star.png", alt: "star" %>
+                <% end %>
+            </div>
             <span>Christophe G.</span>
         </div>
 
