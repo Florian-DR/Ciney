@@ -219,11 +219,11 @@
     .salle-text{
         max-width: 45%;
         h4{
-            font-size: calc(1.2rem + 1.8vw);
+            font-size: calc(1.0rem + 1.5vw);
             margin-bottom: 1.5rem;
         }
-        ul{
-            margin-bottom: 2rem;
+        p{
+            line-height: 1.8em;
         }
     }
 }
@@ -268,32 +268,34 @@
 .visitor-card{
     max-width: 35vw;
     background-color: $background;
-    border-radius: $radius;
-    text-align: center;
+    border-radius: $radius + 6;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     padding: 15px 25px;
     display: flex;
+    gap: 0.5em;
     justify-content: space-between;
     flex-direction: column;
-    align-items: center;
     flex-grow: 1;
     flex-shrink: 0;
     flex-basis: 0;
     position: relative;
-    .epingle{
-        position: absolute;
-        top: -26px;
-        left: 50%;
-        transform: translateX(-48%);
-        width: 50px;
-        height: auto;
+    p{
+        margin: 0;
+        line-height: 1.8em;
+    }
+    .quote-container{
+        width: 2em;
+        height: 2em;
+        background-color: $orange;
+        border-radius: 50%;
+        display: flex;
+    }
+    .quote-mark{
+        width: 1em;
+        height: 0.8em;
+        margin: auto;
     }
     .stars{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 25px;
-        padding: 5px;
-        margin: 6px;
         img{
             width: 20px;
             height: 20px;
