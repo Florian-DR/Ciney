@@ -1,6 +1,7 @@
  <div class="navbar">  
     <a href="/"><%= image_tag "Logo_hirondelle.png", alt: "logo", class: "logo"%></a>
-    <nav> 
+
+    <nav class="desktop-nav"> 
         <a href="/" class="nav-link">La Ferme d'Auwez</a>
         <div id="gites-nav" class="nav-link" style="position: relative">
             Nos gites
@@ -13,5 +14,9 @@
         <a href="/about" class="nav-link">À Propos</a>
         <a href="/contact" class="nav-link">Contact & Accès</a>
         <a href="/" class="button">Réservation</a>
+    </nav>
+
+    <nav class="phone-nav">
+        <div class="nav-button"><i class="fa-solid fa-bars"></i></div>
     </nav>
 </div>

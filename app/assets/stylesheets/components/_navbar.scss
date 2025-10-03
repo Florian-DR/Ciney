@@ -64,3 +64,26 @@ nav{
     display: block;
   }
 }
+
+// Phone Navbar
+.phone-nav{
+  display: none;
+}
+
+.nav-button{
+  // &:active{
+  //   background-color: $hoverGreen;
+  //   transition: 1s;
+  // }
+}
+
+
+@media (max-width: 768px) {
+  .desktop-nav{
+    display: none;
+  }
+
+  .phone-nav{
+    display: block;
+  }
+}
