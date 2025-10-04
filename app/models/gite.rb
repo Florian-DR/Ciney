@@ -1,9 +1,5 @@
 class Gite < ApplicationRecord
-    has_many :charges
-    has_many :days_of_weeks
-    has_many :gite_holidays
-    has_many :holidays, through: :gite_holidays
-    has_many :saisons, through: :days_of_weeks
+
     has_many :photos, inverse_of: :gite, dependent: :destroy
     accepts_nested_attributes_for :photos
 
