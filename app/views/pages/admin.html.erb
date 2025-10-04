@@ -6,6 +6,6 @@
         <% @gites.each do |gite|%>
             <li> <%= link_to gite.name, edit_gite_path(gite)%></li>
         <% end%>
-        <li> <%= link_to "Page d'acceuil", edit_home_page_path(@home_page) %>
+        <%# <li> <%= link_to "Page d'acceuil", edit_home_page_path(@home_page) %> 
     </ul>
 </div>
