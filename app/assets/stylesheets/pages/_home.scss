@@ -73,6 +73,14 @@
     }
 }
 
+@media (max-width: $breakpoint-mobile) {
+    .home-introduction{
+        height: auto;
+        max-width: 85vw;
+        margin: 4rem auto
+    }
+}
+
 // Gites Section
 .gite-card{
     display: flex; 
@@ -166,6 +174,26 @@
     }
 }
 
+@media (max-width: $breakpoint-mobile) {
+    .gite-card{
+        flex-direction: column ;
+        .photos-card{
+            max-width: 100%;
+        }
+
+        .gite-card-text{
+            max-width: 100%;
+            padding: 1em;
+            h4{
+                font-size: calc(1rem + 1.8vw);
+            }
+        }
+    }
+    .gite-reverse{
+        flex-direction: column-reverse;
+    }
+}
+
 // Fake pictogram
 .fake-picto-parent{
     display: flex;
@@ -224,6 +252,25 @@
         }
         p{
             line-height: 1.8em;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .salle-container{
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        width: 85vw;
+        .salle-images, .salle-text{
+            max-width: 100%;
+        }
+        .salle-images{
+            margin-bottom: 2em;
+            width: auto;
+            &::before{
+                margin: 1.5em;
+            }
         }
     }
 }
@@ -307,6 +354,30 @@
     }
 }
 
+@media (max-width: $breakpoint-mobile) {
+    #visitors-container{
+        height: auto;
+        padding: 30px 20px;
+
+        h3{
+            text-align: center;
+            &::after{
+                width: 100px;
+                height: 80px;
+                transform: translate(-50%, -75%);
+            }
+        }
+    }
+
+    .visitors-cards{
+        flex-direction: column;
+        gap: 3em;
+        .visitor-card{
+            max-width: 100%;
+        }
+    }
+}
+
 // Cadre Section
 #cadre-container{
     max-width: 60vw;
@@ -317,10 +388,15 @@
     flex-direction: column;
     justify-content: center;
     // align-items: center;
-    h3{
-        font-size: calc(1.2rem + 1.8vw);
-    }
     p{
         margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    #cadre-container{
+        height: auto;
+        max-width: 85vw;
+        margin: 10vw auto;
     }
 }
