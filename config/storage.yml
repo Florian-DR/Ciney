@@ -8,7 +8,10 @@ local:
 
 amazon:
   service: S3
-  folder: <%= Rails.env %>
+  bucket: <%= ENV.fetch("AWS_BUCKET") %>        # <-- REQUIRED
+  region: <%= ENV.fetch("AWS_REGION", "eu-west-1") %>
+  access_key_id: <%= ENV["AWS_KEY_ID"] %>   # omit if using an instance role
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
