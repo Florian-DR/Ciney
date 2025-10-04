@@ -92,3 +92,19 @@ hr{
 .bg-orange{
     background-color: $orange;
 }
+
+.d-none{
+    display: none;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    h2{
+        font-size: 3em;
+    }
+    h3{
+        font-size: calc(2rem + 2.5vw);
+    }
+    h4{
+        font-size: calc(1rem + 1.8vw);
+    }
+}

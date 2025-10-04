@@ -53,3 +53,16 @@ footer{
     width: auto;
     filter: invert(1);
 }
+
+@media (max-width: $breakpoint-mobile) {
+    footer{
+        flex-direction: column;
+        text-align: center;
+        .footer-section{
+            margin-bottom: 20px;
+        }
+        #logo-container{
+            margin: auto;
+        }
+    }
+}

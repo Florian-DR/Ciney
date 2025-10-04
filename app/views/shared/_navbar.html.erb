@@ -1,6 +1,8 @@
  <div class="navbar">  
     <a href="/"><%= image_tag "Logo_hirondelle.png", alt: "logo", class: "logo"%></a>
-    <nav> 
+
+    <%# Desktop navbar %>
+    <nav class="desktop-nav"> 
         <a href="/" class="nav-link">La Ferme d'Auwez</a>
         <div id="gites-nav" class="nav-link" style="position: relative">
             Nos gites
@@ -13,5 +15,33 @@
         <a href="/about" class="nav-link">À Propos</a>
         <a href="/contact" class="nav-link">Contact & Accès</a>
         <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-brugge?language=fr-FR" target='_blank' class="button">Réservation</a>
+    </nav>
+
+    <%# Phone navbar %>
+    <nav class="phone-nav" data-controller="display-toggle" >
+        <div class="nav-button" data-action="click->display-toggle#toggleDisplay">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="modal-component d-none" data-display-toggle-target="toToggle">
+            <div class="modal-component-content modal-nav-phone">
+                <div class="nav-button" style="padding: 32px 2vw;" data-action="click->display-toggle#toggleDisplay">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="phone-links">
+                    <a href="/" class="nav-link">Acceuil</a>
+                    <div id="gites-nav" class="nav-link" style="position: relative">
+                        Nos gites
+                        <div class="sub-div">
+                            <%=link_to @gites[0].name ,gite_path(@gites[0]), class: "sub-link" %>  
+                            <%=link_to @gites[1].name ,gite_path(@gites[1]), class: "sub-link" %>  
+                            <%=link_to @gites[2].name ,gite_path(@gites[2]), class: "sub-link" %>  
+                        </div>
+                    </div>
+                    <a href="/about" class="nav-link">À Propos</a>
+                    <a href="/contact" class="nav-link">Contact & Accès</a>
+                    <a href="/" class="button">Réservation</a>
+                </div>
+            </div>
+        </div>
     </nav>
 </div>
