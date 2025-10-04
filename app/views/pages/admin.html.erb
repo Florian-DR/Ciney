@@ -1,5 +1,11 @@
 <div class="contain">
     <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %> <i class="fa-solid fa-right-from-bracket"></i>Déconnexion<% end %>
-    <h1>Ta page d'administration </h1>
-    
+    <h1>Votre page d'administration </h1>
+    <h2> Liens pour modifier le site :</h2>
+    <ul>
+        <% @gites.each do |gite|%>
+            <li> <%= link_to gite.name, edit_gite_path(gite)%></li>
+        <% end%>
+        <li> <%= link_to "Page d'acceuil", edit_home_page_path(@home_page) %>
+    </ul>
 </div>

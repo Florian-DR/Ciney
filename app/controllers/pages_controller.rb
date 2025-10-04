@@ -13,6 +13,7 @@ class PagesController < ApplicationController
 
   def admin
     @gites = Gite.all.order(:id)
+    @home_page = HomePage.first
   end
 
   def contact; end
