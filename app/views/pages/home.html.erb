@@ -3,6 +3,8 @@
 
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
+    <%= video_tag 'vue-gites-ciney.mov', autoplay: :autoplay, loop: :loop, muted: :muted, style: "width: 100vw; height: auto" %>
+    <!--
     <% if @main_photos.first%> 
         <div class="carousel-indicators">
             <% @main_photos.each_with_index do |photo, index|%>
@@ -21,6 +23,7 @@
             <% end %>
         </div>
     <% end %>
+    -->
 </div>
 
 <%###### Introduction Section ######%>
