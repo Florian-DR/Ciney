@@ -3,7 +3,7 @@
 
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
-    <%= video_tag 'vue-gites-ciney.mov', autoplay: :autoplay, loop: :loop, muted: :muted, style: "width: 100vw; height: auto" %>
+    <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, loop: :loop, muted: :muted, style: "width: 100vw; height: auto" %>
     <!--
     <% if @main_photos.first%> 
         <div class="carousel-indicators">
@@ -115,7 +115,7 @@
         </div>
         <div class="sub-photos">
             <% @gite_3.photos[0..4].each do |photo| %>
-                <%= cl_image_tag photo.image_url, alt: photo.get_alt, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, alt: photo.get_alt, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 

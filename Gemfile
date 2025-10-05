@@ -59,9 +59,6 @@ gem "simple_calendar", "~> 2.4"
 # Easier forms [https://github.com/heartcombo/simple_form]
 gem "simple_form", github: "heartcombo/simple_form"
 
-# Cloudinary storage for images [https://cloudinary.com] 
-gem "cloudinary"
-
 # To handle images by cloud [https://shrinerb.com/docs/getting-started]
 gem "shrine", "~> 3.0"
 gem "aws-sdk-s3", "~> 1.14"
