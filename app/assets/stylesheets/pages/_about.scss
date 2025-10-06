@@ -20,12 +20,22 @@
         #img-history{
             width: auto ;
             max-height: 55vh;
-            
+            max-width: 100%;
         }
         .section-container{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .about-section{
+        flex-direction: column;
+    }
+    #about{
+        gap: 50px;
+        margin: auto;
     }
 }
