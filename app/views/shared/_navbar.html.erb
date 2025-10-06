@@ -29,14 +29,9 @@
                 </div>
                 <div class="phone-links">
                     <a href="/" class="nav-link">Acceuil</a>
-                    <div id="gites-nav" class="nav-link" style="position: relative">
-                        Nos gites
-                        <div class="sub-div">
-                            <%=link_to @gites[0].name ,gite_path(@gites[0]), class: "sub-link" %>  
-                            <%=link_to @gites[1].name ,gite_path(@gites[1]), class: "sub-link" %>  
-                            <%=link_to @gites[2].name ,gite_path(@gites[2]), class: "sub-link" %>  
-                        </div>
-                    </div>
+                    <%=link_to @gites[0].name ,gite_path(@gites[0]), class: "nav-link" %>  
+                    <%=link_to @gites[1].name ,gite_path(@gites[1]), class: "nav-link" %>  
+                    <%=link_to @gites[2].name ,gite_path(@gites[2]), class: "nav-link" %>  
                     <a href="/about" class="nav-link">À Propos</a>
                     <a href="/contact" class="nav-link">Contact & Accès</a>
                     <a href="/" class="button">Réservation</a>
