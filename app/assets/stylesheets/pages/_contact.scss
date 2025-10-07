@@ -44,3 +44,18 @@
 .frame{
     margin: 20px;
 }
+
+@media (max-width: $breakpoint-mobile) {
+    #contact-info{
+        flex-direction: column;
+        padding: 20px 5px;
+    }
+
+    .double-fields{
+        flex-direction: column;
+    }
+
+    .frame{
+        margin: auto;
+    }
+}
