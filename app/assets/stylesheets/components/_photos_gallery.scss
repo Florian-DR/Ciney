@@ -98,12 +98,12 @@
 /* Close button */
 .close {
   position: fixed;
-  z-index: 3;
   top: 0px;
   left: 0px;
   width: 100vw;
   height: 100vh;
   span{
+    z-index: 3;
     position: fixed;
     top: 30px;
     right: 35px;
