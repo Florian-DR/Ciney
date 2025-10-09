@@ -1,37 +1,37 @@
-.gites{
-    display: flex;
-    justify-content: space-between;
-}
+// .gites{
+//     display: flex;
+//     justify-content: space-between;
+// }
 
-.gites-card{
-    width: 25vw;
-    margin: 5px;
+// .gites-card{
+//     width: 25vw;
+//     margin: 5px;
 
-    h6{
-        margin: 0px;
-        padding: 6px 0px;
-        border-top: solid 2px;
-    }
-    img{
-        max-width: 25vw;
-        height: auto;
-    }
-    div{
-        padding: 6px;
-        display: flex;
-        justify-content: space-between;
-        border-bottom: solid 2px;
+//     h6{
+//         margin: 0px;
+//         padding: 6px 0px;
+//         border-top: solid 2px;
+//     }
+//     img{
+//         max-width: 25vw;
+//         height: auto;
+//     }
+//     div{
+//         padding: 6px;
+//         display: flex;
+//         justify-content: space-between;
+//         border-bottom: solid 2px;
 
-        .pictograme{
-            margin: 0px;
-        }
-    }
-    &:hover{
-        h6, .pictograme{
-            // font-size: 20px;
-            transition: 0.5s;
-        }
-        opacity: 0.8;
-        color: $hoverGreen;
-    }
-}
+//         .pictograme{
+//             margin: 0px;
+//         }
+//     }
+//     &:hover{
+//         h6, .pictograme{
+//             // font-size: 20px;
+//             transition: 0.5s;
+//         }
+//         opacity: 0.8;
+//         color: $hoverGreen;
+//     }
+// }
