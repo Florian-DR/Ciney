@@ -188,6 +188,13 @@
                 font-size: calc(1rem + 1.8vw);
             }
         }
+        .sub-photos{
+            scroll-behavior: smooth;
+            overflow-x: scroll;
+            img{
+                max-width: 55% !important;
+            }
+        }
     }
     .gite-reverse{
         flex-direction: column-reverse;

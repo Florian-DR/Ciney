@@ -60,6 +60,24 @@
   }
 }
 
+@media (max-width: $breakpoint-mobile) {
+  .gallery-container{
+    overflow-y: auto;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+  .image-gallery{
+    display: flex;
+    padding: 0px;
+    align-items: center;
+    
+    img{
+      height: fit-content;
+      max-width: 90%;
+    }
+  }
+}
+
 /* Modal Content (image) */
 .modal-content {
   margin: auto;
@@ -94,4 +112,9 @@
     cursor: pointer;
   }
 
+}
+@media (max-width: $breakpoint-mobile) {
+  .modal-content {
+    max-width: 100%;
+  }
 }
