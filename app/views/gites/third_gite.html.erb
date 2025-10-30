@@ -88,6 +88,6 @@
     </div>
 
     <div class="contain">
-        <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-brugge?language=fr-FR&room=53682", target: "_blank", style: "padding: auto" , class: "button" %>
+        <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53682", target: "_blank", style: "padding: auto" , class: "button" %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>
