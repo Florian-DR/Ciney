@@ -97,6 +97,14 @@ hr{
     display: none;
 }
 
+.color-white{
+    color: $white;
+}
+
+.color-green{
+    color: $green;
+}
+
 @media (max-width: $breakpoint-mobile) {
     h2{
         font-size: 3em;

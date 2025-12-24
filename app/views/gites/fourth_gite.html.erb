@@ -1,0 +1,4 @@
+<% content_for :title, @gite.name %>
+<% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
+<% content_for :uncontainerize, true %>
+<%= image_tag @gite.main_photo_url, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner" if @gite.main_photo_url%>

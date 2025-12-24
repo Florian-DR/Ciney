@@ -224,12 +224,13 @@
 
 // Salle Section
 .salle-container{
-    width: 85vw;
+    padding: 12vw;
     min-height: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 10vh auto;
+    
     .salle-images{
         width: 45%;
         position: relative;
@@ -285,14 +286,14 @@
 // Visitors Section
 #visitors-container{
     min-height: 80vh;
-    background-color: $green;
+    background-color: $background;
     padding: 60px;
     align-items: center;
     display: flex;
     flex-direction: column;
     h3{
         font-size: calc(2.2rem + 1.8vw);
-        color: $background;
+        color: $green;
         padding: 20px;
         &::after{
             content: "";
@@ -305,8 +306,8 @@
             mask-image: url('cedilles.png');
             mask-size: cover;
             mask-repeat: no-repeat;
-            background-color: $background;
-            opacity: 0.13;            
+            background-color: $orange;
+            opacity: 0.2;            
         }
     }
 }
