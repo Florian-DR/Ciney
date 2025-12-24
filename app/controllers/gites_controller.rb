@@ -5,6 +5,8 @@ class GitesController < ApplicationController
     def show
         if @gite.name.downcase.include?("hirondelle")
             render "first_gite"
+        elsif @gite.name.downcase.include?("grand")
+            render "forth_gite"
         elsif @gite.name.downcase.include?("horizon")
             render "second_gite"
         elsif @gite.name.downcase.include?("arbre")
