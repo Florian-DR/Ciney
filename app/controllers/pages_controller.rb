@@ -19,12 +19,14 @@ class PagesController < ApplicationController
   def contact; end
 
   def contact_sender
-    CineyMailer.with(
-                    name: params[:name],
-                    first_name: params[:first_name],
-                    email: params[:email], 
-                    telephone: params[:telephone], 
-                    message: params[:message]).contact_mailer.deliver_now
+    if params[:url].empty?
+      CineyMailer.with(
+                      name: params[:name],
+                      first_name: params[:first_name],
+                      email: params[:email], 
+                      telephone: params[:telephone], 
+                      message: params[:message]).contact_mailer.deliver_now
+    end
     redirect_to contact_path 
     flash.notice = "Votre demande à été envoyée, un mail de confirmation devrait suivre"
   end

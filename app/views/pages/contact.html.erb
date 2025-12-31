@@ -21,6 +21,7 @@
                     <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
                 </div>
                 <%= form.text_area :message, placeholder: "Votre message *", required: true %>
+                <%= form.text_field :url, placeholder: "url", class: "fake-field", tabindex: "-1"%>
                 <%= form.submit :Envoyer, class: "button" %>
             <% end %>
         </div>
