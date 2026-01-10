@@ -41,6 +41,7 @@
 </div>
 
 <%###### Gites Section ######%>
+<%#### Hirondelles ####%>
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
@@ -74,7 +75,7 @@
     </div>
 </div>
 
-
+<%#### Horizon ####%>
 <div class="gite-card gite-reverse">
     <div class="gite-card-text">
         <h4>Le gîte : <%= @gite_2.name%></h4>
@@ -107,7 +108,7 @@
     </div>
 </div>
 
-
+<%#### Arbre de vie ####%>
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
@@ -141,17 +142,51 @@
     </div>
 </div>
 
+<%#### Grand Horizon ####%>
+<div class="gite-card gite-reverse">
+    <div class="gite-card-text">
+        <h4>Le gîte : <%= @gite_4.name%></h4>
+        <div class="gite-overview">
+            <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_4.capacity %> personnes</p>
+            <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
+            <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-green"></i>Sauna partagé</p>
+            <p class="pictograme"><i class="fa-solid fa-wheelchair"></i>Accès PMR</p>
+            <p class="text">Né de la fusion de l'Horizon et de l'Arbre de Vie, Le Grand Horizon offre un hébergement spacieux et harmonieux au sein d’un même bâtiment. Cette configuration permet d'accueillir <%= @gite_4.capacity %> personnes et réunit un confort accessible et de plain-pied avec l’ambiance cosy d'une terrasse panoramique. Idéale pour les familles élargies, les groupes d’amis ou les séjours intergénérationnels, cette formule permet de partager des moments conviviaux tout en conservant l’intimité et l’indépendance de chaque espace.</p>
+        </div>
+        <%= link_to "Voir le gite", gite_path(@gite_4), class: "button" %>
+    </div>
+
+    <div class="photos-card" data-controller="show-picture">
+        <div class="main-photo">
+            <%= image_tag @gite_4.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_4.main_photo_url  %>
+        </div>
+        <div class="sub-photos">
+            <% @gite_4.photos[0..4].each do |photo| %>
+                <%= image_tag photo.image_url, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+            <% end %>
+        </div>
+
+        <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
+        </div>
+    </div>
+</div>
 
 <%###### Salle Section ######%>
-<div class="salle-container">
+<div class="salle-container bg-green color-white">
     <div class="salle-images">
-        <%= image_tag "border-image.png", alt: "border-image.png"%>
+        <%# <%= image_tag "border-image.png", alt: "border-image.png"%>
+        <div class="border-image-mask"></div>
     </div>
     <div class="salle-text">
         <h4>Louez l’ensemble de nos gîtes pour vos séjours en famille</h4>
         <p >La Ferme d’Auwez peut être louée dans son intégralité, offrant ainsi <%= @capacity %> lits répartis dans trois gîtes de caractère. C’est la formule idéale pour réunir toute la famille sous un même toit et profiter d’un séjour où convivialité et confort se rencontrent.
 
-            Imaginez-vous partager de grands repas autour d’une table chaleureuse, voir les enfants s’amuser dans les vastes espaces intérieurs ou extérieurs, pendant que les adultes se détendent dans la piscine intérieure ou le sauna. Chaque recoin de la ferme invite à la détente et au partage, dans un cadre verdoyant qui respire le calme et l’authenticité.
+            Imaginez-vous partager de grands repas autour d’une table chaleureuse, voir les enfants s’amuser dans les vastes espaces intérieurs ou extérieurs, ou encore profiter dans la piscine intérieure ou le sauna en famille. Chaque recoin de la ferme invite à la détente et au partage, dans un cadre verdoyant qui respire le calme et l’authenticité.
 
             Louer l’ensemble de la Ferme, c’est offrir à vos proches un véritable cocon où petits et grands trouvent leur place, pour des moments de complicité et des souvenirs qui resteront gravés. Ici, tout est pensé pour que vous vous sentiez comme à la maison, avec ce petit supplément d’évasion qui rend le séjour unique</p>
 

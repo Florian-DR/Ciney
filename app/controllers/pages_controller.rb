@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @gite_1 = @gites.first
     @gite_2 = @gites.second
     @gite_3 = @gites.third
+    @gite_4 = @gites.fourth
     
     @capacity = @gites.sum(&:capacity)
     @main_photos = @home.photos.where(photo_type: PhotoType::MAIN_HOMEPAGE)
