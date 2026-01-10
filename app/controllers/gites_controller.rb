@@ -24,7 +24,7 @@ class GitesController < ApplicationController
         if @gite.update(gite_params.except(:photos))
                 # add new uploaded images if present
             if params[:gite][:photos].present?
-                photos = params[:gite][:photos].reject(&:blank?) #Remove default brower empty first element
+                photos = params[:gite][:photos].reject(&:blank?) #Remove default browser empty first element
                 photos.each do |uploaded|
                     @gite.photos.create(image: uploaded, photo_type: PhotoType::GALLERY_GITE)
                 end
