@@ -41,72 +41,72 @@ lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhonc
 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer in arcu lectus. Mauris turpis tellus, pharetra et sollicitudin eget, condimentum id ex. Suspendisse potenti. Pellentesque sollicitudin ultrices lacus eu placerat. Aliquam euismod bibendum lorem. Pellentesque maximus luctus ex in sodales. Curabitur tincidunt eget elit sed blandit. Aenean ac risus ipsum. Praesent id magna maximus, malesuada libero porta, ultricies nibh."
 
 ####################################################### Phase 1 - Creating gites and first data #######################################################
-# puts "---------- Phase 1 ----------"
+puts "---------- Phase 1 ----------"
 
-# puts "---------- Deleting previous data----------"
-# puts " Deleting ..."
-# Photo.delete_all
-# Gite.delete_all
-# HomePage.delete_all
+puts "---------- Deleting previous data----------"
+puts " Deleting ..."
+Photo.delete_all
+Gite.delete_all
+HomePage.delete_all
 
-# puts "---------- Generating new gites ----------"
+puts "---------- Generating new gites ----------"
 
-# hirondelles = Gite.new
-# hirondelles.name = "Les Hirondelles"
-# hirondelles.description = lorem_ipsum
-# hirondelles.capacity = 15
-# hirondelles.rooms = 6
-# hirondelles.sanitary = 5
-# hirondelles.commun = "BBQ, sauna, piscine etc ..."
-# hirondelles.save!
-# puts " #{hirondelles.name} created"
+hirondelles = Gite.new
+hirondelles.name = "Les Hirondelles"
+hirondelles.description = lorem_ipsum
+hirondelles.capacity = 15
+hirondelles.rooms = 6
+hirondelles.sanitary = 5
+hirondelles.commun = "BBQ, sauna, piscine etc ..."
+hirondelles.save!
+puts " #{hirondelles.name} created"
 
-# horizon = Gite.new
-# horizon.name = "L'Horizon"
-# horizon.description = lorem_ipsum
-# horizon.capacity = 6
-# horizon.rooms = 2
-# horizon.sanitary = 2
-# horizon.commun = "BBQ, sauna, piscine etc ..."
-# horizon.save!
-# puts " #{horizon.name} created"
+horizon = Gite.new
+horizon.name = "L'Horizon"
+horizon.description = lorem_ipsum
+horizon.capacity = 6
+horizon.rooms = 2
+horizon.sanitary = 2
+horizon.commun = "BBQ, sauna, piscine etc ..."
+horizon.save!
+puts " #{horizon.name} created"
 
-# arbre = Gite.new
-# arbre.name = "L'Arbre de Vie"
-# arbre.description = lorem_ipsum
-# arbre.capacity = 4
-# arbre.rooms = 2
-# arbre.sanitary = 2
-# arbre.commun = "BBQ, sauna, piscine etc ..."
-# arbre.save!
-# puts " #{arbre.name} created"
+arbre = Gite.new
+arbre.name = "L'Arbre de Vie"
+arbre.description = lorem_ipsum
+arbre.capacity = 4
+arbre.rooms = 2
+arbre.sanitary = 2
+arbre.commun = "BBQ, sauna, piscine etc ..."
+arbre.save!
+puts " #{arbre.name} created"
 
-# puts "---------- Generating HomePage ----------"
+puts "---------- Generating HomePage ----------"
 
-# home = HomePage.new
-# home.save!
-# puts " Homepage created"
+home = HomePage.new
+home.save!
+puts " Homepage created"
 
-# puts "---------- Adding photos ----------"
+puts "---------- Adding photos ----------"
 
-# puts " Attach main photos ..."
-# home.photos.create(image: image_tree, photo_type: PhotoType::MAIN_HOMEPAGE)
-# home.photos.create(image: image_horizon, photo_type: PhotoType::MAIN_HOMEPAGE) 
-# hirondelles.main_photo = image_panorama 
-# horizon.main_photo = image_horizon 
-# arbre.main_photo =  image_tree
+puts " Attach main photos ..."
+home.photos.create(image: image_tree, photo_type: PhotoType::MAIN_HOMEPAGE)
+home.photos.create(image: image_horizon, photo_type: PhotoType::MAIN_HOMEPAGE) 
+hirondelles.main_photo = image_panorama 
+horizon.main_photo = image_horizon 
+arbre.main_photo =  image_tree
 
-# five_first_photos.each do |photo|
-#   hirondelles.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
-#   horizon.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
-#   arbre.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
-# end
+five_first_photos.each do |photo|
+  hirondelles.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
+  horizon.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
+  arbre.photos.create(image: photo, photo_type: PhotoType::GALLERY_GITE)
+end
 
-# hirondelles.save!
-# horizon.save!
-# arbre.save!
+hirondelles.save!
+horizon.save!
+arbre.save!
 
-# puts " Photos added"
+puts " Photos added"
 
 
 ####################################################### Phase 2 - Creating fourth gite #######################################################
