@@ -76,6 +76,9 @@ nav{
   align-items: center;
   gap: 20px;
   margin-top: 10px;
+  max-height: calc(100vh - 120px); /* Leave space for the close button */
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 .nav-button{
