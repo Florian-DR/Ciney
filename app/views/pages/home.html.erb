@@ -5,6 +5,7 @@
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
     <%= video_tag 'vue-gites-ciney.mp4', 
                   muted: :muted, 
+                  playsinline: true,
                   preload: "metadata",
                   style: "width: 100vw; height: auto",
                   data: { controller: "video-autoplay" } %>
