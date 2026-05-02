@@ -3,7 +3,12 @@
 
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
-    <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, muted: :muted, preload: "metadata", style: "width: 100vw; height: auto" %>
+    <%= video_tag 'vue-gites-ciney.mp4', 
+                  muted: :muted, 
+                  poster: @main_photos.first&.image_url,
+                  preload: "metadata",
+                  style: "width: 100vw; height: auto",
+                  data: { controller: "video-autoplay" } %>
     <!--
     <% if @main_photos.first%> 
         <div class="carousel-indicators">
