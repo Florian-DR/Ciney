@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
 
     private 
     def all_gites
-      @gites = Gite.all.order(:id)
+      @nav_gites = Gite.select(:id, :name).order(:id)
     end
 end

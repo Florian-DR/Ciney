@@ -3,7 +3,7 @@
 
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
-    <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, loop: true,  muted: :muted,  playsinline: true, style: "width: 100vw; height: auto" %>
+    <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, loop: true, muted: :muted, playsinline: true, preload: 'metadata', style: "width: 100vw; height: auto" %>
 </div>
 
 <%###### Introduction Section ######%>
@@ -25,11 +25,11 @@
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= image_tag @gite_1.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_1.main_photo_url  %>
+            <%= image_tag @gite_1.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_1.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_1.photos[0..4].each do |photo| %>
-                <%= image_tag photo.image_url, alt: photo.get_alt, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, alt: photo.get_alt, loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -70,11 +70,11 @@
 
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= image_tag @gite_2.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_2.main_photo_url  %>
+            <%= image_tag @gite_2.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_2.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_2.photos[0..4].each do |photo| %>
-                <%= image_tag photo.image_url, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -92,11 +92,11 @@
 <div class="gite-card background-card-gite">
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= image_tag @gite_3.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_3.main_photo_url  %>
+            <%= image_tag @gite_3.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_3.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_3.photos[0..4].each do |photo| %>
-                <%= image_tag photo.image_url, alt: photo.get_alt, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, alt: photo.get_alt, loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -138,11 +138,11 @@
 
     <div class="photos-card" data-controller="show-picture">
         <div class="main-photo">
-            <%= image_tag @gite_4.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_4.main_photo_url  %>
+            <%= image_tag @gite_4.main_photo_url, alt: Photo.get_alt(@gite_1.main_photo), loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_4.main_photo_url  %>
         </div>
         <div class="sub-photos">
             <% @gite_4.photos[0..4].each do |photo| %>
-                <%= image_tag photo.image_url, "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
+                <%= image_tag photo.image_url, loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" %>
             <% end %>
         </div>
 
@@ -179,21 +179,21 @@
     <h3>Ils ont séjourné chez nous...</h3>
     <div class="visitors-cards">
         <div class="visitor-card">
-            <div class="quote-container"> <%= image_tag "quotation.png", alt: "quotation", class: "quote-mark"%></div>
+            <div class="quote-container"> <%= image_tag "quotation.png", alt: "quotation", class: "quote-mark", loading: "lazy", decoding: "async" %></div>
             <p class="visitor-text">Endroit exceptionnel, avec des hôtes d’exceptions! 
                 On s’y sent comme à la maison! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre! 
                 C’est tout simplement formidable !
             </p>
             <div class="stars">
                 <% 5.times do %>
-                    <%= image_tag "star.png", alt: "star" %>
+                    <%= image_tag "star.png", alt: "star", loading: "lazy", decoding: "async" %>
                 <% end %>
             </div>
             <span>Charles dW.</span>
         </div>
 
         <div class="visitor-card">
-            <div class="quote-container"> <%= image_tag "quotation.png", alt: "quotation", class: "quote-mark"%></div>
+            <div class="quote-container"> <%= image_tag "quotation.png", alt: "quotation", class: "quote-mark", loading: "lazy", decoding: "async" %></div>
             <p class="visitor-text">Un endroit sublime et chaleureux !
                  Des chambres parfaites pour se reposer et profiter du calme de la campagne.
                   Une vue sublime sur le terroir du coin ! 
@@ -201,7 +201,7 @@
             </p>
             <div class="stars">
                 <% 5.times do %>
-                    <%= image_tag "star.png", alt: "star" %>
+                    <%= image_tag "star.png", alt: "star", loading: "lazy", decoding: "async" %>
                 <% end %>
             </div>
             <span>Christophe G.</span>

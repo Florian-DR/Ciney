@@ -1,7 +1,7 @@
 <% content_for :title, "La Ferme d'Auwez" %>
 <% content_for :description, "À propos des gites de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
-<%= image_tag "about-banner.webp", alt: "balancoire accroché à un arbre devant une vue verdoillante" , id: "contact-banner" %>
+<%= image_tag "about-banner.webp", alt: "balancoire accroché à un arbre devant une vue verdoillante" , id: "contact-banner", loading: "lazy", decoding: "async" %>
 
 <div id="about" class="contain">
     <div>
@@ -10,7 +10,7 @@
         <p>Rénovée avec passion, la Ferme d’Auwez offre un cadre chaleureux et ressourçant. Que ce soit en famille, entre amis ou pour un événement, profitez d’un séjour alliant authenticité et bien-être en pleine nature.</p>
     </div>
     <div id="cadre" class="about-section">
-        <%= image_tag "arbre.webp", alt: "arbre au coucher de soleil", id: "img-abre" %>
+        <%= image_tag "arbre.webp", alt: "arbre au coucher de soleil", id: "img-abre", loading: "lazy", decoding: "async" %>
         <div class="section-container">
             <div>
                 <h3>Un cadre unique pour une expérience inoubliable</h3>
@@ -38,7 +38,7 @@
                 Pensée pour s’adapter à toutes les envies, la Ferme d’Auwez est aujourd’hui <b>un lieu de rencontre et de bien-être, idéal pour se retrouver et partager de beaux moments.</b></p>
             </div>
         </div>
-        <%= image_tag "auwez_1970.jpg",alt: "auwez_1970", id: "img-history" %>
+        <%= image_tag "auwez_1970.jpg",alt: "auwez_1970", id: "img-history", loading: "lazy", decoding: "async" %>
     </div>
 
     <%####  Valeurs  #####%>

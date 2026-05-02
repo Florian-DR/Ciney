@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home contact contact_sender about]
   def home
     @home = HomePage.first
+    @gites = Gite.all.order(:id)
 
     @gite_1 = @gites.first
     @gite_2 = @gites.second
