@@ -4,26 +4,6 @@
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
     <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, loop: true,  muted: :muted,  playsinline: true, style: "width: 100vw; height: auto" %>
-    <!--
-    <% if @main_photos.first%> 
-        <div class="carousel-indicators">
-            <% @main_photos.each_with_index do |photo, index|%>
-                <% if index == 0 %>
-                    <button type="button" data-bs-target="#carousel-container" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
-                <% else %>
-                    <button type="button" data-bs-target="#carousel-container" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1 %>"></button>
-                <% end %>
-            <% end %>
-        </div>
-        <div class="carousel-inner">
-            <% @main_photos.each_with_index do |photo, index|%>
-                <div class="carousel-item  <%= "active" if index == 0%>" data-bs-interval="5000">
-                    <%= image_tag photo.image_url, alt: photo.get_alt %>
-                </div>
-            <% end %>
-        </div>
-    <% end %>
-    -->
 </div>
 
 <%###### Introduction Section ######%>
