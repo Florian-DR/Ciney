@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @gite_3 = @gites.third
     @gite_4 = @gites.fourth
     
-    @capacity = @gites.sum(&:capacity)
+    @capacity = 25
     @main_photos = @home.photos.where(photo_type: PhotoType::MAIN_HOMEPAGE)
   end
 
