@@ -192,7 +192,7 @@
 }
 
 .featured-activity {
-    min-height: 460px;
+    min-height: 540px;
     padding: clamp(30px, 5vw, 65px);
     display: flex;
     flex-direction: column;
@@ -218,7 +218,7 @@
 
     &__icon {
         position: absolute;
-        top: 40px;
+        top: 30px;
         left: clamp(30px, 5vw, 65px);
         width: 62px;
         height: 62px;
@@ -600,7 +600,7 @@
     }
 
     .featured-activity {
-        min-height: 430px;
+        min-height: 500px;
     }
 
     .trace-card {
