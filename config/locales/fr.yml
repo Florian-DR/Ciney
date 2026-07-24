@@ -1,6 +1,7 @@
 fr:
-  simple_calendar:
-    week: "Semaine"
+  # CALENDRIER DÉSACTIVÉ : décommenter avec la gem simple_calendar.
+  # simple_calendar:
+  #   week: "Semaine"
   date:
     month_names:
       1: "Janvier"

@@ -19,14 +19,16 @@ Rails.application.routes.draw do
   resources :gites, only: [:show, :edit, :update], param: :name 
   # patch "gites/:id/change/index", to:'gites#change_index', as:"change_index"
 
-  resources :saisons, only: %i[create destroy] do
-    resources :days_of_weeks, only: %i[create update]
-  end
-
-  resources :holidays, only: %i[create destroy] do 
-    resources :gite_holidays, only: %i[create update]
-  end
-
-  resources :charges, only: %i[create destroy update]
+  # CALENDRIER ET TARIFICATION DÉSACTIVÉS : conserver ce bloc pour une future
+  # réactivation des saisons, jours de la semaine, vacances et charges.
+  # resources :saisons, only: %i[create destroy] do
+  #   resources :days_of_weeks, only: %i[create update]
+  # end
+  #
+  # resources :holidays, only: %i[create destroy] do
+  #   resources :gite_holidays, only: %i[create update]
+  # end
+  #
+  # resources :charges, only: %i[create destroy update]
   delete "gites/:name/delete/pictures", to: "gites#delete_pictures", as: "delete_pictures"
 end

@@ -48,13 +48,12 @@ gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# For the google calendar
-gem "google-apis-drive_v3"
-gem 'google-api-client'
-gem 'googleauth'
-
-# Calendar [https://github.com/excid3/simple_calendar]
-gem "simple_calendar", "~> 2.4"
+# CALENDRIER DÉSACTIVÉ : décommenter ces dépendances pour réactiver
+# la synchronisation Google et le calendrier Rails.
+# gem "google-apis-drive_v3"
+# gem "google-api-client"
+# gem "googleauth"
+# gem "simple_calendar", "~> 2.4"
 
 # Easier forms [https://github.com/heartcombo/simple_form]
 gem "simple_form", github: "heartcombo/simple_form"
