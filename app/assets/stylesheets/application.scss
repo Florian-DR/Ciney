@@ -62,6 +62,9 @@ h4{
 
 img{
     border-radius: 3px;
+    // Preserve the intrinsic ratio when responsive CSS changes the width.
+    // More specific rules can still crop banners and card hero images.
+    height: auto;
 }
 
 p{

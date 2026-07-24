@@ -1,0 +1,46 @@
+<% cache [gite, "home-photos-responsive-v1"] do %>
+    <div class="photos-card" data-controller="show-picture">
+        <div class="main-photo">
+            <%= responsive_attachment_tag(
+                gite,
+                :main_photo,
+                alt: Photo.get_alt(gite.main_photo),
+                variant: :medium,
+                sizes: "(max-width: 768px) 100vw, 50vw",
+                loading: "lazy",
+                decoding: "async",
+                data: {
+                    show_picture_target: "pictures",
+                    action: "click->show-picture#showPicture"
+                }
+            ) if gite.main_photo %>
+        </div>
+
+        <div class="sub-photos">
+            <% gite.photos.first(5).each do |photo| %>
+                <%= responsive_attachment_tag(
+                    photo,
+                    :image,
+                    alt: photo.get_alt,
+                    variant: :small,
+                    variants: %i[small medium],
+                    sizes: "(max-width: 768px) 55vw, 10vw",
+                    loading: "lazy",
+                    decoding: "async",
+                    data: {
+                        show_picture_target: "pictures",
+                        action: "click->show-picture#showPicture"
+                    }
+                ) if photo.image %>
+            <% end %>
+        </div>
+
+        <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
+        </div>
+    </div>
+<% end %>

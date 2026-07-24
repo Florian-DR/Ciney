@@ -1,7 +1,7 @@
 <% content_for :title, @gite.name %>
 <% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
-<%= image_tag @gite.main_photo_url, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", decoding: "async" if @gite.main_photo_url%>
+<%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
     
     <div class="gite contain">
         <h2>
@@ -26,21 +26,7 @@
         </div>
 
         <h3>📷 Découvrez <%= @gite.name %> en images</h3>
-        <div class="gallery-container" data-controller="show-picture">
-            <div class="image-gallery"> 
-                <% @gite.photos.each do |photo| %>
-                    <%= image_tag photo.image_url, alt: photo.get_alt, loading: "lazy", decoding: "async", "data-action": "click->show-picture#showPicture", "data-show-picture-target": "pictures" if photo.image_url%>
-                <% end %>
-            </div>
-
-            <div class="modal" data-show-picture-target="modal">
-                <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
-                <div class="close">
-                    <span>&times;</span>
-                </div>
-                <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
-            </div>
-        </div>
+        <%= render "shared/gite_gallery", gite: @gite %>
     </div>
 
     
@@ -92,7 +78,7 @@
                     ⏳ Départ : le dimanche avant 16h et en semaine avant 10h30</li>
                 <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
         </div>
-        <%= image_tag "gite-horizon.webp", alt: "gite-horizon vue depuis la rue", loading: "lazy", decoding: "async" %>
+        <%= image_tag "gite-horizon-1400.webp", alt: "Gîte L'Horizon vu depuis la rue", srcset: { "gite-horizon-640.webp" => "640w", "gite-horizon-1400.webp" => "1400w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1400, height: 1228, loading: "lazy", decoding: "async" %>
     </div>
 
     <div class="contain">

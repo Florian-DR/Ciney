@@ -25,7 +25,7 @@
         <div class="my-photos">
             <% @gite.photos.each_with_index do |photo, index| %>
                 <div>
-                    <%= image_tag photo.image_url, crop: "fill" if photo.image_url %>
+                    <%= responsive_attachment_tag photo, :image, alt: photo.get_alt, variant: :small, variants: %i[small], sizes: "240px", loading: "lazy", decoding: "async" if photo.image %>
 
                     <%= link_to delete_pictures_path(@gite, photo_id: photo.id), data: {turbo_method: :delete, turbo_confirm: "Es-tu sûr de vouloir supprimer cette photo ?"}, class: "text-danger" do %>
                         <i class="fa-solid fa-trash"></i>

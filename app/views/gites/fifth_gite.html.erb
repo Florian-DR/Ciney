@@ -3,7 +3,7 @@
 <% content_for :uncontainerize, true %>
 
 <%# PHOTO À REMPLACER : utiliser une vue aérienne des trois gîtes réunis. %>
-<%= image_tag @gite.main_photo_url, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", decoding: "async" if @gite.main_photo_url %>
+<%= responsive_attachment_tag @gite, :main_photo, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
 
 <%# CONTENU MODIFIABLE : les textes de cette page proviennent du contenu Notion transmis. %>
 <div class="gite contain">
@@ -28,21 +28,7 @@
 
     <h3>📷 Découvrez la Ferme d'Auwez en images</h3>
     <%# PHOTOS À REMPLACER : vues aériennes, grande tablée, groupe en extérieur, piscine et sauna. %>
-    <div class="gallery-container" data-controller="show-picture">
-        <div class="image-gallery">
-            <% @gite.photos.each do |photo| %>
-                <%= image_tag photo.image_url, alt: photo.get_alt, loading: "lazy", decoding: "async", "data-action": "click->show-picture#showPicture", "data-show-picture-target": "pictures" if photo.image_url %>
-            <% end %>
-        </div>
-
-        <div class="modal" data-show-picture-target="modal">
-            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
-            <div class="close">
-                <span>&times;</span>
-            </div>
-            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
-        </div>
-    </div>
+    <%= render "shared/gite_gallery", gite: @gite %>
 </div>
 
 <div class="gite contain gite-details-section">
@@ -91,7 +77,7 @@
         </ul>
     </div>
     <%# PHOTO À REMPLACER : choisir une vue représentative de la ferme complète. %>
-    <%= image_tag "cour-interieur-horizontale.jpg", alt: "Cour intérieure de la Ferme d'Auwez", loading: "lazy", decoding: "async" %>
+    <%= image_tag "cour-interieur-1400.webp", alt: "Cour intérieure de la Ferme d'Auwez", srcset: { "cour-interieur-640.webp" => "640w", "cour-interieur-1400.webp" => "1400w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
 </div>
 
 <div class="contain">

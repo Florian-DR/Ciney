@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
-  belongs_to :gite, optional: true
-  belongs_to :home_page, optional: true
+  belongs_to :gite, optional: true, touch: true
+  belongs_to :home_page, optional: true, touch: true
   include Shrine::Attachment(:image)
 
   def get_alt

@@ -1,0 +1,30 @@
+<% cache [gite, "gallery-responsive-v1"] do %>
+    <div class="gallery-container" data-controller="show-picture">
+        <div class="image-gallery">
+            <% gite.photos.each do |photo| %>
+                <%= responsive_attachment_tag(
+                    photo,
+                    :image,
+                    alt: photo.get_alt,
+                    variant: :small,
+                    variants: %i[small medium],
+                    sizes: "(max-width: 768px) 90vw, 25vw",
+                    loading: "lazy",
+                    decoding: "async",
+                    data: {
+                        action: "click->show-picture#showPicture",
+                        show_picture_target: "pictures"
+                    }
+                ) if photo.image %>
+            <% end %>
+        </div>
+
+        <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
+        </div>
+    </div>
+<% end %>

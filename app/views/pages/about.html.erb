@@ -1,7 +1,19 @@
 <% content_for :title, "La Ferme d'Auwez" %>
 <% content_for :description, "À propos des gites de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
-<%= image_tag "about-banner.webp", alt: "balancoire accroché à un arbre devant une vue verdoillante" , id: "contact-banner", loading: "lazy", decoding: "async" %>
+<%= image_tag "about-banner-1200.webp",
+    alt: "Balançoire accrochée à un arbre devant une vue verdoyante",
+    id: "contact-banner",
+    srcset: {
+      "about-banner-768.webp" => "768w",
+      "about-banner-1200.webp" => "1200w"
+    },
+    sizes: "100vw",
+    width: 1200,
+    height: 900,
+    loading: "eager",
+    fetchpriority: "high",
+    decoding: "async" %>
 
 <div id="about" class="contain">
     <div>
@@ -10,7 +22,18 @@
         <p>Rénovée avec passion, la Ferme d’Auwez offre un cadre chaleureux et ressourçant. Que ce soit en famille, entre amis ou pour un événement, profitez d’un séjour alliant authenticité et bien-être en pleine nature.</p>
     </div>
     <div id="cadre" class="about-section">
-        <%= image_tag "arbre.webp", alt: "arbre au coucher de soleil", id: "img-abre", loading: "lazy", decoding: "async" %>
+        <%= image_tag "arbre-1200.webp",
+            alt: "Arbre au coucher de soleil",
+            id: "img-abre",
+            srcset: {
+              "arbre-640.webp" => "640w",
+              "arbre-1200.webp" => "1200w"
+            },
+            sizes: "(max-width: 768px) 100vw, 50vw",
+            width: 1200,
+            height: 1600,
+            loading: "lazy",
+            decoding: "async" %>
         <div class="section-container">
             <div>
                 <h3>Un cadre unique pour une expérience inoubliable</h3>
@@ -38,7 +61,18 @@
                 Pensée pour s’adapter à toutes les envies, la Ferme d’Auwez est aujourd’hui <b>un lieu de rencontre et de bien-être, idéal pour se retrouver et partager de beaux moments.</b></p>
             </div>
         </div>
-        <%= image_tag "auwez_1970.jpg",alt: "auwez_1970", id: "img-history", loading: "lazy", decoding: "async" %>
+        <%= image_tag "auwez-1100.webp",
+            alt: "La Ferme d'Auwez en 1970",
+            id: "img-history",
+            srcset: {
+              "auwez-640.webp" => "640w",
+              "auwez-1100.webp" => "1100w"
+            },
+            sizes: "(max-width: 768px) 100vw, 50vw",
+            width: 1100,
+            height: 807,
+            loading: "lazy",
+            decoding: "async" %>
     </div>
 
     <%####  Valeurs  #####%>

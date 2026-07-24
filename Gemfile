@@ -45,8 +45,9 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+# Generate responsive WebP variants for Shrine uploads.
+gem "image_processing", "~> 2.0"
+gem "mini_magick", "~> 5.0"
 
 # CALENDRIER DÉSACTIVÉ : décommenter ces dépendances pour réactiver
 # la synchronisation Google et le calendrier Rails.

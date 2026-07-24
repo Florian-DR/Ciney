@@ -1,22 +1,23 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home contact contact_sender about]
+  skip_before_action :all_gites, only: :home
+
   def home
-    @home = HomePage.first
-    @gites = Gite.all.order(:id)
+    # One query for the gites and one for all associated photos, also reused by
+    # the navbar and footer.
+    @gites = Gite.includes(:photos).order(:id).to_a
+    @nav_gites = @gites
 
     @gite_1 = @gites.first
     @gite_2 = @gites.second
     @gite_3 = @gites.third
     @gite_4 = @gites.fourth
     @gite_5 = @gites.fifth
-    
-    @capacity = 25
-    @main_photos = @home.photos.where(photo_type: PhotoType::MAIN_HOMEPAGE)
   end
 
   def admin
-    @gites = Gite.all.order(:id)
-    @home_page = HomePage.first
+    # The navigation query already contains the id and name needed by this page.
+    @gites = @nav_gites
   end
 
   def contact; end

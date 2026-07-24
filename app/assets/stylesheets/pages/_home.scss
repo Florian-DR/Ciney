@@ -257,7 +257,11 @@
             inset: 0;
             top: -8px;
             left: -8px;
-            background-image: url('enter');
+            background-image: url('enter-640.webp');
+            background-image: image-set(
+                url('enter-640.webp') 1x,
+                url('enter-1200.webp') 2x
+            );
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;

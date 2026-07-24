@@ -36,8 +36,18 @@ export default class extends Controller {
   #setPictureSrc(modal, picture) {
     modal.querySelector(".modal-content")?.remove() // Remove any existing modal
     document.getElementById("modal-photo")?.removeAttribute('id') // Remove any existing modal photo
-    
-    modal.innerHTML += `<div class="modal-content"><img src="${picture.src}" alt="${picture.alt}"></div>`
+
+    // Thumbnails use lightweight responsive files. The larger variant is only
+    // requested when the visitor opens the modal.
+    const content = document.createElement("div")
+    const modalPicture = document.createElement("img")
+    content.classList.add("modal-content")
+    modalPicture.src = picture.dataset.fullSrc || picture.currentSrc || picture.src
+    modalPicture.alt = picture.alt
+    modalPicture.decoding = "async"
+    content.appendChild(modalPicture)
+    modal.appendChild(content)
+
     modal.style.display = "flex"
     picture.id = "modal-photo" // Set the id of the picture to modal-photo
     modal.querySelector(".close").onclick = () => {

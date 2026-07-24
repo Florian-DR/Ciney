@@ -1,7 +1,19 @@
 <% content_for :title, "La Ferme d'Auwez" %>
 <% content_for :description, "Page de contact des gites de la Ferme d'Auwez - Ciney" %>
 <% content_for :uncontainerize, true %>
-<%= image_tag "coucher-de-soleil.jpg", alt: "panorama-picture" , id: "contact-banner", decoding: "async" %>
+<%= image_tag "coucher-de-soleil-1920.webp",
+    alt: "Coucher de soleil sur le panorama de la Ferme d'Auwez",
+    id: "contact-banner",
+    srcset: {
+      "coucher-de-soleil-960.webp" => "960w",
+      "coucher-de-soleil-1920.webp" => "1920w"
+    },
+    sizes: "100vw",
+    width: 1920,
+    height: 1440,
+    loading: "eager",
+    fetchpriority: "high",
+    decoding: "async" %>
 
 <div id="contact" class="contain">   
 
