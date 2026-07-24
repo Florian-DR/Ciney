@@ -3,7 +3,9 @@ class GitesController < ApplicationController
     before_action :current_gite
 
     def show
-        if @gite.name.downcase.include?("hirondelle")
+        if @gite.name.downcase.include?("ferme")
+            render "fifth_gite"
+        elsif @gite.name.downcase.include?("hirondelle")
             render "first_gite"
         elsif @gite.name.downcase.include?("grand")
             render "fourth_gite"
@@ -54,7 +56,7 @@ class GitesController < ApplicationController
 
     def current_gite
         # To have the gite from the params[:name] (url)
-        @gite = Gite.all.select{ |gite| gite.name.downcase.delete(" \'") == params[:name] }.first
+        @gite = Gite.all.find { |gite| gite.to_param == params[:name] }
     end
 
 end

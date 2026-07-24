@@ -156,8 +156,45 @@
     </div>
 </div>
 
+<%#### Toute la ferme ####%>
+<% if @gite_5.present? %>
+    <div class="gite-card background-card-gite">
+        <div class="photos-card" data-controller="show-picture">
+            <div class="main-photo">
+                <%# PHOTO À REMPLACER : vue aérienne des trois gîtes réunis. Elle se gère depuis la page d'administration du gîte. %>
+                <%= image_tag @gite_5.main_photo_url, alt: Photo.get_alt(@gite_5.main_photo), loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if @gite_5.main_photo_url %>
+            </div>
+            <div class="sub-photos">
+                <% @gite_5.photos[0..4].each do |photo| %>
+                    <%= image_tag photo.image_url, alt: photo.get_alt, loading: "lazy", decoding: "async", "data-show-picture-target": "pictures", "data-action": "click->show-picture#showPicture" if photo.image_url %>
+                <% end %>
+            </div>
+
+            <div class="modal" data-show-picture-target="modal">
+                <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+                <div class="close">
+                    <span>&times;</span>
+                </div>
+                <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
+            </div>
+        </div>
+
+        <div class="gite-card-text">
+            <h4><%= @gite_5.name %></h4>
+            <div class="gite-overview">
+                <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_5.capacity %> personnes</p>
+                <p class="pictograme"><i class="fa-solid fa-house"></i>3 gîtes rien que pour vous</p>
+                <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure & sauna privatifs</p>
+                <p class="pictograme"><i class="fa-solid fa-wheelchair"></i>Accès PMR</p>
+                <p class="text">Réservez la Ferme d’Auwez dans son intégralité et profitez de ses trois gîtes, de ses espaces de détente et de son jardin en toute intimité. Une formule idéale pour réunir les grandes familles et les groupes d’amis dans un seul lieu.</p>
+            </div>
+            <%= link_to "Découvrir la Ferme complète", gite_path(@gite_5), class: "button" %>
+        </div>
+    </div>
+<% end %>
+
 <%###### Salle Section ######%>
-<div class="salle-container bg-green color-white">
+<div class="salle-container">
     <div class="salle-images">
         <%# <%= image_tag "border-image.png", alt: "border-image.png"%>
         <div class="border-image-mask"></div>
@@ -170,12 +207,12 @@
 
             Louer l’ensemble de la Ferme, c’est offrir à vos proches un véritable cocon où petits et grands trouvent leur place, pour des moments de complicité et des souvenirs qui resteront gravés. Ici, tout est pensé pour que vous vous sentiez comme à la maison, avec ce petit supplément d’évasion qui rend le séjour unique</p>
 
-        <%=link_to "Nous contacter", contact_path(), class: "button"%>
+        <%= link_to "Découvrir la Ferme complète", gite_path(@gite_5), class: "button" if @gite_5.present? %>
     </div>
 </div> 
 
 <%###### Visitors Section ######%>
-<div id="visitors-container">
+<div id="visitors-container" class="bg-green">
     <h3>Ils ont séjourné chez nous...</h3>
     <div class="visitors-cards">
         <div class="visitor-card">

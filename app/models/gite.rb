@@ -14,6 +14,8 @@ class Gite < ApplicationRecord
 
     def to_param
       # To have the name without space in the url
+      return "toute-la-ferme" if name.downcase == "toute la ferme"
+
       name.downcase.delete(" \'")
     end
 

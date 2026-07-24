@@ -1,0 +1,101 @@
+<% content_for :title, "Toute la Ferme d'Auwez" %>
+<% content_for :description, "Location intégrale de la Ferme d'Auwez - 3 gîtes, 25 lits - Ciney" %>
+<% content_for :uncontainerize, true %>
+
+<%# PHOTO À REMPLACER : utiliser une vue aérienne des trois gîtes réunis. %>
+<%= image_tag @gite.main_photo_url, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", decoding: "async" if @gite.main_photo_url %>
+
+<%# CONTENU MODIFIABLE : les textes de cette page proviennent du contenu Notion transmis. %>
+<div class="gite contain">
+    <h2>La Ferme d'Auwez dans son intégralité</h2>
+
+    <div>
+        <h3>Toute la ferme rien que pour vous : 3 gîtes, 25 lits, un seul lieu</h3>
+        <p>La Ferme d'Auwez peut être louée dans son intégralité, réunissant nos trois gîtes de caractère : <b>Les Hirondelles</b>, <b>L'Horizon</b> et <b>L'Arbre de Vie</b>, sous un même toit. Une formule pensée pour les grandes familles, les groupes d'amis ou les retrouvailles multigénérationnelles qui souhaitent profiter de tout le domaine, en toute intimité.</p>
+    </div>
+
+    <div>
+        <h3>Un domaine entier rien que pour vous</h3>
+        <p>En réservant l'ensemble de la ferme, vous profitez de tous les espaces à votre rythme et en famille : la piscine intérieure et le sauna deviennent votre bulle privée, sans horaires à respecter. Chambres, salons, terrasses et jardin s'offrent à vous et à vos proches pour toute la durée du séjour.</p>
+        <ul style="margin: 20px 20px;">
+            <li><b>Capacité :</b> jusqu'à <%= @gite.capacity %> personnes</li>
+            <li><b>Composition :</b> 3 gîtes (Les Hirondelles, L'Horizon et L'Arbre de Vie)</li>
+            <li><b>Idéal pour :</b> grandes familles, groupes d'amis, retrouvailles multigénérationnelles</li>
+            <li><b>Ambiance :</b> conviviale, chaleureuse et sur mesure</li>
+            <li><b>Accès PMR :</b> oui, via L'Arbre de Vie, de plain-pied</li>
+        </ul>
+    </div>
+
+    <h3>📷 Découvrez la Ferme d'Auwez en images</h3>
+    <%# PHOTOS À REMPLACER : vues aériennes, grande tablée, groupe en extérieur, piscine et sauna. %>
+    <div class="gallery-container" data-controller="show-picture">
+        <div class="image-gallery">
+            <% @gite.photos.each do |photo| %>
+                <%= image_tag photo.image_url, alt: photo.get_alt, loading: "lazy", decoding: "async", "data-action": "click->show-picture#showPicture", "data-show-picture-target": "pictures" if photo.image_url %>
+            <% end %>
+        </div>
+
+        <div class="modal" data-show-picture-target="modal">
+            <div class="arrow-left" data-action="click->show-picture#changePicture"></div>
+            <div class="close">
+                <span>&times;</span>
+            </div>
+            <div class="arrow-right" data-action="click->show-picture#changePicture"></div>
+        </div>
+    </div>
+</div>
+
+<div class="gite contain gite-details-section">
+    <h3>Composition de la Ferme</h3>
+    <div class="gite-details">
+        <div>
+            <h4>🏡 Les Hirondelles, 15 personnes</h4>
+            <p>Maison familiale entièrement rénovée avec grand salon à cassette à bois, cuisine équipée et salle à manger spacieuse. À l'étage : 4 chambres doubles et 2 dortoirs (3 et 4 lits), avec 5 salles de bains réparties sur les niveaux.</p>
+        </div>
+
+        <div>
+            <h4>🌄 L'Horizon, 6 personnes</h4>
+            <p>Gîte lumineux avec terrasse privée et vue panoramique sur le Condroz. Salon cosy, cuisine ouverte équipée, une chambre double et une grande chambre de 4 lits sous toit.</p>
+        </div>
+
+        <div>
+            <h4>🌳 L'Arbre de Vie, 4 personnes, accès PMR</h4>
+            <p>Espace de plain-pied, intimiste et entièrement accessible aux personnes à mobilité réduite. Salon cosy, cuisine ouverte, 2 chambres confortables et 2 salles de bains, dont une adaptée PMR.</p>
+        </div>
+    </div>
+
+    <div style="margin: 5vh auto;">
+        <h3>Les + du domaine, inclus dans la location complète</h3>
+        <ul>
+            <li>🏊‍♂️ <b>Piscine intérieure & sauna :</b> à disposition tout au long du séjour</li>
+            <li>☀️ <b>Piscine extérieure en été :</b> bassin clôturé, idéal pour toute la famille</li>
+            <li>🌿 <b>Grand jardin et nature environnante :</b> un espace généreux pour se relaxer ou jouer en plein air</li>
+            <li>🔥 <b>Feu de bois :</b> pour les grandes soirées conviviales</li>
+            <li>🚴‍♂️ <b>Abri à vélos sécurisé & kit de nettoyage vélo :</b> idéal pour les amateurs de cyclisme</li>
+            <li>🅿️ <b>Parking sur place</b></li>
+        </ul>
+    </div>
+</div>
+
+<div class="contain gite info-gite">
+    <div>
+        <h3>Informations pratiques</h3>
+        <h4>📌 Tout ce qu'il faut savoir avant votre arrivée</h4>
+        <ul>
+            <li><b>Capacité totale :</b> <%= @gite.capacity %> personnes (15 + 6 + 4)</li>
+            <li><b>Séjour minimum :</b> 2 nuits</li>
+            <li style="white-space: pre-wrap;"><b>Arrivée & Départ :</b>
+                ⏳ Arrivée : entre 16h et 19h
+                ⏳ Départ : le dimanche avant 16h et en semaine avant 10h30</li>
+            <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
+        </ul>
+    </div>
+    <%# PHOTO À REMPLACER : choisir une vue représentative de la ferme complète. %>
+    <%= image_tag "cour-interieur-horizontale.jpg", alt: "Cour intérieure de la Ferme d'Auwez", loading: "lazy", decoding: "async" %>
+</div>
+
+<div class="contain">
+    <%# LIEN À COMPLÉTER : remplacer l'URL générique ci-dessous par l'URL Lighthouse dédiée à la Ferme complète. %>
+    <%= link_to "Réserver la Ferme complète", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR", target: "_blank", rel: "noopener", style: "padding: auto", class: "button" %>
+    <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto", class: "button" if current_user == User.first %>
+</div>

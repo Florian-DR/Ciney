@@ -303,14 +303,13 @@
 // Visitors Section
 #visitors-container{
     min-height: 80vh;
-    background-color: $background;
     padding: 60px;
     align-items: center;
     display: flex;
     flex-direction: column;
     h3{
         font-size: calc(2.2rem + 1.8vw);
-        color: $green;
+        color: $background;
         padding: 20px;
         &::after{
             content: "";
@@ -323,7 +322,7 @@
             mask-image: url('cedilles.png');
             mask-size: cover;
             mask-repeat: no-repeat;
-            background-color: $orange;
+            background-color: $background;
             opacity: 0.2;            
         }
     }
