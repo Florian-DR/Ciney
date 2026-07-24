@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about]
+  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities]
   skip_before_action :all_gites, only: :home
 
   def home
@@ -36,5 +36,9 @@ class PagesController < ApplicationController
   end
 
   def about; end
+
+  def activities
+    @gpx_trace_groups = ActivityCatalog::GPX_TRACE_GROUPS
+  end
 
 end

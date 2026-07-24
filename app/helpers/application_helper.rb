@@ -30,4 +30,10 @@ module ApplicationHelper
 
     image_tag selected.url, **options.compact
   end
+
+  # A trace becomes downloadable as soon as the corresponding GPX file is
+  # placed in public/gpx. Until then, the page shows a neutral placeholder.
+  def gpx_available?(filename)
+    Rails.root.join("public", "gpx", filename).file?
+  end
 end

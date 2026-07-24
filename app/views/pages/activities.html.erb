@@ -1,0 +1,215 @@
+<% content_for :title, "Activités autour de Ciney | La Ferme d'Auwez" %>
+<% content_for :description, "Balades, vélo, bonnes adresses et découvertes à vivre autour de la Ferme d'Auwez, à Ciney et dans le Condroz." %>
+
+<main class="activities-page">
+    <%###### Hero Section ######%>
+    <header class="activities-hero">
+        <picture>
+            <source media="(max-width: 768px)" srcset="<%= asset_path("activities-hero-960.webp") %>">
+            <%= image_tag "activities-hero-1920.webp",
+                alt: "Chemin de promenade et cyclistes dans les paysages vallonnés du Condroz",
+                width: 1920,
+                height: 768,
+                fetchpriority: "high",
+                decoding: "async" %>
+        </picture>
+        <div class="activities-hero__shade"></div>
+        <div class="activities-hero__content contain">
+            <p class="activities-eyebrow">Autour de la Ferme d'Auwez</p>
+            <h1>Le Condroz à votre porte</h1>
+            <p>Une journée au vert, une échappée à vélo ou une bonne table : voici nos idées pour profiter pleinement de votre séjour.</p>
+            <a href="#incontournables" class="activities-hero__link">Commencer l'exploration <i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+    </header>
+
+    <%###### Introduction Section ######%>
+    <section class="activities-intro contain">
+        <p class="activities-kicker">Nos bonnes idées, près de Ciney</p>
+        <h2>À chacun son aventure</h2>
+        <p>Nature, patrimoine et gourmandise se rencontrent à quelques kilomètres de la ferme. Nous avons rassemblé ici nos incontournables et quelques itinéraires à glisser dans votre poche.</p>
+        <nav class="activities-shortcuts" aria-label="Accès rapide aux catégories">
+            <a href="#incontournables"><i class="fa-solid fa-star"></i> À découvrir</a>
+            <a href="#balades"><i class="fa-solid fa-person-hiking"></i> Balades</a>
+            <a href="#traces"><i class="fa-solid fa-route"></i> Traces GPX</a>
+            <a href="#restaurants"><i class="fa-solid fa-utensils"></i> Restaurants</a>
+            <a href="#agenda"><i class="fa-regular fa-calendar"></i> Agenda</a>
+        </nav>
+    </section>
+
+    <%###### Incontournables Section ######%>
+    <section id="incontournables" class="activities-section activities-section--green">
+        <div class="contain">
+            <div class="activities-heading">
+                <div>
+                    <p class="activities-kicker">Tout près de la ferme</p>
+                    <h2>Deux incontournables</h2>
+                </div>
+                <p>Deux sorties faciles à intégrer à votre séjour, que vous voyagiez en famille, entre amis ou le temps d'un week-end gourmand.</p>
+            </div>
+
+            <div class="featured-activities">
+                <article class="featured-activity featured-activity--nature">
+                    <div class="featured-activity__icon"><i class="fa-solid fa-tree"></i></div>
+                    <p class="activity-meta">Nature · famille · toute la journée</p>
+                    <h3>Le Domaine de Chevetogne</h3>
+                    <p>Un vaste domaine provincial où alterner promenades, jardins, plaines de jeux et découvertes en pleine nature. Une valeur sûre avec les enfants, mais tout aussi agréable pour une longue parenthèse au vert.</p>
+                    <a href="https://www.domainedechevetogne.be/" target="_blank" rel="noopener" class="activity-arrow-link">
+                        Préparer la visite <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </article>
+
+                <article class="featured-activity featured-activity--gourmet">
+                    <div class="featured-activity__icon"><i class="fa-solid fa-cookie-bite"></i></div>
+                    <p class="activity-meta">Gourmandise · savoir-faire · Leignon</p>
+                    <h3>Le Château de Leignon</h3>
+                    <p>À quelques minutes, le domaine réunit une chocolaterie artisanale et une brasserie. Découvrez leurs créations, prévoyez une dégustation ou prolongez l'expérience à la table du château.</p>
+                    <div class="featured-activity__links">
+                        <a href="https://www.leignon.com/la-chocolaterie" target="_blank" rel="noopener">La chocolaterie <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://www.leignon.com/" target="_blank" rel="noopener">La brasserie <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <%###### Promenades Section ######%>
+    <section id="balades" class="activities-section contain">
+        <div class="activities-heading">
+            <div>
+                <p class="activities-kicker">Prendre l'air</p>
+                <h2>Trois balades pour commencer</h2>
+            </div>
+            <p>Des boucles balisées entre ville, villages et campagne condruzienne. Vérifiez toujours le parcours et les conditions avant votre départ.</p>
+        </div>
+
+        <div class="walk-grid">
+            <article class="walk-card">
+                <span class="walk-card__number">01</span>
+                <i class="fa-solid fa-water walk-card__icon"></i>
+                <p class="activity-meta">Chevetogne · 4,9 km</p>
+                <h3>La promenade de l'Ywoigne</h3>
+                <p>Une petite boucle au départ de l'église de Chevetogne, idéale pour une sortie accessible au fil des paysages ruraux.</p>
+            </article>
+            <article class="walk-card">
+                <span class="walk-card__number">02</span>
+                <i class="fa-solid fa-city walk-card__icon"></i>
+                <p class="activity-meta">Ciney · 6,6 km</p>
+                <h3>La promenade du Blanc Bleu</h3>
+                <p>Une boucle au départ de la Place Monseu pour découvrir Ciney et rejoindre rapidement la campagne environnante.</p>
+            </article>
+            <article class="walk-card">
+                <span class="walk-card__number">03</span>
+                <i class="fa-solid fa-landmark walk-card__icon"></i>
+                <p class="activity-meta">Ciney · 11,5 km</p>
+                <h3>Le Château de Barcenal</h3>
+                <p>Une promenade plus généreuse, au départ du centre de Ciney, entre patrimoine local et chemins du Condroz.</p>
+            </article>
+        </div>
+        <div class="activities-centered-link">
+            <a href="https://www.ciney.be/culture-et-loisirs/tourisme/balades-nature/balades-et-nature/balades-pedestres" target="_blank" rel="noopener" class="button">
+                Voir toutes les promenades balisées
+            </a>
+        </div>
+    </section>
+
+    <%###### Traces GPX Section ######%>
+    <%# Le contenu des parcours se trouve côté backend dans app/models/activity_catalog.rb. %>
+    <section id="traces" class="activities-section activities-traces">
+        <div class="contain">
+            <div class="activities-heading activities-heading--center">
+                <div>
+                    <p class="activities-kicker">La ferme comme point de départ</p>
+                    <h2>Nos traces à emporter</h2>
+                </div>
+                <p>Téléchargez le fichier GPX, ouvrez-le dans votre application favorite et partez explorer les petites routes et chemins des environs.</p>
+            </div>
+
+            <div class="trace-groups">
+                <% @gpx_trace_groups.each do |group| %>
+                    <div class="trace-group">
+                        <h3><i class="fa-solid <%= group[:icon] %>"></i> <%= group[:category] %></h3>
+                        <div class="trace-list">
+                            <% group[:traces].each do |trace| %>
+                                <article class="trace-card">
+                                    <div>
+                                        <h4><%= trace[:title] %></h4>
+                                        <p><span><i class="fa-solid fa-ruler-horizontal"></i> <%= trace[:distance] %></span><span><i class="fa-solid fa-mountain"></i> <%= trace[:elevation] %></span></p>
+                                    </div>
+                                    <% if gpx_available?(trace[:file]) %>
+                                        <%= link_to "/gpx/#{trace[:file]}", download: trace[:file], class: "trace-download", aria: { label: "Télécharger #{trace[:title]} au format GPX" } do %>
+                                            <i class="fa-solid fa-download"></i><span>GPX</span>
+                                        <% end %>
+                                    <% else %>
+                                        <span class="trace-download trace-download--pending" title="Le fichier sera ajouté prochainement">
+                                            <i class="fa-regular fa-clock"></i><span>Bientôt</span>
+                                        </span>
+                                    <% end %>
+                                </article>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <p class="trace-disclaimer"><i class="fa-solid fa-circle-info"></i> Les parcours sont proposés à titre indicatif. Adaptez votre sortie à votre niveau, à la météo et à l'état des chemins.</p>
+        </div>
+    </section>
+
+    <%###### Restaurants Section ######%>
+    <%# RECOMMANDATIONS À VALIDER PAR LA FERME :
+            ces trois adresses servent de première sélection éditoriale. Elles
+            peuvent être remplacées directement dans les cartes ci-dessous. %>
+    <section id="restaurants" class="activities-section contain">
+        <div class="activities-heading">
+            <div>
+                <p class="activities-kicker">Après l'effort</p>
+                <h2>Nos haltes gourmandes</h2>
+            </div>
+            <p>Trois tables aux personnalités différentes pour prolonger la journée autour d'un bon repas. Pensez à vérifier les horaires et à réserver.</p>
+        </div>
+
+        <div class="restaurant-grid">
+            <article class="restaurant-card">
+                <div class="restaurant-card__top"><i class="fa-solid fa-wine-glass"></i><span>Leignon</span></div>
+                <h3>L'Auberge du Château</h3>
+                <p>Une expérience gastronomique dans le cadre singulier du Château de Leignon.</p>
+                <a href="https://www.leignon.com/restaurant" target="_blank" rel="noopener">Découvrir la table <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+            <article class="restaurant-card">
+                <div class="restaurant-card__top"><i class="fa-solid fa-leaf"></i><span>Ciney</span></div>
+                <h3>Tilia</h3>
+                <p>Une cuisine contemporaine qui met en avant les produits et les partenaires locaux.</p>
+                <a href="https://www.restotilia.be/" target="_blank" rel="noopener">Découvrir la table <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+            <article class="restaurant-card">
+                <div class="restaurant-card__top"><i class="fa-solid fa-pizza-slice"></i><span>Ciney</span></div>
+                <h3>Il San Marino</h3>
+                <p>Une adresse italienne conviviale pour partager pizzas et spécialités en toute simplicité.</p>
+                <a href="https://sanmarino.be/" target="_blank" rel="noopener">Découvrir la table <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+        </div>
+    </section>
+
+    <%###### Agenda Section ######%>
+    <section id="agenda" class="activities-agenda contain">
+        <div class="activities-agenda__icon"><i class="fa-regular fa-calendar-days"></i></div>
+        <div class="activities-agenda__content">
+            <p class="activities-kicker">Aujourd'hui et demain</p>
+            <h2>Que se passe-t-il dans la région ?</h2>
+            <p>Marchés, concerts, fêtes locales, brocantes ou grands rendez-vous à Ciney Expo : consultez les agendas officiels pour découvrir les événements programmés pendant votre séjour.</p>
+            <div class="activities-agenda__links">
+                <a href="https://www.ciney.be/je-trouve/agenda" target="_blank" rel="noopener" class="button">Agenda de la Ville de Ciney</a>
+                <a href="https://www.cineyexpo.info/" target="_blank" rel="noopener" class="activities-agenda__secondary-link">Agenda de Ciney Expo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <%###### Contact Section ######%>
+    <section class="activities-cta">
+        <div class="contain">
+            <p class="activities-kicker">Votre séjour, à votre rythme</p>
+            <h2>Une question ou une envie particulière ?</h2>
+            <p>Nous connaissons bien la région et serons ravis de vous orienter selon la saison, la météo et la composition de votre groupe.</p>
+            <%= link_to "Nous contacter", contact_path, class: "button" %>
+        </div>
+    </section>
+</main>

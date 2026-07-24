@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/domi", to: "pages#admin", as: "admin"
 
   get "/about", to: "pages#about"
+  get "/activites", to: "pages#activities", as: :activities
 
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#contact_sender"

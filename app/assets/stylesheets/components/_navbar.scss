@@ -85,6 +85,24 @@ nav{
   margin-right: 1rem;
 }
 
+// Keep the complete navigation on one line on smaller laptops now that the
+// Activities page has its own entry.
+@media (max-width: 1200px) and (min-width: 769px) {
+  .navbar {
+    .logo {
+      max-height: 65px;
+    }
+
+    .nav-link,
+    .button {
+      font-size: 19px;
+    }
+  }
+
+  nav {
+    gap: 8px;
+  }
+}
 
 @media (max-width: $breakpoint-mobile) {
   .desktop-nav{
