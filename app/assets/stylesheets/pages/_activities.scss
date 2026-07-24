@@ -282,6 +282,8 @@
     padding: 42px 30px 32px;
     border-top: 4px solid $orange;
     background: rgba($green, 0.08);
+    display: flex;
+    flex-direction: column;
 
     &__number {
         position: absolute;
@@ -304,9 +306,26 @@
         margin-bottom: 14px;
     }
 
-    p:last-child {
+    > p:not(.activity-meta) {
         line-height: 1.65;
     }
+
+    &__link {
+        width: fit-content;
+        margin-top: auto;
+        padding-top: 18px;
+        border-bottom: 1px solid rgba($green, 0.45);
+        font-weight: 700;
+
+        i {
+            margin-left: 5px;
+            font-size: 0.75em;
+        }
+    }
+}
+
+.activities-section.activities-walks {
+    padding-bottom: 50px;
 }
 
 .activities-centered-link {
@@ -316,6 +335,7 @@
 
 .activities-traces {
     background: var(--activities-cream);
+    padding-top: 55px;
 }
 
 .trace-groups {
@@ -403,6 +423,7 @@
 }
 
 .restaurant-card {
+    min-height: 330px;
     padding: 34px 30px;
     border: 1px solid rgba($green, 0.25);
     display: flex;
@@ -435,6 +456,11 @@
             margin-left: 6px;
         }
     }
+}
+
+.activities-section.activities-restaurants {
+    padding-top: 110px;
+    padding-bottom: 130px;
 }
 
 .activities-agenda {
@@ -479,9 +505,10 @@
 
         .activities-agenda__secondary-link {
             padding: 9px 14px;
-            border: 2px solid rgba($white, 0.8);
+            border: 1px solid rgba($orange, 0.75);
             border-radius: $radius;
-            color: $white;
+            background: rgba($orange, 0.12);
+            color: #efc181;
             font-weight: 700;
 
             i {
@@ -490,9 +517,9 @@
             }
 
             &:hover {
-                background: $white;
-                border-color: $white;
-                color: var(--activities-dark-green);
+                background: $orange;
+                border-color: $orange;
+                color: $white;
             }
         }
     }
@@ -542,6 +569,19 @@
     .activities-cta {
         padding-top: 70px;
         padding-bottom: 70px;
+    }
+
+    .activities-section.activities-walks {
+        padding-bottom: 45px;
+    }
+
+    .activities-section.activities-traces {
+        padding-top: 45px;
+    }
+
+    .activities-section.activities-restaurants {
+        padding-top: 80px;
+        padding-bottom: 90px;
     }
 
     .activities-shortcuts {

@@ -28,52 +28,16 @@
         <h2>À chacun son aventure</h2>
         <p>Nature, patrimoine et gourmandise se rencontrent à quelques kilomètres de la ferme. Nous avons rassemblé ici nos incontournables et quelques itinéraires à glisser dans votre poche.</p>
         <nav class="activities-shortcuts" aria-label="Accès rapide aux catégories">
-            <a href="#incontournables"><i class="fa-solid fa-star"></i> À découvrir</a>
             <a href="#balades"><i class="fa-solid fa-person-hiking"></i> Balades</a>
             <a href="#traces"><i class="fa-solid fa-route"></i> Traces GPX</a>
+            <a href="#incontournables"><i class="fa-solid fa-star"></i> À découvrir</a>
             <a href="#restaurants"><i class="fa-solid fa-utensils"></i> Restaurants</a>
             <a href="#agenda"><i class="fa-regular fa-calendar"></i> Agenda</a>
         </nav>
     </section>
 
-    <%###### Incontournables Section ######%>
-    <section id="incontournables" class="activities-section activities-section--green">
-        <div class="contain">
-            <div class="activities-heading">
-                <div>
-                    <p class="activities-kicker">Tout près de la ferme</p>
-                    <h2>Deux incontournables</h2>
-                </div>
-                <p>Deux sorties faciles à intégrer à votre séjour, que vous voyagiez en famille, entre amis ou le temps d'un week-end gourmand.</p>
-            </div>
-
-            <div class="featured-activities">
-                <article class="featured-activity featured-activity--nature">
-                    <div class="featured-activity__icon"><i class="fa-solid fa-tree"></i></div>
-                    <p class="activity-meta">Nature · famille · toute la journée</p>
-                    <h3>Le Domaine de Chevetogne</h3>
-                    <p>Un vaste domaine provincial où alterner promenades, jardins, plaines de jeux et découvertes en pleine nature. Une valeur sûre avec les enfants, mais tout aussi agréable pour une longue parenthèse au vert.</p>
-                    <a href="https://www.domainedechevetogne.be/" target="_blank" rel="noopener" class="activity-arrow-link">
-                        Préparer la visite <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </article>
-
-                <article class="featured-activity featured-activity--gourmet">
-                    <div class="featured-activity__icon"><i class="fa-solid fa-cookie-bite"></i></div>
-                    <p class="activity-meta">Gourmandise · savoir-faire · Leignon</p>
-                    <h3>Le Château de Leignon</h3>
-                    <p>À quelques minutes, le domaine réunit une chocolaterie artisanale et une brasserie. Découvrez leurs créations, prévoyez une dégustation ou prolongez l'expérience à la table du château.</p>
-                    <div class="featured-activity__links">
-                        <a href="https://www.leignon.com/la-chocolaterie" target="_blank" rel="noopener">La chocolaterie <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                        <a href="https://www.leignon.com/" target="_blank" rel="noopener">La brasserie <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
     <%###### Promenades Section ######%>
-    <section id="balades" class="activities-section contain">
+    <section id="balades" class="activities-section activities-walks contain">
         <div class="activities-heading">
             <div>
                 <p class="activities-kicker">Prendre l'air</p>
@@ -86,23 +50,32 @@
             <article class="walk-card">
                 <span class="walk-card__number">01</span>
                 <i class="fa-solid fa-water walk-card__icon"></i>
-                <p class="activity-meta">Chevetogne · 4,9 km</p>
+                <p class="activity-meta">Chevetogne · 4,9 km · balisage vert</p>
                 <h3>La promenade de l'Ywoigne</h3>
                 <p>Une petite boucle au départ de l'église de Chevetogne, idéale pour une sortie accessible au fil des paysages ruraux.</p>
+                <a href="https://www.cirkwi.com/fr/circuit/156042-ciney-chevetogne-promenade-de-l-ywoigne" target="_blank" rel="noopener" class="walk-card__link">
+                    Voir le parcours <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
             </article>
             <article class="walk-card">
                 <span class="walk-card__number">02</span>
                 <i class="fa-solid fa-city walk-card__icon"></i>
-                <p class="activity-meta">Ciney · 6,6 km</p>
+                <p class="activity-meta">Ciney · 6,6 km · balisage vert</p>
                 <h3>La promenade du Blanc Bleu</h3>
                 <p>Une boucle au départ de la Place Monseu pour découvrir Ciney et rejoindre rapidement la campagne environnante.</p>
+                <a href="https://www.cirkwi.com/fr/circuit/159126-la-promenade-du-blanc-bleu-a-ciney-entre-ville-nature-et-patrimoine" target="_blank" rel="noopener" class="walk-card__link">
+                    Voir le parcours <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
             </article>
             <article class="walk-card">
                 <span class="walk-card__number">03</span>
                 <i class="fa-solid fa-landmark walk-card__icon"></i>
-                <p class="activity-meta">Ciney · 11,5 km</p>
+                <p class="activity-meta">Ciney · 11,5 km · balisage bleu</p>
                 <h3>Le Château de Barcenal</h3>
                 <p>Une promenade plus généreuse, au départ du centre de Ciney, entre patrimoine local et chemins du Condroz.</p>
+                <a href="https://www.cirkwi.com/fr/circuit/326908-la-promenade-du-chateau-de-barcenale-a-ciney-entre-patrimoine-et-paysages-condruziens" target="_blank" rel="noopener" class="walk-card__link">
+                    Voir le parcours <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
             </article>
         </div>
         <div class="activities-centered-link">
@@ -154,15 +127,51 @@
         </div>
     </section>
 
+    <%###### Incontournables Section ######%>
+    <section id="incontournables" class="activities-section activities-section--green">
+        <div class="contain">
+            <div class="activities-heading">
+                <div>
+                    <p class="activities-kicker">Tout près de la ferme</p>
+                    <h2>Deux incontournables</h2>
+                </div>
+                <p>Deux sorties faciles à intégrer à votre séjour, que vous voyagiez en famille, entre amis ou le temps d'un week-end gourmand.</p>
+            </div>
+
+            <div class="featured-activities">
+                <article class="featured-activity featured-activity--nature">
+                    <div class="featured-activity__icon"><i class="fa-solid fa-tree"></i></div>
+                    <p class="activity-meta">Nature · famille · toute la journée</p>
+                    <h3>Le Domaine de Chevetogne</h3>
+                    <p>Un vaste domaine provincial où alterner promenades, jardins, plaines de jeux et découvertes en pleine nature. Une valeur sûre avec les enfants, mais tout aussi agréable pour une longue parenthèse au vert.</p>
+                    <a href="https://www.domainedechevetogne.be/" target="_blank" rel="noopener" class="activity-arrow-link">
+                        Préparer la visite <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </article>
+
+                <article class="featured-activity featured-activity--gourmet">
+                    <div class="featured-activity__icon"><i class="fa-solid fa-cookie-bite"></i></div>
+                    <p class="activity-meta">Gourmandise · savoir-faire · Leignon</p>
+                    <h3>Le Château de Leignon</h3>
+                    <p>À quelques minutes, le domaine réunit une chocolaterie artisanale et une brasserie. Découvrez leurs créations, prévoyez une dégustation ou prolongez l'expérience à la table du château.</p>
+                    <div class="featured-activity__links">
+                        <a href="https://www.leignon.com/la-chocolaterie" target="_blank" rel="noopener">La chocolaterie <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://www.leignon.com/" target="_blank" rel="noopener">La brasserie <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <%###### Restaurants Section ######%>
     <%# RECOMMANDATIONS À VALIDER PAR LA FERME :
             ces trois adresses servent de première sélection éditoriale. Elles
             peuvent être remplacées directement dans les cartes ci-dessous. %>
-    <section id="restaurants" class="activities-section contain">
+    <section id="restaurants" class="activities-section activities-restaurants contain">
         <div class="activities-heading">
             <div>
                 <p class="activities-kicker">Après l'effort</p>
-                <h2>Nos haltes gourmandes</h2>
+                <h2>Nos coups de cœur</h2>
             </div>
             <p>Trois tables aux personnalités différentes pour prolonger la journée autour d'un bon repas. Pensez à vérifier les horaires et à réserver.</p>
         </div>
