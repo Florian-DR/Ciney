@@ -1,5 +1,7 @@
-<% content_for :title, @gite.name %>
-<% content_for :description, "#{@gite.name} de la Ferme d'Auwez - Ciney" %>
+<% content_for :title, "Le Grand Horizon à Ciney – gîte 10 personnes | Ferme d’Auwez" %>
+<% content_for :description, "Le Grand Horizon accueille 10 personnes à Ciney : deux espaces réunis, accès PMR, terrasse panoramique, piscine intérieure, sauna et jardin." %>
+<% content_for :social_image, "gite-horizon-1400.webp" %>
+<% content_for :social_image_alt, "Vue extérieure du Grand Horizon à la Ferme d’Auwez" %>
 <% content_for :uncontainerize, true %>
 <%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
 

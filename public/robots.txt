@@ -1,1 +1,28 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# AI search and user-requested page retrieval
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Search engines that power Gemini, Copilot, Siri and other AI answers
+User-agent: Googlebot
+User-agent: bingbot
+User-agent: Applebot
+Allow: /
+
+# AI model usage and training
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Keep the site accessible to other and future public crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://www.fermedauwez.be/sitemap.xml

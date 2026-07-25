@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities]
-  skip_before_action :all_gites, only: :home
+  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities sitemap]
+  skip_before_action :all_gites, only: %i[home sitemap]
 
   def home
     # One query for the gites and one for all associated photos, also reused by
@@ -39,6 +39,10 @@ class PagesController < ApplicationController
 
   def activities
     @gpx_trace_groups = ActivityCatalog::GPX_TRACE_GROUPS
+  end
+
+  def sitemap
+    @sitemap_gites = Gite.select(:name, :updated_at).order(:id)
   end
 
 end

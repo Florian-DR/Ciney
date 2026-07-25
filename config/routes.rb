@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#contact_sender"
+  get "/sitemap.xml", to: "pages#sitemap", defaults: { format: :xml }, as: :sitemap
 
   # get "/reservation", to: "reservations#reservation"
   # post "/reservation/gites", to: "reservations#gites_reservation_sender"

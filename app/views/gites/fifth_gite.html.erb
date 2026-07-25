@@ -1,5 +1,7 @@
-<% content_for :title, "Toute la Ferme d'Auwez" %>
-<% content_for :description, "Location intégrale de la Ferme d'Auwez - 3 gîtes, 25 lits - Ciney" %>
+<% content_for :title, "Toute la Ferme d’Auwez à Ciney – gîte 25 personnes" %>
+<% content_for :description, "Louez toute la Ferme d’Auwez à Ciney : 3 gîtes et 25 lits, piscines, sauna, grand jardin et espaces privatifs pour familles et groupes." %>
+<% content_for :social_image, "cour-interieur-1400.webp" %>
+<% content_for :social_image_alt, "Cour intérieure de la Ferme d’Auwez louée dans son intégralité" %>
 <% content_for :uncontainerize, true %>
 
 <%= responsive_attachment_tag @gite, :main_photo, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
