@@ -17,6 +17,11 @@ $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
+// Keep the site's warm `$white` for its visual identity, while giving
+// Bootstrap true white and black candidates for accessible contrast choices.
+$color-contrast-light: #fff;
+$color-contrast-dark:  #000;
+
 // Buttons & inputs' radius
 $border-radius:    2px;
 $border-radius-lg: 2px;

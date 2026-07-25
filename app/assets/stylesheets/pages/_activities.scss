@@ -162,7 +162,7 @@
 .activities-heading {
     display: grid;
     grid-template-columns: minmax(320px, 1fr) minmax(300px, 0.8fr);
-    align-items: end;
+    align-items: flex-end;
     gap: 60px;
     margin-bottom: 48px;
 
@@ -194,9 +194,10 @@
 .featured-activity {
     min-height: 540px;
     padding: clamp(30px, 5vw, 65px);
+    padding-top: 130px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     position: relative;
     overflow: hidden;
     border: 1px solid rgba($white, 0.24);
@@ -684,7 +685,8 @@
     }
 
     .featured-activity {
-        min-height: 500px;
+        min-height: auto;
+        padding-top: 120px;
     }
 
     .trace-card {
@@ -706,12 +708,14 @@
 
     .trace-viewer-intro {
         align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
         padding: 22px;
     }
 
     .activities-agenda {
         margin: 0 0 70px;
-        min-height: 560px;
+        min-height: auto;
         padding: 55px 7vw;
         grid-template-columns: 1fr;
 
@@ -719,6 +723,16 @@
             width: 90px;
             height: 90px;
             font-size: 2rem;
+        }
+
+        &__links {
+            align-items: stretch;
+            flex-direction: column;
+
+            a {
+                width: 100%;
+                text-align: center;
+            }
         }
     }
 }
