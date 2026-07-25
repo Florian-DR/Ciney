@@ -6,9 +6,9 @@
 <%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
     
     <div class="gite contain">
-        <h2>
-            <%= @gite.name%> &emsp;
-        </h2>
+        <h1 class="heading-h2">
+            <%= @gite.name %>
+        </h1>
         
         <div>
             <h3>🏡 Le refuge idéal pour un séjour en couple ou en petite famille</h3>
@@ -21,7 +21,7 @@
             <ul style="margin: 20px 20px;">
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Idéal pour :</b> couples, petites familles, personnes à mobilité réduite</li>
-                <li><b>Ambiance :</b> paisible, douillet, fonctionnel</li>
+                <li><b>Ambiance :</b> paisible, douillette et fonctionnelle</li>
                 <li><b>Extensible :</b> possibilité de fusionner pour obtenir Le Grand Horizon</li>
             </ul>
         </div>
@@ -53,7 +53,7 @@
         
         <div style="margin: 5vh auto;">
             <h3>Les + du domaine</h3>
-            <h4>Espaces partagés entre les trois gites</h4>
+            <h4>Espaces partagés entre les trois gîtes</h4>
             <li>🏊‍♂️ Piscine intérieure & sauna – Accès à certains horaires pour un moment de détente</li>
             <li>☀️ Piscine extérieure en été – Un bassin clôturé, idéal pour se rafraîchir</li>
             <li>🌿 Grand jardin et nature environnante – Parfait pour se relaxer ou jouer en plein air</li>
@@ -70,7 +70,7 @@
                 <li style="white-space: pre-wrap;"><b>Arrivée & Départ :</b>
                     ⏳ Arrivée : entre 16h et 19h
                     ⏳ Départ : le dimanche avant 16h et en semaine avant 10h30</li>
-                <li><b>Linge de maison fourni:</b> draps et serviettes inclus</li>
+                <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
         </div>
         <%= image_tag "arbre-1200.webp", alt: "Arbre au coucher de soleil", srcset: { "arbre-640.webp" => "640w", "arbre-1200.webp" => "1200w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1200, height: 1600, loading: "lazy", decoding: "async" %>
     </div>

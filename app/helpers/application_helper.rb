@@ -115,6 +115,7 @@ module ApplicationHelper
       email: "lafermedauwez@gmail.com",
       image: seo_image_url,
       logo: "#{SEO_SITE_URL}#{asset_path('logo-hirondelle-400.webp')}",
+      hasMap: "https://www.google.com/maps/search/?api=1&query=50.2797711%2C5.1338991",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Route d’Auwez 1",
@@ -192,13 +193,14 @@ module ApplicationHelper
 
     if defined?(@gite) && @gite.present? && controller_name == "gites" && action_name == "show"
       accommodation_id = "#{canonical_url}#accommodation"
+      accommodation_images = seo_gite_image_urls
       graph << {
         "@type": "Accommodation",
         "@id": accommodation_id,
         name: @gite.name,
         description: seo_description,
         url: canonical_url,
-        image: seo_image_url,
+        image: accommodation_images.presence || [seo_image_url],
         occupancy: {
           "@type": "QuantitativeValue",
           maxValue: @gite.capacity,
@@ -214,6 +216,20 @@ module ApplicationHelper
   end
 
   private
+
+  def seo_gite_image_urls
+    files = [@gite.main_photo(:large) || @gite.main_photo]
+    files.concat(
+      @gite.photos.first(8).filter_map do |photo|
+        photo.image(:large) || photo.image
+      end,
+    )
+
+    files.compact.map do |file|
+      url = file.url
+      url.start_with?("http://", "https://") ? url : "#{SEO_SITE_URL}/#{url.delete_prefix('/')}"
+    end.uniq
+  end
 
   def seo_webpage_type
     return "AboutPage" if controller_name == "pages" && action_name == "about"

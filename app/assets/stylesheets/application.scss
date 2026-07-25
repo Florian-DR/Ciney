@@ -38,6 +38,12 @@ body{
 h1{
     font-size: 4em;
 }
+h1.heading-h2{
+    font-size: 3.5em;
+}
+h1.heading-h3{
+    font-size: 2.5em;
+}
 h2{
     font-size: 3.5em;
 }
@@ -109,6 +115,12 @@ hr{
 }
 
 @media (max-width: $breakpoint-mobile) {
+    h1.heading-h2{
+        font-size: 3em;
+    }
+    h1.heading-h3{
+        font-size: calc(2rem + 2.5vw);
+    }
     h2{
         font-size: 3em;
     }

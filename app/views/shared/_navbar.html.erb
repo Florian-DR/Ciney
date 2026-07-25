@@ -5,7 +5,7 @@
     <nav class="desktop-nav"> 
         <a href="/" class="nav-link">La Ferme d'Auwez</a>
         <div id="gites-nav" class="nav-link" style="position: relative">
-            Nos gites
+            Nos gîtes
             <div class="sub-div">
                 <% @nav_gites.each do |gite| %>
                     <%= link_to gite.name, gite_path(gite), class: "sub-link" %>
@@ -13,8 +13,8 @@
             </div>
         </div>
         <%= link_to "Activités", activities_path, class: "nav-link" %>
-        <a href="/about" class="nav-link">À Propos</a>
-        <a href="/contact" class="nav-link">Contact & Accès</a>
+        <a href="/about" class="nav-link">À propos</a>
+        <a href="/contact" class="nav-link">Contact et accès</a>
         <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" target='_blank' class="button">Réservation</a>
     </nav>
 
@@ -29,13 +29,13 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="phone-links">
-                    <a href="/" class="nav-link">Acceuil</a>
+                    <a href="/" class="nav-link">Accueil</a>
                     <% @nav_gites.each do |gite| %>
                         <%= link_to gite.name, gite_path(gite), class: "nav-link" %>
                     <% end %>
                     <%= link_to "Activités", activities_path, class: "nav-link" %>
-                    <a href="/about" class="nav-link">À Propos</a>
-                    <a href="/contact" class="nav-link">Contact & Accès</a>
+                    <a href="/about" class="nav-link">À propos</a>
+                    <a href="/contact" class="nav-link">Contact et accès</a>
                     <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" target='_blank' class="button">Réservation</a>
                 </div>
             </div>

@@ -7,7 +7,7 @@
 <%= responsive_attachment_tag @gite, :main_photo, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
 
 <div class="gite contain">
-    <h2>La Ferme d'Auwez dans son intégralité</h2>
+    <h1 class="heading-h2">La Ferme d’Auwez dans son intégralité</h1>
 
     <div>
         <h3>Toute la ferme rien que pour vous : 3 gîtes, 25 lits, un seul lieu</h3>
@@ -69,7 +69,7 @@
         <ul>
             <li><b>Capacité totale :</b> <%= @gite.capacity %> personnes (15 + 6 + 4)</li>
             <li><b>Séjour minimum :</b> 2 nuits</li>
-            <li style="white-space: pre-wrap;"><b>Arrivée & Départ :</b>
+            <li style="white-space: pre-wrap;"><b>Arrivée et départ :</b>
                 ⏳ Arrivée : entre 16h et 19h
                 ⏳ Départ : le dimanche avant 16h et en semaine avant 10h30</li>
             <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
