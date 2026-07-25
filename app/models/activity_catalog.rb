@@ -8,18 +8,18 @@ class ActivityCatalog
       category: "À vélo",
       icon: "fa-bicycle",
       traces: [
-        { title: "Mise en selle", distance: "32km", elevation: "574m", file: "Ciney-Frandeux-32km.gpx" },
-        { title: "À vos clips !", distance: "42km", elevation: "672m", file: "Ciney-Chevetogne-42km.gpx" },
-        { title: "Parcourir le Condroz", distance: "70km", elevation: "785m", file: "Ciney-Croisette_Promenade-70km.gpx" },
+        { title: "Mise en selle", distance: "32 km", elevation: "574", file: "Ciney-Frandeux-32km.gpx" },
+        { title: "À vos clips !", distance: "42 km", elevation: "672", file: "Ciney-Chevetogne-42km.gpx" },
+        { title: "Parcourir le Condroz", distance: "70 km", elevation: "785", file: "Ciney-Croisette_Promenade-70km.gpx" },
       ],
     },
     {
       category: "En courant",
       icon: "fa-person-running",
       traces: [
-        { title: "Running du matin", distance: "5km", elevation: "108m", file: "Ciney-5km.gpx" },
-        { title: "Découverte des environs", distance: "10km", elevation: "245m", file: "Ciney-10km.gpx" },
-        { title: "Exploration poussée", distance: "15km", elevation: "338m", file: "Ciney-15km.gpx" },
+        { title: "Running du matin", distance: "5 km", elevation: "108", file: "Ciney-5km.gpx" },
+        { title: "Découverte des environs", distance: "10 km", elevation: "245", file: "Ciney-10km.gpx" },
+        { title: "Exploration poussée", distance: "15 km", elevation: "338", file: "Ciney-15km.gpx" },
       ],
     },
   ].freeze

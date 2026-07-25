@@ -2,10 +2,8 @@
 <% content_for :description, "Location intégrale de la Ferme d'Auwez - 3 gîtes, 25 lits - Ciney" %>
 <% content_for :uncontainerize, true %>
 
-<%# PHOTO À REMPLACER : utiliser une vue aérienne des trois gîtes réunis. %>
 <%= responsive_attachment_tag @gite, :main_photo, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
 
-<%# CONTENU MODIFIABLE : les textes de cette page proviennent du contenu Notion transmis. %>
 <div class="gite contain">
     <h2>La Ferme d'Auwez dans son intégralité</h2>
 
@@ -27,7 +25,6 @@
     </div>
 
     <h3>📷 Découvrez la Ferme d'Auwez en images</h3>
-    <%# PHOTOS À REMPLACER : vues aériennes, grande tablée, groupe en extérieur, piscine et sauna. %>
     <%= render "shared/gite_gallery", gite: @gite %>
 </div>
 
@@ -76,12 +73,10 @@
             <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
         </ul>
     </div>
-    <%# PHOTO À REMPLACER : choisir une vue représentative de la ferme complète. %>
     <%= image_tag "cour-interieur-1400.webp", alt: "Cour intérieure de la Ferme d'Auwez", srcset: { "cour-interieur-640.webp" => "640w", "cour-interieur-1400.webp" => "1400w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
 </div>
 
 <div class="contain">
-    <%# LIEN À COMPLÉTER : remplacer l'URL générique ci-dessous par l'URL Lighthouse dédiée à la Ferme complète. %>
     <%= link_to "Réserver la Ferme complète", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR", target: "_blank", rel: "noopener", style: "padding: auto", class: "button" %>
     <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto", class: "button" if current_user == User.first %>
 </div>

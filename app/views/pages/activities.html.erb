@@ -23,7 +23,7 @@
     </header>
 
     <%###### Introduction Section ######%>
-    <section id="introduction" class="activities-intro contain">
+    <section class="activities-intro contain">
         <p class="activities-kicker">Nos bonnes idées, près de Ciney</p>
         <h2>À chacun son aventure</h2>
         <p>Nature, patrimoine et gourmandise se rencontrent à quelques kilomètres de la ferme. Nous avons rassemblé ici nos incontournables et quelques itinéraires à glisser dans votre poche.</p>
@@ -86,7 +86,6 @@
     </section>
 
     <%###### Traces GPX Section ######%>
-    <%# Le contenu des parcours se trouve côté backend dans app/models/activity_catalog.rb. %>
     <section id="traces" class="activities-section activities-traces">
         <div class="contain">
             <div class="activities-heading activities-heading--center">
@@ -94,7 +93,7 @@
                     <p class="activities-kicker">La ferme comme point de départ</p>
                     <h2>Nos traces à emporter</h2>
                 </div>
-                <p>Téléchargez le fichier GPX, ouvrez-le dans votre application favorite et partez explorer les petites routes et chemins des environs.</p>
+                <p>Découvrez nos boucles maisons qui démarrent de la ferme, d'abord sur une carte, puis téléchargez sa trace GPX pour l'emporter dans votre application favorite.</p>
             </div>
 
             <div class="trace-groups">
@@ -104,14 +103,22 @@
                         <div class="trace-list">
                             <% group[:traces].each do |trace| %>
                                 <article class="trace-card">
-                                    <div>
+                                    <div class="trace-card__content">
                                         <h4><%= trace[:title] %></h4>
-                                        <p><span><i class="fa-solid fa-ruler-horizontal"></i> <%= trace[:distance] %></span><span><i class="fa-solid fa-mountain"></i> <%= trace[:elevation] %></span></p>
+                                        <div class="trace-stats">
+                                            <span><i class="fa-solid fa-ruler-horizontal"></i> <%= trace[:distance] %></span>
+                                            <span><i class="fa-solid fa-mountain"></i> <%= trace[:elevation] %> D+</span>
+                                        </div>
                                     </div>
                                     <% if gpx_available?(trace[:file]) %>
-                                        <%= link_to "/gpx/#{trace[:file]}", download: trace[:file], class: "trace-download", aria: { label: "Télécharger #{trace[:title]} au format GPX" } do %>
-                                            <i class="fa-solid fa-download"></i><span>GPX</span>
-                                        <% end %>
+                                        <div class="trace-actions">
+                                            <%= link_to gpx_studio_url(trace[:file]), target: "_blank", rel: "noopener", class: "trace-preview", aria: { label: "Visualiser #{trace[:title]} sur une carte avec gpx.studio" } do %>
+                                                <i class="fa-solid fa-map"></i><span>Voir le tracé</span>
+                                            <% end %>
+                                            <%= link_to "/gpx/#{trace[:file]}", download: trace[:file], class: "trace-download", aria: { label: "Télécharger #{trace[:title]} au format GPX" } do %>
+                                                <i class="fa-solid fa-download"></i><span>GPX</span>
+                                            <% end %>
+                                        </div>
                                     <% else %>
                                         <span class="trace-download trace-download--pending" title="Le fichier sera ajouté prochainement">
                                             <i class="fa-regular fa-clock"></i><span>Bientôt</span>
@@ -123,7 +130,7 @@
                     </div>
                 <% end %>
             </div>
-            <p class="trace-disclaimer"><i class="fa-solid fa-circle-info"></i> Les parcours sont proposés à titre indicatif. Adaptez votre sortie à votre niveau, à la météo et à l'état des chemins.</p>
+            <p class="trace-disclaimer"><i class="fa-solid fa-circle-info"></i> Les parcours sont proposés à titre indicatif. Adaptez votre sortie à votre niveau, à vos envies et à l'état des chemins.</p>
         </div>
     </section>
 
@@ -164,9 +171,6 @@
     </section>
 
     <%###### Restaurants Section ######%>
-    <%# RECOMMANDATIONS À VALIDER PAR LA FERME :
-            ces trois adresses servent de première sélection éditoriale. Elles
-            peuvent être remplacées directement dans les cartes ci-dessous. %>
     <section id="restaurants" class="activities-section activities-restaurants contain">
         <div class="activities-heading">
             <div>

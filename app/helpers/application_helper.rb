@@ -36,4 +36,18 @@ module ApplicationHelper
   def gpx_available?(filename)
     Rails.root.join("public", "gpx", filename).file?
   end
+
+  # Opens a hosted GPX file directly in gpx.studio's interactive viewer.
+  def gpx_studio_url(filename)
+    base_url =
+      if Rails.env.production?
+        "#{request.base_url}/gpx"
+      else
+        "https://raw.githubusercontent.com/Florian-DR/Ciney/activities/public/gpx"
+      end
+    file_url = "#{base_url}/#{ERB::Util.url_encode(filename)}"
+    options = { files: [file_url], theme: "light" }
+
+    "https://gpx.studio/embed?options=#{ERB::Util.url_encode(options.to_json)}"
+  end
 end

@@ -262,6 +262,7 @@
 .activity-arrow-link {
     width: fit-content;
     font-weight: 700;
+    border-bottom: 1px solid rgba($white, 0.6);
 
     i {
         margin-left: 6px;
@@ -338,6 +339,43 @@
     padding-top: 55px;
 }
 
+.trace-viewer-intro {
+    max-width: 940px;
+    margin: -12px auto 42px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: var(--activities-dark-green);
+    color: $white;
+    box-shadow: 0 16px 36px rgba(58, 69, 58, 0.14);
+
+    > i {
+        flex: 0 0 auto;
+        color: $orange;
+        font-size: 2rem;
+    }
+
+    h3 {
+        margin: 0 0 5px;
+        color: $white;
+        font-size: 1.1rem;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+
+    a {
+        color: $white;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+}
+
 .trace-groups {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -373,34 +411,74 @@
     padding: 20px 0;
     border-top: 1px solid rgba($green, 0.25);
 
+    &__content {
+        min-width: 0;
+    }
+
     h4 {
-        margin: 0 0 5px;
+        margin: 0 0 10px;
         font-size: 1.05rem;
         font-weight: 700;
     }
+}
 
-    p {
+.trace-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    color: rgba($green, 0.85);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.35;
+
+    > span {
         display: flex;
-        flex-wrap: wrap;
-        gap: 4px 14px;
-        margin: 0;
-        color: rgba($green, 0.8);
-        font-size: 0.75rem;
-        line-height: 1.4;
+        align-items: center;
+        gap: 6px;
+    }
+
+    i {
+        color: $orange;
+        font-size: 0.85rem;
+    }
+}
+
+.trace-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trace-preview,
+.trace-download {
+    min-height: 38px;
+    padding: 7px 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    white-space: nowrap;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.trace-preview {
+    background: $orange;
+    border: 1px solid $orange;
+    color: $white;
+
+    &:hover {
+        background: darken($orange, 7%);
+        border-color: darken($orange, 7%);
+        color: $white;
     }
 }
 
 .trace-download {
-    min-width: 67px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 10px;
+    min-width: 58px;
     border: 1px solid $orange;
     color: $orange;
-    font-size: 0.68rem;
-    font-weight: 700;
-    line-height: 1.2;
 
     &:hover {
         background: $orange;
@@ -538,6 +616,12 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .trace-groups {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 992px) {
     .walk-grid,
     .restaurant-grid {
@@ -605,6 +689,24 @@
 
     .trace-card {
         align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .trace-actions {
+        width: 100%;
+
+        .trace-preview {
+            flex: 1;
+        }
+
+        .trace-download {
+            flex: 0 0 auto;
+        }
+    }
+
+    .trace-viewer-intro {
+        align-items: flex-start;
+        padding: 22px;
     }
 
     .activities-agenda {
