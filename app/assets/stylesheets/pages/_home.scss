@@ -144,7 +144,8 @@
     align-self: center;
     z-index: 1;
 
-    h4 {
+    h4,
+    .home-card-heading {
         font-size: calc(0.8rem + 1.2vw);
         margin-bottom: 1.5rem;
     }
@@ -184,7 +185,8 @@
         .gite-card-text{
             max-width: 100%;
             padding: 1em;
-            h4{
+            h4,
+            .home-card-heading{
                 font-size: calc(1rem + 1.8vw);
             }
         }
@@ -270,7 +272,8 @@
     }
     .salle-text{
         max-width: 45%;
-        h4{
+        h4,
+        .salle-heading{
             font-size: calc(1.0rem + 1.5vw);
             margin-bottom: 1.5rem;
         }
@@ -311,7 +314,8 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    h3{
+    h3,
+    .visitors-heading{
         font-size: calc(2.2rem + 1.8vw);
         color: $background;
         padding: 20px;
@@ -387,7 +391,8 @@
         height: auto;
         padding: 30px 20px;
 
-        h3{
+        h3,
+        .visitors-heading{
             text-align: center;
             &::after{
                 width: 100px;

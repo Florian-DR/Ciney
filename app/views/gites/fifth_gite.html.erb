@@ -10,12 +10,12 @@
     <h1 class="heading-h2">La Ferme d’Auwez dans son intégralité</h1>
 
     <div>
-        <h3>Toute la ferme rien que pour vous : 3 gîtes, 25 lits, un seul lieu</h3>
+        <h2 class="heading-h3">Toute la ferme rien que pour vous : 3 gîtes, 25 lits, un seul lieu</h2>
         <p>La Ferme d'Auwez peut être louée dans son intégralité, réunissant nos trois gîtes de caractère : <b>Les Hirondelles</b>, <b>L'Horizon</b> et <b>L'Arbre de Vie</b>, sous un même toit. Une formule pensée pour les grandes familles, les groupes d'amis ou les retrouvailles multigénérationnelles qui souhaitent profiter de tout le domaine, en toute intimité.</p>
     </div>
 
     <div>
-        <h3>Un domaine entier rien que pour vous</h3>
+        <h2 class="heading-h3">Un domaine entier rien que pour vous</h2>
         <p>En réservant l'ensemble de la ferme, vous profitez de tous les espaces à votre rythme et en famille : la piscine intérieure et le sauna deviennent votre bulle privée, sans horaires à respecter. Chambres, salons, terrasses et jardin s'offrent à vous et à vos proches pour toute la durée du séjour.</p>
         <ul style="margin: 20px 20px;">
             <li><b>Capacité :</b> jusqu'à <%= @gite.capacity %> personnes</li>
@@ -26,31 +26,31 @@
         </ul>
     </div>
 
-    <h3>📷 Découvrez la Ferme d'Auwez en images</h3>
+    <h2 class="heading-h3">📷 Découvrez la Ferme d'Auwez en images</h2>
     <%= render "shared/gite_gallery", gite: @gite %>
 </div>
 
 <div class="gite contain gite-details-section">
-    <h3>Composition de la Ferme</h3>
+    <h2 class="heading-h3">Composition de la Ferme</h2>
     <div class="gite-details">
         <div>
-            <h4>🏡 Les Hirondelles, 15 personnes</h4>
+            <h3 class="heading-h4">🏡 Les Hirondelles, 15 personnes</h3>
             <p>Maison familiale entièrement rénovée avec grand salon à cassette à bois, cuisine équipée et salle à manger spacieuse. À l'étage : 4 chambres doubles et 2 dortoirs (3 et 4 lits), avec 5 salles de bains réparties sur les niveaux.</p>
         </div>
 
         <div>
-            <h4>🌄 L'Horizon, 6 personnes</h4>
+            <h3 class="heading-h4">🌄 L'Horizon, 6 personnes</h3>
             <p>Gîte lumineux avec terrasse privée et vue panoramique sur le Condroz. Salon cosy, cuisine ouverte équipée, une chambre double et une grande chambre de 4 lits sous toit.</p>
         </div>
 
         <div>
-            <h4>🌳 L'Arbre de Vie, 4 personnes, accès PMR</h4>
+            <h3 class="heading-h4">🌳 L'Arbre de Vie, 4 personnes, accès PMR</h3>
             <p>Espace de plain-pied, intimiste et entièrement accessible aux personnes à mobilité réduite. Salon cosy, cuisine ouverte, 2 chambres confortables et 2 salles de bains, dont une adaptée PMR.</p>
         </div>
     </div>
 
     <div style="margin: 5vh auto;">
-        <h3>Les + du domaine, inclus dans la location complète</h3>
+        <h2 class="heading-h3">Les + du domaine, inclus dans la location complète</h2>
         <ul>
             <li>🏊‍♂️ <b>Piscine intérieure & sauna :</b> à disposition tout au long du séjour</li>
             <li>☀️ <b>Piscine extérieure en été :</b> bassin clôturé, idéal pour toute la famille</li>
@@ -64,8 +64,8 @@
 
 <div class="contain gite info-gite">
     <div>
-        <h3>Informations pratiques</h3>
-        <h4>📌 Tout ce qu'il faut savoir avant votre arrivée</h4>
+        <h2 class="heading-h3">Informations pratiques</h2>
+        <h3 class="heading-h4">📌 Tout ce qu'il faut savoir avant votre arrivée</h3>
         <ul>
             <li><b>Capacité totale :</b> <%= @gite.capacity %> personnes (15 + 6 + 4)</li>
             <li><b>Séjour minimum :</b> 2 nuits</li>

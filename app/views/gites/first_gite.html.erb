@@ -11,11 +11,11 @@
         </h1>
         
         <div>
-            <h3>Un gîte spacieux et chaleureux pour des moments inoubliables</h3>
+            <h2 class="heading-h3">Un gîte spacieux et chaleureux pour des moments inoubliables</h2>
             <p>Nichée au cœur du domaine de la Ferme d’Auwez, Les Hirondelles est une maison familiale entièrement rénovée qui allie authenticité et confort moderne. Avec sa capacité d’accueil de 15 personnes, ses grands espaces conviviaux et son ambiance chaleureuse, ce gîte est parfait pour les retrouvailles, les célébrations et les séjours en groupe.</p>
         </div>
         <div>
-            <h3>Un lieu pensé pour la convivialité et le partage</h3>
+            <h2 class="heading-h3">Un lieu pensé pour la convivialité et le partage</h2>
             <p>Au sein de cette maison de caractère, tout a été conçu pour créer des souvenirs inoubliables. Que ce soit autour du feu en hiver, lors d’un apéritif sur la terrasse ou dans la grande salle à manger, profitez d’un cadre propice aux échanges et à la détente.</p>
             <ul style="margin: 20px 20px;">
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
@@ -24,36 +24,36 @@
             </ul>
         </div>
 
-        <h3>📷 Découvrez <%= @gite.name %> en images</h3>
+        <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
         <%= render "shared/gite_gallery", gite: @gite %>
     </div>
 
     
     <div class="gite contain gite-details-section">
-        <h3>Espaces et équipements</h3>
+        <h2 class="heading-h3">Espaces et équipements</h2>
         <div class="gite-details">
             <div>
-                <h4>🏡 Rez-de-chaussée : un espace de vie convivial</h4>
+                <h3 class="heading-h4">🏡 Rez-de-chaussée : un espace de vie convivial</h3>
                 <li>Grand salon avec cassette à bois : ambiance chaleureuse garantie pour les soirées d’hiver</li>
                 <li>Cuisine entièrement équipée : idéale pour préparer des repas en groupe</li>
                 <li>Salle à manger spacieuse avec poêle à bois : pour partager de bons moments tous ensemble</li>
             </div>
 
             <div>
-                <h4>🎬 Deuxième étage : détente et divertissement</h4>
+                <h3 class="heading-h4">🎬 Deuxième étage : détente et divertissement</h3>
                 <li>2 dortoirs (3 et 4 lits)</li>
                 <li>Espace de jeux pour petits et grands</li>
                 <li>Salle de bain supplémentaire avec douche et toilettes</li>
             </div>
 
             <div>
-                <h4>🛏️ Premier étage : confort et intimité</h4>
+                <h3 class="heading-h4">🛏️ Premier étage : confort et intimité</h3>
                 <li>4 chambres doubles avec literie de qualité</li>
                 <li>3 salles de bains modernes</li>
             </div>
 
             <div>
-                <h4>🛠️ Équipements inclus</h4>
+                <h3 class="heading-h4">🛠️ Équipements inclus</h3>
                 <li>✅ Linge de maison fourni (draps, serviettes)</li>
                 <li>✅ Wifi gratuit</li>
                 <li>✅ Chauffage central</li>
@@ -61,8 +61,8 @@
             </div>
         </div>
         <div style="margin: 5vh auto;">
-            <h3>Les + du domaine</h3>
-            <h4>Espaces partagés entre les trois gîtes</h4>
+            <h2 class="heading-h3">Les + du domaine</h2>
+            <h3 class="heading-h4">Espaces partagés entre les trois gîtes</h3>
             <li>🏊‍♂️ Piscine intérieure & sauna – Accès à certains horaires pour un moment de détente</li>
             <li>☀️ Piscine extérieure en été – Un bassin clôturé, idéal pour se rafraîchir</li>
             <li>🌿 Grand jardin et nature environnante – Parfait pour se relaxer ou jouer en plein air</li>
@@ -72,8 +72,8 @@
     
     <div class="contain gite info-gite">
         <div>
-                <h3>Informations pratiques</h3>
-                <h4>📌 Tout ce qu’il faut savoir avant votre arrivée</h4>
+                <h2 class="heading-h3">Informations pratiques</h2>
+                <h3 class="heading-h4">📌 Tout ce qu’il faut savoir avant votre arrivée</h3>
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Séjour minimum :</b> 2 nuits</li>
                 <li style="white-space: pre-wrap;"><b>Arrivée & Départ :</b>

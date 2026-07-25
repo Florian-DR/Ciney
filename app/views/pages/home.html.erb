@@ -28,7 +28,7 @@
     <%= render "shared/gite_photos_card", gite: @gite_1 %>
 
     <div class="gite-card-text">
-        <h4>Le gîte : <%= @gite_1.name%></h4>
+        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_1.name%></h2>
         <div class="gite-overview">
             <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_1.capacity %> personnes</p>
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
@@ -43,7 +43,7 @@
 <%#### Horizon ####%>
 <div class="gite-card gite-reverse">
     <div class="gite-card-text">
-        <h4>Le gîte : <%= @gite_2.name%></h4>
+        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_2.name%></h2>
         <div class="gite-overview">
             <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_2.capacity %> personnes</p>
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
@@ -61,7 +61,7 @@
     <%= render "shared/gite_photos_card", gite: @gite_3 %>
 
     <div class="gite-card-text">
-        <h4>Le gîte : <%= @gite_3.name%></h4>
+        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_3.name%></h2>
         <div class="gite-overview">
             <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_3.capacity %> personnes</p>
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
@@ -76,7 +76,7 @@
 <%#### Grand Horizon ####%>
 <div class="gite-card gite-reverse">
     <div class="gite-card-text">
-        <h4>Le gîte : <%= @gite_4.name%></h4>
+        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_4.name%></h2>
         <div class="gite-overview">
             <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_4.capacity %> personnes</p>
             <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
@@ -96,7 +96,7 @@
         <%= render "shared/gite_photos_card", gite: @gite_5 %>
 
         <div class="gite-card-text">
-            <h4><%= @gite_5.name %></h4>
+            <h2 class="heading-h4 home-card-heading"><%= @gite_5.name %></h2>
             <div class="gite-overview">
                 <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_5.capacity %> personnes</p>
                 <p class="pictograme"><i class="fa-solid fa-house"></i>3 gîtes rien que pour vous</p>
@@ -116,7 +116,7 @@
         <div class="border-image-mask"></div>
     </div>
     <div class="salle-text">
-        <h4>Louez l’ensemble de nos gîtes pour vos séjours en famille</h4>
+        <h2 class="heading-h4 salle-heading">Louez l’ensemble de nos gîtes pour vos séjours en famille</h2>
         <p >La Ferme d’Auwez peut être louée dans son intégralité, offrant ainsi 25 lits répartis dans trois gîtes de caractère. C’est la formule idéale pour réunir toute la famille sous un même toit et profiter d’un séjour où convivialité et confort se rencontrent.
 
             Imaginez-vous partager de grands repas autour d’une table chaleureuse, voir les enfants s’amuser dans les vastes espaces intérieurs ou extérieurs, ou encore profiter de la piscine intérieure ou du sauna en famille. Chaque recoin de la ferme invite à la détente et au partage, dans un cadre verdoyant qui respire le calme et l’authenticité.
@@ -129,7 +129,7 @@
 
 <%###### Visitors Section ######%>
 <div id="visitors-container" class="bg-green">
-    <h3>Ils ont séjourné chez nous...</h3>
+    <h2 class="visitors-heading">Ils ont séjourné chez nous...</h2>
     <div class="visitors-cards">
         <div class="visitor-card">
             <div class="quote-container"> <%= image_tag "quotation.png", alt: "", class: "quote-mark", width: 53, height: 40, loading: "lazy", decoding: "async" %></div>
@@ -167,7 +167,7 @@
 <%###### Cadre Section ######%>
 <div id="cadre-container">
     <div class="cadre-text">
-        <h3>Un cadre pensé pour votre confort</h3>
+        <h2 class="heading-h3">Un cadre pensé pour votre confort</h2>
         <p>En séjournant à la Ferme d’Auwez, au cœur du Condroz belge, vous profitez d’un gîte tout confort avec piscine intérieure, sauna, vaste jardin et équipements adaptés aux familles et aux groupes. 
             Idéalement située près de Ciney, la ferme est le point de départ parfait pour découvrir les charmes de la région : balades balisées, circuits VTT, EuroVélo 5 et RAVeL à proximité, mais aussi châteaux emblématiques comme Modave ou Vêves, villages typiques comme Crupet ou Mozet, marchés gourmands et brasseries artisanales.
             En été, la piscine extérieure clôturée permet de se rafraîchir après une journée d’exploration. Un abri sécurisé pour vélos, un parking avec borne électrique et la proximité d’activités nature ou culturelles font de la Ferme d’Auwez un lieu idéal pour des vacances ressourçantes en couple, en famille ou entre amis en Wallonie.</p>

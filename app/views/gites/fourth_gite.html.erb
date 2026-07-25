@@ -11,11 +11,11 @@
         </h1>
         
         <div>
-            <h3>Un gîte de groupe au cœur du Condroz</h3>
+            <h2 class="heading-h3">Un gîte de groupe au cœur du Condroz</h2>
             <p>Lieu de séjour unique né de la réunion de <i>L’Arbre de Vie</i> et de <i>L’Horizon</i>. Désormais capable d'accueillir jusqu'à <%= @gite.capacity%> personnes, cet espace a été pensé pour offrir aux grands groupes une expérience où chacun trouve sa place.</p>
         </div>
         <div>
-            <h3>L’équilibre parfait entre partage et intimité</h3>
+            <h2 class="heading-h3">L’équilibre parfait entre partage et intimité</h2>
             <p>Pensé pour ceux qui aiment se retrouver tout en préservant leur espace, ce gîte offre une harmonie idéale entre moments communs et instants plus privés. Ses volumes lumineux et bien agencés permettent à chacun de profiter du séjour à son rythme ou en groupe, tandis que la terrasse invite à la contemplation et à la détente face au paysage du Condroz. Un lieu propice aux retrouvailles, aux échanges authentiques et au ressourcement, loin de l’agitation du quotidien.</p>
             <ul style="margin: 20px 20px;">
                 <li><b>Une vue panoramique inégalée :</b> Terrasse privée avec panorama exceptionnel sur le Condroz.</li>
@@ -26,16 +26,16 @@
             <p><b>Le mot des propriétaires :</b> En unissant ces deux espaces, nous avons voulu créer un cocon où la convivialité d'un grand groupe rencontre la sérénité d'un paysage préservé. Bienvenue chez vous.</p>
         </div>
 
-        <h3>📷 Découvrez <%= @gite.name %> en images</h3>
+        <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
         <%= render "shared/gite_gallery", gite: @gite %>
     </div>
 
     
     <div class="gite contain gite-details-section">
-        <h3>Espaces et équipements</h3>
+        <h2 class="heading-h3">Espaces et équipements</h2>
         <div class="gite-details">
             <div>
-                <h4>🏡 Rez-de-chaussée : l'Arbre de Vie</h4>
+                <h3 class="heading-h4">🏡 Rez-de-chaussée : l'Arbre de Vie</h3>
                 <li>Salon cosy avec espace détente et lumière naturelle</li>
                 <li>Cuisine ouverte et équipée : parfaite pour partager des moments gourmands</li>
                 <li>2 chambres douillettes avec literie de qualité</li>
@@ -43,7 +43,7 @@
             </div>
 
             <div>
-                <h4>🎬 Deuxième & troisième étages : L'Horizon</h4>
+                <h3 class="heading-h4">🎬 Deuxième et troisième étages : L'Horizon</h3>
                 <li>Salon cosy et lumineux avec grandes fenêtres donnant sur la terrasse</li>
                 <li>Cuisine ouverte et équipée pour cuisiner en toute simplicité</li>
                 <li>Chambre double avec literie haut de gamme</li>
@@ -52,7 +52,7 @@
             </div>
 
              <div>
-                <h4>🛠️ Équipements inclus</h4>
+                <h3 class="heading-h4">🛠️ Équipements inclus</h3>
                 <li>✅ Linge de maison fourni (draps, serviettes)</li>
                 <li>✅ Wifi gratuit</li>
                 <li>✅ Chauffage central</li>
@@ -62,8 +62,8 @@
             </div>
         <%# </div> %>
         <div>
-            <h3>Les + du domaine</h3>
-            <h4>Espaces partagés entre les trois gîtes</h4>
+            <h2 class="heading-h3">Les + du domaine</h2>
+            <h3 class="heading-h4">Espaces partagés entre les trois gîtes</h3>
             <li>🏊‍♂️ Piscine intérieure & sauna – Accès à certains horaires pour un moment de détente</li>
             <li>☀️ Piscine extérieure en été – Un bassin clôturé, idéal pour se rafraîchir</li>
             <li>🌿 Grand jardin et nature environnante – Parfait pour se relaxer ou jouer en plein air</li>
@@ -74,8 +74,8 @@
     
     <div class="contain gite info-gite">
         <div>
-                <h3>Informations pratiques</h3>
-                <h4>📌 Tout ce qu’il faut savoir avant votre arrivée</h4>
+                <h2 class="heading-h3">Informations pratiques</h2>
+                <h3 class="heading-h4">📌 Tout ce qu’il faut savoir avant votre arrivée</h3>
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Séjour minimum :</b> 2 nuits</li>
                 <li style="white-space: pre-wrap;"><b>Arrivée et départ :</b>

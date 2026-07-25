@@ -41,8 +41,17 @@ h1{
 h1.heading-h2{
     font-size: 3.5em;
 }
-h1.heading-h3{
+h1.heading-h3,
+h2.heading-h3{
     font-size: 2.5em;
+}
+.heading-h4{
+    font-family: inherit;
+    font-size: calc(1.275rem + 0.3vw);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 10px;
+    margin-bottom: 0.5rem;
 }
 h2{
     font-size: 3.5em;
@@ -118,8 +127,12 @@ hr{
     h1.heading-h2{
         font-size: 3em;
     }
-    h1.heading-h3{
+    h1.heading-h3,
+    h2.heading-h3{
         font-size: calc(2rem + 2.5vw);
+    }
+    .heading-h4{
+        font-size: calc(1rem + 1.8vw);
     }
     h2{
         font-size: 3em;
@@ -132,5 +145,11 @@ hr{
     }
     .contain{
         padding: 10px 7vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .heading-h4{
+        font-size: 1.5rem;
     }
 }
