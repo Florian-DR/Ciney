@@ -8,18 +8,18 @@ class ActivityCatalog
       category: "À vélo",
       icon: "fa-bicycle",
       traces: [
-        { title: "Boucle vélo n° 1", distance: "Distance à préciser", elevation: "Dénivelé à préciser", file: "velo-1.gpx" },
-        { title: "Boucle vélo n° 2", distance: "Distance à préciser", elevation: "Dénivelé à préciser", file: "velo-2.gpx" },
-        { title: "Boucle vélo n° 3", distance: "Distance à préciser", elevation: "Dénivelé à préciser", file: "velo-3.gpx" },
+        { title: "Mise en selle", distance: "32km", elevation: "574m", file: "Ciney-Frandeux-32km.gpx" },
+        { title: "À vos clips !", distance: "42km", elevation: "672m", file: "Ciney-Chevetogne-42km.gpx" },
+        { title: "Parcourir le Condroz", distance: "70km", elevation: "785m", file: "Ciney-Croisette_Promenade-70km.gpx" },
       ],
     },
     {
       category: "En courant",
       icon: "fa-person-running",
       traces: [
-        { title: "Parcours running n° 1", distance: "Distance à préciser", elevation: "Dénivelé à préciser", file: "course-1.gpx" },
-        { title: "Parcours running n° 2", distance: "Distance à préciser", elevation: "Dénivelé à préciser", file: "course-2.gpx" },
-        { title: "Parcours running n° 3", distance: "Distance à préciser", elevation: "Dénivelé à préciser", file: "course-3.gpx" },
+        { title: "Running du matin", distance: "5km", elevation: "108m", file: "Ciney-5km.gpx" },
+        { title: "Découverte des environs", distance: "10km", elevation: "245m", file: "Ciney-10km.gpx" },
+        { title: "Exploration poussée", distance: "15km", elevation: "338m", file: "Ciney-15km.gpx" },
       ],
     },
   ].freeze
