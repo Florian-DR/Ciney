@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Votre projet team building à la Ferme d’Auwez</title>
+    <style>
+      @media only screen and (max-width: 620px) {
+        .email-shell { width: 100% !important; }
+        .email-padding { padding-left: 22px !important; padding-right: 22px !important; }
+        .detail-label,
+        .detail-value { display: block !important; width: 100% !important; }
+        .detail-label { padding-bottom: 3px !important; }
+        .detail-value { padding-top: 0 !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:0; background-color:#f4eadc; color:#2f3c31; font-family:Arial, Helvetica, sans-serif;">
+    <div style="display:none; max-height:0; overflow:hidden; opacity:0; color:transparent;">
+      Nous avons bien reçu votre demande. Retrouvez ici toutes les informations transmises.
+    </div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; background-color:#f4eadc;">
+      <tr>
+        <td align="center" style="padding:32px 12px;">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="email-shell" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:14px; overflow:hidden;">
+            <%= yield %>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

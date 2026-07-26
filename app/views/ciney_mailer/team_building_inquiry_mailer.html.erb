@@ -1,21 +1,100 @@
-<h1>Nouveau projet de team building</h1>
+<tr>
+  <td align="center" style="padding:28px 24px 22px; background-color:#435443;">
+    <%= image_tag attachments["logo-ferme-dauwez.png"].url,
+        alt: "La Ferme d’Auwez",
+        width: 132,
+        style: "display:block; width:132px; max-width:132px; height:auto; margin:0 auto 18px;" %>
 
-<p>Une entreprise souhaite organiser un événement à la Ferme d’Auwez.</p>
+    <p style="margin:0 0 8px; color:#dfe6dc; font-size:12px; font-weight:bold; letter-spacing:1.5px; line-height:18px; text-transform:uppercase;">
+      Demande bien reçue
+    </p>
+    <h1 style="margin:0; color:#ffffff; font-family:Georgia, 'Times New Roman', serif; font-size:30px; font-weight:normal; line-height:38px;">
+      Imaginons votre prochain<br>team building
+    </h1>
 
-<h2>Contact</h2>
-<ul>
-  <li><strong>Entreprise :</strong> <%= @company %></li>
-  <li><strong>Personne de contact :</strong> <%= @contact_name %></li>
-  <li><strong>E-mail :</strong> <%= mail_to @email %></li>
-  <li><strong>Téléphone :</strong> <%= @telephone %></li>
-</ul>
-
-<h2>Projet</h2>
-<ul>
-  <li><strong>Participants :</strong> <%= @participants %></li>
-  <li><strong>Dates ou période :</strong> <%= @desired_dates %></li>
-  <li><strong>Formule :</strong> <%= @package %></li>
-</ul>
-
-<h2>Précisions</h2>
-<%= simple_format(@message) %>
+  </td>
+</tr>
+<tr>
+  <td class="email-padding" style="padding:34px 42px 12px; background-color:#ffffff; text-align:left;">
+    <p style="margin:0 0 16px; color:#2f3c31; font-size:16px; line-height:25px;">
+      Bonjour <%= @contact_name %>,
+    </p>
+    <p style="margin:0 0 14px; color:#2f3c31; font-size:16px; line-height:25px;">
+      Merci d’avoir pensé à la Ferme d’Auwez pour réunir votre équipe. Nous avons bien reçu votre demande et reviendrons vers vous afin d’imaginer une proposition adaptée.
+    </p>
+    <p style="margin:0; color:#687c68; font-size:14px; line-height:22px;">
+      Ce message confirme la réception de votre projet, mais ne constitue pas encore une réservation.
+    </p>
+  </td>
+</tr>
+<tr>
+  <td class="email-padding" style="padding:22px 42px 0; background-color:#ffffff; text-align:left;">
+    <h2 style="margin:0 0 12px; color:#435443; font-family:Georgia, 'Times New Roman', serif; font-size:22px; font-weight:normal; line-height:28px;">
+      Votre projet
+    </h2>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; border:1px solid #dfe6dc; border-radius:8px;">
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#687c68; font-size:13px; line-height:20px;">Entreprise</td>
+        <td class="detail-value" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= @company %></td>
+      </tr>
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#687c68; font-size:13px; line-height:20px;">Personne de contact</td>
+        <td class="detail-value" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= @contact_name %></td>
+      </tr>
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#687c68; font-size:13px; line-height:20px;">E-mail</td>
+        <td class="detail-value" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= mail_to @email, @email, style: "color:#435443; text-decoration:underline;" %></td>
+      </tr>
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#687c68; font-size:13px; line-height:20px;">Téléphone</td>
+        <td class="detail-value" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= @telephone %></td>
+      </tr>
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#687c68; font-size:13px; line-height:20px;">Participants</td>
+        <td class="detail-value" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= @participants %></td>
+      </tr>
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#687c68; font-size:13px; line-height:20px;">Dates ou période</td>
+        <td class="detail-value" style="padding:13px 16px; border-bottom:1px solid #dfe6dc; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= @desired_dates %></td>
+      </tr>
+      <tr>
+        <td class="detail-label" width="38%" style="padding:13px 16px; color:#687c68; font-size:13px; line-height:20px;">Formule</td>
+        <td class="detail-value" style="padding:13px 16px; color:#2f3c31; font-size:14px; font-weight:bold; line-height:20px;"><%= @package %></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class="email-padding" style="padding:26px 42px 0; background-color:#ffffff; text-align:left;">
+    <h2 style="margin:0 0 12px; color:#435443; font-family:Georgia, 'Times New Roman', serif; font-size:22px; font-weight:normal; line-height:28px;">
+      Votre message
+    </h2>
+    <div style="padding:18px 20px; background-color:#f7f4ee; border-left:4px solid #687c68; border-radius:0 8px 8px 0; color:#2f3c31; font-size:15px; line-height:24px;">
+      <%= simple_format(h(@message), { style: "margin:0;" }, wrapper_tag: "div") %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td class="email-padding" style="padding:30px 42px 34px; background-color:#ffffff; text-align:left;">
+    <p style="margin:0 0 5px; color:#2f3c31; font-family:Georgia, 'Times New Roman', serif; font-size:19px; line-height:26px;">
+      À très bientôt,
+    </p>
+    <p style="margin:0; color:#435443; font-size:14px; font-weight:bold; line-height:22px;">
+      La Ferme d’Auwez
+    </p>
+    <p style="margin:2px 0 0; color:#687c68; font-size:13px; line-height:20px;">
+      Route d’Auwez 1 · 5590 Ciney<br>
+      <%= mail_to ENV["GMAIL_ADDRESS"], ENV["GMAIL_ADDRESS"], style: "color:#435443; text-decoration:none;" %>
+    </p>
+    <p style="margin:18px 0 0; color:#687c68; font-size:12px; line-height:18px;">
+      Vous pouvez répondre directement à cet e-mail pour poursuivre la conversation avec nous.
+    </p>
+  </td>
+</tr>
+<tr>
+  <td style="padding:16px 24px; background-color:#dfe6dc; text-align:center;">
+    <p style="margin:0; color:#435443; font-size:11px; line-height:17px;">
+      Ce message a été envoyé à la suite d’une demande effectuée sur fermedauwez.be.
+    </p>
+  </td>
+</tr>

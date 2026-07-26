@@ -32,11 +32,22 @@ class CineyMailer < ApplicationMailer
         @package = TeamBuildingInquiry::PACKAGE_OPTIONS.key(inquiry.fetch("package"))
         @message = inquiry.fetch("message")
 
+        farm_email = ENV.fetch("GMAIL_ADDRESS")
+        recipients = { to: @email }
+        recipients[:bcc] = farm_email unless @email.casecmp?(farm_email)
+
+        attachments.inline["logo-ferme-dauwez.png"] = {
+          mime_type: "image/png",
+          content: File.binread(Rails.root.join("app/assets/images/logo-email.png")),
+        }
+
         mail(
-          to: ENV["GMAIL_ADDRESS"],
-          reply_to: @email,
-          subject: "Projet team building – #{@company}".squish,
-        )
+          **recipients,
+          subject: "Votre projet team building à la Ferme d’Auwez – #{@company}".squish,
+        ) do |format|
+          format.html { render layout: "team_building_mailer" }
+          format.text
+        end
     end
 
     # def mariages_reservation_mailer

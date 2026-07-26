@@ -63,6 +63,7 @@ class PagesController < ApplicationController
       key: "team-building",
       token: params["cf-turnstile-response"],
       remote_ip: request.remote_ip,
+      identifier: @team_building_inquiry.email,
       hostname: request.host,
       action: "team_building_inquiry",
     ).call
@@ -101,7 +102,7 @@ class PagesController < ApplicationController
   end
 
   def team_building_success_message
-    "Merci ! Votre projet est bien arrivé. Nous revenons vers vous rapidement."
+    "Merci ! Votre projet est bien arrivé. Un récapitulatif vous a été envoyé par e-mail."
   end
 
 end
