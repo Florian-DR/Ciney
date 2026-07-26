@@ -1,5 +1,5 @@
 .team-building-page {
-  --team-cream: #f4eadc;
+  --team-cream: #f0e5d4;
   --team-soft-green: #dfe6dc;
   --team-dark-green: #435443;
   --team-ink: #2f3c31;
@@ -25,6 +25,14 @@
   margin-bottom: 0.8rem;
   text-transform: uppercase;
   white-space: normal;
+}
+
+.team-building-eyebrow {
+  color: #fff4e5;
+}
+
+.team-building-kicker {
+  color: $orange;
 }
 
 .team-building-section {
@@ -124,6 +132,11 @@
       white-space: normal;
     }
   }
+}
+
+.team-building-intro.contain {
+  padding-bottom: 7rem;
+  padding-top: 8.5rem;
 }
 
 .team-building-stats {
@@ -369,6 +382,11 @@
   }
 }
 
+.team-building-stay.contain {
+  padding-bottom: 7rem;
+  padding-top: 7rem;
+}
+
 .team-building-experience {
   background: var(--team-cream);
 
@@ -418,6 +436,10 @@
     right: 2rem;
     top: 1.5rem;
   }
+}
+
+.team-building-page + footer {
+  margin-top: 0;
 }
 
 .team-building-activity-tags {
@@ -507,6 +529,10 @@
       margin: 0;
     }
   }
+}
+
+.team-building-practical.contain {
+  padding-bottom: 2.75rem;
 }
 
 .team-building-inquiry {
@@ -749,6 +775,16 @@
     gap: 2.5rem;
     padding-bottom: 4.5rem;
     padding-top: 4.5rem;
+  }
+
+  .team-building-intro.contain,
+  .team-building-stay.contain {
+    padding-bottom: 4.5rem;
+    padding-top: 4.5rem;
+  }
+
+  .team-building-practical.contain {
+    padding-bottom: 2rem;
   }
 
   .team-building-heading {
