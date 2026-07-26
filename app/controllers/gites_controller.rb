@@ -1,6 +1,7 @@
 class GitesController < ApplicationController
-    skip_before_action :authenticate_user!, only: %i[show first_gite second_gite third_gite]
+    skip_before_action :authenticate_user!, only: :show
     before_action :current_gite
+    before_action :authorize_first_user!, except: :show
 
     def show
         if @gite.name.downcase.include?("ferme")
@@ -19,11 +20,19 @@ class GitesController < ApplicationController
     def edit; end
 
     def update
-        Gite.all.each do |gite| 
-          gite.commun = params[:gite][:commun]
-          gite.save
+        updated = Gite.transaction do
+          if @gite.update(gite_params.except(:photos))
+            Gite.where.not(id: @gite.id).update_all(
+              commun: @gite.commun,
+              updated_at: Time.current,
+            )
+            true
+          else
+            false
+          end
         end
-        if @gite.update(gite_params.except(:photos))
+
+        if updated
                 # add new uploaded images if present
             if params[:gite][:photos].present?
                 photos = params[:gite][:photos].reject(&:blank?) #Remove default browser empty first element
@@ -32,7 +41,7 @@ class GitesController < ApplicationController
                 end
             end
             
-            redirect_to gite_path
+            redirect_to gite_path(@gite)
             flash.notice = "Gite modifié !"
         else
             render :edit, status: :unprocessable_entity
@@ -42,10 +51,9 @@ class GitesController < ApplicationController
     def delete_pictures
         photo = @gite.photos.find(params[:photo_id])
         photo.destroy!
-        @gite.photos.delete(photo)
 
         flash.notice = "Une photo a bien été supprimée"
-        redirect_to request.referer
+        redirect_back fallback_location: edit_gite_path(@gite)
     end
 
     private
@@ -57,6 +65,11 @@ class GitesController < ApplicationController
     def current_gite
         # To have the gite from the params[:name] (url)
         @gite = Gite.all.find { |gite| gite.to_param == params[:name] }
+        raise ActiveRecord::RecordNotFound unless @gite
+    end
+
+    def authorize_first_user!
+        head :forbidden unless current_user == User.first
     end
 
 end

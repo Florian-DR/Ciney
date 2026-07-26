@@ -1,4 +1,6 @@
 class HomePagesController < ApplicationController
+    before_action :authorize_first_user!
+
     def edit 
         @home = HomePage.first
     end
@@ -36,4 +38,9 @@ class HomePagesController < ApplicationController
                 photos: []
                 )
     end
+
+    def authorize_first_user!
+        head :forbidden unless current_user == User.first
+    end
+
 end

@@ -83,6 +83,60 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "ignore silencieusement un robot qui remplit le champ piège et n’envoie aucun e-mail" do
+    params = valid_inquiry_params.merge(website: "https://spam.example")
+
+    assert_no_emails do
+      post team_building_inquiries_path, params: {
+        team_building_inquiry: params,
+      }
+    end
+
+    assert_redirected_to team_buildings_path(anchor: "demande")
+    assert_includes flash[:notice], "Votre projet est bien arrivé"
+  end
+
+  test "affiche une erreur et l’adresse directe quand l’envoi de l’e-mail échoue" do
+    success = FormSubmissionGuard::Result.new(success?: true)
+    guard = Object.new
+    guard.define_singleton_method(:call) { success }
+    failing_mail = Object.new
+    failing_mail.define_singleton_method(:team_building_inquiry_mailer) { self }
+    failing_mail.define_singleton_method(:deliver_now) { raise Net::SMTPFatalError, "refus SMTP" }
+
+    FormSubmissionGuard.stub(:new, ->(**_arguments) { guard }) do
+      CineyMailer.stub(:with, failing_mail) do
+        post team_building_inquiries_path, params: {
+          team_building_inquiry: valid_inquiry_params,
+        }, headers: TURBO_FRAME_HEADERS
+      end
+    end
+
+    assert_response :service_unavailable
+    assert_select ".team-building-form-errors", text: /problème technique/
+    assert_select(
+      ".team-building-form-errors a[href='mailto:#{ENV.fetch('GMAIL_ADDRESS')}']",
+      text: ENV.fetch("GMAIL_ADDRESS"),
+    )
+  end
+
+  test "redirige après un envoi classique pour éviter un second envoi au rechargement" do
+    success = FormSubmissionGuard::Result.new(success?: true)
+    guard = Object.new
+    guard.define_singleton_method(:call) { success }
+
+    FormSubmissionGuard.stub(:new, ->(**_arguments) { guard }) do
+      assert_emails 1 do
+        post team_building_inquiries_path, params: {
+          team_building_inquiry: valid_inquiry_params,
+        }
+      end
+    end
+
+    assert_redirected_to team_buildings_path(anchor: "demande")
+    assert_includes flash[:notice], "récapitulatif"
+  end
+
   private
 
   def valid_inquiry_params
