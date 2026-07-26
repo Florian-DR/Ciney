@@ -30,7 +30,7 @@ class FormSubmissionGuard
     return Result.new(success?: true) if verification.success?
 
     Rails.logger.info("Protected form rejected by Turnstile: #{verification.error_codes.join(',')}")
-    failure("La vérification anti-spam a échoué. Actualisez la page et réessayez.")
+    failure("La vérification anti-spam n’a pas pu être validée. Actualisez la page puis réessayez. Si le problème persiste, contactez-nous directement sur notre adresse email ou par téléphone.")
   end
 
   private
@@ -55,7 +55,7 @@ class FormSubmissionGuard
   end
 
   def rate_limit_failure
-    failure("Trop de tentatives ont été effectuées. Réessayez dans quelques minutes.")
+    failure("Cette demande ne peut pas être envoyée pour le moment en raison d’un trop grand nombre de tentatives. Si le problème persiste, contactez-nous directement sur notre adresse email ou par téléphone")
   end
 
   def failure(message)

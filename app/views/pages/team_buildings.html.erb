@@ -237,10 +237,21 @@
       </div>
 
       <div class="team-building-form-card">
-        <% if @team_building_inquiry.errors.any? %>
+        <% if @team_building_inquiry.errors.any? || @team_building_form_error.present? %>
           <div class="team-building-form-errors" role="alert">
             <i class="fa-solid fa-circle-exclamation"></i>
-            Certains champs sont incomplets ou incorrects. Ils sont indiqués dans le formulaire.
+            <div>
+              <% if @team_building_form_error.present? %>
+                <p><%= @team_building_form_error %></p>
+                <p>
+                  Vous pouvez toujours nous écrire directement à
+                  <%= mail_to ENV["GMAIL_ADDRESS"], ENV["GMAIL_ADDRESS"] %>.
+                </p>
+              <% else %>
+                <p>Nous n’avons pas encore pu envoyer votre demande.</p>
+                <p>Corrigez les champs signalés ci-dessous, puis réessayez.</p>
+              <% end %>
+            </div>
           </div>
         <% end %>
 
@@ -250,33 +261,65 @@
             data: { turbo: false } do |form| %>
           <div class="team-building-form__field">
             <%= form.label :company, "Nom de l’entreprise" %>
-            <%= form.text_field :company, required: true, maxlength: 120, autocomplete: "organization" %>
+            <%= form.text_field :company,
+                required: true,
+                maxlength: 120,
+                autocomplete: "organization",
+                aria: { invalid: @team_building_inquiry.errors[:company].any? } %>
+            <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :company %>
           </div>
 
           <div class="team-building-form__field">
             <%= form.label :contact_name, "Nom et prénom du contact" %>
-            <%= form.text_field :contact_name, required: true, maxlength: 120, autocomplete: "name" %>
+            <%= form.text_field :contact_name,
+                required: true,
+                maxlength: 120,
+                autocomplete: "name",
+                aria: { invalid: @team_building_inquiry.errors[:contact_name].any? } %>
+            <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :contact_name %>
           </div>
 
           <div class="team-building-form__row">
             <div class="team-building-form__field">
               <%= form.label :email, "E-mail" %>
-              <%= form.email_field :email, required: true, maxlength: 254, autocomplete: "email" %>
+              <%= form.email_field :email,
+                  required: true,
+                  maxlength: 254,
+                  autocomplete: "email",
+                  aria: { invalid: @team_building_inquiry.errors[:email].any? } %>
+              <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :email %>
             </div>
             <div class="team-building-form__field">
               <%= form.label :telephone, "Téléphone" %>
-              <%= form.telephone_field :telephone, required: true, maxlength: 40, autocomplete: "tel" %>
+              <%= form.telephone_field :telephone,
+                  required: true,
+                  maxlength: 40,
+                  autocomplete: "tel",
+                  aria: { invalid: @team_building_inquiry.errors[:telephone].any? } %>
+              <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :telephone %>
             </div>
           </div>
 
           <div class="team-building-form__row">
             <div class="team-building-form__field">
               <%= form.label :participants, "Nombre de participants" %>
-              <%= form.number_field :participants, required: true, min: 1, max: 100, inputmode: "numeric" %>
+              <%= form.number_field :participants,
+                  required: true,
+                  min: 1,
+                  max: 100,
+                  inputmode: "numeric",
+                  aria: { invalid: @team_building_inquiry.errors[:participants].any? } %>
+              <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :participants %>
             </div>
             <div class="team-building-form__field">
               <%= form.label :desired_dates, "Dates ou période souhaitée" %>
-              <%= form.text_field :desired_dates, required: true, maxlength: 200, placeholder: "Ex. septembre 2026", autocomplete: "off" %>
+              <%= form.text_field :desired_dates,
+                  required: true,
+                  maxlength: 200,
+                  placeholder: "Ex. septembre 2026",
+                  autocomplete: "off",
+                  aria: { invalid: @team_building_inquiry.errors[:desired_dates].any? } %>
+              <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :desired_dates %>
             </div>
           </div>
 
@@ -285,7 +328,9 @@
             <%= form.select :package,
                 TeamBuildingInquiry::PACKAGE_OPTIONS,
                 { prompt: "Choisissez une formule" },
-                required: true %>
+                required: true,
+                aria: { invalid: @team_building_inquiry.errors[:package].any? } %>
+            <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :package %>
           </div>
 
           <div class="team-building-form__field">
@@ -295,7 +340,9 @@
                 minlength: 10,
                 maxlength: 3_000,
                 rows: 7,
-                placeholder: "Nuitées, restauration, activités, objectifs de la journée…" %>
+                placeholder: "Nuitées, restauration, activités, objectifs de la journée…",
+                aria: { invalid: @team_building_inquiry.errors[:message].any? } %>
+            <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :message %>
           </div>
 
           <%= render "shared/protected_form", form: form, action: "team_building_inquiry" %>

@@ -54,7 +54,6 @@ class PagesController < ApplicationController
     end
 
     unless @team_building_inquiry.valid?
-      flash.now.alert = "Vérifiez les champs indiqués avant de renvoyer votre demande."
       render :team_buildings, status: :unprocessable_entity
       return
     end
@@ -69,14 +68,23 @@ class PagesController < ApplicationController
     ).call
 
     unless protection.success?
-      flash.now.alert = protection.message
+      @team_building_form_error = protection.message
       render :team_buildings, status: :unprocessable_entity
       return
     end
 
-    CineyMailer.with(inquiry: @team_building_inquiry.mailer_payload)
-      .team_building_inquiry_mailer
-      .deliver_now
+    begin
+      CineyMailer.with(inquiry: @team_building_inquiry.mailer_payload)
+        .team_building_inquiry_mailer
+        .deliver_now
+    rescue StandardError => error
+      Rails.logger.error(
+        "Team-building inquiry email delivery failed: #{error.class}: #{error.message}",
+      )
+      @team_building_form_error = "Un problème technique nous empêche d’envoyer votre demande pour le moment."
+      render :team_buildings, status: :service_unavailable
+      return
+    end
 
     redirect_to team_buildings_path(anchor: "demande"), notice: team_building_success_message
   end

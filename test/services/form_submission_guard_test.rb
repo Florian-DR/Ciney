@@ -29,7 +29,8 @@ class FormSubmissionGuardTest < ActiveSupport::TestCase
 
     assert results.first(3).all?(&:success?)
     assert_not results.last.success?
-    assert_includes results.last.message, "Trop de tentatives"
+    assert_includes results.last.message, "trop grand nombre de tentatives"
+    assert_not_includes results.last.message, "15"
   end
 
   test "limits repeated submissions from the same IP address" do
@@ -41,7 +42,8 @@ class FormSubmissionGuardTest < ActiveSupport::TestCase
 
     assert results.first(5).all?(&:success?)
     assert_not results.last.success?
-    assert_includes results.last.message, "Trop de tentatives"
+    assert_includes results.last.message, "trop grand nombre de tentatives"
+    assert_not_includes results.last.message, "15"
   end
 
   private
