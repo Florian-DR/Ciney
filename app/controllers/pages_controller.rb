@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities sitemap]
+  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities team_buildings team_building_inquiry sitemap]
   skip_before_action :all_gites, only: %i[home sitemap]
 
   def home
@@ -41,8 +41,67 @@ class PagesController < ApplicationController
     @gpx_trace_groups = ActivityCatalog::GPX_TRACE_GROUPS
   end
 
+  def team_buildings
+    @team_building_inquiry = TeamBuildingInquiry.new
+  end
+
+  def team_building_inquiry
+    @team_building_inquiry = TeamBuildingInquiry.new(team_building_inquiry_params)
+
+    if @team_building_inquiry.website.present?
+      redirect_to team_buildings_path(anchor: "demande"), notice: team_building_success_message
+      return
+    end
+
+    unless @team_building_inquiry.valid?
+      flash.now.alert = "Vérifiez les champs indiqués avant de renvoyer votre demande."
+      render :team_buildings, status: :unprocessable_entity
+      return
+    end
+
+    protection = FormSubmissionGuard.new(
+      key: "team-building",
+      token: params["cf-turnstile-response"],
+      remote_ip: request.remote_ip,
+      hostname: request.host,
+      action: "team_building_inquiry",
+    ).call
+
+    unless protection.success?
+      flash.now.alert = protection.message
+      render :team_buildings, status: :unprocessable_entity
+      return
+    end
+
+    CineyMailer.with(inquiry: @team_building_inquiry.mailer_payload)
+      .team_building_inquiry_mailer
+      .deliver_now
+
+    redirect_to team_buildings_path(anchor: "demande"), notice: team_building_success_message
+  end
+
   def sitemap
     @sitemap_gites = Gite.select(:name, :updated_at).order(:id)
+  end
+
+  private
+
+  def team_building_inquiry_params
+    params.require(:team_building_inquiry).permit(
+      :company,
+      :contact_name,
+      :email,
+      :telephone,
+      :participants,
+      :desired_dates,
+      :package,
+      :message,
+      :website,
+    )
+  end
+
+  def team_building_success_message
+    "Merci ! Votre projet est bien arrivé. Nous revenons vers vous rapidement."
   end
 
 end

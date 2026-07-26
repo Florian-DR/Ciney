@@ -1,0 +1,311 @@
+<% content_for :title, "Team building à Ciney | La Ferme d’Auwez" %>
+<% content_for :description, "Organisez votre team building à la Ferme d’Auwez, près de Ciney : salle modulable, activités, restauration et hébergement jusqu’à 25 personnes." %>
+<% content_for :social_image, "cour-interieur-1400.webp" %>
+<% content_for :social_image_alt, "Cour intérieure de la Ferme d’Auwez, lieu de team building à Ciney" %>
+
+<main class="team-building-page">
+  <%###### Hero Team Building Section ######%>
+  <header class="team-building-hero">
+    <picture>
+      <source media="(max-width: 768px)" srcset="<%= asset_path("cour-interieur-640.webp") %>">
+      <%= image_tag "cour-interieur-1400.webp",
+          alt: "Cour intérieure et bâtiments en pierre de la Ferme d’Auwez",
+          width: 1400,
+          height: 1050,
+          fetchpriority: "high",
+          decoding: "async" %>
+    </picture>
+    <div class="team-building-hero__shade"></div>
+    <div class="team-building-hero__content contain">
+      <p class="team-building-eyebrow">Vos équipes au vert, près de Ciney</p>
+      <h1>Des team buildings qui rapprochent vraiment</h1>
+      <p>Un domaine rien que pour vous, du temps pour avancer ensemble et assez d’espace pour décrocher du quotidien.</p>
+      <a href="#demande" class="team-building-hero__link">
+        Imaginer notre journée <i class="fa-solid fa-arrow-down"></i>
+      </a>
+    </div>
+  </header>
+
+  <%###### Introduction Team Building Section ######%>
+  <section class="team-building-intro contain">
+    <div class="team-building-intro__copy">
+      <p class="team-building-kicker">Changer d’air, changer de rythme</p>
+      <h2>Réunissez vos équipes loin du bureau</h2>
+      <p>Le temps d’une journée ou d’un séjour complet, offrez à vos équipes un cadre qui change vraiment de l’open space : une ancienne ferme rénovée, entourée de champs et de calme, où l’on prend le temps de réfléchir, d’échanger et de se retrouver.</p>
+      <p>Ici, une session de travail se prolonge naturellement par une baignade dans la piscine intérieure, un moment au sauna ou une soirée au coin du feu.</p>
+    </div>
+    <div class="team-building-stats" aria-label="Capacités du domaine">
+      <div><strong>25</strong><span>personnes en réunion</span></div>
+      <div><strong>25</strong><span>personnes hébergées</span></div>
+      <div><strong>3</strong><span>gîtes de caractère</span></div>
+    </div>
+  </section>
+
+  <%###### Benefits Team Building Section ######%>
+  <section class="team-building-section team-building-benefits">
+    <div class="contain">
+      <div class="team-building-heading">
+        <div>
+          <p class="team-building-kicker">Pourquoi venir ici ?</p>
+          <h2>Tout ce qu’il faut pour créer du lien</h2>
+        </div>
+        <p>Un cadre professionnel sans être impersonnel, avec de vraies respirations entre les temps forts de votre programme.</p>
+      </div>
+
+      <div class="team-building-benefits__grid">
+        <article>
+          <i class="fa-solid fa-seedling"></i>
+          <h3>Un cadre inspirant</h3>
+          <p>Du calme, de la nature et de l’espace pour faire émerger des idées neuves loin du stress quotidien.</p>
+        </article>
+        <article>
+          <i class="fa-solid fa-water-ladder"></i>
+          <h3>De vraies pauses</h3>
+          <p>Piscine intérieure, sauna et grand jardin pour souffler et se retrouver autrement.</p>
+        </article>
+        <article>
+          <i class="fa-solid fa-house-chimney"></i>
+          <h3>Dormir sur place</h3>
+          <p>Trois gîtes privatifs et chaleureux permettent d’accueillir jusqu’à 25 personnes.</p>
+        </article>
+        <article>
+          <i class="fa-solid fa-display"></i>
+          <h3>Travailler confortablement</h3>
+          <p>Wifi, vidéoprojecteur, tableau et salle modulable selon le rythme de votre équipe.</p>
+        </article>
+        <article>
+          <i class="fa-solid fa-handshake-angle"></i>
+          <h3>Être accompagné</h3>
+          <p>Restauration, activités et organisation : choisissez votre niveau d’accompagnement.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <%###### Meeting Room Section — remplacer le visuel quand les photos de la salle seront disponibles ######%>
+  <section class="team-building-section team-building-room contain">
+    <div class="team-building-room__visual">
+      <%= image_tag "enter-1200.webp",
+          alt: "Entrée du domaine et bâtiments en pierre de la Ferme d’Auwez",
+          srcset: {
+            "enter-640.webp" => "640w",
+            "enter-1200.webp" => "1200w"
+          },
+          sizes: "(max-width: 768px) 100vw, 44vw",
+          width: 1200,
+          height: 1600,
+          loading: "lazy",
+          decoding: "async" %>
+      <div class="team-building-room__badge">
+        <strong>Flexible</strong>
+        <span>réunion · U · théâtre</span>
+      </div>
+    </div>
+    <div class="team-building-room__copy">
+      <p class="team-building-kicker">Votre point de ralliement</p>
+      <h2>Une salle pensée pour votre équipe</h2>
+      <p>Indépendante et à l’écart des gîtes, la salle accueille jusqu’à 25 personnes. Sa configuration s’adapte à votre programme : réunion, formation, ateliers en petits groupes ou présentation collective.</p>
+      <ul class="team-building-checklist">
+        <li><i class="fa-solid fa-check"></i> Vidéoprojecteur</li>
+        <li><i class="fa-solid fa-check"></i> Wifi gratuit</li>
+        <li><i class="fa-solid fa-check"></i> Tableau</li>
+        <li><i class="fa-solid fa-check"></i> Coin cuisine avec café, frigo et micro-ondes</li>
+      </ul>
+      <p class="team-building-room__aside">L’espace convient aussi aux ateliers ponctuels : yoga, pilates, improvisation ou autres activités en intérieur.</p>
+    </div>
+  </section>
+
+  <%###### Domain Gallery Section — remplacer ces images par la galerie de la salle ######%>
+  <section class="team-building-section team-building-gallery">
+    <div class="contain">
+      <div class="team-building-heading team-building-heading--light">
+        <div>
+          <p class="team-building-kicker">Du travail à la déconnexion</p>
+          <h2>Un domaine à vivre ensemble</h2>
+        </div>
+        <p>Découvrez le cadre qui accompagne votre journée, entre pierre, grands espaces et campagne du Condroz.</p>
+      </div>
+      <div class="team-building-gallery__grid">
+        <figure class="team-building-gallery__wide">
+          <%= image_tag "coucher-de-soleil-1920.webp",
+              alt: "Vue panoramique sur la campagne du Condroz",
+              srcset: {
+                "coucher-de-soleil-960.webp" => "960w",
+                "coucher-de-soleil-1920.webp" => "1920w"
+              },
+              sizes: "(max-width: 768px) 100vw, 60vw",
+              width: 1920,
+              height: 1440,
+              loading: "lazy",
+              decoding: "async" %>
+          <figcaption>Prendre du recul</figcaption>
+        </figure>
+        <figure>
+          <%= image_tag "gite-horizon-1400.webp",
+              alt: "Bâtiment en pierre du gîte L’Horizon",
+              srcset: {
+                "gite-horizon-640.webp" => "640w",
+                "gite-horizon-1400.webp" => "1400w"
+              },
+              sizes: "(max-width: 768px) 100vw, 30vw",
+              width: 1400,
+              height: 1228,
+              loading: "lazy",
+              decoding: "async" %>
+          <figcaption>Se retrouver au vert</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <%###### Accommodation Team Building Section ######%>
+  <section class="team-building-section team-building-stay contain">
+    <div class="team-building-stay__header">
+      <p class="team-building-kicker">Prolonger l’expérience</p>
+      <h2>Un hébergement sur mesure</h2>
+    </div>
+    <div class="team-building-stay__content">
+      <p>Selon la taille de votre équipe, réservez un seul gîte ou l’ensemble du domaine. Les trois gîtes offrent au total 25 lits, avec piscine intérieure et sauna partagés. Une nuit sur place transforme la journée : dîner convivial, soirée au coin du feu, puis reprise en douceur le lendemain.</p>
+      <p>Vous venez uniquement pour travailler ? La salle peut aussi être louée seule pour une réunion, une formation ou un atelier en journée.</p>
+    </div>
+    <%= link_to "Découvrir les hébergements", root_path(anchor: "gites"), class: "team-building-text-link" %>
+  </section>
+
+  <%###### Food and Activities Team Building Section ######%>
+  <section class="team-building-section team-building-experience">
+    <div class="contain">
+      <div class="team-building-experience__grid">
+        <article class="team-building-experience__food">
+          <span class="team-building-experience__number">01</span>
+          <i class="fa-solid fa-utensils"></i>
+          <h2>Restauration à votre façon</h2>
+          <p>Utilisez la grande cuisine équipée, faites appel au traiteur de votre choix ou laissez-nous vous orienter vers nos partenaires de la région selon le style de repas recherché.</p>
+        </article>
+
+        <article class="team-building-experience__activities">
+          <span class="team-building-experience__number">02</span>
+          <i class="fa-solid fa-people-group"></i>
+          <h2>Des activités qui vous ressemblent</h2>
+          <div class="team-building-activity-tags">
+            <span>🎯 Tir à l’arc et bubble foot</span>
+            <span>🎨 Découvertes locales</span>
+            <span>🍫 Chocolaterie et brasserie</span>
+            <span>🧘 Yoga et balades</span>
+          </div>
+          <p>Nous connaissons les prestataires locaux et vous aidons à construire un programme cohérent avec votre équipe.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <%###### Turnkey Organisation Section ######%>
+  <section class="team-building-section team-building-turnkey">
+    <div class="contain">
+      <div class="team-building-turnkey__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <p class="team-building-kicker">Vous gardez la main</p>
+      <h2>Une organisation aussi libre que vous le souhaitez</h2>
+      <p>Restauration, activités, aménagement de la salle : organisez chaque élément vous-même ou partagez simplement votre idée avec nous. Nous pouvons coordonner le reste, avant et pendant votre team building.</p>
+    </div>
+  </section>
+
+  <%###### Practical Information Section ######%>
+  <section class="team-building-section team-building-practical contain">
+    <div class="team-building-practical__title">
+      <p class="team-building-kicker">Construire votre événement</p>
+      <h2>Les informations pratiques</h2>
+    </div>
+    <dl class="team-building-practical__list">
+      <div><dt>Capacité de la salle</dt><dd>Jusqu’à 25 personnes, configuration flexible</dd></div>
+      <div><dt>Capacité d’hébergement</dt><dd>Jusqu’à 25 personnes selon les gîtes réservés</dd></div>
+      <div><dt>Formule journée</dt><dd>Salle seule pour une réunion, une formation ou un atelier</dd></div>
+      <div><dt>Formule résidentielle</dt><dd>Une ou plusieurs nuitées pour profiter pleinement du domaine</dd></div>
+      <div><dt>Équipements</dt><dd>Wifi et matériel professionnel inclus</dd></div>
+    </dl>
+  </section>
+
+  <%###### Team Building Inquiry Form Section ######%>
+  <section id="demande" class="team-building-section team-building-inquiry">
+    <div class="contain team-building-inquiry__layout">
+      <div class="team-building-inquiry__intro">
+        <p class="team-building-kicker">Parlons de votre équipe</p>
+        <h2>Offrez-lui une parenthèse hors du temps</h2>
+        <p>Décrivez-nous votre projet, d’une simple journée avec salle à un séjour pensé de A à Z. Nous vous répondrons avec une proposition personnalisée.</p>
+        <div class="team-building-inquiry__promise">
+          <i class="fa-regular fa-comment-dots"></i>
+          <span>Un échange humain, une offre adaptée et aucun engagement.</span>
+        </div>
+      </div>
+
+      <div class="team-building-form-card">
+        <% if @team_building_inquiry.errors.any? %>
+          <div class="team-building-form-errors" role="alert">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Certains champs sont incomplets ou incorrects. Ils sont indiqués dans le formulaire.
+          </div>
+        <% end %>
+
+        <%= form_with model: @team_building_inquiry,
+            url: team_building_inquiries_path,
+            class: "team-building-form",
+            data: { turbo: false } do |form| %>
+          <div class="team-building-form__field">
+            <%= form.label :company, "Nom de l’entreprise" %>
+            <%= form.text_field :company, required: true, maxlength: 120, autocomplete: "organization" %>
+          </div>
+
+          <div class="team-building-form__field">
+            <%= form.label :contact_name, "Nom et prénom du contact" %>
+            <%= form.text_field :contact_name, required: true, maxlength: 120, autocomplete: "name" %>
+          </div>
+
+          <div class="team-building-form__row">
+            <div class="team-building-form__field">
+              <%= form.label :email, "E-mail" %>
+              <%= form.email_field :email, required: true, maxlength: 254, autocomplete: "email" %>
+            </div>
+            <div class="team-building-form__field">
+              <%= form.label :telephone, "Téléphone" %>
+              <%= form.telephone_field :telephone, required: true, maxlength: 40, autocomplete: "tel" %>
+            </div>
+          </div>
+
+          <div class="team-building-form__row">
+            <div class="team-building-form__field">
+              <%= form.label :participants, "Nombre de participants" %>
+              <%= form.number_field :participants, required: true, min: 1, max: 100, inputmode: "numeric" %>
+            </div>
+            <div class="team-building-form__field">
+              <%= form.label :desired_dates, "Dates ou période souhaitée" %>
+              <%= form.text_field :desired_dates, required: true, maxlength: 200, placeholder: "Ex. septembre 2026", autocomplete: "off" %>
+            </div>
+          </div>
+
+          <div class="team-building-form__field">
+            <%= form.label :package, "Formule souhaitée" %>
+            <%= form.select :package,
+                TeamBuildingInquiry::PACKAGE_OPTIONS,
+                { prompt: "Choisissez une formule" },
+                required: true %>
+          </div>
+
+          <div class="team-building-form__field">
+            <%= form.label :message, "Parlez-nous de votre projet" %>
+            <%= form.text_area :message,
+                required: true,
+                minlength: 10,
+                maxlength: 3_000,
+                rows: 7,
+                placeholder: "Nuitées, restauration, activités, objectifs de la journée…" %>
+          </div>
+
+          <%= render "shared/protected_form", form: form, action: "team_building_inquiry" %>
+
+          <p class="team-building-form__privacy">Vos coordonnées servent uniquement à répondre à cette demande.</p>
+          <%= form.submit "Je lance mon projet",
+              class: "button team-building-form__submit",
+              disabled: Turnstile.site_key.blank? %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</main>

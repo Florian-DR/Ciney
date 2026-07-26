@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get "/about", to: "pages#about"
   get "/activites", to: "pages#activities", as: :activities
+  get "/entreprises", to: "pages#team_buildings", as: :team_buildings
+  post "/entreprises/demande", to: "pages#team_building_inquiry", as: :team_building_inquiries
 
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#contact_sender"

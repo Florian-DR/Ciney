@@ -12,6 +12,7 @@
                 <% end %>
             </div>
         </div>
+        <%= link_to "Team buildings", team_buildings_path, class: "nav-link" %>
         <%= link_to "Activités", activities_path, class: "nav-link" %>
         <a href="/about" class="nav-link">À propos</a>
         <a href="/contact" class="nav-link">Contact et accès</a>
@@ -33,6 +34,7 @@
                     <% @nav_gites.each do |gite| %>
                         <%= link_to gite.name, gite_path(gite), class: "nav-link" %>
                     <% end %>
+                    <%= link_to "Team buildings", team_buildings_path, class: "nav-link" %>
                     <%= link_to "Activités", activities_path, class: "nav-link" %>
                     <a href="/about" class="nav-link">À propos</a>
                     <a href="/contact" class="nav-link">Contact et accès</a>

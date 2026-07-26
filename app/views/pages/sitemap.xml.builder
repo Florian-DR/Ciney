@@ -5,6 +5,7 @@ xml.urlset xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" do
     about_path,
     contact_path,
     activities_path,
+    team_buildings_path,
   ].each do |path|
     xml.url do
       xml.loc "#{ApplicationHelper::SEO_SITE_URL}#{path}"

@@ -1,0 +1,31 @@
+<% unless content_for?(:turnstile_script) %>
+  <% content_for :turnstile_script do %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <% end %>
+<% end %>
+
+<div class="protected-form">
+  <div class="protected-form__honeypot" aria-hidden="true">
+    <%= form.label :website, "Ne pas remplir ce champ" %>
+    <%= form.text_field :website, tabindex: "-1", autocomplete: "off" %>
+  </div>
+
+  <% if Turnstile.site_key.present? %>
+    <div
+      class="cf-turnstile"
+      data-sitekey="<%= Turnstile.site_key %>"
+      data-action="<%= action %>"
+      data-theme="light"
+      data-size="flexible"
+      data-language="fr"
+    ></div>
+    <p class="protected-form__note">
+      <i class="fa-solid fa-shield-halved"></i>
+      Ce formulaire est protégé contre les envois automatisés.
+    </p>
+  <% else %>
+    <p class="protected-form__configuration">
+      La protection anti-spam doit être configurée avant de pouvoir envoyer ce formulaire.
+    </p>
+  <% end %>
+</div>

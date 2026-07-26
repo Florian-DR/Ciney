@@ -1,0 +1,21 @@
+<h1>Nouveau projet de team building</h1>
+
+<p>Une entreprise souhaite organiser un événement à la Ferme d’Auwez.</p>
+
+<h2>Contact</h2>
+<ul>
+  <li><strong>Entreprise :</strong> <%= @company %></li>
+  <li><strong>Personne de contact :</strong> <%= @contact_name %></li>
+  <li><strong>E-mail :</strong> <%= mail_to @email %></li>
+  <li><strong>Téléphone :</strong> <%= @telephone %></li>
+</ul>
+
+<h2>Projet</h2>
+<ul>
+  <li><strong>Participants :</strong> <%= @participants %></li>
+  <li><strong>Dates ou période :</strong> <%= @desired_dates %></li>
+  <li><strong>Formule :</strong> <%= @package %></li>
+</ul>
+
+<h2>Précisions</h2>
+<%= simple_format(@message) %>

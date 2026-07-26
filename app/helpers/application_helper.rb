@@ -76,7 +76,7 @@ module ApplicationHelper
   end
 
   def seo_indexable_page?
-    (controller_name == "pages" && %w[home about contact activities].include?(action_name)) ||
+    (controller_name == "pages" && %w[home about contact activities team_buildings].include?(action_name)) ||
       (controller_name == "gites" && action_name == "show")
   end
 
@@ -210,6 +210,40 @@ module ApplicationHelper
         isPartOf: { "@id": lodging_id },
       }
       webpage[:mainEntity] = { "@id": accommodation_id }
+    end
+
+    if controller_name == "pages" && action_name == "team_buildings"
+      venue_id = "#{canonical_url}#venue"
+      graph << {
+        "@type": "EventVenue",
+        "@id": venue_id,
+        name: "Espace team building de la Ferme d’Auwez",
+        description: seo_description,
+        url: canonical_url,
+        image: seo_image_url,
+        maximumAttendeeCapacity: 25,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Route d’Auwez 1",
+          postalCode: "5590",
+          addressLocality: "Ciney",
+          addressRegion: "Namur",
+          addressCountry: "BE",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 50.2797711,
+          longitude: 5.1338991,
+        },
+        amenityFeature: [
+          { "@type": "LocationFeatureSpecification", name: "Meeting room", value: true },
+          { "@type": "LocationFeatureSpecification", name: "Video projector", value: true },
+          { "@type": "LocationFeatureSpecification", name: "Wi-Fi", value: true },
+          { "@type": "LocationFeatureSpecification", name: "On-site accommodation", value: true },
+        ],
+        isPartOf: { "@id": lodging_id },
+      }
+      webpage[:mainEntity] = { "@id": venue_id }
     end
 
     { "@context": "https://schema.org", "@graph": graph }.to_json

@@ -24,7 +24,7 @@
 
 <%###### Gites Section ######%>
 <%#### Hirondelles ####%>
-<div class="gite-card background-card-gite">
+<div id="gites" class="gite-card background-card-gite">
     <%= render "shared/gite_photos_card", gite: @gite_1 %>
 
     <div class="gite-card-text">
@@ -116,14 +116,12 @@
         <div class="border-image-mask"></div>
     </div>
     <div class="salle-text">
-        <h2 class="heading-h4 salle-heading">Louez l’ensemble de nos gîtes pour vos séjours en famille</h2>
-        <p >La Ferme d’Auwez peut être louée dans son intégralité, offrant ainsi 25 lits répartis dans trois gîtes de caractère. C’est la formule idéale pour réunir toute la famille sous un même toit et profiter d’un séjour où convivialité et confort se rencontrent.
+        <h2 class="heading-h4 salle-heading">Un team building qui sort du cadre</h2>
+        <p>Réunissez votre équipe au vert, dans un lieu où les temps de travail laissent naturellement place aux échanges, à la détente et aux expériences partagées.
 
-            Imaginez-vous partager de grands repas autour d’une table chaleureuse, voir les enfants s’amuser dans les vastes espaces intérieurs ou extérieurs, ou encore profiter de la piscine intérieure ou du sauna en famille. Chaque recoin de la ferme invite à la détente et au partage, dans un cadre verdoyant qui respire le calme et l’authenticité.
+            Salle modulable, activités sur mesure, restauration et hébergement jusqu’à 25 personnes : construisez votre programme librement ou confiez-nous son organisation.</p>
 
-            Louer l’ensemble de la Ferme, c’est offrir à vos proches un véritable cocon où petits et grands trouvent leur place, pour des moments de complicité et des souvenirs qui resteront gravés. Ici, tout est pensé pour que vous vous sentiez comme à la maison, avec ce petit supplément d’évasion qui rend le séjour unique.</p>
-
-        <%= link_to "Découvrir la Ferme complète", gite_path(@gite_5), class: "button" if @gite_5.present? %>
+        <%= link_to "Imaginer notre team building", team_buildings_path, class: "button" %>
     </div>
 </div> 
 

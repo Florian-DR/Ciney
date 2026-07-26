@@ -1,0 +1,30 @@
+.protected-form {
+  margin: 1rem 0;
+
+  &__honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+  }
+
+  &__note {
+    color: rgba($green, 0.78);
+    font-size: 0.82rem;
+    margin: 0.6rem 0 0;
+    white-space: normal;
+  }
+
+  &__configuration {
+    background: rgba($orange, 0.12);
+    border: 1px solid rgba($orange, 0.45);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    white-space: normal;
+  }
+
+  .cf-turnstile {
+    max-width: 100%;
+  }
+}

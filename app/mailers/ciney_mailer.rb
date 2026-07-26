@@ -21,6 +21,24 @@ class CineyMailer < ApplicationMailer
         mail(to: [@email], bcc: ENV['GMAIL_ADDRESS'], subject: "Prise de contact - #{@name} #{@first_name}")
     end
 
+    def team_building_inquiry_mailer
+        inquiry = params.fetch(:inquiry)
+        @company = inquiry.fetch("company")
+        @contact_name = inquiry.fetch("contact_name")
+        @email = inquiry.fetch("email")
+        @telephone = inquiry.fetch("telephone")
+        @participants = inquiry.fetch("participants")
+        @desired_dates = inquiry.fetch("desired_dates")
+        @package = TeamBuildingInquiry::PACKAGE_OPTIONS.key(inquiry.fetch("package"))
+        @message = inquiry.fetch("message")
+
+        mail(
+          to: ENV["GMAIL_ADDRESS"],
+          reply_to: @email,
+          subject: "Projet team building – #{@company}".squish,
+        )
+    end
+
     # def mariages_reservation_mailer
     #     @email = params[:email]
     #     @date = params[:date]
