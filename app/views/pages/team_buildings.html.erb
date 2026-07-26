@@ -236,29 +236,40 @@
         </div>
       </div>
 
-      <div class="team-building-form-card">
-        <% if @team_building_inquiry.errors.any? || @team_building_form_error.present? %>
-          <div class="team-building-form-errors" role="alert">
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <div>
-              <% if @team_building_form_error.present? %>
-                <p><%= @team_building_form_error %></p>
-                <p>
-                  Vous pouvez toujours nous écrire directement à
-                  <%= mail_to ENV["GMAIL_ADDRESS"], ENV["GMAIL_ADDRESS"] %>.
-                </p>
-              <% else %>
-                <p>Nous n’avons pas encore pu envoyer votre demande.</p>
-                <p>Corrigez les champs signalés ci-dessous, puis réessayez.</p>
-              <% end %>
+      <%= turbo_frame_tag "team_building_inquiry" do %>
+        <div class="team-building-form-card">
+          <% if @team_building_form_success.present? %>
+            <div class="team-building-form-success" role="status">
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <p><%= @team_building_form_success %></p>
+                <p>Nous revenons vers vous rapidement.</p>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
 
-        <%= form_with model: @team_building_inquiry,
-            url: team_building_inquiries_path,
-            class: "team-building-form",
-            data: { turbo: false } do |form| %>
+          <% if @team_building_inquiry.errors.any? || @team_building_form_error.present? %>
+            <div class="team-building-form-errors" role="alert">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <div>
+                <% if @team_building_form_error.present? %>
+                  <p><%= @team_building_form_error %></p>
+                  <p>
+                    Vous pouvez toujours nous écrire directement à
+                    <%= mail_to ENV["GMAIL_ADDRESS"], ENV["GMAIL_ADDRESS"] %>.
+                  </p>
+                <% else %>
+                  <p>Nous n’avons pas encore pu envoyer votre demande.</p>
+                  <p>Corrigez les champs signalés ci-dessous, puis réessayez.</p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          <%= form_with model: @team_building_inquiry,
+              url: team_building_inquiries_path(anchor: "demande"),
+              class: "team-building-form",
+              html: { novalidate: true } do |form| %>
           <div class="team-building-form__field">
             <%= form.label :company, "Nom de l’entreprise" %>
             <%= form.text_field :company,
@@ -348,11 +359,13 @@
           <%= render "shared/protected_form", form: form, action: "team_building_inquiry" %>
 
           <p class="team-building-form__privacy">Vos coordonnées servent uniquement à répondre à cette demande.</p>
-          <%= form.submit "Je lance mon projet",
-              class: "button team-building-form__submit",
-              disabled: Turnstile.site_key.blank? %>
-        <% end %>
-      </div>
+            <%= form.submit "Je lance mon projet",
+                class: "button team-building-form__submit",
+                data: { turbo_submits_with: "Envoi en cours…" },
+                disabled: Turnstile.site_key.blank? %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </section>
 </main>

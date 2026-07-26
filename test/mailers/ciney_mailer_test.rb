@@ -1,22 +1,13 @@
 require "test_helper"
 
 class CineyMailerTest < ActionMailer::TestCase
-  setup do
-    @original_gmail_address = ENV["GMAIL_ADDRESS"]
-    ENV["GMAIL_ADDRESS"] = "contact@fermedauwez.test"
-  end
-
-  teardown do
-    ENV["GMAIL_ADDRESS"] = @original_gmail_address
-  end
-
   test "sends one shared team-building confirmation to the visitor and the farm" do
     message = CineyMailer.with(inquiry: inquiry_payload)
       .team_building_inquiry_mailer
 
     assert_equal ["marie@example.com"], message.to
-    assert_equal ["contact@fermedauwez.test"], message.bcc
-    assert_equal ["contact@fermedauwez.test"], message.from
+    assert_equal [ENV.fetch("GMAIL_ADDRESS")], message.bcc
+    assert_equal [ENV.fetch("GMAIL_ADDRESS")], message.from
     assert_nil message.reply_to
     assert_equal(
       "Votre projet team building à la Ferme d’Auwez – Atelier Condroz",

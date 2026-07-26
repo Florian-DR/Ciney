@@ -86,7 +86,13 @@ class PagesController < ApplicationController
       return
     end
 
-    redirect_to team_buildings_path(anchor: "demande"), notice: team_building_success_message
+    if turbo_frame_request?
+      @team_building_form_success = team_building_success_message
+      @team_building_inquiry = TeamBuildingInquiry.new
+      render :team_buildings
+    else
+      redirect_to team_buildings_path(anchor: "demande"), notice: team_building_success_message
+    end
   end
 
   def sitemap
