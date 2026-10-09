@@ -1,5 +1,4 @@
-// Styles scoped to the enterprises page; global .contain and form rules
-// must not override its spacing or field borders.
+// Page-specific layout and form styling for the enterprises page.
 .team-building-page {
   --team-cream: #f0e5d4;
   --team-soft-green: #dfe6dc;
@@ -10,7 +9,6 @@
   --team-space: clamp(3rem, 6vw, 6rem);
   color: var(--team-ink);
 
-  *, *::before, *::after { box-sizing: border-box; }
   .contain {
     width: 100%;
     max-width: 1440px;
@@ -316,7 +314,6 @@
       font-family: $body-font;
       font-size: 1rem;
       min-width: 0;
-      box-sizing: border-box;
       padding: 0.75rem 0.85rem;
       width: 100%;
 
@@ -331,7 +328,7 @@
     select[aria-invalid="true"],
     textarea[aria-invalid="true"] {
       background: rgba($red, 0.035);
-      border-color: var(--team-error) !important;
+      border-color: var(--team-error);
       box-shadow: 0 0 0 1px rgba($red, 0.12);
     }
 
@@ -351,7 +348,7 @@
     }
 
     &-errors {
-      color: var(--team-error) !important;
+      color: var(--team-error);
       font-size: 0.76rem;
       line-height: 1.45;
       list-style: none;
@@ -359,7 +356,7 @@
       padding: 0;
 
       li {
-        color: inherit !important;
+        color: inherit;
       }
     }
   }
