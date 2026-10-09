@@ -1,17 +1,19 @@
 <% content_for :title, "Séjours professionnels & bien-être à Ciney | La Ferme d’Auwez" %>
 <% content_for :description, "Séminaires et team building à la Ferme d’Auwez, salle de réunion et hébergement jusqu’à 25 personnes, 10 chambres, Ciney" %>
-<% content_for :social_image, "cour-interieur-1400.webp" %>
-<% content_for :social_image_alt, "Cour intérieure de la Ferme d’Auwez, cadre pour séjours professionnels et bien-être à Ciney" %>
+<% content_for :social_image, "entreprises-hero-1920.webp" %>
+<% content_for :social_image_alt, "Vue aérienne de la Ferme d’Auwez et de la campagne du Condroz" %>
 
 <main class="team-building-page">
   <%###### Hero Team Building Section ######%>
   <header class="team-building-hero">
     <picture>
-      <source media="(max-width: 768px)" srcset="<%= asset_path("cour-interieur-640.webp") %>">
-      <%= image_tag "cour-interieur-1400.webp",
-          alt: "Cour intérieure et bâtiments en pierre de la Ferme d’Auwez",
-          width: 1400,
-          height: 1050,
+      <source media="(max-width: 768px)" srcset="<%= asset_path("entreprises-hero-640.webp") %>">
+      <%= image_tag "entreprises-hero-1920.webp",
+          alt: "Vue aérienne de la Ferme d’Auwez au cœur de la campagne du Condroz",
+          srcset: { "entreprises-hero-960.webp" => "960w", "entreprises-hero-1920.webp" => "1920w" },
+          sizes: "100vw",
+          width: 1920,
+          height: 1080,
           fetchpriority: "high",
           decoding: "async" %>
     </picture>
@@ -65,9 +67,9 @@
       <p>Ici, une réunion peut se prolonger à l’ombre du tilleul centenaire, une séance de travail peut trouver un nouveau souffle en plein air, et une soirée peut se clore sous un ciel étoilé préservé de toute pollution lumineuse. C’est cette atmosphère, plus que les seuls espaces mis à disposition, qui fait la différence.</p>
     </div>
     <figure class="team-building-nature">
-      <%= image_tag "arbre-1200.webp", alt: "Arbre du domaine au coucher du soleil",
-          srcset: { "arbre-640.webp" => "640w", "arbre-1200.webp" => "1200w" },
-          sizes: "(max-width: 768px) 100vw, 42vw", width: 1200, height: 1600, loading: "lazy", decoding: "async" %>
+      <%= image_tag "tilleul-hiver-1200.webp", alt: "Tilleul centenaire couvert de givre en hiver",
+          srcset: { "tilleul-hiver-640.webp" => "640w", "tilleul-hiver-1200.webp" => "1200w" },
+          sizes: "(max-width: 768px) 100vw, 42vw", width: 1200, height: 1500, loading: "lazy", decoding: "async" %>
       <figcaption>Prendre le temps.<br>Retrouver l’essentiel.</figcaption>
     </figure>
   </section>
@@ -85,28 +87,47 @@
         <p><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Tableau flip chart</p>
         <p><i class="fa-solid fa-people-group" aria-hidden="true"></i> Jusqu’à 30 personnes</p>
       </div>
-      <%# Galerie de la salle à intégrer dès réception des photos. %>
-      <div class="team-building-experience__grid">
-        <article>
-          <%# Photo de la Grange à intégrer dès réception. %>
-          <span class="team-building-card-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i><span>Prolonger les échanges</span></span>
-          <h3>La Grange, un lieu pour prolonger les échanges</h3>
-          <p>Au cœur du domaine, la Grange apporte une dimension plus conviviale au séjour. Après une séance de travail ou une activité, on s’y retrouve autour d’un repas, d’un café ou d’une discussion prolongée.</p>
-          <p>Sa grande table, sa cheminée et son imposant poêle à bois ardennais créent une atmosphère chaleureuse où les échanges prennent naturellement une autre dimension.</p>
-        </article>
-        <article>
-          <%# Photo de la mezzanine à intégrer dès réception. %>
-          <span class="team-building-card-mark"><i class="fa-solid fa-table-tennis-paddle-ball" aria-hidden="true"></i><span>Faire une pause</span></span>
-          <h3>La mezzanine, pour souffler entre deux séquences</h3>
-          <p>Pour les moments de pause, la mezzanine offre un espace de convivialité avec billard et ping-pong, où le groupe peut se retrouver en dehors des temps de travail ou de pratique.</p>
-        </article>
+      <div class="team-building-room-gallery">
+        <%= image_tag "salle-polyvalente-ensemble-1400.webp",
+            alt: "Salle polyvalente aménagée en U pour une réunion d’équipe",
+            srcset: { "salle-polyvalente-ensemble-640.webp" => "640w", "salle-polyvalente-ensemble-1400.webp" => "1400w" },
+            sizes: "(max-width: 640px) 100vw, 50vw",
+            width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
+        <%= image_tag "salle-polyvalente-reunion-1400.webp",
+            alt: "Salle polyvalente aménagée autour d’une grande table de réunion",
+            srcset: { "salle-polyvalente-reunion-640.webp" => "640w", "salle-polyvalente-reunion-1400.webp" => "1400w" },
+            sizes: "(max-width: 640px) 100vw, 50vw",
+            width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
+      </div>
+      <div class="team-building-shared-space">
+        <div class="team-building-shared-space__content">
+          <article class="team-building-shared-space__copy">
+            <span class="team-building-card-mark"><i class="fa-solid fa-fire" aria-hidden="true"></i><span>Prolonger les échanges</span></span>
+            <h3>La Grange, un lieu pour prolonger les échanges</h3>
+            <p>Au cœur du domaine, la Grange apporte une dimension plus conviviale au séjour. Après une séance de travail ou une activité, on s’y retrouve autour d’un repas, d’un café ou d’une discussion prolongée.</p>
+            <p>Sa grande table, sa cheminée et son imposant poêle à bois ardennais créent une atmosphère chaleureuse où les échanges prennent naturellement une autre dimension.</p>
+          </article>
+          <aside class="team-building-break">
+            <span class="team-building-break__icon"><i class="fa-solid fa-table-tennis-paddle-ball" aria-hidden="true"></i></span>
+            <div>
+              <p class="team-building-kicker">Faire une pause</p>
+              <h3>La mezzanine, pour souffler entre deux séquences</h3>
+              <p>Pour les moments de pause, la mezzanine offre un espace de convivialité avec billard et ping-pong, où le groupe peut se retrouver en dehors des temps de travail ou de pratique.</p>
+            </div>
+          </aside>
+        </div>
+        <%= image_tag "grange-convivialite-960.webp",
+            alt: "Grande table et cheminée de la Grange aménagée pour un moment convivial",
+            srcset: { "grange-convivialite-640.webp" => "640w", "grange-convivialite-960.webp" => "960w" },
+            sizes: "(max-width: 900px) 100vw, 42vw",
+            width: 960, height: 1280, loading: "lazy", decoding: "async" %>
       </div>
     </div>
   </section>
 
   <figure class="team-building-landscape">
-    <%= image_tag "coucher-de-soleil-1920.webp", alt: "La campagne du Condroz au coucher du soleil",
-        srcset: { "coucher-de-soleil-960.webp" => "960w", "coucher-de-soleil-1920.webp" => "1920w" },
+    <%= image_tag "tilleul-vue-coucher-1920.webp", alt: "Tilleul centenaire et campagne du Condroz au coucher du soleil",
+        srcset: { "tilleul-vue-coucher-960.webp" => "960w", "tilleul-vue-coucher-1920.webp" => "1920w" },
         sizes: "100vw", width: 1920, height: 1440, loading: "lazy", decoding: "async" %>
     <figcaption><span>La Ferme d’Auwez · Ciney</span>Un autre cadre.<br>Un nouvel élan.</figcaption>
   </figure>
@@ -123,9 +144,9 @@
     <div class="team-building-stay__header">
       <p class="team-building-kicker">Chez vous, le temps d’un séjour</p>
       <h2>Le domaine, rien que pour vous : 25 personnes, 10 chambres</h2>
-      <%= image_tag "gite-horizon-1400.webp", class: "team-building-stay__photo", alt: "Façade en pierre du gîte L’Horizon",
-          srcset: { "gite-horizon-640.webp" => "640w", "gite-horizon-1400.webp" => "1400w" },
-          sizes: "(max-width: 768px) 100vw, 36vw", width: 1400, height: 1228, loading: "lazy", decoding: "async" %>
+      <%= image_tag "cour-ambiance-1400.webp", class: "team-building-stay__photo", alt: "Cour de la Ferme d’Auwez aménagée pour accueillir un groupe",
+          srcset: { "cour-ambiance-640.webp" => "640w", "cour-ambiance-1400.webp" => "1400w" },
+          sizes: "(max-width: 768px) 100vw, 36vw", width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
     </div>
     <div class="team-building-stay__content">
       <p>Pour les séjours résidentiels, l’ensemble du domaine est réservé en exclusivité à votre groupe : les trois gîtes accueillent jusqu’à 25 personnes dans 10 chambres. Un cadre où travail, cohésion et bien-être trouvent naturellement leur équilibre.</p>
