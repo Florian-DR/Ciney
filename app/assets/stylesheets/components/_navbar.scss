@@ -104,12 +104,26 @@ nav{
 }
 
 @media (max-width: $breakpoint-mobile) {
+  .navbar {
+    flex-wrap: nowrap;
+
+    > a {
+      min-width: 0;
+    }
+
+    .logo {
+      max-width: 150px;
+    }
+  }
+
   .desktop-nav{
     display: none;
   }
 
   .phone-nav{
     display: block;
+    flex: 0 0 auto;
+    margin-left: auto;
     font-size: 25px !important;
     .nav-link{
       font-size: 30px !important;
