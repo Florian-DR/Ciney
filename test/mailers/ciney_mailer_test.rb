@@ -10,7 +10,7 @@ class CineyMailerTest < ActionMailer::TestCase
     assert_equal [ENV.fetch("GMAIL_ADDRESS")], message.from
     assert_nil message.reply_to
     assert_equal(
-      "Votre projet team building à la Ferme d’Auwez – Atelier Condroz",
+      "Votre projet de séjour professionnel ou bien-être à la Ferme d’Auwez – Atelier Condroz",
       message.subject,
     )
   end
@@ -23,7 +23,7 @@ class CineyMailerTest < ActionMailer::TestCase
 
     assert_includes html, "Demande bien reçue"
     assert_includes html, "Atelier Condroz"
-    assert_includes text, "Votre demande de team building est bien arrivée"
+    assert_includes text, "Votre demande de séjour professionnel ou bien-être est bien arrivée"
     assert_includes text, "Atelier Condroz"
     assert_equal "logo-ferme-dauwez.png", logo.filename
     assert_equal "image/png", logo.mime_type

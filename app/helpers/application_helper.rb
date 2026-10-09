@@ -217,7 +217,7 @@ module ApplicationHelper
       graph << {
         "@type": "EventVenue",
         "@id": venue_id,
-        name: "Espace team building de la Ferme d’Auwez",
+        name: "Séjours professionnels et bien-être à la Ferme d’Auwez",
         description: seo_description,
         url: canonical_url,
         image: seo_image_url,

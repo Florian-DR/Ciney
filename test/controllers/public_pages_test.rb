@@ -16,7 +16,7 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
       root_path => "La Ferme d",
       about_path => "La Ferme d",
       activities_path => "activit",
-      team_buildings_path => "team building",
+      team_buildings_path => "séjours professionnels",
       contact_path => "Contact",
     }.each do |path, expected_text|
       get path

@@ -43,7 +43,7 @@ class CineyMailer < ApplicationMailer
 
         mail(
           **recipients,
-          subject: "Votre projet team building à la Ferme d’Auwez – #{@company}".squish,
+          subject: "Votre projet de séjour professionnel ou bien-être à la Ferme d’Auwez – #{@company}".squish,
         ) do |format|
           format.html { render layout: "team_building_mailer" }
           format.text
