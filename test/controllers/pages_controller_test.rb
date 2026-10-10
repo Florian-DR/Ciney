@@ -1,7 +1,10 @@
 require "test_helper"
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
-  TURBO_FRAME_HEADERS = { "Turbo-Frame" => "team_building_inquiry" }.freeze
+  TURBO_FRAME_HEADERS = {
+    "Turbo-Frame" => "team_building_inquiry",
+    "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml",
+  }.freeze
 
   test "uses server-side validation so inline errors can be displayed" do
     get team_buildings_path
@@ -34,6 +37,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     }, headers: TURBO_FRAME_HEADERS
 
     assert_response :unprocessable_entity
+    assert_equal "text/html", response.media_type
     assert_select "turbo-frame#team_building_inquiry", count: 1
     assert_select ".team-building-form-errors", text: /Corrigez les champs/
     assert_select ".team-building-form__field-errors", text: /adresse e-mail valide/

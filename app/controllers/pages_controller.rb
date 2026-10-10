@@ -54,7 +54,7 @@ class PagesController < ApplicationController
     end
 
     unless @team_building_inquiry.valid?
-      render :team_buildings, status: :unprocessable_entity
+      render :team_buildings, formats: :html, status: :unprocessable_entity
       return
     end
 
@@ -69,7 +69,7 @@ class PagesController < ApplicationController
 
     unless protection.success?
       @team_building_form_error = protection.message
-      render :team_buildings, status: :unprocessable_entity
+      render :team_buildings, formats: :html, status: :unprocessable_entity
       return
     end
 
@@ -82,14 +82,14 @@ class PagesController < ApplicationController
         "Team-building inquiry email delivery failed: #{error.class}: #{error.message}",
       )
       @team_building_form_error = "Un problème technique nous empêche d’envoyer votre demande pour le moment."
-      render :team_buildings, status: :service_unavailable
+      render :team_buildings, formats: :html, status: :service_unavailable
       return
     end
 
     if turbo_frame_request?
       @team_building_form_success = team_building_success_message
       @team_building_inquiry = TeamBuildingInquiry.new
-      render :team_buildings
+      render :team_buildings, formats: :html
     else
       redirect_to team_buildings_path(anchor: "demande"), notice: team_building_success_message
     end
