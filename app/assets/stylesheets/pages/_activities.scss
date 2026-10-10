@@ -1,5 +1,5 @@
 .activities-page {
-    --activities-cream: #f0e5d4;
+    --activities-cream: #eadbc4;
     --activities-dark-green: #435443;
     overflow: hidden;
 
@@ -337,6 +337,7 @@
 
 .activities-traces {
     background: var(--activities-cream);
+    border-top: 1px solid rgba($green, 0.18);
     padding-top: 55px;
 }
 

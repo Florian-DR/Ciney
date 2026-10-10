@@ -1,84 +1,155 @@
-<% content_for :title, "Toute la Ferme d’Auwez à Ciney – gîte 25 personnes" %>
-<% content_for :description, "Louez toute la Ferme d’Auwez à Ciney : 3 gîtes et 25 lits, piscines, sauna, grand jardin et espaces privatifs pour familles et groupes." %>
-<% content_for :social_image, "cour-interieur-1400.webp" %>
-<% content_for :social_image_alt, "Cour intérieure de la Ferme d’Auwez louée dans son intégralité" %>
+<% content_for :title, "Domaine en exclusivité à Ciney | La Ferme d’Auwez" %>
+<% content_for :description, "Réservez la Ferme d'Auwez dans son intégralité : 25 personnes, 10 chambres, piscine et sauna privatisés, pour vos grandes occasions et retrouvailles en Condroz" %>
+<% content_for :social_image, "no-image.webp" %>
+<% content_for :social_image_alt, "Vue d’ensemble du domaine de la Ferme d’Auwez à remplacer" %>
 <% content_for :uncontainerize, true %>
 
-<%= responsive_attachment_tag @gite, :main_photo, alt: "Vue d'ensemble de la Ferme d'Auwez et de ses trois gîtes", id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
+<% booking_url = "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" %>
 
-<div class="gite contain">
-    <h1 class="heading-h2">La Ferme d’Auwez dans son intégralité</h1>
-
-    <div>
-        <h2 class="heading-h3">Toute la ferme rien que pour vous : 3 gîtes, 25 lits, un seul lieu</h2>
-        <p>La Ferme d'Auwez peut être louée dans son intégralité, réunissant nos trois gîtes de caractère : <b>Les Hirondelles</b>, <b>L'Horizon</b> et <b>L'Arbre de Vie</b>, sous un même toit. Une formule pensée pour les grandes familles, les groupes d'amis ou les retrouvailles multigénérationnelles qui souhaitent profiter de tout le domaine, en toute intimité.</p>
+<main class="domain-page">
+  <header class="domain-hero">
+    <%= image_tag "no-image.webp",
+        alt: "Emplacement réservé à une vue d’ensemble du domaine",
+        class: "domain-placeholder-image",
+        width: 800,
+        height: 800,
+        fetchpriority: "high",
+        decoding: "async" %>
+    <div class="domain-hero__shade"></div>
+    <div class="domain-photo-label domain-photo-label--light">
+      <i class="fa-regular fa-image" aria-hidden="true"></i>
+      <span>Photo attendue · Vue d’ensemble du domaine</span>
     </div>
-
-    <div>
-        <h2 class="heading-h3">Un domaine entier rien que pour vous</h2>
-        <p>En réservant l'ensemble de la ferme, vous profitez de tous les espaces à votre rythme et en famille : la piscine intérieure et le sauna deviennent votre bulle privée, sans horaires à respecter. Chambres, salons, terrasses et jardin s'offrent à vous et à vos proches pour toute la durée du séjour.</p>
-        <ul style="margin: 20px 20px;">
-            <li><b>Capacité :</b> jusqu'à <%= @gite.capacity %> personnes</li>
-            <li><b>Composition :</b> 3 gîtes (Les Hirondelles, L'Horizon et L'Arbre de Vie)</li>
-            <li><b>Idéal pour :</b> grandes familles, groupes d'amis, retrouvailles multigénérationnelles</li>
-            <li><b>Ambiance :</b> conviviale, chaleureuse et sur mesure</li>
-            <li><b>Accès PMR :</b> oui, via L'Arbre de Vie, de plain-pied</li>
-        </ul>
+    <div class="domain-hero__content domain-contain">
+      <p class="domain-eyebrow">La Ferme d’Auwez · Ciney</p>
+      <h1>Un domaine exclusif pour vos plus beaux moments</h1>
+      <p>Une maison de famille le temps d’un séjour, rien que pour vous, dans un îlot de paix.</p>
+      <%= link_to booking_url, target: "_blank", rel: "noopener", class: "domain-button" do %>
+        Réserver la Ferme complète <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      <% end %>
     </div>
+  </header>
 
-    <h2 class="heading-h3">📷 Découvrez la Ferme d'Auwez en images</h2>
-    <%= render "shared/gite_gallery", gite: @gite %>
-</div>
+  <section class="domain-capacities" aria-label="Capacités du domaine">
+    <div class="domain-contain domain-capacities__grid">
+      <div><strong>25</strong><span>personnes réunies</span></div>
+      <div><strong>10</strong><span>chambres</span></div>
+      <div><strong>3</strong><span>gîtes rien que pour vous</span></div>
+      <div><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span>piscines &amp; sauna privatisés</span></div>
+    </div>
+  </section>
 
-<div class="gite contain gite-details-section">
-    <h2 class="heading-h3">Composition de la Ferme</h2>
-    <div class="gite-details">
-        <div>
-            <h3 class="heading-h4">🏡 Les Hirondelles, 15 personnes</h3>
-            <p>Maison familiale entièrement rénovée avec grand salon à cassette à bois, cuisine équipée et salle à manger spacieuse. À l'étage : 4 chambres doubles et 2 dortoirs (3 et 4 lits), avec 5 salles de bains réparties sur les niveaux.</p>
+  <section class="domain-intro domain-contain">
+    <div class="domain-intro__heading">
+      <p class="domain-kicker">Se retrouver vraiment</p>
+      <h2>Certains moments méritent un lieu à leur hauteur</h2>
+    </div>
+    <div class="domain-intro__copy">
+      <p>Un anniversaire, une réunion de famille, une cousinade ou des retrouvailles entre amis : le Domaine en exclusivité offre un cadre unique pour réunir ceux qui comptent.</p>
+      <p>En réservant l’ensemble de la Ferme d’Auwez, vous disposez du domaine dans sa totalité : trois gîtes, les espaces communs, les extérieurs et les équipements sont accessibles à votre groupe, comme une grande maison ouverte sur la nature.</p>
+      <p>Les 10 chambres permettent d’accueillir jusqu’à 25 personnes, avec des espaces adaptés aussi bien aux grands rassemblements qu’aux moments plus calmes.</p>
+    </div>
+  </section>
+
+  <section class="domain-gallery domain-contain" aria-label="Emplacements pour les photos des espaces communs">
+    <figure class="domain-gallery__large">
+      <%= image_tag "no-image.webp", alt: "Emplacement réservé à une vue large des espaces communs", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Vue large des espaces communs</span></figcaption>
+    </figure>
+    <figure>
+      <%= image_tag "no-image.webp", alt: "Emplacement réservé à une photo d’un moment partagé à table", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Moment partagé autour de la table</span></figcaption>
+    </figure>
+    <figure>
+      <%= image_tag "no-image.webp", alt: "Emplacement réservé à une vue des extérieurs du domaine", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Jardin et extérieurs du domaine</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="domain-barn">
+    <div class="domain-contain domain-barn__grid">
+      <figure>
+        <%= image_tag "no-image.webp", alt: "Emplacement réservé à une photo de la Grange", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
+        <figcaption class="domain-photo-label domain-photo-label--light"><i class="fa-regular fa-image" aria-hidden="true"></i><span>La Grange, sa table et sa cheminée</span></figcaption>
+      </figure>
+      <div class="domain-barn__copy">
+        <p class="domain-kicker">Le cœur vivant du domaine</p>
+        <h2>La Grange, là où tout le monde se retrouve</h2>
+        <p>Au centre de la ferme, la Grange devient naturellement le lieu où tout le monde finit par se retrouver. Autour de sa grande table, les repas s’organisent, les discussions se prolongent et les événements prennent une autre dimension.</p>
+        <p>Le salon, avec sa cheminée et son authentique poêle ardennais, invite à prolonger les soirées dans une atmosphère chaleureuse.</p>
+        <div class="domain-barn__aside">
+          <i class="fa-solid fa-dice" aria-hidden="true"></i>
+          <p>À l’étage, la mezzanine offre un espace de détente avec billard, table de ping-pong, mini-foot et espaces dédiés aux enfants.</p>
         </div>
+        <p class="domain-barn__signature">Plus qu’un espace commun, la Grange donne son âme aux retrouvailles.</p>
+      </div>
+    </div>
+  </section>
 
+  <section class="domain-freedom domain-contain">
+    <div class="domain-freedom__title">
+      <span class="domain-freedom__number">01</span>
+      <p class="domain-kicker">Votre séjour, votre rythme</p>
+      <h2>Chef privé, traiteur, activités&nbsp;: à vous d’imaginer la suite</h2>
+    </div>
+    <div class="domain-freedom__copy">
+      <p>Le domaine vous offre la liberté d’organiser votre séjour selon vos envies : préparer un grand repas dans la cuisine adaptée aux groupes, faire appel à un chef ou un traiteur, organiser une activité, découvrir les environs ou simplement profiter des espaces à disposition.</p>
+      <p>Nous habitons sur place et restons disponibles si vous avez besoin de quoi que ce soit, tout en vous laissant l’autonomie de votre séjour. L’accès se fait par boîte à code, à votre rythme.</p>
+      <%= link_to activities_path, class: "domain-text-link" do %>
+        Découvrir les activités autour de la ferme <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="domain-exclusive">
+    <div class="domain-contain">
+      <div class="domain-exclusive__heading">
         <div>
-            <h3 class="heading-h4">🌄 L'Horizon, 6 personnes</h3>
-            <p>Gîte lumineux avec terrasse privée et vue panoramique sur le Condroz. Salon cosy, cuisine ouverte équipée, une chambre double et une grande chambre de 4 lits sous toit.</p>
+          <p class="domain-kicker">Tout le domaine, rien que pour vous</p>
+          <h2>Vivre pleinement chaque instant</h2>
         </div>
+        <p>Réserver l’ensemble de la Ferme, c’est bien plus que réunir trois gîtes sous un même toit : c’est profiter de tout le domaine en exclusivité, sans le partager avec personne d’autre.</p>
+      </div>
 
-        <div>
-            <h3 class="heading-h4">🌳 L'Arbre de Vie, 4 personnes, accès PMR</h3>
-            <p>Espace de plain-pied, intimiste et entièrement accessible aux personnes à mobilité réduite. Salon cosy, cuisine ouverte, 2 chambres confortables et 2 salles de bains, dont une adaptée PMR.</p>
-        </div>
+      <ol class="domain-amenities">
+        <li><span>01</span><i class="fa-solid fa-house" aria-hidden="true"></i><p>Les 3 gîtes réunis : Les Hirondelles, L’Horizon et L’Arbre de Vie</p></li>
+        <li><span>02</span><i class="fa-solid fa-people-group" aria-hidden="true"></i><p>Jusqu’à 25 personnes dans 10 chambres</p></li>
+        <li><span>03</span><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><p>Piscine intérieure et sauna entièrement privatisés</p></li>
+        <li><span>04</span><i class="fa-solid fa-sun" aria-hidden="true"></i><p>Piscine extérieure chauffée et clôturée pour l’été</p></li>
+        <li><span>05</span><i class="fa-solid fa-fire" aria-hidden="true"></i><p>La Grange et sa mezzanine à votre disposition exclusive</p></li>
+        <li><span>06</span><i class="fa-solid fa-tree" aria-hidden="true"></i><p>Tout le jardin et les extérieurs du domaine</p></li>
+        <li><span>07</span><i class="fa-solid fa-key" aria-hidden="true"></i><p>Accès en toute autonomie par boîte à code</p></li>
+        <li><span>08</span><i class="fa-solid fa-car" aria-hidden="true"></i><p>Parking sur place et bornes électriques</p></li>
+      </ol>
     </div>
+  </section>
 
-    <div style="margin: 5vh auto;">
-        <h2 class="heading-h3">Les + du domaine, inclus dans la location complète</h2>
-        <ul>
-            <li>🏊‍♂️ <b>Piscine intérieure & sauna :</b> à disposition tout au long du séjour</li>
-            <li>☀️ <b>Piscine extérieure en été :</b> bassin clôturé, idéal pour toute la famille</li>
-            <li>🌿 <b>Grand jardin et nature environnante :</b> un espace généreux pour se relaxer ou jouer en plein air</li>
-            <li>🔥 <b>Feu de bois :</b> pour les grandes soirées conviviales</li>
-            <li>🚴‍♂️ <b>Abri à vélos sécurisé & kit de nettoyage vélo :</b> idéal pour les amateurs de cyclisme</li>
-            <li>🅿️ <b>Parking sur place</b></li>
-        </ul>
+  <section class="domain-houses domain-contain">
+    <div class="domain-houses__intro">
+      <p class="domain-kicker">Trois maisons, un seul séjour</p>
+      <h2>Chacun son espace.<br>Tout le monde ensemble.</h2>
+      <p>Envie de voir chaque gîte en détail ? Découvrez les espaces qui composent le domaine.</p>
     </div>
-</div>
-
-<div class="contain gite info-gite">
-    <div>
-        <h2 class="heading-h3">Informations pratiques</h2>
-        <h3 class="heading-h4">📌 Tout ce qu'il faut savoir avant votre arrivée</h3>
-        <ul>
-            <li><b>Capacité totale :</b> <%= @gite.capacity %> personnes (15 + 6 + 4)</li>
-            <li><b>Séjour minimum :</b> 2 nuits</li>
-            <li style="white-space: pre-wrap;"><b>Arrivée et départ :</b>
-                ⏳ Arrivée : entre 16h et 19h
-                ⏳ Départ : le dimanche avant 16h et en semaine avant 10h30</li>
-            <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
-        </ul>
+    <div class="domain-houses__list">
+      <%= link_to "/gites/leshirondelles" do %><span>01</span><strong>Les Hirondelles</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i><% end %>
+      <%= link_to "/gites/lhorizon" do %><span>02</span><strong>L’Horizon</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i><% end %>
+      <%= link_to "/gites/larbredevie" do %><span>03</span><strong>L’Arbre de Vie</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i><% end %>
     </div>
-    <%= image_tag "cour-interieur-1400.webp", alt: "Cour intérieure de la Ferme d'Auwez", srcset: { "cour-interieur-640.webp" => "640w", "cour-interieur-1400.webp" => "1400w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
-</div>
+  </section>
 
-<div class="contain">
-    <%= link_to "Réserver la Ferme complète", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR", target: "_blank", rel: "noopener", style: "padding: auto", class: "button" %>
-    <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto", class: "button" if current_user == User.first %>
-</div>
+  <section class="domain-memories">
+    <%= image_tag "no-image.webp", alt: "Emplacement réservé à une photo de retrouvailles au domaine", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
+    <div class="domain-memories__shade"></div>
+    <div class="domain-photo-label domain-photo-label--light"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Retrouvailles ou moment de vie au domaine</span></div>
+    <div class="domain-memories__content domain-contain">
+      <p class="domain-eyebrow">Des souvenirs qui se transmettent</p>
+      <h2>Le temps d’être ensemble</h2>
+      <p>Au fil des années, la Ferme d’Auwez accueille des familles qui se réunissent, des amis qui se retrouvent et des groupes qui viennent vivre une parenthèse hors du quotidien.</p>
+      <p>Car certains lieux ne sont pas seulement des endroits où l’on séjourne. Ce sont des lieux où naissent les souvenirs que l’on aime raconter et transmettre.</p>
+      <p>Le Domaine de la Ferme d’Auwez est un lieu pensé pour ces moments-là.</p>
+      <%= link_to booking_url, target: "_blank", rel: "noopener", class: "domain-button" do %>
+        Réserver la Ferme complète <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </section>
+</main>

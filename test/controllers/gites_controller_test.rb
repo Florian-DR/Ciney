@@ -19,7 +19,7 @@ class GitesControllerTest < ActionDispatch::IntegrationTest
       "L'Horizon" => "Un gîte lumineux avec une vue imprenable",
       "L'Arbre de Vie" => "Le refuge idéal pour un séjour",
       "Le Grand Gîte" => "Un gîte de groupe au cœur du Condroz",
-      "Toute la Ferme" => "La Ferme d’Auwez dans son intégralité",
+      "Toute la Ferme" => "Un domaine exclusif pour vos plus beaux moments",
     }
 
     @gites.each do |gite|

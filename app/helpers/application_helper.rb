@@ -76,7 +76,7 @@ module ApplicationHelper
   end
 
   def seo_indexable_page?
-    (controller_name == "pages" && %w[home about contact activities team_buildings].include?(action_name)) ||
+    (controller_name == "pages" && %w[home about contact activities team_buildings domain].include?(action_name)) ||
       (controller_name == "gites" && action_name == "show")
   end
 
