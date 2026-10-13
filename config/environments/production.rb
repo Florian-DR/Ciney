@@ -60,11 +60,9 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
-  # Use a different cache store in production.
-  # Fragment cache for the mostly static gite cards and galleries. This cache is
-  # process-local and automatically expires when a gite or one of its photos is
-  # updated.
-  config.cache_store = :memory_store, { size: 64.megabytes }
+  # Small process-local cache used by the form submission rate limiter. Public
+  # pages and photo galleries are not fragment-cached.
+  config.cache_store = :memory_store, { size: 16.megabytes }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
