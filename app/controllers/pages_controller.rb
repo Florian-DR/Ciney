@@ -20,19 +20,58 @@ class PagesController < ApplicationController
     @gites = @nav_gites
   end
 
-  def contact; end
+  def contact
+    @contact_inquiry = ContactInquiry.new
+  end
 
   def contact_sender
-    if params[:url].empty?
-      CineyMailer.with(
-                      name: params[:name],
-                      first_name: params[:first_name],
-                      email: params[:email], 
-                      telephone: params[:telephone], 
-                      message: params[:message]).contact_mailer.deliver_now
+    @contact_inquiry = ContactInquiry.new(contact_inquiry_params)
+
+    if @contact_inquiry.website.present?
+      redirect_to contact_path(anchor: "demande"), notice: contact_success_message
+      return
     end
-    redirect_to contact_path 
-    flash.notice = "Votre demande à été envoyée, un mail de confirmation devrait suivre"
+
+    unless @contact_inquiry.valid?
+      render :contact, formats: :html, status: :unprocessable_entity
+      return
+    end
+
+    protection = FormSubmissionGuard.new(
+      key: "contact",
+      token: params["cf-turnstile-response"],
+      remote_ip: request.remote_ip,
+      identifier: @contact_inquiry.email,
+      hostname: request.host,
+      action: "contact_inquiry",
+    ).call
+
+    unless protection.success?
+      @contact_form_error = protection.message
+      render :contact, formats: :html, status: :unprocessable_entity
+      return
+    end
+
+    begin
+      CineyMailer.with(
+        inquiry: @contact_inquiry.mailer_payload,
+      ).contact_mailer.deliver_now
+    rescue StandardError => error
+      Rails.logger.error(
+        "Contact inquiry email delivery failed: #{error.class}: #{error.message}",
+      )
+      @contact_form_error = "Un problème technique nous empêche d’envoyer votre demande pour le moment."
+      render :contact, formats: :html, status: :service_unavailable
+      return
+    end
+
+    if turbo_frame_request?
+      @contact_form_success = contact_success_message
+      @contact_inquiry = ContactInquiry.new
+      render :contact, formats: :html
+    else
+      redirect_to contact_path(anchor: "demande"), notice: contact_success_message
+    end
   end
 
   def about; end
@@ -100,6 +139,21 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def contact_inquiry_params
+    params.require(:contact_inquiry).permit(
+      :name,
+      :first_name,
+      :email,
+      :telephone,
+      :message,
+      :website,
+    )
+  end
+
+  def contact_success_message
+    "Merci ! Votre message est bien arrivé. Un récapitulatif vous a été envoyé par e-mail."
+  end
 
   def team_building_inquiry_params
     params.require(:team_building_inquiry).permit(

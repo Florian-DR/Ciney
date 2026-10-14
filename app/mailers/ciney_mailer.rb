@@ -13,12 +13,29 @@ class CineyMailer < ApplicationMailer
     end
 
     def contact_mailer
-        @name = params[:name]
-        @first_name = params[:first_name]
-        @email = params[:email]
-        @telephone = params[:telephone]
-        @message = params[:message]
-        mail(to: [@email], bcc: ENV['GMAIL_ADDRESS'], subject: "Prise de contact - #{@name} #{@first_name}")
+        inquiry = params.fetch(:inquiry)
+        @name = inquiry.fetch("name")
+        @first_name = inquiry.fetch("first_name")
+        @email = inquiry.fetch("email")
+        @telephone = inquiry.fetch("telephone")
+        @message = inquiry.fetch("message")
+
+        farm_email = ENV.fetch("GMAIL_ADDRESS")
+        recipients = { to: @email }
+        recipients[:bcc] = farm_email unless @email.casecmp?(farm_email)
+
+        attachments.inline["logo-ferme-dauwez.png"] = {
+          mime_type: "image/png",
+          content: File.binread(Rails.root.join("app/assets/images/logo-email.png")),
+        }
+
+        mail(
+          **recipients,
+          subject: "Votre message à la Ferme d’Auwez – #{@first_name} #{@name}".squish,
+        ) do |format|
+          format.html { render layout: "contact_mailer" }
+          format.text
+        end
     end
 
     def team_building_inquiry_mailer

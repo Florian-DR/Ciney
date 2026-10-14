@@ -14,21 +14,30 @@
 #contact-info{
     text-align: center;
     display: flex;
-    gap: 20px;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 40px;
     border: 1px solid;
     box-shadow: 0px 0px 6px 1px gray;
     padding: 40px;
     margin: 50px auto;
-    width: fit-content;
+    max-width: 760px;
+    width: 100%;
     .form-container{
+        min-width: 0;
 
         .contact-form{
-            min-width: 30vw;
-            width: fit-content;
+            gap: 1rem;
             margin: 30px auto;
+            text-align: left;
+            width: 100%;
+
+            .double-fields {
+                gap: 1rem;
+            }
+
             textarea{
-                height: 20vh;
+                line-height: 1.6;
+                resize: vertical;
             }
         }
     }
@@ -37,13 +46,114 @@
     }
 
     .access-container{
-        min-width: 38vw;
+        min-width: 0;
     }
 }
 
-.fake-field{
-    height: 0;
-    width: 0;
+.contact-form {
+    &__field {
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: column;
+        gap: 0.35rem;
+        min-width: 0;
+
+        label {
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        input:not(.button),
+        textarea {
+            border: 1px solid rgba($green, 0.32);
+            border-radius: 4px;
+            font-family: $body-font;
+            font-size: 1rem;
+            min-width: 0;
+            padding: 0.75rem 0.85rem;
+            width: 100%;
+
+            &:focus {
+                border-color: $orange;
+                box-shadow: 0 0 0 3px rgba($orange, 0.14);
+                outline: none;
+            }
+        }
+
+        input[aria-invalid="true"],
+        textarea[aria-invalid="true"] {
+            border-color: $red;
+            box-shadow: 0 0 0 1px rgba($red, 0.12);
+        }
+
+        .field_with_errors {
+            display: contents;
+        }
+    }
+
+    &__field-errors {
+        color: $red;
+        font-size: 0.76rem;
+        line-height: 1.45;
+        list-style: none;
+        margin: 0.1rem 0 0;
+        padding: 0;
+    }
+
+    &__privacy {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        margin: 0;
+        white-space: normal;
+    }
+
+    &__submit {
+        align-self: stretch;
+        font-family: $body-font;
+        font-weight: 700;
+        padding: 0.9rem 1.2rem;
+        width: 100%;
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.55;
+        }
+    }
+}
+
+.contact-form-errors,
+.contact-form-success {
+    align-items: flex-start;
+    display: flex;
+    font-size: 0.82rem;
+    gap: 0.7rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem;
+    padding: 0.9rem 1rem;
+    text-align: left;
+
+    p {
+        margin: 0;
+
+        + p { margin-top: 0.25rem; }
+    }
+}
+
+.contact-form-errors {
+    background: rgba($red, 0.08);
+    border-left: 3px solid $red;
+    color: $red;
+
+    a {
+        color: inherit;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+}
+
+.contact-form-success {
+    background: rgba($green, 0.1);
+    border-left: 3px solid $green;
 }
 
 .frame{
@@ -53,7 +163,7 @@
 @media (max-width: $breakpoint-mobile) {
     #contact-info{
         flex-direction: column;
-        padding: 20px 5px;
+        padding: 20px 12px;
     }
 
     .double-fields{

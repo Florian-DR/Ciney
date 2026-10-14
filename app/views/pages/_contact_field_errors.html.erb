@@ -1,0 +1,8 @@
+<% messages = inquiry.errors[field].uniq %>
+<% if messages.any? %>
+  <ul class="contact-form__field-errors" role="alert">
+    <% messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

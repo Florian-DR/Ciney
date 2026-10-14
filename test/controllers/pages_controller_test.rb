@@ -6,6 +6,70 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml",
   }.freeze
 
+  CONTACT_TURBO_FRAME_HEADERS = {
+    "Turbo-Frame" => "contact_inquiry",
+    "Accept" => "text/vnd.turbo-stream.html, text/html, application/xhtml+xml",
+  }.freeze
+
+  test "protects the active contact form with Turnstile" do
+    get contact_path
+
+    assert_response :success
+    assert_select "turbo-frame#contact_inquiry", count: 1
+    assert_select "form.contact-form[novalidate]", count: 1
+    assert_select(
+      "[data-controller='turnstile'][data-turnstile-action-value='contact_inquiry']",
+      count: 1,
+    )
+  end
+
+  test "shows inline errors for an invalid contact inquiry" do
+    post contact_path, params: {
+      contact_inquiry: valid_contact_params.merge(email: "adresse incorrecte", message: "Court"),
+    }, headers: CONTACT_TURBO_FRAME_HEADERS
+
+    assert_response :unprocessable_entity
+    assert_select "turbo-frame#contact_inquiry", count: 1
+    assert_select ".contact-form-errors", text: /Corrigez les champs/
+    assert_select ".contact-form__field-errors", text: /adresse e-mail valide/
+    assert_select "input[aria-invalid='true']"
+  end
+
+  test "sends a protected contact inquiry and replaces the form with its confirmation" do
+    success = FormSubmissionGuard::Result.new(success?: true)
+    guard = Object.new
+    guard.define_singleton_method(:call) { success }
+
+    FormSubmissionGuard.stub(:new, ->(**arguments) {
+      assert_equal "contact", arguments[:key]
+      assert_equal "contact_inquiry", arguments[:action]
+      guard
+    }) do
+      assert_emails 1 do
+        post contact_path, params: {
+          contact_inquiry: valid_contact_params,
+        }, headers: CONTACT_TURBO_FRAME_HEADERS
+      end
+    end
+
+    assert_response :success
+    assert_select "turbo-frame#contact_inquiry" do
+      assert_select ".contact-form-success", text: /récapitulatif/
+      assert_select "input[name='contact_inquiry[name]'][value='Dupont']", count: 0
+    end
+  end
+
+  test "silently ignores a contact bot caught by the honeypot" do
+    assert_no_emails do
+      post contact_path, params: {
+        contact_inquiry: valid_contact_params.merge(website: "https://spam.example"),
+      }
+    end
+
+    assert_redirected_to contact_path(anchor: "demande")
+    assert_includes flash[:notice], "message est bien arrivé"
+  end
+
   test "uses server-side validation so inline errors can be displayed" do
     get team_buildings_path
 
@@ -142,6 +206,17 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   private
+
+  def valid_contact_params
+    {
+      name: "Dupont",
+      first_name: "Marie",
+      email: "marie@example.com",
+      telephone: "+32 470 12 34 56",
+      message: "Bonjour, je souhaite obtenir davantage d’informations.",
+      website: "",
+    }
+  end
 
   def valid_inquiry_params
     {

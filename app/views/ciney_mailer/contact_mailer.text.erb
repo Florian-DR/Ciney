@@ -1,8 +1,25 @@
-Bonjour <%= "#{@name} #{@first_name}"%>, 
+LA FERME D’AUWEZ
+Votre message est bien arrivé
 
-Nous avons bien reçu votre message et nous vous en remercions. Nous vous répondrons dans les plus brefs délais.
+Bonjour <%= @first_name %>,
 
-Informations envoyés : 
-    Adresse email: <%= @email %>
-    Numéro de téléphone: <%= @telephone  %>
-    Message: <%= @message %>
+Nous avons bien reçu votre message et reviendrons vers vous aussi rapidement que possible.
+
+VOS COORDONNÉES
+
+Nom : <%= @first_name %> <%= @name %>
+E-mail : <%= @email %>
+Téléphone : <%= @telephone %>
+
+VOTRE MESSAGE
+
+<%= @message %>
+
+À très bientôt,
+
+La Ferme d’Auwez
+Route d’Auwez 1
+5590 Ciney
+<%= ENV["GMAIL_ADDRESS"] %>
+
+Vous pouvez répondre directement à cet e-mail pour poursuivre la conversation avec nous.

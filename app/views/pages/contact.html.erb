@@ -22,28 +22,80 @@
     <%####  Contact et Information  #####%>
     <h1 class="heading-h3">Une question ?</h1>
     <p>Que ce soit pour une réservation, un devis ou toute autre question, contactez-nous. Nous vous répondrons au plus vite.</p>
-    <p style="color: #0061c8ff; text-decoration: underline">lafermedauwez@gmail.com</p>
 
     <div id="contact-info">
-    <!--
-
-        <div class="form-container">
+        <div id="demande" class="form-container">
             <h2 class="heading-h3">📩 Contactez-nous</h2>
-            <%= form_with url: "/contact", class: "contact-form form" do |form| %>
-                <div class="double-fields">
-                    <%= form.text_field :name, placeholder: "Nom *", required: true%>
-                    <%= form.text_field :first_name, placeholder: "Prénom *", required: true%>
-                </div>
-                <div class="double-fields">
-                    <%= form.text_field :email, placeholder: "Email *", required: true %>
-                    <%= form.telephone_field :telephone, placeholder: "Téléphone *", required: true %>
-                </div>
-                <%= form.text_area :message, placeholder: "Votre message *", required: true %>
-                <%= form.text_field :url, placeholder: "url", class: "fake-field", tabindex: "-1"%>
-                <%= form.submit :Envoyer, class: "button" %>
+            <%= turbo_frame_tag "contact_inquiry" do %>
+                <% if @contact_form_success.present? %>
+                    <div class="contact-form-success" role="status">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <p><%= @contact_form_success %></p>
+                            <p>Nous revenons vers vous rapidement.</p>
+                        </div>
+                    </div>
+                <% end %>
+
+                <% if @contact_inquiry.errors.any? || @contact_form_error.present? %>
+                    <div class="contact-form-errors" role="alert">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <div>
+                            <% if @contact_form_error.present? %>
+                                <p><%= @contact_form_error %></p>
+                                <p>
+                                    Vous pouvez toujours nous écrire directement à
+                                    <%= mail_to ENV["GMAIL_ADDRESS"], ENV["GMAIL_ADDRESS"] %>.
+                                </p>
+                            <% else %>
+                                <p>Nous n’avons pas encore pu envoyer votre message.</p>
+                                <p>Corrigez les champs signalés ci-dessous, puis réessayez.</p>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+
+                <%= form_with model: @contact_inquiry,
+                    url: contact_path(anchor: "demande"),
+                    class: "contact-form",
+                    html: { novalidate: true } do |form| %>
+                    <div class="double-fields">
+                        <div class="contact-form__field">
+                            <%= form.label :name, "Nom" %>
+                            <%= form.text_field :name, required: true, maxlength: 120, autocomplete: "family-name", aria: { invalid: @contact_inquiry.errors[:name].any? } %>
+                            <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :name %>
+                        </div>
+                        <div class="contact-form__field">
+                            <%= form.label :first_name, "Prénom" %>
+                            <%= form.text_field :first_name, required: true, maxlength: 120, autocomplete: "given-name", aria: { invalid: @contact_inquiry.errors[:first_name].any? } %>
+                            <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :first_name %>
+                        </div>
+                    </div>
+                    <div class="double-fields">
+                        <div class="contact-form__field">
+                            <%= form.label :email, "E-mail" %>
+                            <%= form.email_field :email, required: true, maxlength: 254, autocomplete: "email", aria: { invalid: @contact_inquiry.errors[:email].any? } %>
+                            <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :email %>
+                        </div>
+                        <div class="contact-form__field">
+                            <%= form.label :telephone, "Téléphone" %>
+                            <%= form.telephone_field :telephone, required: true, maxlength: 40, autocomplete: "tel", aria: { invalid: @contact_inquiry.errors[:telephone].any? } %>
+                            <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :telephone %>
+                        </div>
+                    </div>
+                    <div class="contact-form__field">
+                        <%= form.label :message, "Votre message" %>
+                        <%= form.text_area :message, required: true, minlength: 10, maxlength: 3_000, rows: 7, aria: { invalid: @contact_inquiry.errors[:message].any? } %>
+                        <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :message %>
+                    </div>
+
+                    <%= render "shared/protected_form", form: form, action: "contact_inquiry" %>
+
+                    <p class="contact-form__privacy">Vos coordonnées servent uniquement à répondre à cette demande.</p>
+                    <%= form.submit "Envoyer", class: "button contact-form__submit", data: { turbo_submits_with: "Envoi en cours…" }, disabled: Turnstile.site_key.blank? %>
+                <% end %>
             <% end %>
         </div>
-        -->
 
         <div class="access-container">
             <h2 class="heading-h3">📍 Accès et informations pratiques</h2>
