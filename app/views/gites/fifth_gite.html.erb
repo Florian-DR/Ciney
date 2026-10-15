@@ -58,12 +58,24 @@
       <figcaption class="domain-photo-label"><span>Tout le domaine au cœur du Condroz</span></figcaption>
     </figure>
     <figure>
-      <%= image_tag "domaine-prairie-gelee-960.webp", alt: "Prairie gelée de la Ferme d’Auwez éclairée par le soleil d’hiver", class: "domain-image", width: 960, height: 1280, loading: "lazy", decoding: "async" %>
-      <figcaption class="domain-photo-label"><span>La prairie gelée au soleil d’hiver</span></figcaption>
+      <%= image_tag "domaine-prairie-gelee-960.webp", alt: "Jardin gelé de la Ferme d’Auwez éclairé par le soleil d’hiver", class: "domain-image", width: 960, height: 1280, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><span>Le jardin en hiver</span></figcaption>
     </figure>
     <figure>
       <%= image_tag "cheminee-grange-feu-bois-portrait.webp", alt: "Feu de bois dans la grande cheminée de la Grange", class: "domain-image", width: 1024, height: 1536, loading: "lazy", decoding: "async" %>
-      <figcaption class="domain-photo-label"><span>Le feu dans la cheminée de la Grange</span></figcaption>
+      <figcaption class="domain-photo-label domain-photo-label--top"><span>Le feu dans la cheminée de la Grange</span></figcaption>
+    </figure>
+    <figure>
+      <%= image_tag "piscine-interieure-sauna-ferme-auwez.webp",
+          alt: "Piscine intérieure privatisée et espace sauna de la Ferme d’Auwez",
+          class: "domain-image",
+          width: 2048,
+          height: 1365,
+          srcset: { "piscine-interieure-sauna-ferme-auwez-960.webp" => "960w", "piscine-interieure-sauna-ferme-auwez.webp" => "2048w" },
+          sizes: "(max-width: 720px) 100vw, 70vw",
+          loading: "lazy",
+          decoding: "async" %>
+      <figcaption class="domain-photo-label domain-photo-label--top-right"><span>Piscine intérieure &amp; sauna</span></figcaption>
     </figure>
   </section>
 
@@ -111,6 +123,20 @@
         </div>
         <p>Réserver l’ensemble de la Ferme, c’est bien plus que réunir trois gîtes sous un même toit : c’est profiter de tout le domaine en exclusivité, sans le partager avec personne d’autre.</p>
       </div>
+
+      <figure class="domain-pool">
+        <picture>
+          <source media="(max-width: 720px)" srcset="<%= asset_path('piscine-exterieure-ferme-auwez-960.webp') %>">
+          <%= image_tag "piscine-exterieure-ferme-auwez-1920.webp",
+              alt: "Piscine extérieure chauffée de la Ferme d’Auwez avec vue sur les paysages du Condroz",
+              class: "domain-image",
+              width: 1920,
+              height: 840,
+              loading: "lazy",
+              decoding: "async" %>
+        </picture>
+        <figcaption class="domain-photo-label"><span>La piscine extérieure face aux paysages du Condroz</span></figcaption>
+      </figure>
 
       <ol class="domain-amenities">
         <li><span>01</span><i class="fa-solid fa-house" aria-hidden="true"></i><p>Les 3 gîtes réunis : Les Hirondelles, L’Horizon et L’Arbre de Vie</p></li>
