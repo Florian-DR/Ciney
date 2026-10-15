@@ -39,10 +39,10 @@
 .domain-eyebrow { color: #f0c88e; }
 .domain-kicker { color: #9a6728; }
 
-.domain-placeholder-image {
-  background: #ded8ca;
-  filter: saturate(0.35) contrast(0.88);
+.domain-image {
   object-fit: cover;
+
+  &--aerial { object-position: center 76%; }
 }
 
 .domain-photo-label {

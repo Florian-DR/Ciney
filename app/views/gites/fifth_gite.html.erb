@@ -1,25 +1,26 @@
 <% content_for :title, "Domaine en exclusivité à Ciney | La Ferme d’Auwez" %>
 <% content_for :description, "Réservez la Ferme d'Auwez dans son intégralité : 25 personnes, 10 chambres, piscine et sauna privatisés, pour vos grandes occasions et retrouvailles en Condroz" %>
-<% content_for :social_image, "no-image.webp" %>
-<% content_for :social_image_alt, "Vue d’ensemble du domaine de la Ferme d’Auwez à remplacer" %>
+<% content_for :social_image, "domaine-vue-aerienne-1920.webp" %>
+<% content_for :social_image_alt, "Vue aérienne du domaine de la Ferme d’Auwez à Ciney" %>
 <% content_for :uncontainerize, true %>
 
 <% booking_url = "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" %>
 
 <main class="domain-page">
   <header class="domain-hero">
-    <%= image_tag "no-image.webp",
-        alt: "Emplacement réservé à une vue d’ensemble du domaine",
-        class: "domain-placeholder-image",
-        width: 800,
-        height: 800,
+    <%= image_tag "domaine-vue-aerienne-1920.webp",
+        alt: "Vue aérienne du domaine de la Ferme d’Auwez au milieu de la campagne",
+        class: "domain-image domain-image--aerial",
+        width: 1920,
+        height: 2561,
+        srcset: {
+          "domaine-vue-aerienne-960.webp" => "960w",
+          "domaine-vue-aerienne-1920.webp" => "1920w"
+        },
+        sizes: "100vw",
         fetchpriority: "high",
         decoding: "async" %>
     <div class="domain-hero__shade"></div>
-    <div class="domain-photo-label domain-photo-label--light">
-      <i class="fa-regular fa-image" aria-hidden="true"></i>
-      <span>Photo attendue · Vue d’ensemble du domaine</span>
-    </div>
     <div class="domain-hero__content domain-contain">
       <p class="domain-eyebrow">La Ferme d’Auwez · Ciney</p>
       <h1>Un domaine exclusif pour vos plus beaux moments</h1>
@@ -51,26 +52,26 @@
     </div>
   </section>
 
-  <section class="domain-gallery domain-contain" aria-label="Emplacements pour les photos des espaces communs">
+  <section class="domain-gallery domain-contain" aria-label="Le domaine et ses extérieurs">
     <figure class="domain-gallery__large">
-      <%= image_tag "no-image.webp", alt: "Emplacement réservé à une vue large des espaces communs", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
-      <figcaption class="domain-photo-label"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Vue large des espaces communs</span></figcaption>
+      <%= image_tag "domaine-vue-aerienne-1920.webp", alt: "La Ferme d’Auwez vue du ciel avec ses bâtiments, son jardin et ses piscines", class: "domain-image domain-image--aerial", width: 1920, height: 2561, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><span>Tout le domaine au cœur du Condroz</span></figcaption>
     </figure>
     <figure>
-      <%= image_tag "no-image.webp", alt: "Emplacement réservé à une photo d’un moment partagé à table", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
-      <figcaption class="domain-photo-label"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Moment partagé autour de la table</span></figcaption>
+      <%= image_tag "domaine-jardin-coucher-soleil-portrait.webp", alt: "Coucher de soleil sur le jardin de la Ferme d’Auwez", class: "domain-image", width: 600, height: 900, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><span>Le jardin au coucher du soleil</span></figcaption>
     </figure>
     <figure>
-      <%= image_tag "no-image.webp", alt: "Emplacement réservé à une vue des extérieurs du domaine", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
-      <figcaption class="domain-photo-label"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Jardin et extérieurs du domaine</span></figcaption>
+      <%= image_tag "domaine-tilleul-ete-portrait.webp", alt: "Le grand tilleul de la Ferme d’Auwez au milieu des champs en été", class: "domain-image", width: 1200, height: 1800, loading: "lazy", decoding: "async" %>
+      <figcaption class="domain-photo-label"><span>Le tilleul emblématique de la ferme</span></figcaption>
     </figure>
   </section>
 
   <section class="domain-barn">
     <div class="domain-contain domain-barn__grid">
       <figure>
-        <%= image_tag "no-image.webp", alt: "Emplacement réservé à une photo de la Grange", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
-        <figcaption class="domain-photo-label domain-photo-label--light"><i class="fa-regular fa-image" aria-hidden="true"></i><span>La Grange, sa table et sa cheminée</span></figcaption>
+        <%= image_tag "grange-table-repas-1200.webp", alt: "La grande table dressée dans la Grange de la Ferme d’Auwez", class: "domain-image", width: 1200, height: 1600, loading: "lazy", decoding: "async" %>
+        <figcaption class="domain-photo-label domain-photo-label--light"><span>La grande table de la Grange</span></figcaption>
       </figure>
       <div class="domain-barn__copy">
         <p class="domain-kicker">Le cœur vivant du domaine</p>
@@ -138,9 +139,8 @@
   </section>
 
   <section class="domain-memories">
-    <%= image_tag "no-image.webp", alt: "Emplacement réservé à une photo de retrouvailles au domaine", class: "domain-placeholder-image", width: 800, height: 800, loading: "lazy", decoding: "async" %>
+    <%= image_tag "domaine-tilleul-ete-1920.webp", alt: "Le tilleul de la Ferme d’Auwez dans la lumière d’été", class: "domain-image", width: 1920, height: 1280, loading: "lazy", decoding: "async" %>
     <div class="domain-memories__shade"></div>
-    <div class="domain-photo-label domain-photo-label--light"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Retrouvailles ou moment de vie au domaine</span></div>
     <div class="domain-memories__content domain-contain">
       <p class="domain-eyebrow">Des souvenirs qui se transmettent</p>
       <h2>Le temps d’être ensemble</h2>
