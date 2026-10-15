@@ -321,13 +321,15 @@
   .domain-capacities__grid > div { border-bottom: 1px solid rgba(244, 235, 222, 0.18); border-right: 0; min-height: 95px; padding-inline: 0; }
   .domain-capacities__grid > div:nth-child(3) { padding-left: 0; }
   .domain-gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto;
     height: auto;
   }
-  .domain-gallery figure, .domain-gallery__large { aspect-ratio: 4 / 3; grid-row: auto; }
-  .domain-gallery__large { aspect-ratio: 16 / 10; grid-column: 1 / -1; }
-  .domain-gallery figure:last-child { aspect-ratio: 16 / 8; grid-column: 1 / -1; }
+  .domain-gallery figure:nth-child(n) {
+    aspect-ratio: 4 / 3;
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
   .domain-gallery figure:not(.domain-gallery__large):not(:last-child) .domain-photo-label { font-size: 0.58rem; left: 0.6rem; max-width: calc(100% - 1.2rem); padding: 0.55rem 0.6rem; }
   .domain-barn__grid { grid-template-columns: minmax(0, 1fr); }
   .domain-barn figure { margin-top: -2rem; min-height: 0; }
