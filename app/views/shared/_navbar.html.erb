@@ -8,10 +8,12 @@
             Nos gîtes
             <div class="sub-div">
                 <% @nav_gites.each do |gite| %>
+                    <% next if gite.name.casecmp?("Toute la Ferme") %>
                     <%= link_to gite.name, gite_path(gite), class: "sub-link" %>
                 <% end %>
             </div>
         </div>
+        <%= link_to "Domaine en exclusivité", domain_path, class: "nav-link" %>
         <%= link_to "Séjours professionnels", team_buildings_path, class: "nav-link" %>
         <%= link_to "Activités", activities_path, class: "nav-link" %>
         <%# <a href="/about" class="nav-link">À propos</a>
@@ -32,8 +34,10 @@
                 <div class="phone-links">
                     <a href="/" class="nav-link">Accueil</a>
                     <% @nav_gites.each do |gite| %>
+                        <% next if gite.name.casecmp?("Toute la Ferme") %>
                         <%= link_to gite.name, gite_path(gite), class: "nav-link" %>
                     <% end %>
+                    <%= link_to "Domaine en exclusivité", domain_path, class: "nav-link" %>
                     <%= link_to "Séjours professionnels", team_buildings_path, class: "nav-link" %>
                     <%= link_to "Activités", activities_path, class: "nav-link" %>
                     <%# <a href="/about" class="nav-link">À propos</a>

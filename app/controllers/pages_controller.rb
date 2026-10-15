@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities team_buildings team_building_inquiry sitemap]
+  skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities team_buildings team_building_inquiry domain sitemap]
   skip_before_action :all_gites, only: %i[home sitemap]
 
   def home
@@ -84,6 +84,10 @@ class PagesController < ApplicationController
     @team_building_inquiry = TeamBuildingInquiry.new
   end
 
+  def domain
+    render "gites/fifth_gite"
+  end
+
   def team_building_inquiry
     @team_building_inquiry = TeamBuildingInquiry.new(team_building_inquiry_params)
 
@@ -135,7 +139,7 @@ class PagesController < ApplicationController
   end
 
   def sitemap
-    @sitemap_gites = Gite.select(:name, :updated_at).order(:id)
+    @sitemap_gites = Gite.where.not(name: "Toute la Ferme").select(:name, :updated_at).order(:id)
   end
 
   private
