@@ -38,19 +38,19 @@
 }
 
 .info-gite{
-    display: flex; 
-    justify-content: space-between; 
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(30px, 5vw, 80px);
     align-items: center;
 
-    div{
-        display: flex; 
-        flex-direction: column; 
-        flex-grow: 1;
+    > div{
+        min-width: 0;
     }
 
-    img{
-        max-height: 500px;
-        max-width: 100%;
+    > img{
+        display: block;
+        width: 100%;
+        height: auto;
     }
 }
 
@@ -59,6 +59,10 @@
         height: auto;
     }
     .info-gite{
-        flex-direction: column;;
+        grid-template-columns: 1fr;
+
+        > img{
+            margin-top: 10px;
+        }
     }
 }
