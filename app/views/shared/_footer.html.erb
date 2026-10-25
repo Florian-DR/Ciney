@@ -33,6 +33,7 @@
         <h2 id="footer-discover-title">Découvrir</h2>
         <ul>
           <% @nav_gites.each do |gite| %>
+            <% next if gite.name.casecmp?("Toute la Ferme") %>
             <li><%= link_to gite.name, gite_path(gite) %></li>
           <% end %>
           <li><%= link_to "Domaine en exclusivité", domain_path %></li>

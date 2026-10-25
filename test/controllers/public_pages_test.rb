@@ -59,6 +59,15 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     assert_equal gite.rooms, accommodation.fetch("numberOfBedrooms")
   end
 
+  test "le footer ne présente le domaine complet qu'une seule fois" do
+    get root_path
+
+    assert_select "footer .site-footer__nav" do
+      assert_select "a", text: "Domaine en exclusivité", count: 1
+      assert_select "a", text: "Toute la Ferme", count: 0
+    end
+  end
+
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do
     get new_user_session_path
 
