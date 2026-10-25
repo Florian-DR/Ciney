@@ -1,39 +1,67 @@
-<footer class="footer background-card-gite">
-    <div id="logo-container" class="footer-section">
-        <%= image_tag "logo-ciney-500.webp", alt: "Logo de la Ferme d'Auwez", class: "footer-logo", width: 500, height: 296, loading: "lazy", decoding: "async" %>
-        <p class="footer-slogan">Un séjour authentique en pleine nature, entre charme et confort.</p>
-    </div>
-    <div class="footer-section">
-        <h2 class="heading-h4">Navigation rapide</h2>
-        <ul class="footer-links">
-            <li>Nos gîtes</li>
-                <ul>
-                    <% @nav_gites.each do |gite| %>
-                        <li><%= link_to gite.name, gite_path(gite) %></li>
-                    <% end %>
-                </ul>
-            <li><%= link_to "Séjours professionnels & bien-être", team_buildings_path %></li>
-            <li><%= link_to "Activités aux alentours", activities_path %></li>
-            <li><a href="/about">À propos</a></li>
-            <li><a href="/contact">Contact et accès</a></li>
-        </ul>
-    </div>
-    <div class="footer-section">
-        <h2 class="heading-h4">Informations légales</h2>
-        <ul class="footer-links">
-            <li><button type="button" class="footer-cookie-button" data-action="analytics-consent#manage">Gérer les cookies</button></li>
-        </ul>
-    </div>
-    <div class="footer-section">
-        <h2 class="heading-h4">Nous contacter</h2>
-        <p><a class="map-link" target="_blank" href="https://www.google.com/maps/place/Gîtes+à+la+Ferme+d'Auwez/@50.2797745,5.1313188,606m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47c1b774f1edc2b9:0x5796df9c9e20a1a7!8m2!3d50.2797711!4d5.1338991!16s%2Fg%2F11hbc3c7gc?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoASAFQAw%3D%3D"> <i class="fa-solid fa-location-dot"></i> Ferme d’Auwez, 
-            Route d’Auwez 1
-            5590 Ciney</a></p>
-        <p><a href="mailto:lafermedauwez@gmail.com"><i class="fa-solid fa-envelope"></i> lafermedauwez@gmail.com</a></p>
-        <h2 class="heading-h4">Nos réseaux</h2>
-        <div class="social-icons">
-            <p class="icon"><%= link_to 'https://www.facebook.com/fermedauwez', target: '_blank' do %><i class="fa-brands fa-facebook"></i><%end%></p>
-            <p class="icon"><%= link_to 'https://instagram.com/fermedauwez', target: '_blank' do %><i class="fa-brands fa-square-instagram"></i><%end%></p>
+<footer id="site-footer" class="site-footer">
+  <div class="site-footer__container">
+    <div class="site-footer__main">
+      <section class="site-footer__brand" aria-labelledby="footer-brand-title">
+        <%= link_to root_path, class: "site-footer__logo-link", aria: { label: "Accueil — La Ferme d’Auwez" } do %>
+          <%= image_tag "logo-ciney-500.webp", alt: "", class: "site-footer__logo", width: 500, height: 296, loading: "lazy", decoding: "async" %>
+        <% end %>
+        <h2 id="footer-brand-title" class="visually-hidden">La Ferme d’Auwez</h2>
+        <p class="site-footer__intro">Un séjour authentique en pleine nature, entre charme, confort et moments partagés.</p>
+        <div class="site-footer__details">
+          <address class="site-footer__contact">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=50.2797711%2C5.1338991" target="_blank" rel="noopener">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>Route d’Auwez 1<br>5590 Ciney, Belgique</span>
+            </a>
+            <a href="mailto:lafermedauwez@gmail.com">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span>lafermedauwez@gmail.com</span>
+            </a>
+          </address>
+          <div class="site-footer__socials" aria-label="Réseaux sociaux">
+            <%= link_to "https://www.facebook.com/fermedauwez", target: "_blank", rel: "noopener", aria: { label: "La Ferme d’Auwez sur Facebook" } do %>
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to "https://instagram.com/fermedauwez", target: "_blank", rel: "noopener", aria: { label: "La Ferme d’Auwez sur Instagram" } do %>
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <% end %>
+          </div>
         </div>
+      </section>
+
+      <nav class="site-footer__nav" aria-labelledby="footer-discover-title">
+        <h2 id="footer-discover-title">Découvrir</h2>
+        <ul>
+          <% @nav_gites.each do |gite| %>
+            <li><%= link_to gite.name, gite_path(gite) %></li>
+          <% end %>
+          <li><%= link_to "Domaine en exclusivité", domain_path %></li>
+          <li><%= link_to "Séjours professionnels", team_buildings_path %></li>
+          <li><%= link_to "Activités aux alentours", activities_path %></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__secondary-navs">
+        <nav class="site-footer__nav" aria-labelledby="footer-info-title">
+          <h2 id="footer-info-title">Informations</h2>
+          <ul>
+            <li><%= link_to "À propos", about_path %></li>
+            <li><%= link_to "Contact et accès", contact_path %></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__nav" aria-labelledby="footer-legal-title">
+          <h2 id="footer-legal-title">Informations légales</h2>
+          <ul>
+            <li><button type="button" class="site-footer__text-button" data-action="analytics-consent#manage">Gérer les cookies</button></li>
+          </ul>
+        </nav>
+      </div>
     </div>
+
+    <div class="site-footer__bottom">
+      <p>© <%= Time.current.year %> La Ferme d’Auwez</p>
+      <p>Ciney, Belgique</p>
+    </div>
+  </div>
 </footer>

@@ -71,19 +71,6 @@
   }
 }
 
-.footer-cookie-button {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: $background;
-  text-decoration: underline;
-
-  &:hover,
-  &:focus-visible {
-    opacity: 0.5;
-  }
-}
-
 @media (max-width: $breakpoint-mobile) {
   .cookie-consent {
     bottom: 12px;
