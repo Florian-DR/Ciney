@@ -82,47 +82,10 @@
 }
 
 // Gites Section
-.gite-card{
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
+.home-gites{
     position: relative;
-    height: fit-content;
-    width: auto;
-    padding: 2em 1em;
-
-    .photos-card {
-        max-width: 50%;
-
-        .main-photo, .sub-photos{
-            img{
-                width: 100%;
-                height: 60vh;
-                object-fit: cover;
-                position: relative;
-                cursor: pointer;
-                &:hover{
-                    transform: scale(1.05);
-                    transition: transform 0.3s ease-in-out;
-                }
-            } 
-        } 
-    }
-
-    .sub-photos{
-        display: flex;
-        justify-content: space-between;
-        padding-top: 10px;
-        gap: 5px;
-
-        img{
-            max-width: 18% !important;
-            height: auto !important;
-        }
-    }
-}
-
-.background-card-gite{
+    overflow: hidden;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6rem);
     background-color: $green;
     color: $white;
 
@@ -130,97 +93,211 @@
         content: "";
         position: absolute;
         inset: 0;
-        background-image: url('background-plant');
-        opacity: 0.1;
+        background-image: url("background-plant.webp");
+        background-position: center bottom;
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: bottom;
+        mix-blend-mode: multiply;
+        opacity: 0.2;
+        pointer-events: none;
     }
 }
 
-.gite-card-text{
-    padding: 2em;
-    max-width: 45%;
-    align-self: center;
+.home-gites__heading{
+    position: relative;
     z-index: 1;
+    max-width: 720px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4.5rem);
+    text-align: center;
 
-    h4,
-    .home-card-heading {
-        font-size: calc(0.8rem + 1.2vw);
-        margin-bottom: 1.5rem;
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(2.7rem, 5vw, 4.6rem);
+        line-height: 1.05;
     }
-    .text{
-        padding: 2rem 0;
-        margin: 0;
-    }
-    .button{
-        position: relative;
+
+    > p:last-child{
+        max-width: 620px;
+        margin: 0 auto;
     }
 }
 
-.gite-overview{
-    p {
-        padding-top: 1rem;
-        border-top: solid 1px $white;
-        img, i{
-            width: 1.9rem;
-        }
-        
+.home-gites__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-gites__grid{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2.25rem);
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.home-gite-card{
+    display: flex;
+    min-width: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: $background;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(34, 49, 34, 0.22);
+    color: $green;
+}
+
+.home-gite-card__image{
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background-color: rgba($green, 0.12);
+
+    &::after{
+        content: "";
+        position: absolute;
+        right: -8%;
+        bottom: -1px;
+        left: -8%;
+        height: 26px;
+        background-color: $background;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        object-fit: cover;
+        transition: transform 0.45s ease;
     }
 }
 
-.gite-reverse{
-    p {
-        border-color: $green !important;
+.home-gite-card:hover .home-gite-card__image img{
+    transform: scale(1.035);
+}
+
+.home-gite-card__content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.3rem clamp(1.25rem, 2.4vw, 2rem) 2rem;
+
+    h3{
+        margin-bottom: 1.25rem;
+        font-family: inherit;
+        font-size: clamp(1.35rem, 2vw, 1.75rem);
+        line-height: 1.25;
+    }
+}
+
+.home-gite-card__facts{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid rgba($green, 0.3);
+    border-bottom: 1px solid rgba($green, 0.3);
+    font-size: 0.85rem;
+    line-height: 1.4;
+
+    span{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    i{
+        width: 1.1rem;
+        color: $orange;
+        text-align: center;
+    }
+}
+
+.home-gite-card__feature{
+    margin: 1.25rem 0 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.home-gite-card__link{
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.6rem;
+    margin-top: auto;
+    color: $green;
+    font-size: 0.87rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-color: $orange;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+
+    i{
+        color: $orange;
+        transition: transform 0.2s ease;
+    }
+
+    &:hover i,
+    &:focus-visible i{
+        transform: translateX(4px);
+    }
+
+    &:focus-visible{
+        border-radius: 2px;
+        outline: 3px solid $orange;
+        outline-offset: 6px;
+    }
+}
+
+@media (max-width: 980px) {
+    .home-gites__grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-gite-card:last-child{
+        grid-column: 1 / -1;
+        width: calc(50% - 0.7rem);
+        justify-self: center;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    .gite-card{
-        flex-direction: column ;
-        .photos-card{
-            max-width: 100%;
-        }
-
-        .gite-card-text{
-            max-width: 100%;
-            padding: 1em;
-            h4,
-            .home-card-heading{
-                font-size: calc(1rem + 1.8vw);
-            }
-        }
-        .sub-photos{
-            scroll-behavior: smooth;
-            overflow-x: scroll;
-            img{
-                max-width: 55% !important;
-            }
-        }
+    .home-gites{
+        padding: 4.5rem 1.25rem;
     }
-    .gite-reverse{
-        flex-direction: column-reverse;
+
+    .home-gites__heading{
+        margin-bottom: 2.5rem;
+    }
+
+    .home-gites__grid{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .home-gite-card:last-child{
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .home-gite-card__content{
+        padding: 1.15rem 1.25rem 1.75rem;
     }
 }
 
-// Fake pictogram
-.fake-picto-parent{
-    display: flex;
-    align-items: center;
-}
-
-.fake-picto-item{
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    font-size: 22px;
-
-    &::before{
-        // Use Font Awesome icons
-        content: "\f007";
+@media (prefers-reduced-motion: reduce) {
+    .home-gite-card__image img,
+    .home-gite-card__link i{
+        transition: none;
     }
-}
-.picto-sauna{
-    mask-image: url("sauna.png");
 }
 
 

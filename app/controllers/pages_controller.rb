@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  HOME_GITE_NAMES = ["Les Hirondelles", "L'Horizon", "L'Arbre de Vie"].freeze
+
   skip_before_action :authenticate_user!, only: %i[home contact contact_sender about activities team_buildings team_building_inquiry domain sitemap]
   skip_before_action :all_gites, only: %i[home sitemap]
 
@@ -7,12 +9,8 @@ class PagesController < ApplicationController
     # the navbar and footer.
     @gites = Gite.includes(:photos).order(:id).to_a
     @nav_gites = @gites
-
-    @gite_1 = @gites.first
-    @gite_2 = @gites.second
-    @gite_3 = @gites.third
-    @gite_4 = @gites.fourth
-    @gite_5 = @gites.fifth
+    gites_by_name = @gites.index_by(&:name)
+    @home_gites = HOME_GITE_NAMES.filter_map { |name| gites_by_name[name] }
   end
 
   def admin

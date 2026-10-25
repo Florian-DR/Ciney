@@ -68,6 +68,36 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "l'accueil présente uniquement les trois gîtes principaux avec leurs données" do
+    @gites.first.update!(capacity: 15, rooms: 6)
+    @gites.second.update!(capacity: 6, rooms: 2)
+    @gites.third.update!(capacity: 4, rooms: 2)
+    @gites.fourth.update!(name: "Le Grand Horizon")
+
+    get root_path
+
+    assert_response :success
+    assert_select "#gites .home-gite-card", count: 3
+
+    [
+      [@gites.first, "Grands groupes, convivialité et feu de bois"],
+      [@gites.second, "Terrasse panoramique et vue sur le Condroz"],
+      [@gites.third, "Plain-pied et accessibilité PMR"],
+    ].each do |gite, feature|
+      assert_select "#gites .home-gite-card" do |cards|
+        card = cards.find { |node| node.text.include?(gite.name) }
+        assert card, "Une carte doit présenter #{gite.name}"
+        assert_includes card.text, "#{gite.capacity} personnes"
+        assert_includes card.text, "#{gite.rooms} chambres"
+        assert_includes card.text, feature
+        assert_select card, "a[href='#{gite_path(gite)}']", count: 1
+      end
+    end
+
+    assert_select "#gites", text: /Le Grand Horizon/, count: 0
+    assert_select "#gites", text: /Toute la Ferme/, count: 0
+  end
+
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do
     get new_user_session_path
 
