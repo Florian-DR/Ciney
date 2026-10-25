@@ -98,6 +98,23 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     assert_select "#gites", text: /Toute la Ferme/, count: 0
   end
 
+  test "l'accueil présente le domaine en exclusivité avec ses données et son lien" do
+    get root_path
+
+    assert_response :success
+    assert_select ".home-domain", count: 1 do
+      assert_select "h2", text: "Le domaine en exclusivité", count: 1
+      assert_select ".home-domain__facts", text: /25 personnes/, count: 1
+      assert_select ".home-domain__facts", text: /10 chambres/, count: 1
+      assert_select ".home-domain__benefits", text: /Piscines et sauna privatisés/, count: 1
+      assert_select ".home-domain__benefits", text: /Grange et mezzanine en accès exclusif/, count: 1
+      assert_select ".home-domain__benefits", text: /Cuisine adaptée aux groupes/, count: 1
+      assert_select ".home-domain__benefits", text: /Jardin et extérieurs réservés/, count: 1
+      assert_select "a[href='#{domain_path}']", text: /Découvrir le domaine en exclusivité/, count: 1
+      assert_select "img[alt='Famille et amis réunis dans le jardin de la Ferme d’Auwez']", count: 1
+    end
+  end
+
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do
     get new_user_session_path
 

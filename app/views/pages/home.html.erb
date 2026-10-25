@@ -67,6 +67,49 @@
     </div>
 </section>
 
+<%###### Domaine en exclusivité Section ######%>
+<section class="home-domain" aria-labelledby="home-domain-title">
+        <div class="home-domain__inner">
+            <div class="home-domain__media">
+                <%= image_tag(
+                    "domaine-moment-partage-1920.webp",
+                    srcset: {
+                        "domaine-moment-partage-960.webp" => "960w",
+                        "domaine-moment-partage-1920.webp" => "1920w"
+                    },
+                    sizes: "(max-width: 768px) calc(100vw - 40px), 58vw",
+                    alt: "Famille et amis réunis dans le jardin de la Ferme d’Auwez",
+                    loading: "lazy",
+                    decoding: "async"
+                ) %>
+            </div>
+
+            <div class="home-domain__content">
+                <p class="home-domain__eyebrow">La Ferme rien que pour vous</p>
+                <h2 id="home-domain-title">Le domaine en exclusivité</h2>
+                <p class="home-domain__intro">Réunissez votre grande famille, votre cousinade ou votre groupe d’amis dans un lieu entièrement réservé à vos moments partagés.</p>
+
+                <div class="home-domain__facts" aria-label="Capacité du domaine">
+                    <span><strong>3</strong> gîtes réunis</span>
+                    <span><strong>25</strong> personnes</span>
+                    <span><strong>10</strong> chambres</span>
+                </div>
+
+                <ul class="home-domain__benefits">
+                    <li><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span>Piscines et sauna privatisés</span></li>
+                    <li><i class="fa-solid fa-people-roof" aria-hidden="true"></i><span>Grange et mezzanine en accès exclusif</span></li>
+                    <li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span>Cuisine adaptée aux groupes, avec possibilité de faire appel à un chef ou à un traiteur</span></li>
+                    <li><i class="fa-solid fa-tree" aria-hidden="true"></i><span>Jardin et extérieurs réservés à votre groupe</span></li>
+                </ul>
+
+                <%= link_to domain_path, class: "button home-domain__link" do %>
+                    Découvrir le domaine en exclusivité
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <% end %>
+            </div>
+        </div>
+</section>
+
 <%###### Salle Section ######%>
 <div class="salle-container">
     <div class="salle-images">
