@@ -152,6 +152,75 @@
     </div>
 </section>
 
+<%###### Les plus du domaine Section ######%>
+<section id="plus-du-domaine" class="home-amenities" aria-labelledby="home-amenities-title">
+    <div class="home-amenities__heading">
+        <p class="home-amenities__eyebrow">Prendre le temps, simplement</p>
+        <h2 id="home-amenities-title">Les plus du domaine</h2>
+        <p>Après une balade, une journée de travail ou simplement pour le plaisir, profitez des espaces de détente de la Ferme d’Auwez.</p>
+    </div>
+
+    <div class="home-amenities__showcase">
+        <article class="home-amenity-card home-amenity-card--indoor">
+            <%= image_tag(
+                "piscine-interieure-sauna-ferme-auwez.webp",
+                srcset: {
+                    "piscine-interieure-sauna-ferme-auwez-960.webp" => "960w",
+                    "piscine-interieure-sauna-ferme-auwez.webp" => "2048w"
+                },
+                sizes: "(max-width: 768px) calc(100vw - 40px), 58vw",
+                alt: "Piscine intérieure de la Ferme d’Auwez",
+                loading: "lazy",
+                decoding: "async"
+            ) %>
+            <div class="home-amenity-card__caption home-amenity-card__caption--double">
+                <div>
+                    <i class="fa-solid fa-water-ladder" aria-hidden="true"></i>
+                    <h3>Piscine intérieure</h3>
+                    <p>Accessible toute l’année</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-temperature-high" aria-hidden="true"></i>
+                    <h3>Sauna</h3>
+                    <p>Une chaleur douce pour ralentir</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="home-amenity-card home-amenity-card--outdoor">
+            <%= image_tag(
+                "piscine-exterieure-ferme-auwez-1920.webp",
+                srcset: {
+                    "piscine-exterieure-ferme-auwez-960.webp" => "960w",
+                    "piscine-exterieure-ferme-auwez-1920.webp" => "1920w"
+                },
+                sizes: "(max-width: 768px) calc(100vw - 40px), 36vw",
+                alt: "Piscine extérieure avec vue sur la campagne du Condroz",
+                loading: "lazy",
+                decoding: "async"
+            ) %>
+            <div class="home-amenity-card__caption">
+                <i class="fa-solid fa-person-swimming" aria-hidden="true"></i>
+                <h3>Piscine extérieure</h3>
+                <p>Une parenthèse au grand air face à la campagne</p>
+            </div>
+        </article>
+    </div>
+
+    <div class="home-amenities__shared">
+        <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+        <p><strong>Des espaces partagés.</strong> Lorsque les gîtes sont loués séparément, les piscines et le sauna sont partagés entre les hôtes des trois gîtes.</p>
+    </div>
+
+    <ul class="home-amenities__secondary" aria-label="Autres avantages du domaine">
+        <li><i class="fa-solid fa-seedling" aria-hidden="true"></i>Vaste jardin</li>
+        <li><i class="fa-solid fa-people-roof" aria-hidden="true"></i>Grange conviviale</li>
+        <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i>Parking sur place</li>
+        <li><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Bornes de recharge</li>
+        <li><i class="fa-solid fa-tree" aria-hidden="true"></i>Nature du Condroz</li>
+    </ul>
+</section>
+
 <%###### Visitors Section ######%>
 <div id="visitors-container" class="bg-green">
     <h2 class="visitors-heading">Ils ont séjourné chez nous...</h2>

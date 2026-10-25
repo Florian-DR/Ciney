@@ -756,6 +756,219 @@
     }
 }
 
+// Les plus du domaine Section
+.home-amenities{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5.5rem, 9vw, 8.5rem) clamp(1.25rem, 6vw, 6rem);
+    background:
+        radial-gradient(circle at 8% 92%, rgba($orange, 0.18), transparent 25%),
+        linear-gradient(155deg, darken($green, 9%), $green);
+    color: $background;
+}
+
+.home-amenities__heading{
+    max-width: 760px;
+    margin: 0 auto clamp(2.75rem, 5vw, 4.5rem);
+    text-align: center;
+
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(3rem, 5vw, 4.8rem);
+        line-height: 1.05;
+    }
+
+    > p:last-child{
+        max-width: 650px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+}
+
+.home-amenities__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $background;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-amenities__showcase{
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.85fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.home-amenity-card{
+    display: flex;
+    min-width: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: $background;
+    border-radius: 8px;
+    box-shadow: 0 22px 48px rgba(24, 35, 24, 0.3);
+    color: $green;
+
+    > img{
+        width: 100%;
+        height: clamp(310px, 31vw, 455px);
+        border-radius: 0;
+        object-fit: cover;
+    }
+}
+
+.home-amenity-card--outdoor > img{
+    object-position: 58% center;
+}
+
+.home-amenity-card__caption{
+    position: relative;
+    min-height: 150px;
+    padding: 1.5rem 1.75rem;
+
+    > i{
+        position: absolute;
+        top: -1.25rem;
+        right: 1.5rem;
+        display: grid;
+        width: 2.7rem;
+        height: 2.7rem;
+        place-items: center;
+        background-color: $orange;
+        border: 4px solid $background;
+        border-radius: 50%;
+        color: $background;
+    }
+
+    h3{
+        margin: 0 0 0.35rem;
+        font-family: inherit;
+        font-size: 1.35rem;
+        line-height: 1.25;
+    }
+
+    p{
+        margin: 0;
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+}
+
+.home-amenity-card__caption--double{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
+
+    > div{
+        position: relative;
+        padding: 1.5rem 1.75rem;
+
+        &:not(:last-child){
+            border-right: 1px solid rgba($green, 0.24);
+        }
+    }
+
+    i{
+        margin-bottom: 0.8rem;
+        color: $orange;
+        font-size: 1.2rem;
+    }
+}
+
+.home-amenities__shared{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1000px;
+    margin: clamp(2.5rem, 5vw, 4rem) auto 2rem;
+    padding: 1.15rem 1.5rem;
+    background-color: rgba($background, 0.12);
+    border: 1px solid rgba($background, 0.35);
+    border-radius: 6px;
+
+    > i{
+        font-size: 1.45rem;
+    }
+
+    p{
+        margin: 0;
+        font-size: 0.86rem;
+        line-height: 1.65;
+    }
+
+    strong{
+        color: $background;
+    }
+}
+
+.home-amenities__secondary{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 0 0;
+    border-top: 1px solid rgba($background, 0.3);
+    list-style: none;
+
+    li{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: rgba($background, 0.9);
+        font-size: 0.75rem;
+    }
+
+    i{
+        color: $orange;
+    }
+}
+
+@media (max-width: 900px) {
+    .home-amenities__showcase{
+        grid-template-columns: 1fr;
+        max-width: 720px;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .home-amenities{
+        padding: 5rem 1.25rem;
+    }
+
+    .home-amenity-card > img{
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .home-amenity-card__caption{
+        min-height: 0;
+        padding: 1.35rem 1.25rem;
+    }
+
+    .home-amenity-card__caption--double > div{
+        padding: 1.35rem 1rem;
+    }
+
+    .home-amenity-card__caption h3{
+        font-size: 1.08rem;
+    }
+
+    .home-amenities__shared{
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .home-amenities__secondary{
+        justify-content: flex-start;
+        gap: 0.75rem 1rem;
+    }
+}
+
 // Visitors Section
 #visitors-container{
     min-height: 80vh;

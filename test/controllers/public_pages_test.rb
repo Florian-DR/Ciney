@@ -130,6 +130,23 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "l'accueil met les piscines et le sauna partagés au premier plan" do
+    get root_path
+
+    assert_response :success
+    assert_select ".home-amenities", count: 1 do
+      assert_select "h2", text: "Les plus du domaine", count: 1
+      assert_select "h3", text: "Piscine intérieure", count: 1
+      assert_select "h3", text: "Piscine extérieure", count: 1
+      assert_select "h3", text: "Sauna", count: 1
+      assert_select ".home-amenities__shared", text: /partagés entre les hôtes des trois gîtes/, count: 1
+      assert_select ".home-amenities__secondary", text: /Vaste jardin/, count: 1
+      assert_select ".home-amenities__secondary", text: /Bornes de recharge/, count: 1
+      assert_select "img[alt='Piscine intérieure de la Ferme d’Auwez']", count: 1
+      assert_select "img[alt='Piscine extérieure avec vue sur la campagne du Condroz']", count: 1
+    end
+  end
+
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do
     get new_user_session_path
 
