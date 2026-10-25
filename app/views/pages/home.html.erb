@@ -110,21 +110,47 @@
         </div>
 </section>
 
-<%###### Salle Section ######%>
-<div class="salle-container">
-    <div class="salle-images">
-        <%# <%= image_tag "border-image.png", alt: "border-image.png"%>
-        <div class="border-image-mask"></div>
-    </div>
-    <div class="salle-text">
-        <h2 class="heading-h4 salle-heading">Séjours professionnels &amp; bien-être</h2>
-        <p>Réunissez votre équipe au vert, dans un lieu où les temps de travail laissent naturellement place aux échanges, à la détente et aux expériences partagées.
+<%###### Séjours professionnels Section ######%>
+<section id="sejours-professionnels" class="home-professional" aria-labelledby="home-professional-title">
+    <div class="home-professional__inner">
+        <div class="home-professional__content">
+            <p class="home-professional__eyebrow">Travailler, créer du lien, se ressourcer</p>
+            <h2 id="home-professional-title">Séjours professionnels &amp; bien-être</h2>
+            <p class="home-professional__intro">Entreprises, associations, formateurs et organisateurs de stages trouvent ici un cadre au vert où les temps de travail laissent naturellement place aux échanges et à la respiration.</p>
 
-            Salle modulable, activités sur mesure, restauration et hébergement jusqu’à 25 personnes : construisez votre programme librement ou confiez-nous son organisation.</p>
+            <div class="home-professional__capacity">
+                <i class="fa-solid fa-house-laptop" aria-hidden="true"></i>
+                <p><strong>Séjours résidentiels</strong><span>Jusqu’à 25 personnes dans 10 chambres</span></p>
+            </div>
 
-        <%= link_to "Découvrir nos séjours professionnels & bien-être", team_buildings_path, class: "button" %>
+            <ul class="home-professional__uses">
+                <li><i class="fa-solid fa-people-group" aria-hidden="true"></i><span>Une salle polyvalente pour les réunions, formations, ateliers et pratiques de bien-être</span></li>
+                <li><i class="fa-solid fa-calendar-day" aria-hidden="true"></i><span>La possibilité d’organiser une journée sans hébergement</span></li>
+                <li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span>Un accompagnement pour la restauration et les activités</span></li>
+            </ul>
+
+            <%= link_to team_buildings_path, class: "button home-professional__link" do %>
+                Découvrir les séjours professionnels
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <% end %>
+        </div>
+
+        <div class="home-professional__media">
+            <%= image_tag(
+                "salle-polyvalente-reunion-1400.webp",
+                srcset: {
+                    "salle-polyvalente-reunion-640.webp" => "640w",
+                    "salle-polyvalente-reunion-1400.webp" => "1400w"
+                },
+                sizes: "(max-width: 768px) calc(100vw - 40px), 50vw",
+                alt: "Salle polyvalente de la Ferme d’Auwez aménagée pour une réunion",
+                loading: "lazy",
+                decoding: "async"
+            ) %>
+            <p class="home-professional__media-note">Réunions · Formations · Ateliers · Bien-être</p>
+        </div>
     </div>
-</div> 
+</section>
 
 <%###### Visitors Section ######%>
 <div id="visitors-container" class="bg-green">

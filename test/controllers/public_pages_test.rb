@@ -115,6 +115,21 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "l'accueil présente les séjours professionnels et renvoie au début de leur page" do
+    get root_path
+
+    assert_response :success
+    assert_select ".home-professional", count: 1 do
+      assert_select "h2", text: "Séjours professionnels & bien-être", count: 1
+      assert_select ".home-professional__capacity", text: /25 personnes dans 10 chambres/, count: 1
+      assert_select ".home-professional__uses", text: /réunions, formations, ateliers et pratiques de bien-être/, count: 1
+      assert_select ".home-professional__uses", text: /journée sans hébergement/, count: 1
+      assert_select ".home-professional__uses", text: /restauration et les activités/, count: 1
+      assert_select "a[href='#{team_buildings_path}']", text: /Découvrir les séjours professionnels/, count: 1
+      assert_select "img[alt='Salle polyvalente de la Ferme d’Auwez aménagée pour une réunion']", count: 1
+    end
+  end
+
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do
     get new_user_session_path
 
