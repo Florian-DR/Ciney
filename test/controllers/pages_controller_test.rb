@@ -21,6 +21,12 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
       "[data-controller='turnstile'][data-turnstile-action-value='contact_inquiry']",
       count: 1,
     )
+    assert_select ".contact-form__required-note", text: "* Champs obligatoires", count: 1
+    assert_select "label[for='contact_inquiry_name']", text: "Nom *"
+    assert_select "label[for='contact_inquiry_first_name']", text: "Prénom *"
+    assert_select "label[for='contact_inquiry_email']", text: "E-mail *"
+    assert_select "label[for='contact_inquiry_telephone']", text: "Téléphone *"
+    assert_select "label[for='contact_inquiry_message']", text: "Votre message *"
   end
 
   test "shows inline errors for an invalid contact inquiry" do
@@ -81,6 +87,21 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     )
     assert_select(
       "[data-controller='turnstile'][data-turnstile-action-value='team_building_inquiry']",
+      count: 1,
+    )
+    assert_select "input[name='team_building_inquiry[telephone]'][required]", count: 0
+    assert_select "input[name='team_building_inquiry[participants]'][required]", count: 0
+    assert_select "input[name='team_building_inquiry[desired_dates]'][required]", count: 0
+    assert_select "textarea[name='team_building_inquiry[message]'][required]", count: 0
+    assert_select "a.team-building-turnkey__link[href='#demande']", text: /Je lance mon projet/
+    assert_select ".team-building-form__required-note", text: "* Champs obligatoires", count: 1
+    assert_select "label[for='team_building_inquiry_company']", text: /\*$/
+    assert_select "label[for='team_building_inquiry_contact_name']", text: /\*$/
+    assert_select "label[for='team_building_inquiry_email']", text: /\*$/
+    assert_select "label[for='team_building_inquiry_package']", text: /\*$/
+    assert_select "label", text: /\(facultatif\)/, count: 0
+    assert_select(
+      "input[name='team_building_inquiry[desired_dates]'][placeholder='Ex. septembre #{Date.current.next_year.year}']",
       count: 1,
     )
   end

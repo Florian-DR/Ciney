@@ -10,14 +10,26 @@ class TeamBuildingInquiryTest < ActiveSupport::TestCase
       company
       contact_name
       email
-      telephone
-      participants
-      desired_dates
       package
-      message
     ].each do |field|
       assert_equal ["Ce champ est obligatoire."], inquiry.errors[field]
     end
+
+    assert_empty inquiry.errors[:telephone]
+    assert_empty inquiry.errors[:participants]
+    assert_empty inquiry.errors[:desired_dates]
+    assert_empty inquiry.errors[:message]
+  end
+
+  test "accepts an inquiry without the optional details" do
+    inquiry = TeamBuildingInquiry.new(
+      company: "Atelier Condroz",
+      contact_name: "Marie Dupont",
+      email: "marie@example.com",
+      package: "residential",
+    )
+
+    assert inquiry.valid?
   end
 
   test "provides actionable messages for invalid values" do

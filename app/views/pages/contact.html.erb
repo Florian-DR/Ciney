@@ -59,32 +59,34 @@
                     url: contact_path(anchor: "demande"),
                     class: "contact-form",
                     html: { novalidate: true } do |form| %>
+                    <p class="contact-form__privacy contact-form__required-note">* Champs obligatoires</p>
+
                     <div class="double-fields">
                         <div class="contact-form__field">
-                            <%= form.label :name, "Nom" %>
+                            <%= form.label :name, "Nom *" %>
                             <%= form.text_field :name, required: true, maxlength: 120, autocomplete: "family-name", aria: { invalid: @contact_inquiry.errors[:name].any? } %>
                             <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :name %>
                         </div>
                         <div class="contact-form__field">
-                            <%= form.label :first_name, "Prénom" %>
+                            <%= form.label :first_name, "Prénom *" %>
                             <%= form.text_field :first_name, required: true, maxlength: 120, autocomplete: "given-name", aria: { invalid: @contact_inquiry.errors[:first_name].any? } %>
                             <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :first_name %>
                         </div>
                     </div>
                     <div class="double-fields">
                         <div class="contact-form__field">
-                            <%= form.label :email, "E-mail" %>
+                            <%= form.label :email, "E-mail *" %>
                             <%= form.email_field :email, required: true, maxlength: 254, autocomplete: "email", aria: { invalid: @contact_inquiry.errors[:email].any? } %>
                             <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :email %>
                         </div>
                         <div class="contact-form__field">
-                            <%= form.label :telephone, "Téléphone" %>
+                            <%= form.label :telephone, "Téléphone *" %>
                             <%= form.telephone_field :telephone, required: true, maxlength: 40, autocomplete: "tel", aria: { invalid: @contact_inquiry.errors[:telephone].any? } %>
                             <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :telephone %>
                         </div>
                     </div>
                     <div class="contact-form__field">
-                        <%= form.label :message, "Votre message" %>
+                        <%= form.label :message, "Votre message *" %>
                         <%= form.text_area :message, required: true, minlength: 10, maxlength: 3_000, rows: 7, aria: { invalid: @contact_inquiry.errors[:message].any? } %>
                         <%= render "pages/contact_field_errors", inquiry: @contact_inquiry, field: :message %>
                     </div>

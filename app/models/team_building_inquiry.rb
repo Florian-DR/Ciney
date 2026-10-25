@@ -20,8 +20,7 @@ class TeamBuildingInquiry
   attribute :message, :string
   attribute :website, :string
 
-  validates :company, :contact_name, :email, :telephone, :participants,
-            :desired_dates, :package, :message,
+  validates :company, :contact_name, :email, :package,
             presence: { message: "Ce champ est obligatoire." }
   validates :company, :contact_name,
             length: {

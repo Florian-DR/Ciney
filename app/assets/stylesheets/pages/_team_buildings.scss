@@ -97,9 +97,11 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   > div {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     gap: clamp(0.7rem, 2vw, 1.5rem);
+    min-width: 0;
     padding: 1.6rem;
     border-right: 1px solid rgba($background, 0.2);
     &:first-child { padding-left: 0; }
@@ -201,6 +203,7 @@
   margin-bottom: clamp(2rem, 4vw, 4rem);
 
   img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  &:focus-visible { outline: 3px solid $orange; outline-offset: 5px; }
 }
 .team-building-shared-space {
   display: grid;
@@ -284,6 +287,14 @@
     background: rgba($background, 0.1);
     color: #edc58e;
     font-size: 1.5rem;
+  }
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0.85rem 1.2rem;
+    font-weight: 700;
   }
 }
 .team-building-stay {
@@ -524,7 +535,6 @@
     h1, h2, h3, p { overflow-wrap: anywhere; }
   }
   .team-building-experience__grid,
-  .team-building-room-gallery,
   .team-building-form__row { grid-template-columns: minmax(0, 1fr); }
   .team-building-hero {
     min-height: 0;
@@ -534,19 +544,50 @@
     &__content h1 { font-size: clamp(2.1rem, 10vw, 2.75rem); }
   }
   .team-building-stats {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     > div {
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-right: 0;
-      border-bottom: 1px solid rgba($background, 0.2);
+      gap: 0.4rem;
+      padding: 0.9rem 0.45rem;
+      border-right: 1px solid rgba($background, 0.2);
+      text-align: center;
     }
-    > div:last-child { border-bottom: 0; }
-    span { font-size: 0.82rem; }
+    > div:first-child { padding-left: 0.45rem; }
+    > div:last-child { border-right: 0; padding-right: 0.45rem; }
+    strong { font-size: clamp(1.9rem, 10vw, 2.7rem); }
+    span { font-size: 0.68rem; line-height: 1.35; overflow-wrap: anywhere; }
   }
-  .team-building-room-details { grid-template-columns: minmax(0, 1fr); }
+  .team-building-room-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 1.25rem 1rem;
+  }
+  .team-building-room-gallery {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 88%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.75rem;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+
+    img { scroll-snap-align: start; }
+  }
+  .team-building-shared-space__content { display: contents; }
+  .team-building-shared-space__copy { order: 1; }
+  .team-building-shared-space > img { order: 2; }
+  .team-building-break { order: 3; }
+  .team-building-landscape {
+    &::after { background: linear-gradient(0deg, rgba(24, 35, 25, 0.88), rgba(24, 35, 25, 0.08) 75%); }
+    figcaption {
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 2.5rem;
+      text-align: center;
+    }
+  }
   .team-building-break { grid-template-columns: minmax(0, 1fr); }
   .team-building-form-card { padding: 1rem; }
 }

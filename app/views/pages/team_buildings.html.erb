@@ -19,8 +19,8 @@
     </picture>
     <div class="team-building-hero__shade"></div>
     <div class="team-building-hero__content contain">
-      <p class="team-building-eyebrow">Vos équipes au vert, près de Ciney</p>
-      <h1>Se retrouver, partager, respirer</h1>
+      <p class="team-building-eyebrow">Se retrouver, partager, respirer</p>
+      <h1>Séminaires, team building et stages près de Ciney</h1>
       <p>Un lieu à taille humaine, pensé pour les entreprises, les associations, les formateurs et les organisateurs de stages.</p>
       <a href="#demande" class="team-building-hero__link">
         Je lance mon projet <i class="fa-solid fa-arrow-down"></i>
@@ -95,7 +95,7 @@
         <p><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Tableau flip chart</p>
         <p><i class="fa-solid fa-people-group" aria-hidden="true"></i> Jusqu’à 30 personnes</p>
       </div>
-      <div class="team-building-room-gallery">
+      <div class="team-building-room-gallery" role="region" aria-label="Photos de la salle polyvalente" tabindex="0">
         <%= image_tag "salle-polyvalente-ensemble-1400.webp",
             alt: "Salle polyvalente aménagée en U pour une réunion d’équipe",
             srcset: { "salle-polyvalente-ensemble-640.webp" => "640w", "salle-polyvalente-ensemble-1400.webp" => "1400w" },
@@ -145,6 +145,9 @@
       <div class="team-building-turnkey__icon"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></div>
       <h2>Un accompagnement, du premier échange à votre arrivée</h2>
       <p>Chaque projet est différent. Nous vous accompagnons dans la préparation de votre séjour et pouvons vous aider à imaginer un programme adapté : activités, intervenants, chef privé, traiteur ou découvertes de la région. Notre objectif : vous permettre de vous concentrer sur votre projet et de profiter pleinement de votre expérience.</p>
+      <a href="#demande" class="button team-building-turnkey__link">
+        Je lance mon projet <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+      </a>
     </div>
   </section>
 
@@ -177,8 +180,8 @@
   <section id="demande" class="team-building-section team-building-inquiry">
     <div class="contain team-building-inquiry__layout">
       <div class="team-building-inquiry__intro">
-        <p class="team-building-kicker">Parlons de votre équipe</p>
-        <h2>Offrez à votre équipe une parenthèse hors du temps</h2>
+        <p class="team-building-kicker">Parlons de votre projet</p>
+        <h2>Offrez à votre groupe une parenthèse hors du temps</h2>
         <p>Décrivez-nous votre projet, nous revenons vers vous rapidement avec une offre personnalisée, et affinons ensemble les derniers détails avant votre arrivée.</p>
         <div class="team-building-inquiry__promise">
           <i class="fa-regular fa-comment-dots"></i>
@@ -221,7 +224,7 @@
               class: "team-building-form",
               html: { novalidate: true } do |form| %>
           <div class="team-building-form__field">
-            <%= form.label :company, "Nom de l’entreprise (ou de l’organisme)" %>
+            <%= form.label :company, "Nom de l’entreprise (ou de l’organisme) *" %>
             <%= form.text_field :company,
                 required: true,
                 maxlength: 120,
@@ -231,7 +234,7 @@
           </div>
 
           <div class="team-building-form__field">
-            <%= form.label :contact_name, "Nom et prénom du contact" %>
+            <%= form.label :contact_name, "Nom et prénom du contact *" %>
             <%= form.text_field :contact_name,
                 required: true,
                 maxlength: 120,
@@ -242,7 +245,7 @@
 
           <div class="team-building-form__row">
             <div class="team-building-form__field">
-              <%= form.label :email, "E-mail" %>
+              <%= form.label :email, "E-mail *" %>
               <%= form.email_field :email,
                   required: true,
                   maxlength: 254,
@@ -253,7 +256,6 @@
             <div class="team-building-form__field">
               <%= form.label :telephone, "Téléphone" %>
               <%= form.telephone_field :telephone,
-                  required: true,
                   maxlength: 40,
                   autocomplete: "tel",
                   aria: { invalid: @team_building_inquiry.errors[:telephone].any? } %>
@@ -265,7 +267,6 @@
             <div class="team-building-form__field">
               <%= form.label :participants, "Nombre de participants" %>
               <%= form.number_field :participants,
-                  required: true,
                   min: 1,
                   max: 100,
                   inputmode: "numeric",
@@ -275,9 +276,8 @@
             <div class="team-building-form__field">
               <%= form.label :desired_dates, "Dates ou période souhaitée" %>
               <%= form.text_field :desired_dates,
-                  required: true,
                   maxlength: 200,
-                  placeholder: "Ex. septembre 2026",
+                  placeholder: "Ex. septembre #{Date.current.next_year.year}",
                   autocomplete: "off",
                   aria: { invalid: @team_building_inquiry.errors[:desired_dates].any? } %>
               <%= render "pages/team_building_field_errors", inquiry: @team_building_inquiry, field: :desired_dates %>
@@ -285,7 +285,7 @@
           </div>
 
           <div class="team-building-form__field">
-            <%= form.label :package, "Formule souhaitée" %>
+            <%= form.label :package, "Formule souhaitée *" %>
             <%= form.select :package,
                 TeamBuildingInquiry::PACKAGE_OPTIONS,
                 { prompt: "Choisissez une formule" },
@@ -297,8 +297,6 @@
           <div class="team-building-form__field">
             <%= form.label :message, "Parlez-nous de votre projet" %>
             <%= form.text_area :message,
-                required: true,
-                minlength: 10,
                 maxlength: 3_000,
                 rows: 7,
                 placeholder: "Nombre de nuitées envisagées, besoins pour la restauration, envies pour les activités, ou toute autre précision…",

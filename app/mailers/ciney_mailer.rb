@@ -43,11 +43,11 @@ class CineyMailer < ApplicationMailer
         @company = inquiry.fetch("company")
         @contact_name = inquiry.fetch("contact_name")
         @email = inquiry.fetch("email")
-        @telephone = inquiry.fetch("telephone")
-        @participants = inquiry.fetch("participants")
-        @desired_dates = inquiry.fetch("desired_dates")
+        @telephone = inquiry.fetch("telephone").presence || "Non renseigné"
+        @participants = inquiry.fetch("participants").presence || "Non renseigné"
+        @desired_dates = inquiry.fetch("desired_dates").presence || "Non renseignée"
         @package = TeamBuildingInquiry::PACKAGE_OPTIONS.key(inquiry.fetch("package"))
-        @message = inquiry.fetch("message")
+        @message = inquiry.fetch("message").presence || "Aucune précision renseignée."
 
         farm_email = ENV.fetch("GMAIL_ADDRESS")
         recipients = { to: @email }
