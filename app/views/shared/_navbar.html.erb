@@ -18,7 +18,7 @@
         <%= link_to "Activités", activities_path, class: "nav-link" %>
         <%# <a href="/about" class="nav-link">À propos</a>
         <a href="/contact" class="nav-link">Contact et accès</a> %>
-        <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" target='_blank' class="button">Réservation</a>
+        <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" target="_blank" rel="noopener" class="button" data-action="click->analytics-consent#trackReservation" data-analytics-consent-emplacement-param="menu">Réservation</a>
     </nav>
 
     <%# Phone navbar %>
@@ -42,7 +42,7 @@
                     <%= link_to "Activités", activities_path, class: "nav-link" %>
                     <%# <a href="/about" class="nav-link">À propos</a>
                     <a href="/contact" class="nav-link">Contact et accès</a> %>
-                    <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" target='_blank' class="button">Réservation</a>
+                    <a href="https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR" target="_blank" rel="noopener" class="button" data-action="click->analytics-consent#trackReservation" data-analytics-consent-emplacement-param="menu">Réservation</a>
                 </div>
             </div>
         </div>

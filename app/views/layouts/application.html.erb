@@ -29,7 +29,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
-    <%= render "shared/google_analytics", measurement_id: ENV["GA4_MEASUREMENT_ID"] if ENV["GA4_MEASUREMENT_ID"].present? %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -37,12 +36,16 @@
     <%= yield :turnstile_script %>
   </head>
 
-  <body>
+  <body
+    data-controller="analytics-consent"
+    data-analytics-consent-measurement-id-value="<%= ENV["GA4_MEASUREMENT_ID"] %>"
+  >
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
     <%= yield %>
     <%= render "shared/footer" %>
+    <%= render "shared/cookie_consent" %>
 
   </body>
 </html>

@@ -25,7 +25,7 @@
       <p class="domain-eyebrow">La Ferme d’Auwez · Ciney</p>
       <h1>Un domaine exclusif pour vos plus beaux moments</h1>
       <p>Une maison de famille le temps d’un séjour, rien que pour vous, dans un îlot de paix.</p>
-      <%= link_to booking_url, target: "_blank", rel: "noopener", class: "domain-button" do %>
+      <%= link_to booking_url, target: "_blank", rel: "noopener", class: "domain-button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_toute_la_ferme" } do %>
         Réserver la Ferme complète <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
       <% end %>
     </div>
@@ -173,7 +173,7 @@
       <p>Au fil des années, la Ferme d’Auwez accueille des familles qui se réunissent, des amis qui se retrouvent et des groupes qui viennent vivre une parenthèse hors du quotidien.</p>
       <p>Car certains lieux ne sont pas seulement des endroits où l’on séjourne. Ce sont des lieux où naissent les souvenirs que l’on aime raconter et transmettre.</p>
       <p>Le Domaine de la Ferme d’Auwez est un lieu pensé pour ces moments-là.</p>
-      <%= link_to booking_url, target: "_blank", rel: "noopener", class: "domain-button" do %>
+      <%= link_to booking_url, target: "_blank", rel: "noopener", class: "domain-button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_toute_la_ferme" } do %>
         Réserver la Ferme complète <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
       <% end %>
     </div>
