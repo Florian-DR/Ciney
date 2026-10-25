@@ -40,3 +40,4 @@
 # Ignore agents files
 .agents
 AGENTS.md
+/MISE_EN_PRODUCTION.md
