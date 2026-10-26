@@ -17,6 +17,10 @@
     margin: auto;
 }
 
+.contain.page-footer-spacing{
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
 a{
     text-decoration: none;
     color: $green;

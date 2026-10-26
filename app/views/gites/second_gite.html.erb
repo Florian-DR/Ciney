@@ -83,7 +83,7 @@
         <%= image_tag "gite-horizon-1400.webp", alt: "Gîte L'Horizon vu depuis la rue", srcset: { "gite-horizon-640.webp" => "640w", "gite-horizon-1400.webp" => "1400w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1400, height: 1228, loading: "lazy", decoding: "async" %>
     </div>
 
-    <div class="contain">
+    <div class="contain gite-booking-actions">
         <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53681", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_horizon" } %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>

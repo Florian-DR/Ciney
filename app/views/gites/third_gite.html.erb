@@ -75,7 +75,7 @@
         <%= image_tag "arbre-1200.webp", alt: "Arbre au coucher de soleil", srcset: { "arbre-640.webp" => "640w", "arbre-1200.webp" => "1200w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1200, height: 1600, loading: "lazy", decoding: "async" %>
     </div>
 
-    <div class="contain">
+    <div class="contain gite-booking-actions">
         <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53682", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_arbre_de_vie" } %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>

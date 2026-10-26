@@ -54,6 +54,10 @@
     }
 }
 
+.contain.gite-booking-actions{
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
 @media (max-width: $breakpoint-mobile) {
     #gite-banner{
         height: auto;
