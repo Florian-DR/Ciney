@@ -80,10 +80,10 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     assert_select "#gites .home-gite-card", count: 3
 
     [
-      [@gites.first, "Grands groupes, convivialité et feu de bois"],
-      [@gites.second, "Terrasse panoramique et vue sur le Condroz"],
-      [@gites.third, "Plain-pied et accessibilité PMR"],
-    ].each do |gite, feature|
+      [@gites.first, "Grands groupes, convivialité et feu de bois", "accueil_gite_hirondelles"],
+      [@gites.second, "Terrasse panoramique et vue sur le Condroz", "accueil_gite_horizon"],
+      [@gites.third, "Plain-pied et accessibilité PMR", "accueil_gite_arbre_de_vie"],
+    ].each do |gite, feature, analytics_location|
       assert_select "#gites .home-gite-card" do |cards|
         card = cards.find { |node| node.text.include?(gite.name) }
         assert card, "Une carte doit présenter #{gite.name}"
@@ -91,6 +91,7 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
         assert_includes card.text, "#{gite.rooms} chambres"
         assert_includes card.text, feature
         assert_select card, "a[href='#{gite_path(gite)}']", count: 1
+        assert_select card, "a[data-action='click->analytics-consent#trackCta'][data-analytics-consent-emplacement-param='#{analytics_location}']", count: 1
       end
     end
 
@@ -111,6 +112,7 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
       assert_select ".home-domain__benefits", text: /Cuisine adaptée aux groupes/, count: 1
       assert_select ".home-domain__benefits", text: /Jardin et extérieurs réservés/, count: 1
       assert_select "a[href='#{domain_path}']", text: /Découvrir le domaine en exclusivité/, count: 1
+      assert_select "a[data-action='click->analytics-consent#trackCta'][data-analytics-consent-emplacement-param='accueil_domaine_exclusivite']", count: 1
       assert_select "img[alt='Famille et amis réunis dans le jardin de la Ferme d’Auwez']", count: 1
     end
   end
@@ -126,6 +128,7 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
       assert_select ".home-professional__uses", text: /journée sans hébergement/, count: 1
       assert_select ".home-professional__uses", text: /restauration et les activités/, count: 1
       assert_select "a[href='#{team_buildings_path}']", text: /Découvrir les séjours professionnels/, count: 1
+      assert_select "a[data-action='click->analytics-consent#trackCta'][data-analytics-consent-emplacement-param='accueil_sejours_professionnels']", count: 1
       assert_select "img[alt='Salle polyvalente de la Ferme d’Auwez aménagée pour une réunion']", count: 1
     end
   end
@@ -158,12 +161,35 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
       assert_select ".home-activities__themes", text: /Découvertes culturelles/, count: 1
       assert_select ".home-activities__themes", text: /Escapades gourmandes/, count: 1
       assert_select "a[href='#{activities_path}']", text: /Découvrir les activités de la région/, count: 1
+      assert_select "a[data-action='click->analytics-consent#trackCta'][data-analytics-consent-emplacement-param='accueil_activites']", count: 1
       assert_select "img[alt='Sentier dans une prairie du Condroz au coucher du soleil']", count: 1
     end
 
     assert_operator response.body.index("home-activities"), :<,
-      response.body.index("visitors-container")
+      response.body.index("home-testimonials")
     assert_select "h2", text: "Un cadre pensé pour votre confort", count: 0
+  end
+
+  test "l'accueil conserve les deux témoignages et termine par la réservation" do
+    get root_path
+
+    assert_response :success
+    assert_select ".home-testimonial", count: 2
+    assert_select ".home-testimonial", text: /Charles dW\./, count: 1
+    assert_select ".home-testimonial", text: /Christophe G\./, count: 1
+    assert_select ".home-testimonial .home-testimonial__stars", count: 2 do
+      assert_select "img[src*='star']", count: 10
+    end
+
+    assert_select ".home-final-cta", count: 1 do
+      assert_select "a.home-final-cta__booking[href^='https://bookingengine.mylighthouse.com/']", count: 1
+      assert_select "a[data-action='click->analytics-consent#trackReservation'][data-analytics-consent-emplacement-param='accueil_cta_final']", count: 1
+      assert_select "a.home-final-cta__contact[href='#{contact_path}']", count: 1
+      assert_select "a.home-final-cta__contact[data-action='click->analytics-consent#trackCta'][data-analytics-consent-emplacement-param='accueil_contact_final']", count: 1
+    end
+
+    assert_operator response.body.index("home-testimonials"), :<,
+      response.body.index("home-final-cta")
   end
 
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do

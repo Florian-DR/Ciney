@@ -42,6 +42,14 @@ export default class extends Controller {
     })
   }
 
+  trackCta(event) {
+    if (this.consent !== "accepted" || typeof window.gtag !== "function") return
+
+    window.gtag("event", "cta_click", {
+      emplacement: event.params.emplacement
+    })
+  }
+
   get consent() {
     const cookie = document.cookie
       .split("; ")

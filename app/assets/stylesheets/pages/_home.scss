@@ -1121,106 +1121,235 @@
     }
 }
 
-// Visitors Section
-#visitors-container{
-    min-height: 80vh;
-    padding: 60px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    h3,
-    .visitors-heading{
-        font-size: calc(2.2rem + 1.8vw);
-        color: $background;
-        padding: 20px;
-        &::after{
+// Témoignages Section
+.home-testimonials{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5.5rem, 9vw, 8.5rem) clamp(1.25rem, 8vw, 8rem);
+    background:
+        radial-gradient(circle at 12% 15%, rgba($orange, 0.1), transparent 24%),
+        radial-gradient(circle at 92% 86%, rgba($green, 0.11), transparent 28%),
+        $background;
+}
+
+.home-testimonials__heading{
+    max-width: 720px;
+    margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+    text-align: center;
+
+    h2{
+        position: relative;
+        margin-bottom: 1rem;
+        font-size: clamp(3rem, 5vw, 4.8rem);
+        line-height: 1.05;
+
+        &::before{
             content: "";
             position: absolute;
+            top: 50%;
             left: 50%;
-            display: block;
-            width: 143px;
-            transform: translate(-50%, -61%);
-            height: 114px;
-            mask-image: url('cedilles.png');
-            mask-size: cover;
+            width: clamp(6.5rem, 12vw, 9rem);
+            aspect-ratio: 5 / 4;
+            background-color: rgba($green, 0.18);
+            mask-image: image-url("cedilles.png");
+            mask-position: center;
             mask-repeat: no-repeat;
-            background-color: $background;
-            opacity: 0.2;            
+            mask-size: contain;
+            transform: translate(-50%, -52%);
         }
     }
-}
 
-.visitors-cards{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 30px 0;
-    gap: 10vw;
-}
-
-.visitor-card{
-    max-width: 35vw;
-    background-color: $background;
-    border-radius: $radius + 6;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    padding: 15px 25px;
-    display: flex;
-    gap: 0.5em;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
-    position: relative;
-    p{
+    > p:last-child{
         margin: 0;
-        line-height: 1.8em;
+        line-height: 1.7;
     }
-    .quote-container{
-        width: 2em;
-        height: 2em;
-        background-color: $orange;
+}
+
+.home-testimonials__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $orange;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-testimonials__grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 4rem);
+    max-width: 1120px;
+    margin: 0 auto 2rem;
+}
+
+.home-testimonial{
+    position: relative;
+    padding: clamp(2rem, 4vw, 3.25rem);
+    background-color: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba($green, 0.18);
+    border-top: 4px solid $orange;
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgba(45, 59, 45, 0.13);
+
+    &:nth-child(2){
+        transform: translateY(2rem);
+    }
+
+    > i{
+        display: grid;
+        width: 2.6rem;
+        height: 2.6rem;
+        margin-bottom: 1.5rem;
+        place-items: center;
+        background-color: rgba($orange, 0.14);
         border-radius: 50%;
-        display: flex;
+        color: $orange;
+        font-size: 1rem;
     }
-    .quote-mark{
-        width: 1em;
-        height: 0.8em;
-        margin: auto;
+
+    blockquote{
+        margin: 0 0 1.25rem;
     }
-    .stars{
-        img{
-            width: 20px;
-            height: 20px;
-        }
+
+    blockquote p{
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.85;
     }
-    span{
-        font-size: smaller;
-        font-weight: 900;
+}
+
+.home-testimonial__stars{
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 1.35rem;
+
+    img{
+        width: 1rem;
+        height: 1rem;
+        object-fit: contain;
+    }
+}
+
+.home-testimonial__author{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    &::before{
+        content: "";
+        width: 2rem;
+        height: 2px;
+        background-color: $orange;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    #visitors-container{
-        height: auto;
-        padding: 30px 20px;
-
-        h3,
-        .visitors-heading{
-            text-align: center;
-            &::after{
-                width: 100px;
-                height: 80px;
-                transform: translate(-50%, -75%);
-            }
-        }
+    .home-testimonials{
+        padding: 5rem 1.25rem;
     }
 
-    .visitors-cards{
+    .home-testimonials__grid{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .home-testimonial:nth-child(2){
+        transform: none;
+    }
+}
+
+// Final Call to Action
+.home-final-cta{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5rem, 8vw, 7.5rem) 1.25rem;
+    background:
+        radial-gradient(circle at 15% -15%, rgba($orange, 0.25), transparent 34%),
+        radial-gradient(circle at 88% -25%, rgba($background, 0.12), transparent 35%),
+        #405445;
+    color: $background;
+    text-align: center;
+}
+
+.home-final-cta + .site-footer{
+    margin-top: 0;
+    border-top: 1px solid rgba($background, 0.12);
+}
+
+.home-final-cta__content{
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: 0 auto;
+
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(3rem, 5.5vw, 5rem);
+        line-height: 1.05;
+    }
+
+    > p:not(.home-final-cta__eyebrow){
+        max-width: 620px;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+    }
+}
+
+.home-final-cta__eyebrow{
+    margin-bottom: 0.7rem;
+    color: $background;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.home-final-cta__actions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.home-final-cta__booking,
+.home-final-cta__contact{
+    display: inline-flex;
+    min-width: 210px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.35rem;
+    border-radius: 4px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.home-final-cta__booking:focus-visible,
+.home-final-cta__contact:focus-visible{
+    outline: 3px solid $background;
+    outline-offset: 4px;
+}
+
+.home-final-cta__contact{
+    border: 1px solid rgba($background, 0.75);
+    color: $background;
+
+    &:hover{
+        background-color: $background;
+        color: $green;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .home-final-cta__actions{
         flex-direction: column;
-        gap: 3em;
-        .visitor-card{
-            max-width: 100%;
-        }
+    }
+
+    .home-final-cta__booking,
+    .home-final-cta__contact{
+        width: 100%;
     }
 }

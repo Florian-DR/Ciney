@@ -28,6 +28,11 @@
     "L'Horizon" => "Terrasse panoramique et vue sur le Condroz",
     "L'Arbre de Vie" => "Plain-pied et accessibilité PMR"
 } %>
+<% gite_cta_locations = {
+    "Les Hirondelles" => "accueil_gite_hirondelles",
+    "L'Horizon" => "accueil_gite_horizon",
+    "L'Arbre de Vie" => "accueil_gite_arbre_de_vie"
+} %>
 <section id="gites" class="home-gites" aria-labelledby="home-gites-title">
     <div class="home-gites__heading">
         <p class="home-gites__eyebrow">Trois maisons, trois atmosphères</p>
@@ -57,7 +62,12 @@
                         <span><i class="fa-solid fa-bed" aria-hidden="true"></i><%= gite.rooms %> chambres</span>
                     </div>
                     <p class="home-gite-card__feature"><%= gite_features.fetch(gite.name) %></p>
-                    <%= link_to gite_path(gite), class: "home-gite-card__link" do %>
+                    <%= link_to gite_path(gite),
+                        class: "home-gite-card__link",
+                        data: {
+                            action: "click->analytics-consent#trackCta",
+                            analytics_consent_emplacement_param: gite_cta_locations.fetch(gite.name)
+                        } do %>
                         Découvrir <%= gite.name %>
                         <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                     <% end %>
@@ -102,7 +112,12 @@
                     <li><i class="fa-solid fa-tree" aria-hidden="true"></i><span>Jardin et extérieurs réservés à votre groupe</span></li>
                 </ul>
 
-                <%= link_to domain_path, class: "button home-domain__link" do %>
+                <%= link_to domain_path,
+                    class: "button home-domain__link",
+                    data: {
+                        action: "click->analytics-consent#trackCta",
+                        analytics_consent_emplacement_param: "accueil_domaine_exclusivite"
+                    } do %>
                     Découvrir le domaine en exclusivité
                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 <% end %>
@@ -129,7 +144,12 @@
                 <li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span>Un accompagnement pour la restauration et les activités</span></li>
             </ul>
 
-            <%= link_to team_buildings_path, class: "button home-professional__link" do %>
+            <%= link_to team_buildings_path,
+                class: "button home-professional__link",
+                data: {
+                    action: "click->analytics-consent#trackCta",
+                    analytics_consent_emplacement_param: "accueil_sejours_professionnels"
+                } do %>
                 Découvrir les séjours professionnels
                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             <% end %>
@@ -250,7 +270,12 @@
                 <li><i class="fa-solid fa-wheat-awn" aria-hidden="true"></i>Escapades gourmandes</li>
             </ul>
 
-            <%= link_to activities_path, class: "button home-activities__link" do %>
+            <%= link_to activities_path,
+                class: "button home-activities__link",
+                data: {
+                    action: "click->analytics-consent#trackCta",
+                    analytics_consent_emplacement_param: "accueil_activites"
+                } do %>
                 Découvrir les activités de la région
                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             <% end %>
@@ -258,38 +283,66 @@
     </div>
 </section>
 
-<%###### Visitors Section ######%>
-<div id="visitors-container" class="bg-green">
-    <h2 class="visitors-heading">Ils ont séjourné chez nous...</h2>
-    <div class="visitors-cards">
-        <div class="visitor-card">
-            <div class="quote-container"> <%= image_tag "quotation.png", alt: "", class: "quote-mark", width: 53, height: 40, loading: "lazy", decoding: "async" %></div>
-            <p class="visitor-text">Endroit exceptionnel, avec des hôtes d’exception !
-                On s’y sent comme à la maison ! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre !
-                C’est tout simplement formidable !
-            </p>
-            <div class="stars">
-                <% 5.times do %>
-                    <%= image_tag "star.png", alt: "", width: 47, height: 47, loading: "lazy", decoding: "async" %>
-                <% end %>
-            </div>
-            <span>Charles dW.</span>
-        </div>
-
-        <div class="visitor-card">
-            <div class="quote-container"> <%= image_tag "quotation.png", alt: "", class: "quote-mark", width: 53, height: 40, loading: "lazy", decoding: "async" %></div>
-            <p class="visitor-text">Un endroit sublime et chaleureux !
-                 Des chambres parfaites pour se reposer et profiter du calme de la campagne.
-                  Une vue sublime sur le terroir du coin ! 
-                  À recommander, sans hésitation !
-            </p>
-            <div class="stars">
-                <% 5.times do %>
-                    <%= image_tag "star.png", alt: "", width: 47, height: 47, loading: "lazy", decoding: "async" %>
-                <% end %>
-            </div>
-            <span>Christophe G.</span>
-        </div>
-
+<%###### Témoignages Section ######%>
+<section id="temoignages" class="home-testimonials" aria-labelledby="home-testimonials-title">
+    <div class="home-testimonials__heading">
+        <p class="home-testimonials__eyebrow">Des souvenirs partagés</p>
+        <h2 id="home-testimonials-title">Ils ont séjourné chez nous</h2>
+        <p>Quelques mots laissés par celles et ceux qui ont pris le temps de vivre la Ferme d’Auwez.</p>
     </div>
-</div>
+
+    <div class="home-testimonials__grid">
+        <article class="home-testimonial">
+            <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            <blockquote>
+                <p>Endroit exceptionnel, avec des hôtes d’exception ! On s’y sent comme à la maison ! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre ! C’est tout simplement formidable !</p>
+            </blockquote>
+            <div class="home-testimonial__stars" aria-hidden="true">
+                <% 5.times do %>
+                    <%= image_tag "star.png", alt: "", width: 47, height: 47, loading: "lazy", decoding: "async" %>
+                <% end %>
+            </div>
+            <p class="home-testimonial__author">Charles dW.</p>
+        </article>
+
+        <article class="home-testimonial">
+            <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            <blockquote>
+                <p>Un endroit sublime et chaleureux ! Des chambres parfaites pour se reposer et profiter du calme de la campagne. Une vue sublime sur le terroir du coin ! À recommander, sans hésitation !</p>
+            </blockquote>
+            <div class="home-testimonial__stars" aria-hidden="true">
+                <% 5.times do %>
+                    <%= image_tag "star.png", alt: "", width: 47, height: 47, loading: "lazy", decoding: "async" %>
+                <% end %>
+            </div>
+            <p class="home-testimonial__author">Christophe G.</p>
+        </article>
+    </div>
+</section>
+
+<%###### Final Call to Action ######%>
+<section class="home-final-cta" aria-labelledby="home-final-cta-title">
+    <div class="home-final-cta__content">
+        <p class="home-final-cta__eyebrow">Votre séjour commence ici</p>
+        <h2 id="home-final-cta-title">Prêt à vous retrouver à la Ferme d’Auwez&nbsp;?</h2>
+        <p>Choisissez vos dates ou écrivez-nous pour préparer un séjour qui vous ressemble.</p>
+        <div class="home-final-cta__actions">
+            <%= link_to "Voir les disponibilités",
+                "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR",
+                target: "_blank",
+                rel: "noopener",
+                class: "button home-final-cta__booking",
+                data: {
+                    action: "click->analytics-consent#trackReservation",
+                    analytics_consent_emplacement_param: "accueil_cta_final"
+                } %>
+            <%= link_to "Nous contacter",
+                contact_path,
+                class: "home-final-cta__contact",
+                data: {
+                    action: "click->analytics-consent#trackCta",
+                    analytics_consent_emplacement_param: "accueil_contact_final"
+                } %>
+        </div>
+    </div>
+</section>
