@@ -9,7 +9,6 @@
     }
 }
 
-
 // Soleil Section
 .soleil-container{
     display: flex;
@@ -82,47 +81,10 @@
 }
 
 // Gites Section
-.gite-card{
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
+.home-gites{
     position: relative;
-    height: fit-content;
-    width: auto;
-    padding: 2em 1em;
-
-    .photos-card {
-        max-width: 50%;
-
-        .main-photo, .sub-photos{
-            img{
-                width: 100%;
-                height: 60vh;
-                object-fit: cover;
-                position: relative;
-                cursor: pointer;
-                &:hover{
-                    transform: scale(1.05);
-                    transition: transform 0.3s ease-in-out;
-                }
-            } 
-        } 
-    }
-
-    .sub-photos{
-        display: flex;
-        justify-content: space-between;
-        padding-top: 10px;
-        gap: 5px;
-
-        img{
-            max-width: 18% !important;
-            height: auto !important;
-        }
-    }
-}
-
-.background-card-gite{
+    overflow: hidden;
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6rem);
     background-color: $green;
     color: $white;
 
@@ -130,305 +92,1264 @@
         content: "";
         position: absolute;
         inset: 0;
-        background-image: url('background-plant');
-        opacity: 0.1;
+        background-image: url("background-plant.webp");
+        background-position: center bottom;
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: bottom;
+        mix-blend-mode: multiply;
+        opacity: 0.2;
+        pointer-events: none;
     }
 }
 
-.gite-card-text{
-    padding: 2em;
-    max-width: 45%;
-    align-self: center;
+.home-gites__heading{
+    position: relative;
     z-index: 1;
+    max-width: 720px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4.5rem);
+    text-align: center;
 
-    h4,
-    .home-card-heading {
-        font-size: calc(0.8rem + 1.2vw);
-        margin-bottom: 1.5rem;
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(2.7rem, 5vw, 4.6rem);
+        line-height: 1.05;
     }
-    .text{
-        padding: 2rem 0;
-        margin: 0;
-    }
-    .button{
-        position: relative;
+
+    > p:last-child{
+        max-width: 620px;
+        margin: 0 auto;
     }
 }
 
-.gite-overview{
-    p {
-        padding-top: 1rem;
-        border-top: solid 1px $white;
-        img, i{
-            width: 1.9rem;
-        }
-        
+.home-gites__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-gites__grid{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2.25rem);
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.home-gite-card{
+    display: flex;
+    min-width: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: $background;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(34, 49, 34, 0.22);
+    color: $green;
+}
+
+.home-gite-card__image{
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background-color: rgba($green, 0.12);
+
+    &::after{
+        content: "";
+        position: absolute;
+        right: -8%;
+        bottom: -1px;
+        left: -8%;
+        height: 26px;
+        background-color: $background;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        object-fit: cover;
+        transition: transform 0.45s ease;
     }
 }
 
-.gite-reverse{
-    p {
-        border-color: $green !important;
+.home-gite-card:hover .home-gite-card__image img{
+    transform: scale(1.035);
+}
+
+.home-gite-card__content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.3rem clamp(1.25rem, 2.4vw, 2rem) 2rem;
+
+    h3{
+        margin-bottom: 1.25rem;
+        font-family: inherit;
+        font-size: clamp(1.35rem, 2vw, 1.75rem);
+        line-height: 1.25;
+    }
+}
+
+.home-gite-card__facts{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid rgba($green, 0.3);
+    border-bottom: 1px solid rgba($green, 0.3);
+    font-size: 0.85rem;
+    line-height: 1.4;
+
+    span{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    i{
+        width: 1.1rem;
+        color: $orange;
+        text-align: center;
+    }
+}
+
+.home-gite-card__feature{
+    margin: 1.25rem 0 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.home-gite-card__link{
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.6rem;
+    margin-top: auto;
+    color: $green;
+    font-size: 0.87rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-color: $orange;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+
+    i{
+        color: $orange;
+        transition: transform 0.2s ease;
+    }
+
+    &:hover i,
+    &:focus-visible i{
+        transform: translateX(4px);
+    }
+
+    &:focus-visible{
+        border-radius: 2px;
+        outline: 3px solid $orange;
+        outline-offset: 6px;
+    }
+}
+
+@media (max-width: 980px) {
+    .home-gites__grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .home-gite-card:last-child{
+        grid-column: 1 / -1;
+        width: calc(50% - 0.7rem);
+        justify-self: center;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    .gite-card{
-        flex-direction: column ;
-        .photos-card{
-            max-width: 100%;
-        }
-
-        .gite-card-text{
-            max-width: 100%;
-            padding: 1em;
-            h4,
-            .home-card-heading{
-                font-size: calc(1rem + 1.8vw);
-            }
-        }
-        .sub-photos{
-            scroll-behavior: smooth;
-            overflow-x: scroll;
-            img{
-                max-width: 55% !important;
-            }
-        }
+    .home-gites{
+        padding: 4.5rem 1.25rem;
     }
-    .gite-reverse{
-        flex-direction: column-reverse;
+
+    .home-gites__heading{
+        margin-bottom: 2.5rem;
+    }
+
+    .home-gites__grid{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .home-gite-card:last-child{
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .home-gite-card__content{
+        padding: 1.15rem 1.25rem 1.75rem;
     }
 }
 
-// Fake pictogram
-.fake-picto-parent{
-    display: flex;
+@media (prefers-reduced-motion: reduce) {
+    .home-gite-card__image img,
+    .home-gite-card__link i{
+        transition: none;
+    }
+}
+
+// Domaine en exclusivité Section
+.home-domain{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5rem, 9vw, 8.5rem) clamp(1.25rem, 6vw, 6rem);
+    background:
+        radial-gradient(ellipse at 95% 5%, rgba($orange, 0.1), transparent 34%),
+        $background;
+}
+
+.home-domain__inner{
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
     align-items: center;
+    max-width: 1320px;
+    margin: 0 auto;
 }
 
-.fake-picto-item{
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    font-size: 22px;
+.home-domain__media{
+    position: relative;
+    min-width: 0;
 
     &::before{
-        // Use Font Awesome icons
-        content: "\f007";
+        content: "";
+        position: absolute;
+        inset: -18px 18px 18px -18px;
+        border: 2px solid rgba($orange, 0.65);
+        border-radius: 8px 46% 8px 8px;
     }
-}
-.picto-sauna{
-    mask-image: url("sauna.png");
-}
 
-
-// Salle Section
-.salle-container{
-    padding: 9vw;
-    min-height: 100vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 10vh auto;
-    
-    .salle-images{
-        width: 45%;
+    img{
         position: relative;
+        width: 100%;
+        aspect-ratio: 1.12 / 1;
+        border-radius: 8px 46% 8px 8px;
+        box-shadow: 0 24px 55px rgba(45, 59, 45, 0.2);
+        object-fit: cover;
+    }
+}
 
-        //Green color
-        // img{
-        //     max-width: 100%;
-        //     max-height: 100%;
-        // }
+.home-domain__content{
+    position: relative;
+    z-index: 1;
+    margin-left: clamp(-5rem, -5vw, -3rem);
+    padding: clamp(2rem, 4vw, 4rem);
+    background-color: $background;
+    border-top: 4px solid $orange;
+    border-radius: 4px 8px 8px 4px;
+    box-shadow: 0 20px 50px rgba(45, 59, 45, 0.18);
 
-        // With color
-        aspect-ratio: 516 / 637;
-        .border-image-mask{
-            width: 100%;
-            height: 100%;
-            background-color: $white;
-            -webkit-mask: url("border-image.png") no-repeat center / contain;
-            mask: url("border-image.png") no-repeat center / contain;
-        }
-        
-        &::after{
-            content: "";
-            position: absolute;
-            inset: 0;
-            top: -8px;
-            left: -8px;
-            background-image: url('enter-640.webp');
-            background-image: image-set(
-                url('enter-640.webp') 1x,
-                url('enter-1200.webp') 2x
-            );
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            margin: 2em;
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(2.7rem, 4.5vw, 4.4rem);
+        line-height: 1.05;
+    }
+}
+
+.home-domain__eyebrow{
+    margin-bottom: 0.6rem;
+    color: $orange;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-domain__intro{
+    max-width: 620px;
+    margin-bottom: 1.6rem;
+    line-height: 1.7;
+}
+
+.home-domain__facts{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 1.75rem;
+    border-top: 1px solid rgba($green, 0.25);
+    border-bottom: 1px solid rgba($green, 0.25);
+
+    span{
+        padding: 1rem 0.75rem;
+        font-size: 0.76rem;
+        line-height: 1.35;
+        text-align: center;
+
+        &:not(:last-child){
+            border-right: 1px solid rgba($green, 0.25);
         }
     }
-    .salle-text{
-        max-width: 45%;
-        h4,
-        .salle-heading{
-            font-size: calc(1.0rem + 1.5vw);
-            margin-bottom: 1.5rem;
-        }
-        p{
-            line-height: 1.8em;
-        }
+
+    strong{
+        display: block;
+        margin-bottom: 0.2rem;
+        color: $orange;
+        font-size: 1.55rem;
+        line-height: 1;
+    }
+}
+
+.home-domain__benefits{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+
+    li{
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7rem;
+        font-size: 0.82rem;
+        line-height: 1.55;
+    }
+
+    i{
+        display: grid;
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 2rem;
+        place-items: center;
+        background-color: rgba($orange, 0.13);
+        border-radius: 50%;
+        color: $orange;
+    }
+}
+
+.home-domain__link{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    i{
+        transition: transform 0.2s ease;
+    }
+
+    &:hover i,
+    &:focus-visible i{
+        transform: translateX(4px);
+    }
+
+    &:focus-visible{
+        outline: 3px solid $green;
+        outline-offset: 4px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .home-domain__inner{
+        grid-template-columns: 1fr;
+        max-width: 760px;
+    }
+
+    .home-domain__media img{
+        aspect-ratio: 4 / 3;
+        border-radius: 8px 40% 0 0;
+    }
+
+    .home-domain__content{
+        margin: -2.5rem 1.5rem 0;
+        border-radius: 4px 4px 8px 8px;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    .salle-container{
-        flex-direction: column;
+    .home-domain{
+        padding: 5rem 1.25rem;
+    }
+
+    .home-domain__media::before{
+        inset: -10px 10px 10px -10px;
+    }
+
+    .home-domain__content{
+        margin: -1.75rem 0.75rem 0;
+        padding: 1.75rem 1.25rem 2rem;
+    }
+
+    .home-domain__facts{
+        span{
+            padding-right: 0.35rem;
+            padding-left: 0.35rem;
+            font-size: 0.68rem;
+        }
+
+        strong{
+            font-size: 1.3rem;
+        }
+    }
+
+    .home-domain__benefits{
+        grid-template-columns: 1fr;
+    }
+
+    .home-domain__link{
+        width: 100%;
+        justify-content: center;
         text-align: center;
-        height: auto;
-        // Color green
-        // width: 85vw;
-        .salle-images, .salle-text{
-            max-width: 100%;
-        }
-        .salle-images{
-            margin-bottom: 2em;
-            // Color green
-            // width: auto;
-
-            // Color white
-            width: 100%;
-            &::after{
-                margin: 1.5em;
-            }
-        }
     }
 }
 
-// Visitors Section
-#visitors-container{
-    min-height: 80vh;
-    padding: 60px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    h3,
-    .visitors-heading{
-        font-size: calc(2.2rem + 1.8vw);
-        color: $background;
-        padding: 20px;
-        &::after{
-            content: "";
-            position: absolute;
-            left: 50%;
-            display: block;
-            width: 143px;
-            transform: translate(-50%, -61%);
-            height: 114px;
-            mask-image: url('cedilles.png');
-            mask-size: cover;
-            mask-repeat: no-repeat;
-            background-color: $background;
-            opacity: 0.2;            
-        }
+@media (prefers-reduced-motion: reduce) {
+    .home-domain__link i{
+        transition: none;
     }
 }
 
-.visitors-cards{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 30px 0;
-    gap: 10vw;
-}
 
-.visitor-card{
-    max-width: 35vw;
-    background-color: $background;
-    border-radius: $radius + 6;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    padding: 15px 25px;
-    display: flex;
-    gap: 0.5em;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0;
+// Séjours professionnels Section
+.home-professional{
     position: relative;
+    overflow: hidden;
+    padding: clamp(5.5rem, 9vw, 8.5rem) clamp(1.25rem, 6vw, 6rem);
+    background:
+        linear-gradient(135deg, rgba($green, 0.16), rgba($green, 0.06)),
+        $background;
+
+    &::before{
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -8%;
+        width: 42%;
+        height: 210px;
+        background-color: rgba($background, 0.7);
+        border-radius: 50%;
+        transform: rotate(-5deg);
+    }
+}
+
+.home-professional__inner{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(3rem, 7vw, 7rem);
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.home-professional__content{
+    h2{
+        margin-bottom: 1.25rem;
+        font-size: clamp(2.8rem, 4.7vw, 4.5rem);
+        line-height: 1.05;
+    }
+}
+
+.home-professional__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $orange;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.home-professional__intro{
+    margin-bottom: 1.75rem;
+    line-height: 1.75;
+}
+
+.home-professional__capacity{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding: 1rem 1.25rem;
+    background-color: $green;
+    border-radius: 6px;
+    box-shadow: 0 12px 28px rgba(45, 59, 45, 0.16);
+    color: $background;
+
+    > i{
+        font-size: 1.65rem;
+    }
+
     p{
         margin: 0;
-        line-height: 1.8em;
+        line-height: 1.45;
     }
-    .quote-container{
-        width: 2em;
-        height: 2em;
-        background-color: $orange;
-        border-radius: 50%;
-        display: flex;
-    }
-    .quote-mark{
-        width: 1em;
-        height: 0.8em;
-        margin: auto;
-    }
-    .stars{
-        img{
-            width: 20px;
-            height: 20px;
-        }
-    }
+
+    strong,
     span{
-        font-size: smaller;
-        font-weight: 900;
+        display: block;
+    }
+
+    strong{
+        margin-bottom: 0.15rem;
+        color: $background;
+        font-size: 0.92rem;
+    }
+
+    span{
+        font-size: 0.78rem;
+    }
+}
+
+.home-professional__uses{
+    display: grid;
+    gap: 0.9rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+
+    li{
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        line-height: 1.55;
+    }
+
+    i{
+        width: 1.25rem;
+        flex: 0 0 1.25rem;
+        padding-top: 0.3rem;
+        color: $orange;
+        text-align: center;
+    }
+}
+
+.home-professional__link{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    i{
+        transition: transform 0.2s ease;
+    }
+
+    &:hover i,
+    &:focus-visible i{
+        transform: translateX(4px);
+    }
+
+    &:focus-visible{
+        outline: 3px solid $green;
+        outline-offset: 4px;
+    }
+}
+
+.home-professional__media{
+    position: relative;
+    padding: 0 0 2rem 2rem;
+
+    &::before{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+        width: 42%;
+        height: 52%;
+        background-color: $orange;
+        border-radius: 4px;
+    }
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: -14px;
+        right: -14px;
+        z-index: 0;
+        width: 42%;
+        height: 52%;
+        border-top: 2px solid $orange;
+        border-right: 2px solid $orange;
+        border-radius: 0 4px 0 0;
+    }
+
+    img{
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 4px;
+        box-shadow: 0 22px 48px rgba(45, 59, 45, 0.22);
+        object-fit: cover;
+    }
+}
+
+.home-professional__media-note{
+    position: absolute;
+    right: 1.5rem;
+    bottom: 0.65rem;
+    z-index: 2;
+    margin: 0;
+    padding: 0.65rem 1rem;
+    background-color: $background;
+    border-radius: 3px;
+    box-shadow: 0 8px 24px rgba(45, 59, 45, 0.18);
+    color: $green;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+    .home-professional__inner{
+        grid-template-columns: 1fr;
+        max-width: 760px;
+    }
+
+    .home-professional__media{
+        padding-left: 1.25rem;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    #visitors-container{
-        height: auto;
-        padding: 30px 20px;
+    .home-professional{
+        padding: 5rem 1.25rem;
+    }
 
-        h3,
-        .visitors-heading{
-            text-align: center;
-            &::after{
-                width: 100px;
-                height: 80px;
-                transform: translate(-50%, -75%);
-            }
+    .home-professional__inner{
+        gap: 3rem;
+    }
+
+    .home-professional__capacity{
+        align-items: flex-start;
+    }
+
+    .home-professional__uses li{
+        font-size: 0.88rem;
+    }
+
+    .home-professional__link{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .home-professional__media{
+        padding: 0 0 1.5rem 0.75rem;
+
+        &::after{
+            top: -8px;
+            right: -8px;
         }
     }
 
-    .visitors-cards{
-        flex-direction: column;
-        gap: 3em;
-        .visitor-card{
-            max-width: 100%;
-        }
+    .home-professional__media-note{
+        right: 0.5rem;
+        max-width: calc(100% - 2rem);
+        text-align: center;
     }
 }
 
-// Cadre Section
-#cadre-container{
-    max-width: 60vw;
-    min-height: 60vh;
-    margin: 20px auto;
+@media (prefers-reduced-motion: reduce) {
+    .home-professional__link i{
+        transition: none;
+    }
+}
+
+// Les plus du domaine Section
+.home-amenities{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5.5rem, 9vw, 8.5rem) clamp(1.25rem, 6vw, 6rem);
+    background:
+        radial-gradient(circle at 8% 92%, rgba($orange, 0.18), transparent 25%),
+        linear-gradient(155deg, darken($green, 9%), $green);
+    color: $background;
+}
+
+.home-amenities__heading{
+    max-width: 760px;
+    margin: 0 auto clamp(2.75rem, 5vw, 4.5rem);
     text-align: center;
+
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(3rem, 5vw, 4.8rem);
+        line-height: 1.05;
+    }
+
+    > p:last-child{
+        max-width: 650px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+}
+
+.home-amenities__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $background;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-amenities__showcase{
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.85fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.home-amenity-card{
     display: flex;
+    min-width: 0;
+    overflow: hidden;
     flex-direction: column;
-    justify-content: center;
+    background-color: $background;
+    border-radius: 8px;
+    box-shadow: 0 22px 48px rgba(24, 35, 24, 0.3);
+    color: $green;
+
+    > img{
+        width: 100%;
+        height: clamp(310px, 31vw, 455px);
+        border-radius: 0;
+        object-fit: cover;
+    }
+}
+
+.home-amenity-card--outdoor > img{
+    object-position: 58% center;
+}
+
+.home-amenity-card__caption{
+    position: relative;
+    min-height: 150px;
+    padding: 1.5rem 1.75rem;
+
+    > i{
+        position: absolute;
+        top: -1.25rem;
+        right: 1.5rem;
+        display: grid;
+        width: 2.7rem;
+        height: 2.7rem;
+        place-items: center;
+        background-color: $orange;
+        border: 4px solid $background;
+        border-radius: 50%;
+        color: $background;
+    }
+
+    h3{
+        margin: 0 0 0.35rem;
+        font-family: inherit;
+        font-size: 1.35rem;
+        line-height: 1.25;
+    }
+
     p{
-        margin: 1.5rem 0;
+        margin: 0;
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+}
+
+.home-amenity-card__caption--double{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
+
+    > div{
+        position: relative;
+        padding: 1.5rem 1.75rem;
+
+        &:not(:last-child){
+            border-right: 1px solid rgba($green, 0.24);
+        }
+    }
+
+    i{
+        margin-bottom: 0.8rem;
+        color: $orange;
+        font-size: 1.2rem;
+    }
+}
+
+.home-amenities__shared{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1000px;
+    margin: clamp(2.5rem, 5vw, 4rem) auto 2rem;
+    padding: 1.15rem 1.5rem;
+    background-color: rgba($background, 0.12);
+    border: 1px solid rgba($background, 0.35);
+    border-radius: 6px;
+
+    > i{
+        font-size: 1.45rem;
+    }
+
+    p{
+        margin: 0;
+        font-size: 0.86rem;
+        line-height: 1.65;
+    }
+
+    strong{
+        color: $background;
+    }
+}
+
+.home-amenities__secondary{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 0 0;
+    border-top: 1px solid rgba($background, 0.3);
+    list-style: none;
+
+    li{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: rgba($background, 0.9);
+        font-size: 0.75rem;
+    }
+
+    i{
+        color: $orange;
+    }
+}
+
+@media (max-width: 900px) {
+    .home-amenities__showcase{
+        grid-template-columns: 1fr;
+        max-width: 720px;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    #cadre-container{
+    .home-amenities{
+        padding: 5rem 1.25rem;
+    }
+
+    .home-amenity-card > img{
         height: auto;
-        max-width: 85vw;
-        margin: 10vw auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .home-amenity-card__caption{
+        min-height: 0;
+        padding: 1.35rem 1.25rem;
+    }
+
+    .home-amenity-card__caption--double > div{
+        padding: 1.35rem 1rem;
+    }
+
+    .home-amenity-card__caption h3{
+        font-size: 1.08rem;
+    }
+
+    .home-amenities__shared{
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .home-amenities__secondary{
+        justify-content: flex-start;
+        gap: 0.75rem 1rem;
+    }
+}
+
+// Activités dans la région Section
+.home-activities{
+    position: relative;
+    display: flex;
+    min-height: clamp(650px, 56vw, 790px);
+    overflow: hidden;
+    align-items: center;
+    color: $background;
+}
+
+.home-activities__image,
+.home-activities__overlay{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.home-activities__image{
+    border-radius: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-activities__overlay{
+    background: linear-gradient(90deg, rgba(54, 34, 22, 0.94) 0%, rgba(78, 48, 27, 0.8) 42%, rgba(118, 72, 34, 0.2) 76%, rgba(118, 72, 34, 0.04) 100%);
+}
+
+.home-activities__inner{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(5rem, 8vw, 8rem) clamp(1.25rem, 6vw, 6rem);
+}
+
+.home-activities__content{
+    max-width: 590px;
+
+    h2{
+        margin-bottom: 1.25rem;
+        font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+        line-height: 1.02;
+    }
+
+    > p:not(.home-activities__eyebrow){
+        margin-bottom: 1.75rem;
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+}
+
+.home-activities__eyebrow{
+    margin-bottom: 0.7rem;
+    color: $background;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.home-activities__themes{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+
+    li{
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.7rem 0.8rem;
+        background-color: rgba($background, 0.11);
+        border: 1px solid rgba($background, 0.25);
+        border-radius: 4px;
+        font-size: 0.76rem;
+        line-height: 1.4;
+    }
+
+    i{
+        width: 1rem;
+        flex: 0 0 1rem;
+        color: $orange;
+        text-align: center;
+    }
+}
+
+.home-activities__link{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    i{
+        transition: transform 0.2s ease;
+    }
+
+    &:hover i,
+    &:focus-visible i{
+        transform: translateX(4px);
+    }
+
+    &:focus-visible{
+        outline: 3px solid $background;
+        outline-offset: 4px;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .home-activities{
+        min-height: 790px;
+    }
+
+    .home-activities__image{
+        object-position: 58% center;
+    }
+
+    .home-activities__overlay{
+        background: linear-gradient(180deg, rgba(73, 43, 24, 0.5) 0%, rgba(65, 38, 23, 0.88) 48%, rgba(49, 29, 20, 0.96) 100%);
+    }
+
+    .home-activities__inner{
+        align-self: flex-end;
+        padding: 5rem 1.25rem;
+    }
+
+    .home-activities__content{
+        text-align: center;
+
+        > p:not(.home-activities__eyebrow){
+            font-size: 0.95rem;
+        }
+    }
+
+    .home-activities__themes{
+        text-align: left;
+    }
+
+    .home-activities__link{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-activities__link i{
+        transition: none;
+    }
+}
+
+// Témoignages Section
+.home-testimonials{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5.5rem, 9vw, 8.5rem) clamp(1.25rem, 8vw, 8rem);
+    background:
+        radial-gradient(circle at 12% 15%, rgba($orange, 0.1), transparent 24%),
+        radial-gradient(circle at 92% 86%, rgba($green, 0.11), transparent 28%),
+        $background;
+}
+
+.home-testimonials__heading{
+    max-width: 720px;
+    margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+    text-align: center;
+
+    h2{
+        position: relative;
+        margin-bottom: 1rem;
+        font-size: clamp(3rem, 5vw, 4.8rem);
+        line-height: 1.05;
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: clamp(6.5rem, 12vw, 9rem);
+            aspect-ratio: 5 / 4;
+            background-color: rgba($green, 0.18);
+            mask-image: image-url("cedilles.png");
+            mask-position: center;
+            mask-repeat: no-repeat;
+            mask-size: contain;
+            transform: translate(-50%, -52%);
+        }
+    }
+
+    > p:last-child{
+        margin: 0;
+        line-height: 1.7;
+    }
+}
+
+.home-testimonials__eyebrow{
+    margin-bottom: 0.65rem;
+    color: $orange;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.home-testimonials__grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 4rem);
+    max-width: 1120px;
+    margin: 0 auto 2rem;
+}
+
+.home-testimonial{
+    position: relative;
+    padding: clamp(2rem, 4vw, 3.25rem);
+    background-color: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba($green, 0.18);
+    border-top: 4px solid $orange;
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgba(45, 59, 45, 0.13);
+
+    &:nth-child(2){
+        transform: translateY(2rem);
+    }
+
+    > i{
+        display: grid;
+        width: 2.6rem;
+        height: 2.6rem;
+        margin-bottom: 1.5rem;
+        place-items: center;
+        background-color: rgba($orange, 0.14);
+        border-radius: 50%;
+        color: $orange;
+        font-size: 1rem;
+    }
+
+    blockquote{
+        margin: 0 0 1.25rem;
+    }
+
+    blockquote p{
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.85;
+    }
+}
+
+.home-testimonial__stars{
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 1.35rem;
+
+    img{
+        width: 1rem;
+        height: 1rem;
+        object-fit: contain;
+    }
+}
+
+.home-testimonial__author{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    &::before{
+        content: "";
+        width: 2rem;
+        height: 2px;
+        background-color: $orange;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .home-testimonials{
+        padding: 5rem 1.25rem;
+    }
+
+    .home-testimonials__grid{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .home-testimonial:nth-child(2){
+        transform: none;
+    }
+}
+
+// Final Call to Action
+.home-final-cta{
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5rem, 8vw, 7.5rem) 1.25rem;
+    background:
+        radial-gradient(circle at 15% -15%, rgba($orange, 0.25), transparent 34%),
+        radial-gradient(circle at 88% -25%, rgba($background, 0.12), transparent 35%),
+        #405445;
+    color: $background;
+    text-align: center;
+}
+
+.home-final-cta + .site-footer{
+    margin-top: 0;
+    border-top: 1px solid rgba($background, 0.12);
+}
+
+.home-final-cta__content{
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: 0 auto;
+
+    h2{
+        margin-bottom: 1rem;
+        font-size: clamp(3rem, 5.5vw, 5rem);
+        line-height: 1.05;
+    }
+
+    > p:not(.home-final-cta__eyebrow){
+        max-width: 620px;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+    }
+}
+
+.home-final-cta__eyebrow{
+    margin-bottom: 0.7rem;
+    color: $background;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.home-final-cta__actions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.home-final-cta__booking,
+.home-final-cta__contact{
+    display: inline-flex;
+    min-width: 210px;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.35rem;
+    border-radius: 4px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.home-final-cta__booking:focus-visible,
+.home-final-cta__contact:focus-visible{
+    outline: 3px solid $background;
+    outline-offset: 4px;
+}
+
+.home-final-cta__contact{
+    border: 1px solid rgba($background, 0.75);
+    color: $background;
+
+    &:hover{
+        background-color: $background;
+        color: $green;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .home-final-cta__actions{
+        flex-direction: column;
+    }
+
+    .home-final-cta__booking,
+    .home-final-cta__contact{
+        width: 100%;
     }
 }

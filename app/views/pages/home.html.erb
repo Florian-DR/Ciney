@@ -23,155 +23,326 @@
 </div>
 
 <%###### Gites Section ######%>
-<%#### Hirondelles ####%>
-<div id="gites" class="gite-card background-card-gite">
-    <%= render "shared/gite_photos_card", gite: @gite_1 %>
-
-    <div class="gite-card-text">
-        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_1.name%></h2>
-        <div class="gite-overview">
-            <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_1.capacity %> personnes</p>
-            <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
-            <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-white"></i>Sauna partagé</p>
-            <p class="pictograme"><i class="fa-solid fa-fire-burner"></i>Feu de bois</p>
-            <p class="text">Les Hirondelles accueillent jusqu’à <%= @gite_1.capacity %>  personnes dans un espace spacieux, convivial et chaleureux. Ce gîte est idéal pour les familles nombreuses ou les groupes d’amis souhaitant se retrouver autour d’un feu de bois, d’un grand repas ou de moments partagés en toute simplicité. L’agencement de la maison permet à chacun de profiter pleinement de son séjour, dans un cadre à la fois fonctionnel et accueillant.</p>
-        </div>
-        <%= link_to "Voir le gîte", gite_path(@gite_1), class: "button" %>
-    </div>
-</div>
-
-<%#### Horizon ####%>
-<div class="gite-card gite-reverse">
-    <div class="gite-card-text">
-        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_2.name%></h2>
-        <div class="gite-overview">
-            <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_2.capacity %> personnes</p>
-            <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
-            <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-green"></i>Sauna partagé</p>
-            <p class="text">L’Horizon peut accueillir jusqu’à <%= @gite_2.capacity %>  personnes. Ce gîte au style cosy et lumineux séduit par sa terrasse panoramique, qui offre une vue imprenable sur la campagne vallonnée du Condroz. Parfait pour une escapade en petit groupe ou en famille, il ravira les amateurs de nature et de tranquillité.</p>
-        </div>
-        <%= link_to "Voir le gîte", gite_path(@gite_2), class: "button" %>
+<% gite_features = {
+    "Les Hirondelles" => "Grands groupes, convivialité et feu de bois",
+    "L'Horizon" => "Terrasse panoramique et vue sur le Condroz",
+    "L'Arbre de Vie" => "Plain-pied et accessibilité PMR"
+} %>
+<% gite_cta_locations = {
+    "Les Hirondelles" => "accueil_gite_hirondelles",
+    "L'Horizon" => "accueil_gite_horizon",
+    "L'Arbre de Vie" => "accueil_gite_arbre_de_vie"
+} %>
+<section id="gites" class="home-gites" aria-labelledby="home-gites-title">
+    <div class="home-gites__heading">
+        <p class="home-gites__eyebrow">Trois maisons, trois atmosphères</p>
+        <h2 id="home-gites-title">Choisissez le gîte qui vous ressemble</h2>
+        <p>En famille ou entre amis, trouvez l’espace qui accueillera vos prochains moments partagés au cœur du Condroz.</p>
     </div>
 
-    <%= render "shared/gite_photos_card", gite: @gite_2 %>
-</div>
+    <div class="home-gites__grid">
+        <% @home_gites.each do |gite| %>
+            <article class="home-gite-card">
+                <div class="home-gite-card__image">
+                    <%= responsive_attachment_tag(
+                        gite,
+                        :main_photo,
+                        alt: "Photo principale du gîte #{gite.name}",
+                        variant: :medium,
+                        sizes: "(max-width: 768px) calc(100vw - 40px), 30vw",
+                        loading: "lazy",
+                        decoding: "async"
+                    ) if gite.main_photo %>
+                </div>
 
-<%#### Arbre de vie ####%>
-<div class="gite-card background-card-gite">
-    <%= render "shared/gite_photos_card", gite: @gite_3 %>
-
-    <div class="gite-card-text">
-        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_3.name%></h2>
-        <div class="gite-overview">
-            <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_3.capacity %> personnes</p>
-            <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
-            <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-white"></i>Sauna partagé</p>
-            <p class="pictograme"><i class="fa-solid fa-wheelchair"></i>Accès PMR</p>
-            <p class="text">L’Arbre de Vie, pensé pour <%= @gite_3.capacity %>  personnes, est un espace intimiste, chaleureux et entièrement de plain-pied. Il est totalement accessible aux personnes à mobilité réduite (PMR). Ce gîte allie confort moderne, simplicité et accessibilité, pour un séjour serein, en couple ou en petite famille.</p>
-        </div>
-        <%= link_to "Voir le gîte", gite_path(@gite_3), class: "button" %>
+                <div class="home-gite-card__content">
+                    <h3><%= gite.name %></h3>
+                    <div class="home-gite-card__facts" aria-label="Informations principales">
+                        <span><i class="fa-solid fa-user-group" aria-hidden="true"></i><%= gite.capacity %> personnes</span>
+                        <span><i class="fa-solid fa-bed" aria-hidden="true"></i><%= gite.rooms %> chambres</span>
+                    </div>
+                    <p class="home-gite-card__feature"><%= gite_features.fetch(gite.name) %></p>
+                    <%= link_to gite_path(gite),
+                        class: "home-gite-card__link",
+                        data: {
+                            action: "click->analytics-consent#trackCta",
+                            analytics_consent_emplacement_param: gite_cta_locations.fetch(gite.name)
+                        } do %>
+                        Découvrir <%= gite.name %>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    <% end %>
+                </div>
+            </article>
+        <% end %>
     </div>
-</div>
+</section>
 
-<%#### Grand Horizon ####%>
-<div class="gite-card gite-reverse">
-    <div class="gite-card-text">
-        <h2 class="heading-h4 home-card-heading">Le gîte : <%= @gite_4.name%></h2>
-        <div class="gite-overview">
-            <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_4.capacity %> personnes</p>
-            <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure partagée</p>
-            <p class="pictograme fake-picto-parent"><i class="fa-solid fake-picto-item picto-sauna bg-green"></i>Sauna partagé</p>
-            <p class="pictograme"><i class="fa-solid fa-wheelchair"></i>Accès PMR</p>
-            <p class="text">Né de la fusion de l'Horizon et de l'Arbre de Vie, Le Grand Horizon offre un hébergement spacieux et harmonieux au sein d’un même bâtiment. Cette configuration permet d'accueillir <%= @gite_4.capacity %> personnes et réunit un confort accessible et de plain-pied avec l’ambiance cosy d'une terrasse panoramique. Idéale pour les familles élargies, les groupes d’amis ou les séjours intergénérationnels, cette formule permet de partager des moments conviviaux tout en conservant l’intimité et l’indépendance de chaque espace.</p>
-        </div>
-        <%= link_to "Voir le gîte", gite_path(@gite_4), class: "button" %>
-    </div>
-
-    <%= render "shared/gite_photos_card", gite: @gite_4 %>
-</div>
-
-<%#### Toute la ferme ####%>
-<% if @gite_5.present? %>
-    <div class="gite-card background-card-gite">
-        <%= render "shared/gite_photos_card", gite: @gite_5 %>
-
-        <div class="gite-card-text">
-            <h2 class="heading-h4 home-card-heading"><%= @gite_5.name %></h2>
-            <div class="gite-overview">
-                <p class="pictograme"><i class="fa-solid fa-user"></i><%= @gite_5.capacity %> personnes</p>
-                <p class="pictograme"><i class="fa-solid fa-house"></i>3 gîtes rien que pour vous</p>
-                <p class="pictograme"><i class="fa-solid fa-water-ladder"></i>Piscine intérieure & sauna privatifs</p>
-                <p class="pictograme"><i class="fa-solid fa-wheelchair"></i>Accès PMR</p>
-                <p class="text">Réservez la Ferme d’Auwez dans son intégralité et profitez de ses trois gîtes, de ses espaces de détente et de son jardin en toute intimité. Une formule idéale pour réunir les grandes familles et les groupes d’amis dans un seul lieu.</p>
+<%###### Domaine en exclusivité Section ######%>
+<section class="home-domain" aria-labelledby="home-domain-title">
+        <div class="home-domain__inner">
+            <div class="home-domain__media">
+                <%= image_tag(
+                    "domaine-moment-partage-1920.webp",
+                    srcset: {
+                        "domaine-moment-partage-960.webp" => "960w",
+                        "domaine-moment-partage-1920.webp" => "1920w"
+                    },
+                    sizes: "(max-width: 768px) calc(100vw - 40px), 58vw",
+                    alt: "Famille et amis réunis dans le jardin de la Ferme d’Auwez",
+                    loading: "lazy",
+                    decoding: "async"
+                ) %>
             </div>
-            <%= link_to "Découvrir la Ferme complète", gite_path(@gite_5), class: "button" %>
+
+            <div class="home-domain__content">
+                <p class="home-domain__eyebrow">La Ferme rien que pour vous</p>
+                <h2 id="home-domain-title">Le domaine en exclusivité</h2>
+                <p class="home-domain__intro">Réunissez votre grande famille, votre cousinade ou votre groupe d’amis dans un lieu entièrement réservé à vos moments partagés.</p>
+
+                <div class="home-domain__facts" aria-label="Capacité du domaine">
+                    <span><strong>3</strong> gîtes réunis</span>
+                    <span><strong>25</strong> personnes</span>
+                    <span><strong>10</strong> chambres</span>
+                </div>
+
+                <ul class="home-domain__benefits">
+                    <li><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span>Piscines et sauna privatisés</span></li>
+                    <li><i class="fa-solid fa-people-roof" aria-hidden="true"></i><span>Grange et mezzanine en accès exclusif</span></li>
+                    <li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span>Cuisine adaptée aux groupes, avec possibilité de faire appel à un chef ou à un traiteur</span></li>
+                    <li><i class="fa-solid fa-tree" aria-hidden="true"></i><span>Jardin et extérieurs réservés à votre groupe</span></li>
+                </ul>
+
+                <%= link_to domain_path,
+                    class: "button home-domain__link",
+                    data: {
+                        action: "click->analytics-consent#trackCta",
+                        analytics_consent_emplacement_param: "accueil_domaine_exclusivite"
+                    } do %>
+                    Découvrir le domaine en exclusivité
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <% end %>
+            </div>
+        </div>
+</section>
+
+<%###### Séjours professionnels Section ######%>
+<section id="sejours-professionnels" class="home-professional" aria-labelledby="home-professional-title">
+    <div class="home-professional__inner">
+        <div class="home-professional__content">
+            <p class="home-professional__eyebrow">Travailler, créer du lien, se ressourcer</p>
+            <h2 id="home-professional-title">Séjours professionnels &amp; bien-être</h2>
+            <p class="home-professional__intro">Entreprises, associations, formateurs et organisateurs de stages trouvent ici un cadre au vert où les temps de travail laissent naturellement place aux échanges et à la respiration.</p>
+
+            <div class="home-professional__capacity">
+                <i class="fa-solid fa-house-laptop" aria-hidden="true"></i>
+                <p><strong>Séjours résidentiels</strong><span>Jusqu’à 25 personnes dans 10 chambres</span></p>
+            </div>
+
+            <ul class="home-professional__uses">
+                <li><i class="fa-solid fa-people-group" aria-hidden="true"></i><span>Une salle polyvalente pour les réunions, formations, ateliers et pratiques de bien-être</span></li>
+                <li><i class="fa-solid fa-calendar-day" aria-hidden="true"></i><span>La possibilité d’organiser une journée sans hébergement</span></li>
+                <li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span>Un accompagnement pour la restauration et les activités</span></li>
+            </ul>
+
+            <%= link_to team_buildings_path,
+                class: "button home-professional__link",
+                data: {
+                    action: "click->analytics-consent#trackCta",
+                    analytics_consent_emplacement_param: "accueil_sejours_professionnels"
+                } do %>
+                Découvrir les séjours professionnels
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <% end %>
+        </div>
+
+        <div class="home-professional__media">
+            <%= image_tag(
+                "salle-polyvalente-reunion-1400.webp",
+                srcset: {
+                    "salle-polyvalente-reunion-640.webp" => "640w",
+                    "salle-polyvalente-reunion-1400.webp" => "1400w"
+                },
+                sizes: "(max-width: 768px) calc(100vw - 40px), 50vw",
+                alt: "Salle polyvalente de la Ferme d’Auwez aménagée pour une réunion",
+                loading: "lazy",
+                decoding: "async"
+            ) %>
+            <p class="home-professional__media-note">Réunions · Formations · Ateliers · Bien-être</p>
         </div>
     </div>
-<% end %>
+</section>
 
-<%###### Salle Section ######%>
-<div class="salle-container">
-    <div class="salle-images">
-        <%# <%= image_tag "border-image.png", alt: "border-image.png"%>
-        <div class="border-image-mask"></div>
+<%###### Les plus du domaine Section ######%>
+<section id="plus-du-domaine" class="home-amenities" aria-labelledby="home-amenities-title">
+    <div class="home-amenities__heading">
+        <p class="home-amenities__eyebrow">Prendre le temps, simplement</p>
+        <h2 id="home-amenities-title">Les plus du domaine</h2>
+        <p>Après une balade, une journée de travail ou simplement pour le plaisir, profitez des espaces de détente de la Ferme d’Auwez.</p>
     </div>
-    <div class="salle-text">
-        <h2 class="heading-h4 salle-heading">Séjours professionnels &amp; bien-être</h2>
-        <p>Réunissez votre équipe au vert, dans un lieu où les temps de travail laissent naturellement place aux échanges, à la détente et aux expériences partagées.
 
-            Salle modulable, activités sur mesure, restauration et hébergement jusqu’à 25 personnes : construisez votre programme librement ou confiez-nous son organisation.</p>
+    <div class="home-amenities__showcase">
+        <article class="home-amenity-card home-amenity-card--indoor">
+            <%= image_tag(
+                "piscine-interieure-sauna-ferme-auwez.webp",
+                srcset: {
+                    "piscine-interieure-sauna-ferme-auwez-960.webp" => "960w",
+                    "piscine-interieure-sauna-ferme-auwez.webp" => "2048w"
+                },
+                sizes: "(max-width: 768px) calc(100vw - 40px), 58vw",
+                alt: "Piscine intérieure de la Ferme d’Auwez",
+                loading: "lazy",
+                decoding: "async"
+            ) %>
+            <div class="home-amenity-card__caption home-amenity-card__caption--double">
+                <div>
+                    <i class="fa-solid fa-water-ladder" aria-hidden="true"></i>
+                    <h3>Piscine intérieure</h3>
+                    <p>Accessible toute l’année</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-temperature-high" aria-hidden="true"></i>
+                    <h3>Sauna</h3>
+                    <p>Une chaleur douce pour ralentir</p>
+                </div>
+            </div>
+        </article>
 
-        <%= link_to "Découvrir nos séjours professionnels & bien-être", team_buildings_path, class: "button" %>
+        <article class="home-amenity-card home-amenity-card--outdoor">
+            <%= image_tag(
+                "piscine-exterieure-ferme-auwez-1920.webp",
+                srcset: {
+                    "piscine-exterieure-ferme-auwez-960.webp" => "960w",
+                    "piscine-exterieure-ferme-auwez-1920.webp" => "1920w"
+                },
+                sizes: "(max-width: 768px) calc(100vw - 40px), 36vw",
+                alt: "Piscine extérieure avec vue sur la campagne du Condroz",
+                loading: "lazy",
+                decoding: "async"
+            ) %>
+            <div class="home-amenity-card__caption">
+                <i class="fa-solid fa-person-swimming" aria-hidden="true"></i>
+                <h3>Piscine extérieure</h3>
+                <p>Une parenthèse au grand air face à la campagne</p>
+            </div>
+        </article>
     </div>
-</div> 
 
-<%###### Visitors Section ######%>
-<div id="visitors-container" class="bg-green">
-    <h2 class="visitors-heading">Ils ont séjourné chez nous...</h2>
-    <div class="visitors-cards">
-        <div class="visitor-card">
-            <div class="quote-container"> <%= image_tag "quotation.png", alt: "", class: "quote-mark", width: 53, height: 40, loading: "lazy", decoding: "async" %></div>
-            <p class="visitor-text">Endroit exceptionnel, avec des hôtes d’exception !
-                On s’y sent comme à la maison ! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre !
-                C’est tout simplement formidable !
-            </p>
-            <div class="stars">
+    <div class="home-amenities__shared">
+        <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+        <p><strong>Des espaces partagés.</strong> Lorsque les gîtes sont loués séparément, les piscines et le sauna sont partagés entre les hôtes des trois gîtes.</p>
+    </div>
+
+    <ul class="home-amenities__secondary" aria-label="Autres avantages du domaine">
+        <li><i class="fa-solid fa-seedling" aria-hidden="true"></i>Vaste jardin</li>
+        <li><i class="fa-solid fa-people-roof" aria-hidden="true"></i>Grange conviviale</li>
+        <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i>Parking sur place</li>
+        <li><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Bornes de recharge</li>
+        <li><i class="fa-solid fa-tree" aria-hidden="true"></i>Nature du Condroz</li>
+    </ul>
+</section>
+
+<%###### Activités dans la région Section ######%>
+<section id="activites-region" class="home-activities" aria-labelledby="home-activities-title">
+    <%= image_tag(
+        "condroz-sentier-coucher-1920.webp",
+        srcset: {
+            "condroz-sentier-coucher-960.webp" => "960w",
+            "condroz-sentier-coucher-1920.webp" => "1920w"
+        },
+        sizes: "100vw",
+        alt: "Sentier dans une prairie du Condroz au coucher du soleil",
+        class: "home-activities__image",
+        loading: "lazy",
+        decoding: "async"
+    ) %>
+    <div class="home-activities__overlay" aria-hidden="true"></div>
+
+    <div class="home-activities__inner">
+        <div class="home-activities__content">
+            <p class="home-activities__eyebrow">Le Condroz à votre porte</p>
+            <h2 id="home-activities-title">Explorer les environs</h2>
+            <p>Partez à pied ou à vélo sur les chemins vallonnés, puis laissez-vous surprendre par les villages, le patrimoine et les saveurs de la région.</p>
+
+            <ul class="home-activities__themes" aria-label="Aperçu des activités régionales">
+                <li><i class="fa-solid fa-person-hiking" aria-hidden="true"></i>Balades et grand air</li>
+                <li><i class="fa-solid fa-bicycle" aria-hidden="true"></i>Parcours vélo</li>
+                <li><i class="fa-solid fa-landmark" aria-hidden="true"></i>Découvertes culturelles</li>
+                <li><i class="fa-solid fa-wheat-awn" aria-hidden="true"></i>Escapades gourmandes</li>
+            </ul>
+
+            <%= link_to activities_path,
+                class: "button home-activities__link",
+                data: {
+                    action: "click->analytics-consent#trackCta",
+                    analytics_consent_emplacement_param: "accueil_activites"
+                } do %>
+                Découvrir les activités de la région
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <% end %>
+        </div>
+    </div>
+</section>
+
+<%###### Témoignages Section ######%>
+<section id="temoignages" class="home-testimonials" aria-labelledby="home-testimonials-title">
+    <div class="home-testimonials__heading">
+        <p class="home-testimonials__eyebrow">Des souvenirs partagés</p>
+        <h2 id="home-testimonials-title">Ils ont séjourné chez nous</h2>
+        <p>Quelques mots laissés par celles et ceux qui ont pris le temps de vivre la Ferme d’Auwez.</p>
+    </div>
+
+    <div class="home-testimonials__grid">
+        <article class="home-testimonial">
+            <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            <blockquote>
+                <p>Endroit exceptionnel, avec des hôtes d’exception ! On s’y sent comme à la maison ! De chouettes balades à faire, des petites villes ou villages à proximité à visiter, ou juste profiter du cadre ! C’est tout simplement formidable !</p>
+            </blockquote>
+            <div class="home-testimonial__stars" aria-hidden="true">
                 <% 5.times do %>
                     <%= image_tag "star.png", alt: "", width: 47, height: 47, loading: "lazy", decoding: "async" %>
                 <% end %>
             </div>
-            <span>Charles dW.</span>
-        </div>
+            <p class="home-testimonial__author">Charles dW.</p>
+        </article>
 
-        <div class="visitor-card">
-            <div class="quote-container"> <%= image_tag "quotation.png", alt: "", class: "quote-mark", width: 53, height: 40, loading: "lazy", decoding: "async" %></div>
-            <p class="visitor-text">Un endroit sublime et chaleureux !
-                 Des chambres parfaites pour se reposer et profiter du calme de la campagne.
-                  Une vue sublime sur le terroir du coin ! 
-                  À recommander, sans hésitation !
-            </p>
-            <div class="stars">
+        <article class="home-testimonial">
+            <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+            <blockquote>
+                <p>Un endroit sublime et chaleureux ! Des chambres parfaites pour se reposer et profiter du calme de la campagne. Une vue sublime sur le terroir du coin ! À recommander, sans hésitation !</p>
+            </blockquote>
+            <div class="home-testimonial__stars" aria-hidden="true">
                 <% 5.times do %>
                     <%= image_tag "star.png", alt: "", width: 47, height: 47, loading: "lazy", decoding: "async" %>
                 <% end %>
             </div>
-            <span>Christophe G.</span>
+            <p class="home-testimonial__author">Christophe G.</p>
+        </article>
+    </div>
+</section>
+
+<%###### Final Call to Action ######%>
+<section class="home-final-cta" aria-labelledby="home-final-cta-title">
+    <div class="home-final-cta__content">
+        <p class="home-final-cta__eyebrow">Votre séjour commence ici</p>
+        <h2 id="home-final-cta-title">Prêt à vous retrouver à la Ferme d’Auwez&nbsp;?</h2>
+        <p>Choisissez vos dates ou écrivez-nous pour préparer un séjour qui vous ressemble.</p>
+        <div class="home-final-cta__actions">
+            <%= link_to "Voir les disponibilités",
+                "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR",
+                target: "_blank",
+                rel: "noopener",
+                class: "button home-final-cta__booking",
+                data: {
+                    action: "click->analytics-consent#trackReservation",
+                    analytics_consent_emplacement_param: "accueil_cta_final"
+                } %>
+            <%= link_to "Nous contacter",
+                contact_path,
+                class: "home-final-cta__contact",
+                data: {
+                    action: "click->analytics-consent#trackCta",
+                    analytics_consent_emplacement_param: "accueil_contact_final"
+                } %>
         </div>
-
     </div>
-</div>
-
-
-<%###### Cadre Section ######%>
-<div id="cadre-container">
-    <div class="cadre-text">
-        <h2 class="heading-h3">Un cadre pensé pour votre confort</h2>
-        <p>En séjournant à la Ferme d’Auwez, au cœur du Condroz belge, vous profitez d’un gîte tout confort avec piscine intérieure, sauna, vaste jardin et équipements adaptés aux familles et aux groupes. 
-            Idéalement située près de Ciney, la ferme est le point de départ parfait pour découvrir les charmes de la région : balades balisées, circuits VTT, EuroVélo 5 et RAVeL à proximité, mais aussi châteaux emblématiques comme Modave ou Vêves, villages typiques comme Crupet ou Mozet, marchés gourmands et brasseries artisanales.
-            En été, la piscine extérieure clôturée permet de se rafraîchir après une journée d’exploration. Un abri sécurisé pour vélos, un parking avec borne électrique et la proximité d’activités nature ou culturelles font de la Ferme d’Auwez un lieu idéal pour des vacances ressourçantes en couple, en famille ou entre amis en Wallonie.</p>
-        <%= link_to "Découvrir les gîtes", gite_path(@gite_1), class: "button"%>
-    </div>
-    <div class="cadre-photos">
-
-    </div>
-</div>
+</section>
