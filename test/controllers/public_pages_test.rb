@@ -147,6 +147,25 @@ class PublicPagesTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "l'accueil donne un aperçu des activités avant les témoignages" do
+    get root_path
+
+    assert_response :success
+    assert_select ".home-activities", count: 1 do
+      assert_select "h2", text: "Explorer les environs", count: 1
+      assert_select ".home-activities__themes", text: /Balades et grand air/, count: 1
+      assert_select ".home-activities__themes", text: /Parcours vélo/, count: 1
+      assert_select ".home-activities__themes", text: /Découvertes culturelles/, count: 1
+      assert_select ".home-activities__themes", text: /Escapades gourmandes/, count: 1
+      assert_select "a[href='#{activities_path}']", text: /Découvrir les activités de la région/, count: 1
+      assert_select "img[alt='Sentier dans une prairie du Condroz au coucher du soleil']", count: 1
+    end
+
+    assert_operator response.body.index("home-activities"), :<,
+      response.body.index("visitors-container")
+    assert_select "h2", text: "Un cadre pensé pour votre confort", count: 0
+  end
+
   test "la page de connexion demande aux moteurs de recherche de ne pas l’indexer" do
     get new_user_session_path
 

@@ -9,7 +9,6 @@
     }
 }
 
-
 // Soleil Section
 .soleil-container{
     display: flex;
@@ -969,6 +968,159 @@
     }
 }
 
+// Activités dans la région Section
+.home-activities{
+    position: relative;
+    display: flex;
+    min-height: clamp(650px, 56vw, 790px);
+    overflow: hidden;
+    align-items: center;
+    color: $background;
+}
+
+.home-activities__image,
+.home-activities__overlay{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.home-activities__image{
+    border-radius: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-activities__overlay{
+    background: linear-gradient(90deg, rgba(54, 34, 22, 0.94) 0%, rgba(78, 48, 27, 0.8) 42%, rgba(118, 72, 34, 0.2) 76%, rgba(118, 72, 34, 0.04) 100%);
+}
+
+.home-activities__inner{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(5rem, 8vw, 8rem) clamp(1.25rem, 6vw, 6rem);
+}
+
+.home-activities__content{
+    max-width: 590px;
+
+    h2{
+        margin-bottom: 1.25rem;
+        font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+        line-height: 1.02;
+    }
+
+    > p:not(.home-activities__eyebrow){
+        margin-bottom: 1.75rem;
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+}
+
+.home-activities__eyebrow{
+    margin-bottom: 0.7rem;
+    color: $background;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.home-activities__themes{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+
+    li{
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.7rem 0.8rem;
+        background-color: rgba($background, 0.11);
+        border: 1px solid rgba($background, 0.25);
+        border-radius: 4px;
+        font-size: 0.76rem;
+        line-height: 1.4;
+    }
+
+    i{
+        width: 1rem;
+        flex: 0 0 1rem;
+        color: $orange;
+        text-align: center;
+    }
+}
+
+.home-activities__link{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    i{
+        transition: transform 0.2s ease;
+    }
+
+    &:hover i,
+    &:focus-visible i{
+        transform: translateX(4px);
+    }
+
+    &:focus-visible{
+        outline: 3px solid $background;
+        outline-offset: 4px;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .home-activities{
+        min-height: 790px;
+    }
+
+    .home-activities__image{
+        object-position: 58% center;
+    }
+
+    .home-activities__overlay{
+        background: linear-gradient(180deg, rgba(73, 43, 24, 0.5) 0%, rgba(65, 38, 23, 0.88) 48%, rgba(49, 29, 20, 0.96) 100%);
+    }
+
+    .home-activities__inner{
+        align-self: flex-end;
+        padding: 5rem 1.25rem;
+    }
+
+    .home-activities__content{
+        text-align: center;
+
+        > p:not(.home-activities__eyebrow){
+            font-size: 0.95rem;
+        }
+    }
+
+    .home-activities__themes{
+        text-align: left;
+    }
+
+    .home-activities__link{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-activities__link i{
+        transition: none;
+    }
+}
+
 // Visitors Section
 #visitors-container{
     min-height: 80vh;
@@ -1070,27 +1222,5 @@
         .visitor-card{
             max-width: 100%;
         }
-    }
-}
-
-// Cadre Section
-#cadre-container{
-    max-width: 60vw;
-    min-height: 60vh;
-    margin: 20px auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    p{
-        margin: 1.5rem 0;
-    }
-}
-
-@media (max-width: $breakpoint-mobile) {
-    #cadre-container{
-        height: auto;
-        max-width: 85vw;
-        margin: 10vw auto;
     }
 }
