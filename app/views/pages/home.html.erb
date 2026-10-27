@@ -5,7 +5,7 @@
 
 <%###### Carousel Section ######%>
 <div id="carousel-container" class="carousel slide carousel-fade" data-bs-ride="carousel slide fade" data-bs-touch="true">
-    <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, loop: true, muted: :muted, playsinline: true, preload: 'metadata', style: "width: 100vw; height: auto" %>
+    <%= video_tag 'vue-gites-ciney.mp4', autoplay: :autoplay, loop: true, muted: :muted, playsinline: true, preload: 'metadata', data: { controller: "reduced-motion-video" }, style: "width: 100vw; height: auto" %>
 </div>
 
 <%###### Introduction Section ######%>
