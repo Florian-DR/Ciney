@@ -3,27 +3,29 @@
 <% content_for :social_image, "cour-interieur-1400.webp" %>
 <% content_for :social_image_alt, "Cour intérieure du gîte Les Hirondelles à la Ferme d’Auwez" %>
 <% content_for :uncontainerize, true %>
-<%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
-    
-    <div class="gite contain">
-        <h1 class="heading-h2">
-            <%= @gite.name %>
-        </h1>
-        
-        <div>
+<main class="gite-page">
+    <%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
+
+    <%= render "shared/gite_stats", gite: @gite, feature: "Convivialité & feu de bois", feature_icon: "fa-solid fa-fire" %>
+
+    <section class="gite-intro gite-page-contain">
+        <div class="gite-intro__primary">
+            <h1><%= @gite.name %></h1>
             <h2 class="heading-h3">Un gîte spacieux et chaleureux pour des moments inoubliables</h2>
             <p>Nichée au cœur du domaine de la Ferme d’Auwez, Les Hirondelles est une maison familiale entièrement rénovée qui allie authenticité et confort moderne. Avec sa capacité d’accueil de 15 personnes, ses grands espaces conviviaux et son ambiance chaleureuse, ce gîte est parfait pour les retrouvailles, les célébrations et les séjours en groupe.</p>
         </div>
-        <div>
+        <div class="gite-intro__secondary">
             <h2 class="heading-h3">Un lieu pensé pour la convivialité et le partage</h2>
             <p>Au sein de cette maison de caractère, tout a été conçu pour créer des souvenirs inoubliables. Que ce soit autour du feu en hiver, lors d’un apéritif sur la terrasse ou dans la grande salle à manger, profitez d’un cadre propice aux échanges et à la détente.</p>
-            <ul style="margin: 20px 20px;">
+            <ul class="gite-intro__highlights">
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Idéal pour :</b> grandes familles, groupes d'amis, retraites en groupe</li>
                 <li><b>Ambiance :</b> chaleureuse, conviviale et authentique</li>
             </ul>
         </div>
+    </section>
 
+    <div class="gite contain">
         <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
         <%= render "shared/gite_gallery", gite: @gite %>
     </div>
@@ -88,3 +90,4 @@
         <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53680", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_hirondelles" } %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>
+</main>

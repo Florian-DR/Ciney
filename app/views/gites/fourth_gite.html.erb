@@ -3,21 +3,21 @@
 <% content_for :social_image, "gite-horizon-1400.webp" %>
 <% content_for :social_image_alt, "Vue extérieure du Grand Horizon à la Ferme d’Auwez" %>
 <% content_for :uncontainerize, true %>
-<%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
+<main class="gite-page">
+    <%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
 
- <div class="gite contain">
-        <h1 class="heading-h2">
-            <%= @gite.name %>
-        </h1>
-        
-        <div>
+    <%= render "shared/gite_stats", gite: @gite, feature: "Deux espaces réunis", feature_icon: "fa-solid fa-house-circle-check" %>
+
+    <section class="gite-intro gite-page-contain">
+        <div class="gite-intro__primary">
+            <h1><%= @gite.name %></h1>
             <h2 class="heading-h3">Un gîte de groupe au cœur du Condroz</h2>
             <p>Lieu de séjour unique né de la réunion de <i>L’Arbre de Vie</i> et de <i>L’Horizon</i>. Désormais capable d'accueillir jusqu'à <%= @gite.capacity%> personnes, cet espace a été pensé pour offrir aux grands groupes une expérience où chacun trouve sa place.</p>
         </div>
-        <div>
+        <div class="gite-intro__secondary">
             <h2 class="heading-h3">L’équilibre parfait entre partage et intimité</h2>
             <p>Pensé pour ceux qui aiment se retrouver tout en préservant leur espace, ce gîte offre une harmonie idéale entre moments communs et instants plus privés. Ses volumes lumineux et bien agencés permettent à chacun de profiter du séjour à son rythme ou en groupe, tandis que la terrasse invite à la contemplation et à la détente face au paysage du Condroz. Un lieu propice aux retrouvailles, aux échanges authentiques et au ressourcement, loin de l’agitation du quotidien.</p>
-            <ul style="margin: 20px 20px;">
+            <ul class="gite-intro__highlights">
                 <li><b>Une vue panoramique inégalée :</b> Terrasse privée avec panorama exceptionnel sur le Condroz.</li>
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Ambiance :</b> cosy, lumineuse et résolument ressourçante.</li>
@@ -25,7 +25,9 @@
             </ul>
             <p><b>Le mot des propriétaires :</b> En unissant ces deux espaces, nous avons voulu créer un cocon où la convivialité d'un grand groupe rencontre la sérénité d'un paysage préservé. Bienvenue chez vous.</p>
         </div>
+    </section>
 
+    <div class="gite contain">
         <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
         <%= render "shared/gite_gallery", gite: @gite %>
     </div>
@@ -90,3 +92,4 @@
         <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53737", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_grand_horizon" } %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>
+</main>

@@ -3,22 +3,22 @@
 <% content_for :social_image, "gite-horizon-1400.webp" %>
 <% content_for :social_image_alt, "Gîte L’Horizon et sa vue sur la campagne de Ciney" %>
 <% content_for :uncontainerize, true %>
-<%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
-    
-    <div class="gite contain">
-        <h1 class="heading-h2">
-            <%= @gite.name %>
-        </h1>
-        
-        <div>
+<main class="gite-page">
+    <%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
+
+    <%= render "shared/gite_stats", gite: @gite, feature: "Terrasse avec vue panoramique", feature_icon: "fa-solid fa-mountain-sun" %>
+
+    <section class="gite-intro gite-page-contain">
+        <div class="gite-intro__primary">
+            <h1><%= @gite.name %></h1>
             <h2 class="heading-h3">Un gîte lumineux avec une vue imprenable sur la campagne</h2>
             <p>Le gîte L’Horizon vous accueille dans un cadre paisible avec une terrasse privée offrant une vue exceptionnelle sur la campagne condruzienne. Idéal pour les petites familles et les groupes d’amis, ce gîte allie charme, confort et modernité pour un séjour en toute tranquillité.</p>
         </div>
 
-        <div>
+        <div class="gite-intro__secondary">
             <h2 class="heading-h3">Un cocon de sérénité avec une vue imprenable</h2>
             <p>Avec sa lumière naturelle abondante et son atmosphère chaleureuse, L’Horizon est le gîte parfait pour une escapade relaxante. Sa terrasse privée vous permettra de profiter d’un panorama unique sur les collines du Condroz, du lever au coucher du soleil.</p>
-            <ul style="margin: 20px 20px;">
+            <ul class="gite-intro__highlights">
                 <li><b>Une vue panoramique inégalée :</b> Terrasse privée avec panorama exceptionnel sur le Condroz.</li>
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Idéal pour :</b> petites familles, couples, groupes d’amis</li>
@@ -26,7 +26,9 @@
                 <li><b>Extensible :</b> possibilité de fusionner pour obtenir Le Grand Horizon</li>
             </ul>
         </div>
+    </section>
 
+    <div class="gite contain">
         <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
         <%= render "shared/gite_gallery", gite: @gite %>
     </div>
@@ -87,3 +89,4 @@
         <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53681", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_horizon" } %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>
+</main>

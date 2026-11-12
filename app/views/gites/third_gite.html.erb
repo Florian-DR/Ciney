@@ -3,29 +3,31 @@
 <% content_for :social_image, "arbre-1200.webp" %>
 <% content_for :social_image_alt, "Arbre au coucher du soleil près du gîte L’Arbre de Vie" %>
 <% content_for :uncontainerize, true %>
-<%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
-    
-    <div class="gite contain">
-        <h1 class="heading-h2">
-            <%= @gite.name %>
-        </h1>
-        
-        <div>
+<main class="gite-page">
+    <%= responsive_attachment_tag @gite, :main_photo, alt: Photo.get_alt(@gite.main_photo), id: "gite-banner", variant: :large, sizes: "100vw", loading: "eager", fetchpriority: "high", decoding: "async" if @gite.main_photo %>
+
+    <%= render "shared/gite_stats", gite: @gite, feature: "Plain-pied & accessibilité PMR", feature_icon: "fa-solid fa-wheelchair" %>
+
+    <section class="gite-intro gite-page-contain">
+        <div class="gite-intro__primary">
+            <h1><%= @gite.name %></h1>
             <h2 class="heading-h3">🏡 Le refuge idéal pour un séjour en couple ou en petite famille</h2>
             <p>Le gîte L’Arbre de Vie est un espace cosy et confortable, parfait pour une escapade en couple, en famille ou entre amis. De plain-pied et entièrement accessible aux personnes à mobilité réduite, il offre tout le confort nécessaire pour un séjour en toute sérénité.</p>
         </div>
 
-        <div>
+        <div class="gite-intro__secondary">
             <h2 class="heading-h3">Un cocon de bien-être et de simplicité</h2>
             <p>Pensé pour offrir une expérience conviviale et ressourçante, L’Arbre de Vie séduit par son ambiance chaleureuse et son aménagement fonctionnel. Avec sa cuisine ouverte, son salon cosy et ses deux chambres confortables, il est idéal pour un séjour en toute tranquillité.</p>
-            <ul style="margin: 20px 20px;">
+            <ul class="gite-intro__highlights">
                 <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
                 <li><b>Idéal pour :</b> couples, petites familles, personnes à mobilité réduite</li>
                 <li><b>Ambiance :</b> paisible, douillette et fonctionnelle</li>
                 <li><b>Extensible :</b> possibilité de fusionner pour obtenir Le Grand Horizon</li>
             </ul>
         </div>
+    </section>
 
+    <div class="gite contain">
         <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
         <%= render "shared/gite_gallery", gite: @gite %>
     </div>
@@ -79,3 +81,4 @@
         <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53682", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_arbre_de_vie" } %>
         <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
     </div>
+</main>
