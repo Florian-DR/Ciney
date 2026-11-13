@@ -1,25 +1,26 @@
-.gallery-container{
-  max-height: 90vh;
-  overflow-y: scroll;
-  margin: 40px auto;
+.gallery-container {
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
 }
 
 .image-gallery {
   column-count: 4;
-  column-gap: 16px;
-  padding: 16px;
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      margin-bottom: 16px;
-      border-radius: 4px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      }
+  column-gap: clamp(0.75rem, 1.5vw, 1.35rem);
+
+  img {
+    border-radius: 0;
+    break-inside: avoid;
+    cursor: zoom-in;
+    height: auto;
+    margin-bottom: clamp(0.75rem, 1.5vw, 1.35rem);
+    object-fit: contain;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    width: 100%;
+
+    &:hover {
+      filter: brightness(0.88);
+      transform: translateY(-3px);
     }
+  }
 }
 
 
@@ -63,19 +64,33 @@
 }
 
 @media (max-width: $breakpoint-mobile) {
-  .gallery-container{
-    overflow-y: auto;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
+  .gallery-container {
+    margin-inline: calc(var(--gite-gutter) * -1);
+    overflow: hidden;
   }
-  .image-gallery{
+
+  .image-gallery {
+    column-count: initial;
     display: flex;
-    padding: 0px;
-    align-items: center;
-    
-    img{
-      max-height:90vh;
-      max-width: 90%;
+    gap: 0.85rem;
+    overflow-x: auto;
+    padding-inline: var(--gite-gutter);
+    scroll-behavior: smooth;
+    scroll-padding-inline: var(--gite-gutter);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    img {
+      flex: 0 0 84%;
+      height: auto;
+      margin-bottom: 0;
+      max-height: 72vh;
+      object-fit: contain;
+      scroll-snap-align: start;
     }
   }
 }
@@ -119,5 +134,15 @@
 @media (max-width: $breakpoint-mobile) {
   .modal-content {
     max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-gallery {
+    scroll-behavior: auto;
+  }
+
+  .image-gallery img {
+    transition: none;
   }
 }

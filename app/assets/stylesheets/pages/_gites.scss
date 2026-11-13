@@ -1,5 +1,5 @@
 .gite-page {
-    --gite-ink: #687c68;
+    --gite-ink: #3f5542;
     --gite-dark-green: #435443;
     --gite-gold: #c38432;
     --gite-gutter: clamp(1rem, 6vw, 6.5rem);
@@ -126,9 +126,250 @@
     }
 }
 
-.gite{
-    margin-top: 40px !important;
-    padding-top: 25px;
+.gite-section-kicker {
+    color: #916025;
+    font-family: $body-font;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    line-height: 1.5;
+    margin-bottom: 0.9rem;
+    text-transform: uppercase;
+}
+
+.gite-gallery-section {
+    background: #eadbc4;
+    padding-block: clamp(4.5rem, 8vw, 8rem);
+
+    h2 {
+        font-size: clamp(2.1rem, calc(1.25rem + 3vw), 4.4rem);
+        line-height: 1.12;
+        margin-bottom: 0;
+    }
+}
+
+.gite-spaces {
+    background: #26352a;
+    color: $background;
+    padding-block: clamp(5rem, 9vw, 9rem);
+
+    .gite-section-kicker {
+        color: #edc58e;
+    }
+
+    h2,
+    h3 {
+        color: $background;
+    }
+
+    &__heading {
+        max-width: 760px;
+        margin-bottom: clamp(2.5rem, 5vw, 5rem);
+
+        h2 {
+            font-size: clamp(2.1rem, calc(1.25rem + 3vw), 4.4rem);
+            line-height: 1.12;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 clamp(2rem, 6vw, 6rem);
+    }
+}
+
+.gite-space-card {
+    border-top: 1px solid rgba($background, 0.24);
+    padding-block: 2rem 2.5rem;
+
+    &__heading {
+        align-items: flex-start;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: auto 1fr;
+    }
+
+    &__heading i {
+        color: #edc58e;
+        font-size: 1.5rem;
+        margin-top: 0.15rem;
+    }
+
+    h3 {
+        font-family: $body-font;
+        font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+        line-height: 1.45;
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 1.4rem 0 0;
+        padding: 0;
+    }
+
+    li {
+        line-height: 1.75;
+        padding: 0.35rem 0 0.35rem 1.2rem;
+        position: relative;
+    }
+
+    li::before {
+        color: #edc58e;
+        content: "\2022";
+        left: 0;
+        position: absolute;
+    }
+}
+
+.gite-domain-extras {
+    background: #eadbc4;
+    padding-block: clamp(5rem, 9vw, 9rem);
+
+    &__heading {
+        align-items: end;
+        display: grid;
+        gap: clamp(2rem, 5vw, 5rem);
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+
+        h2,
+        h3 {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: clamp(2.1rem, calc(1.25rem + 3vw), 4.4rem);
+            line-height: 1.12;
+        }
+
+        h3 {
+            font-family: $body-font;
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            line-height: 1.5;
+        }
+    }
+
+    &__grid {
+        border-top: 1px solid rgba($green, 0.4);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.gite-domain-extra {
+    align-items: flex-start;
+    border-bottom: 1px solid rgba($green, 0.4);
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: auto 1fr;
+    min-height: 130px;
+    padding: 1.7rem clamp(1rem, 3vw, 2.5rem) 1.7rem 0;
+
+    &:nth-child(odd) {
+        border-right: 1px solid rgba($green, 0.4);
+    }
+
+    &:nth-child(even) {
+        padding-left: clamp(1rem, 3vw, 2.5rem);
+    }
+
+    i {
+        color: #916025;
+        font-size: 1.7rem;
+        margin-top: 0.25rem;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.gite-practical {
+    align-items: center;
+    display: grid;
+    gap: clamp(2.5rem, 7vw, 7rem);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    padding-block: clamp(5rem, 9vw, 9rem);
+
+    h2 {
+        font-size: clamp(2.1rem, calc(1.25rem + 3vw), 4.4rem);
+        line-height: 1.12;
+    }
+
+    h3 {
+        font-family: $body-font;
+        font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+        line-height: 1.5;
+    }
+
+    &__content {
+        min-width: 0;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 2rem 0 0;
+        padding: 0;
+
+        li {
+            border-top: 1px solid rgba($green, 0.35);
+            line-height: 1.75;
+            padding-block: 1rem;
+        }
+
+        li:last-child {
+            border-bottom: 1px solid rgba($green, 0.35);
+        }
+
+        span {
+            display: block;
+            padding-left: 1rem;
+        }
+    }
+
+    > img {
+        height: 100%;
+        max-height: 620px;
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.gite-booking {
+    background: #26352a;
+    color: $background;
+    padding-block: clamp(4rem, 7vw, 7rem);
+    text-align: center;
+
+    .gite-section-kicker {
+        color: #edc58e;
+    }
+
+    h2 {
+        color: $background;
+        font-size: clamp(2.1rem, calc(1.25rem + 3vw), 4.4rem);
+        line-height: 1.12;
+        margin-bottom: 1.5rem;
+    }
+
+    &__actions {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .button {
+        align-items: center;
+        display: inline-flex;
+        font-weight: 700;
+        gap: 1.2rem;
+        justify-content: space-between;
+        padding: 1rem 1.4rem;
+    }
 }
 
 #gite-banner{
@@ -136,54 +377,6 @@
     height: 75vh;
     object-fit: cover;
     margin-bottom: 0px !important
-}
-
-.pictograme{
-    font-size: 18px;
-}
-
-// Description et Calendar section
-.gite-details{
-    display: grid;
-    gap: 40px;
-    grid-template-columns: 1fr 1fr;
-}
-
-.gite-details-section{
-    background-color: $green;
-    padding: 35px 7vw !important;
-    color: $background;
-    margin-top: 0px !important;
-}
-
-.all-photos{
-    margin: auto;
-    max-width: fit-content;
-    display: block;
-    justify-self: center;
-    padding: 18px !important;
-    font-size: 18px;
-}
-
-.info-gite{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(30px, 5vw, 80px);
-    align-items: center;
-
-    > div{
-        min-width: 0;
-    }
-
-    > img{
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-}
-
-.contain.gite-booking-actions{
-    padding-bottom: clamp(3rem, 7vw, 5.5rem);
 }
 
 @media (max-width: $breakpoint-mobile) {
@@ -218,14 +411,28 @@
         }
     }
 
-    #gite-banner{
-        height: auto;
+    .gite-spaces__grid,
+    .gite-domain-extras__heading,
+    .gite-domain-extras__grid {
+        grid-template-columns: 1fr;
     }
-    .info-gite{
+
+    .gite-domain-extra {
+        border-right: 0 !important;
+        padding-inline: 0 !important;
+    }
+
+    .gite-practical {
         grid-template-columns: 1fr;
 
-        > img{
-            margin-top: 10px;
+        > img {
+            height: auto;
+            max-height: none;
+            object-fit: contain;
         }
+    }
+
+    #gite-banner{
+        height: auto;
     }
 }

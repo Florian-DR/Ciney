@@ -25,69 +25,58 @@
         </div>
     </section>
 
-    <div class="gite contain">
-        <h2 class="heading-h3">📷 Découvrez <%= @gite.name %> en images</h2>
-        <%= render "shared/gite_gallery", gite: @gite %>
-    </div>
+    <section id="galerie" class="gite-gallery-section">
+        <div class="gite-page-contain">
+            <p class="gite-section-kicker">Le gîte en images</p>
+            <h2>Découvrez <%= @gite.name %></h2>
+            <%= render "shared/gite_gallery", gite: @gite %>
+        </div>
+    </section>
 
+    <%= render "shared/gite_spaces", sections: [
+        {
+            icon: "fa-solid fa-house",
+            title: "Rez-de-chaussée : un espace de vie convivial",
+            items: [
+                "Grand salon avec cassette à bois : ambiance chaleureuse garantie pour les soirées d’hiver",
+                "Cuisine entièrement équipée : idéale pour préparer des repas en groupe",
+                "Salle à manger spacieuse avec poêle à bois : pour partager de bons moments tous ensemble"
+            ]
+        },
+        {
+            icon: "fa-solid fa-film",
+            title: "Deuxième étage : détente et divertissement",
+            items: [
+                "2 dortoirs (3 et 4 lits)",
+                "Espace de jeux pour petits et grands",
+                "Salle de bain supplémentaire avec douche et toilettes"
+            ]
+        },
+        {
+            icon: "fa-solid fa-bed",
+            title: "Premier étage : confort et intimité",
+            items: ["4 chambres doubles avec literie de qualité", "3 salles de bains modernes"]
+        },
+        {
+            icon: "fa-solid fa-screwdriver-wrench",
+            title: "Équipements inclus",
+            items: ["Linge de maison fourni (draps, serviettes)", "Wifi gratuit", "Chauffage central", "Stationnement sur place"]
+        }
+    ] %>
+
+    <%= render "shared/gite_domain_extras" %>
     
-    <div class="gite contain gite-details-section">
-        <h2 class="heading-h3">Espaces et équipements</h2>
-        <div class="gite-details">
-            <div>
-                <h3 class="heading-h4">🏡 Rez-de-chaussée : un espace de vie convivial</h3>
-                <li>Grand salon avec cassette à bois : ambiance chaleureuse garantie pour les soirées d’hiver</li>
-                <li>Cuisine entièrement équipée : idéale pour préparer des repas en groupe</li>
-                <li>Salle à manger spacieuse avec poêle à bois : pour partager de bons moments tous ensemble</li>
-            </div>
+    <%= render "shared/gite_practical",
+        gite: @gite,
+        arrival_label: "Arrivée & Départ",
+        image: "cour-interieur-1400.webp",
+        image_alt: "Cour intérieure de la Ferme d'Auwez",
+        srcset: { "cour-interieur-640.webp" => "640w", "cour-interieur-1400.webp" => "1400w" },
+        image_width: 1400,
+        image_height: 1050 %>
 
-            <div>
-                <h3 class="heading-h4">🎬 Deuxième étage : détente et divertissement</h3>
-                <li>2 dortoirs (3 et 4 lits)</li>
-                <li>Espace de jeux pour petits et grands</li>
-                <li>Salle de bain supplémentaire avec douche et toilettes</li>
-            </div>
-
-            <div>
-                <h3 class="heading-h4">🛏️ Premier étage : confort et intimité</h3>
-                <li>4 chambres doubles avec literie de qualité</li>
-                <li>3 salles de bains modernes</li>
-            </div>
-
-            <div>
-                <h3 class="heading-h4">🛠️ Équipements inclus</h3>
-                <li>✅ Linge de maison fourni (draps, serviettes)</li>
-                <li>✅ Wifi gratuit</li>
-                <li>✅ Chauffage central</li>
-                <li>✅ Stationnement sur place</li>
-            </div>
-        </div>
-        <div style="margin: 5vh auto;">
-            <h2 class="heading-h3">Les + du domaine</h2>
-            <h3 class="heading-h4">Espaces partagés entre les trois gîtes</h3>
-            <li>🏊‍♂️ Piscine intérieure & sauna – Accès à certains horaires pour un moment de détente</li>
-            <li>☀️ Piscine extérieure en été – Un bassin clôturé, idéal pour se rafraîchir</li>
-            <li>🌿 Grand jardin et nature environnante – Parfait pour se relaxer ou jouer en plein air</li>
-            <li>🚴‍♂️ Abri à vélos sécurisé & kit de nettoyage vélo – Idéal pour les amateurs de cyclisme</li>
-        </div>
-    </div>
-    
-    <div class="contain gite info-gite">
-        <div>
-                <h2 class="heading-h3">Informations pratiques</h2>
-                <h3 class="heading-h4">📌 Tout ce qu’il faut savoir avant votre arrivée</h3>
-                <li><b>Capacité :</b> jusqu'à <%= @gite.capacity%> personnes</li>
-                <li><b>Séjour minimum :</b> 2 nuits</li>
-                <li style="white-space: pre-wrap;"><b>Arrivée & Départ :</b>
-                    ⏳ Arrivée : entre 16h et 19h
-                    ⏳ Départ : le dimanche avant 16h et en semaine avant 10h30</li>
-                <li><b>Linge de maison fourni :</b> draps et serviettes inclus</li>
-        </div>
-        <%= image_tag "cour-interieur-1400.webp", alt: "Cour intérieure de la Ferme d'Auwez", srcset: { "cour-interieur-640.webp" => "640w", "cour-interieur-1400.webp" => "1400w" }, sizes: "(max-width: 768px) 100vw, 45vw", width: 1400, height: 1050, loading: "lazy", decoding: "async" %>
-    </div>
-
-    <div class="contain gite-booking-actions">
-        <%= link_to "Réserver #{@gite.name}", "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53680", target: "_blank", rel: "noopener", style: "padding: auto", class: "button", data: { action: "click->analytics-consent#trackReservation", analytics_consent_emplacement_param: "fiche_hirondelles" } %>
-        <%= link_to "✏️ Modifier", edit_gite_path(@gite), style: "padding: auto" , class: "button" if current_user == User.first %>
-    </div>
+    <%= render "shared/gite_booking",
+        gite: @gite,
+        booking_url: "https://bookingengine.mylighthouse.com/la-ferme-dauwez-Ciney?language=fr-FR&room=53680",
+        analytics_emplacement: "fiche_hirondelles" %>
 </main>

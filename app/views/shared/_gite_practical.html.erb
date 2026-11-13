@@ -1,0 +1,25 @@
+<section class="gite-practical gite-page-contain">
+  <div class="gite-practical__content">
+    <p class="gite-section-kicker">Préparer votre séjour</p>
+    <h2>Informations pratiques</h2>
+    <h3>Tout ce qu’il faut savoir avant votre arrivée</h3>
+    <ul class="gite-practical__list">
+      <li><strong>Capacité :</strong> jusqu'à <%= gite.capacity %> personnes</li>
+      <li><strong>Séjour minimum :</strong> 2 nuits</li>
+      <li>
+        <strong><%= arrival_label %> :</strong>
+        <span>Arrivée : entre 16h et 19h</span>
+        <span>Départ : le dimanche avant 16h et en semaine avant 10h30</span>
+      </li>
+      <li><strong>Linge de maison fourni :</strong> draps et serviettes inclus</li>
+    </ul>
+  </div>
+  <%= image_tag image,
+      alt: image_alt,
+      srcset: srcset,
+      sizes: "(max-width: 768px) 100vw, 52vw",
+      width: image_width,
+      height: image_height,
+      loading: "lazy",
+      decoding: "async" %>
+</section>

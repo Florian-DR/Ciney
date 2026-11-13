@@ -1,0 +1,23 @@
+<section id="espaces" class="gite-spaces">
+  <div class="gite-page-contain">
+    <div class="gite-spaces__heading">
+      <p class="gite-section-kicker">Tout le confort pour votre séjour</p>
+      <h2>Espaces et équipements</h2>
+    </div>
+    <div class="gite-spaces__grid">
+      <% sections.each do |section| %>
+        <article class="gite-space-card">
+          <div class="gite-space-card__heading">
+            <i class="<%= section[:icon] %>" aria-hidden="true"></i>
+            <h3><%= section[:title] %></h3>
+          </div>
+          <ul>
+            <% section[:items].each do |item| %>
+              <li><%= item %></li>
+            <% end %>
+          </ul>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
